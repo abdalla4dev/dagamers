@@ -1,0 +1,199 @@
+fileFormatVersion: 1
+guid: ede4592f1b00d3842b8edf917ea62ba2
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Foundation:
+    - 100000
+    - 400000
+    - 3300000
+    - 2300000
+    Frame:
+    - 100002
+    - 400002
+    - 3300002
+    - 2300002
+    Carpet:
+    - 100004
+    - 400004
+    - 3300004
+    - 2300004
+    Siding:
+    - 100006
+    - 400006
+    - 3300006
+    - 2300006
+    Roof:
+    - 100008
+    - 400008
+    - 3300008
+    - 2300008
+    Sills:
+    - 100010
+    - 400010
+    - 3300010
+    - 2300010
+    OuterWalls:
+    - 100012
+    - 400012
+    - 3300012
+    - 2300012
+    Porch:
+    - 100014
+    - 400014
+    - 3300014
+    - 2300014
+    House:
+    - 100016
+    - 400016
+    - 3300016
+    - 2300016
+    //RootNode:
+    - 100018
+    - 400018
+    - 11100000
+    Ground:
+    - 100020
+    - 400020
+    - 3300018
+    - 2300018
+    InnerDoor2:
+    - 100022
+    - 400022
+    - 3300020
+    - 2300020
+    InnerDoor1:
+    - 100024
+    - 400024
+    - 3300022
+    - 2300022
+    InnerDoor0:
+    - 100026
+    - 400026
+    - 3300024
+    - 2300024
+    InnerDoor:
+    - 100028
+    - 400028
+    - 3300026
+    - 2300026
+    OuterDoor:
+    - 100030
+    - 400030
+    - 3300028
+    - 2300028
+    Window11:
+    - 100032
+    - 400032
+    - 3300030
+    - 2300030
+    Window10:
+    - 100034
+    - 400034
+    - 3300032
+    - 2300032
+    Window09:
+    - 100036
+    - 400036
+    - 3300034
+    - 2300034
+    Window08:
+    - 100038
+    - 400038
+    - 3300036
+    - 2300036
+    Window07:
+    - 100040
+    - 400040
+    - 3300038
+    - 2300038
+    Window06:
+    - 100042
+    - 400042
+    - 3300040
+    - 2300040
+    Window05:
+    - 100044
+    - 400044
+    - 3300042
+    - 2300042
+    Window04:
+    - 100046
+    - 400046
+    - 3300044
+    - 2300044
+    Window03:
+    - 100048
+    - 400048
+    - 3300046
+    - 2300046
+    Window2:
+    - 100050
+    - 400050
+    - 3300048
+    - 2300048
+    Window1:
+    - 100052
+    - 400052
+    - 3300050
+    - 2300050
+    Ceiling:
+    - 100054
+    - 400054
+    - 3300052
+    - 2300052
+    Tile:
+    - 100056
+    - 400056
+    - 3300054
+    - 2300054
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: House
+    4300002: Porch
+    4300004: OuterWalls
+    4300006: Roof
+    4300008: Siding
+    4300010: Foundation
+    4300012: Frame
+    4300014: Sills
+    4300016: Carpet
+    4300018: Tile
+    4300020: Ceiling
+    4300022: Window1
+    4300024: Window2
+    4300026: Window03
+    4300028: Window04
+    4300030: Window05
+    4300032: Window06
+    4300034: Window07
+    4300036: Window08
+    4300038: Window09
+    4300040: Window10
+    4300042: Window11
+    4300044: OuterDoor
+    4300046: InnerDoor
+    4300048: InnerDoor0
+    4300050: InnerDoor1
+    4300052: InnerDoor2
+    4300054: Ground

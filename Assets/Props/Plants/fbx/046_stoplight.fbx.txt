@@ -1,0 +1,59 @@
+
+=========3DUA Garden Plants======
+=========25 High-quality models=====
+===========Item number 46========
+============046_stoplight========
+
+Full collection avialable at Turbosquid.com
+http://www.turbosquid.com/FullPreview/Index.cfm/ID/569594?referral=3DUA
+
+You can use this model in your projects, but you can't resale or distribute it  to othres in any way. 
+
+____________________________________
+
+
+Polygonal model.
+Polys: 2592
+Vertices: 3259
+
+046_stoplight.jpg		-diffuse texture 1024x1024
+046_stoplight-n.jpg		-normal map 1024x1024
+046_stoplight-o.jpg		-opacity 1024x1024
+046_stoplight-s.jpg		-specular 1024x1024
+046_stoplight-t.jpg		-translucensy 1024x1024
+
+studio_sky.hdr		-HDRI spherical environment texture
+studio.jpg		-diffuse texture for ground in studio
+studio_grass.jpg		-diffuse texture for grass in studio
+studio-s.jpg		-specular 
+
+Used Soft:
+3ds Max 2008+V-ray DEMO 1.5 SP1
+ZBrush
+Photoshop
+
+Plant Facts:
+Mature Height		-10 to 16 inches
+Mature Spread		-10 to 12 inches
+Soil Type	Widely 		-adaptable
+Moisture			-Moderate
+Mature Form		-Mounding
+Growth Rate		-Moderate
+Sun Exposure		-Full sun to full shade
+Flower Color		-White
+Fall Color			-N/A
+Foliage Color		-Yellow
+Zones			-4-9
+
+
+Some info about plant from the internet:
+
+Heucherella Stoplight, Heucherella 'Stoplight' , will cause you to stop momentarily to admire its colorful beauty in your landscape. The radiant yellow leaves of Heucherella 'Stoplight' have a large, dark red blotch in the center which feathers out through the veins. It is an improved version of Heucherella 'Sunspot'. Attractive spires of white flowers appear in late spring through early summer. Foamy bells are fairly compact and work well as a clump-forming groundcover. When you cross heuchera with tiarella, two hardy stalwarts of the shade garden, you get heucherella, another good plant that does well in shade. Like its two parents, it's all about the foliage with heucherella. Heucherella make themselves at home in moist but well-drained, organic-enriched soils. Attractive to hummingbirds, rarely troubled by deer. They are a mainstay of vibrant shade borders and fine containers, beloved because they are so easy to grow and their large, colorful leaves are far longer-lasting than any blooms! Tolerant of heat and humidity.
+
+Done by Oleksandr Masliukivskyi (aka Alessandro.3mer)
+Account on Turbosquid: 3DUA
+my e-mail: alessandro.3mer@gmail.com
+
+19 NOV 2010
+
+Thank you!

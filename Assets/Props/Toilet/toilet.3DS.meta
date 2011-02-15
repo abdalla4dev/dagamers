@@ -1,0 +1,85 @@
+fileFormatVersion: 1
+guid: d5f1a80529be4784d82fdd2e32c8b5b5
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Cylinder03:
+    - 100000
+    - 400000
+    - 3300000
+    - 2300000
+    Cylinder02:
+    - 100002
+    - 400002
+    - 3300002
+    - 2300002
+    ChamferBox:
+    - 100004
+    - 400004
+    - 3300004
+    - 2300004
+    ChamferBo0:
+    - 100006
+    - 400006
+    - 3300006
+    - 2300006
+    Tube01:
+    - 100008
+    - 400008
+    - 3300008
+    - 2300008
+    Plane01:
+    - 100010
+    - 400010
+    - 3300010
+    - 2300010
+    Omni01:
+    - 100012
+    - 400012
+    Omni02:
+    - 100014
+    - 400014
+    Sphere01:
+    - 100016
+    - 400016
+    - 3300012
+    - 2300012
+    Cylinder01:
+    - 100018
+    - 400018
+    - 3300014
+    - 2300014
+    //RootNode:
+    - 100020
+    - 400020
+    - 11100000
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Sphere01
+    4300002: Tube01
+    4300004: ChamferBox
+    4300006: ChamferBo0
+    4300008: Plane01
+    4300010: Cylinder01
+    4300012: Cylinder02
+    4300014: Cylinder03
