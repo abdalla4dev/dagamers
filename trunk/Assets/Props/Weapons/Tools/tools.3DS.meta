@@ -1,0 +1,109 @@
+fileFormatVersion: 1
+guid: 5b1a01ba00dd5224291425e4fa574718
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Box04:
+    - 100000
+    - 400000
+    - 3300000
+    - 2300000
+    Cylinder04:
+    - 100002
+    - 400002
+    - 3300002
+    - 2300002
+    Cylinder03:
+    - 100004
+    - 400004
+    - 3300004
+    - 2300004
+    Box03:
+    - 100006
+    - 400006
+    - 3300006
+    - 2300006
+    Line01:
+    - 100008
+    - 400008
+    - 3300008
+    - 2300008
+    Box02:
+    - 100010
+    - 400010
+    - 3300010
+    - 2300010
+    Object01:
+    - 100012
+    - 400012
+    - 3300012
+    - 2300012
+    Cylinder02:
+    - 100014
+    - 400014
+    - 3300014
+    - 2300014
+    Cylinder01:
+    - 100016
+    - 400016
+    - 3300016
+    - 2300016
+    przy1:
+    - 100018
+    - 400018
+    - 3300018
+    - 2300018
+    Object02:
+    - 100020
+    - 400020
+    - 3300020
+    - 2300020
+    Box01:
+    - 100022
+    - 400022
+    - 3300022
+    - 2300022
+    //RootNode:
+    - 100024
+    - 400024
+    - 11100000
+    plytka1:
+    - 100026
+    - 400026
+    - 3300024
+    - 2300024
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Box04
+    4300002: Cylinder04
+    4300004: Cylinder03
+    4300006: Box03
+    4300008: Line01
+    4300010: Cylinder02
+    4300012: Cylinder01
+    4300014: przy1
+    4300016: plytka1
+    4300018: Object01
+    4300020: Object02
+    4300022: Box02
+    4300024: Box01

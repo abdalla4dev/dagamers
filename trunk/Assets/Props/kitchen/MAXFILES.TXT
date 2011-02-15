@@ -1,0 +1,7 @@
+C:\3dsmax7\scenes\t$m$p$$$\kitchen.max
+C:\3dsmax7\scenes\t$m$p$$$\MAXFILES.TXT
+C:\3dsmax7\maps\kitchen\wood.jpg
+C:\3dsmax7\maps\kitchen\woodM.jpg
+C:\3dsmax7\maps\kitchen\texture.jpg
+C:\3dsmax7\maps\kitchen\floor.jpg
+C:\3dsmax7\maps\kitchen\brownwall.jpg
