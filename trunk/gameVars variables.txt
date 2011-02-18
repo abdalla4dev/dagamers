@@ -1,0 +1,9 @@
+under weapons, mWeapon is statement for when mWeap is true
+
+under questions, variables are:
+mTime = murder time
+victim = murder victim
+fAlibi = person with fake alibi
+aTimeStart = action time start
+
+under suspects, activityAcc = person who accompanied subject in the activity
