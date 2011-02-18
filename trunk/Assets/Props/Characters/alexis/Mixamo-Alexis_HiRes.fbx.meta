@@ -1,0 +1,306 @@
+fileFormatVersion: 1
+guid: 09cc0ae84031a3e42afa11e095caddec
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    //RootNode:
+    - 100000
+    - 400000
+    - 11100000
+    Alexis:Head:
+    - 100002
+    - 400002
+    Alexis:Neck1:
+    - 100004
+    - 400004
+    Alexis:Neck:
+    - 100006
+    - 400006
+    Alexis:Spine2:
+    - 100008
+    - 400008
+    Alexis:Spine1:
+    - 100010
+    - 400010
+    Alexis:Spine:
+    - 100012
+    - 400012
+    Alexis:Hips:
+    - 100014
+    - 400014
+    - 13700000
+    Alexis_Geo_High:
+    - 100016
+    - 400016
+    Alexis:RightArm:
+    - 100018
+    - 400018
+    Alexis:RightLeg:
+    - 100020
+    - 400020
+    Alexis:LeftFoot:
+    - 100022
+    - 400022
+    Alexis:LeftLeg:
+    - 100024
+    - 400024
+    Alexis:LeftForeArm:
+    - 100026
+    - 400026
+    Alexis:LeftShoulder:
+    - 100028
+    - 400028
+    Alexis:RightLipUpper:
+    - 100030
+    - 400030
+    Alexis:RightNostril:
+    - 100032
+    - 400032
+    Alexis:RightCheek:
+    - 100034
+    - 400034
+    Alexis:RightEyelidLower:
+    - 100036
+    - 400036
+    Alexis:RightEyelidUpper:
+    - 100038
+    - 400038
+    Alexis:RightIOuterBrow:
+    - 100040
+    - 400040
+    Alexis:RightInnerBrow:
+    - 100042
+    - 400042
+    Alexis:LeftIOuterBrow:
+    - 100044
+    - 400044
+    Alexis:LeftInnerBrow:
+    - 100046
+    - 400046
+    Alexis:LeftEyelidUpper:
+    - 100048
+    - 400048
+    Alexis:LeftEyelidLower:
+    - 100050
+    - 400050
+    Alexis:LeftCheek:
+    - 100052
+    - 400052
+    Alexis:LeftNostril:
+    - 100054
+    - 400054
+    Alexis:LeftLipUpper:
+    - 100056
+    - 400056
+    Alexis:LeftLipCorner:
+    - 100058
+    - 400058
+    Alexis:RightLipCorner:
+    - 100060
+    - 400060
+    Alexis:RightLipLower:
+    - 100062
+    - 400062
+    Alexis:LeftLipLower:
+    - 100064
+    - 400064
+    Alexis:TongueTip:
+    - 100066
+    - 400066
+    Alexis:TongueBack:
+    - 100068
+    - 400068
+    Alexis:HeadTop_End:
+    - 100070
+    - 400070
+    Alexis:RightFootToeBase_End:
+    - 100072
+    - 400072
+    Alexis:RightToeBase:
+    - 100074
+    - 400074
+    Alexis:RightFoot:
+    - 100076
+    - 400076
+    Alexis:RightUpLeg:
+    - 100078
+    - 400078
+    Alexis:LeftFootToeBase_End:
+    - 100080
+    - 400080
+    Alexis:LeftToeBase:
+    - 100082
+    - 400082
+    Alexis:LeftUpLeg:
+    - 100084
+    - 400084
+    Alexis:RightHandPinky4:
+    - 100086
+    - 400086
+    Alexis:RightHandPinky3:
+    - 100088
+    - 400088
+    Alexis:RightHandPinky2:
+    - 100090
+    - 400090
+    Alexis:RightHandPinky1:
+    - 100092
+    - 400092
+    Alexis:RightHandRing4:
+    - 100094
+    - 400094
+    Alexis:RightHandRing3:
+    - 100096
+    - 400096
+    Alexis:RightHandRing2:
+    - 100098
+    - 400098
+    Alexis:RightHandRing1:
+    - 100100
+    - 400100
+    Alexis:RightHandMiddle4:
+    - 100102
+    - 400102
+    Alexis:RightHandMiddle3:
+    - 100104
+    - 400104
+    Alexis:RightHandMiddle2:
+    - 100106
+    - 400106
+    Alexis:RightHandMiddle1:
+    - 100108
+    - 400108
+    Alexis:RightHandIndex4:
+    - 100110
+    - 400110
+    Alexis:RightHandIndex3:
+    - 100112
+    - 400112
+    Alexis:RightHandIndex2:
+    - 100114
+    - 400114
+    Alexis:RightHandIndex1:
+    - 100116
+    - 400116
+    Alexis:RightHandThumb4:
+    - 100118
+    - 400118
+    Alexis:RightHandThumb3:
+    - 100120
+    - 400120
+    Alexis:RightHandThumb2:
+    - 100122
+    - 400122
+    Alexis:RightHandThumb1:
+    - 100124
+    - 400124
+    Alexis:RightHand:
+    - 100126
+    - 400126
+    Alexis:RightForeArm:
+    - 100128
+    - 400128
+    Alexis:RightShoulder:
+    - 100130
+    - 400130
+    Alexis:LeftHandPinky4:
+    - 100132
+    - 400132
+    Alexis:LeftHandPinky3:
+    - 100134
+    - 400134
+    Alexis:LeftHandPinky2:
+    - 100136
+    - 400136
+    Alexis:LeftHandPinky1:
+    - 100138
+    - 400138
+    Alexis:LeftHandRing4:
+    - 100140
+    - 400140
+    Alexis:LeftHandRing3:
+    - 100142
+    - 400142
+    Alexis:LeftHandRing2:
+    - 100144
+    - 400144
+    Alexis:LeftHandRing1:
+    - 100146
+    - 400146
+    Alexis:LeftHandIndex4:
+    - 100148
+    - 400148
+    Alexis:LeftHandIndex3:
+    - 100150
+    - 400150
+    Alexis:LeftHandIndex2:
+    - 100152
+    - 400152
+    Alexis:LeftHandIndex1:
+    - 100154
+    - 400154
+    Alexis:LeftHandMiddle4:
+    - 100156
+    - 400156
+    Alexis:LeftHandMiddle3:
+    - 100158
+    - 400158
+    Alexis:LeftHandMiddle2:
+    - 100160
+    - 400160
+    Alexis:LeftHandMiddle1:
+    - 100162
+    - 400162
+    Alexis:LeftHandThumb4:
+    - 100164
+    - 400164
+    Alexis:LeftHandThumb3:
+    - 100166
+    - 400166
+    Alexis:LeftHandThumb2:
+    - 100168
+    - 400168
+    Alexis:LeftHandThumb1:
+    - 100170
+    - 400170
+    Alexis:LeftHand:
+    - 100172
+    - 400172
+    Alexis:LeftArm:
+    - 100174
+    - 400174
+    Alexis:JawEND:
+    - 100176
+    - 400176
+    Alexis:Jaw:
+    - 100178
+    - 400178
+    Alexis:RightEye:
+    - 100180
+    - 400180
+    Alexis:LeftEye:
+    - 100182
+    - 400182
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Alexis_Geo_High

@@ -1,0 +1,121 @@
+fileFormatVersion: 1
+guid: c9d8303af6ac9564eadf7ab6d552d6d8
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Cylinder05:
+    - 100000
+    - 400000
+    - 3300000
+    - 2300000
+    Cylinder03:
+    - 100002
+    - 400002
+    - 3300002
+    - 2300002
+    Sphere08:
+    - 100004
+    - 400004
+    - 3300004
+    - 2300004
+    Sphere06:
+    - 100006
+    - 400006
+    - 3300006
+    - 2300006
+    Sphere21:
+    - 100008
+    - 400008
+    - 3300008
+    - 2300008
+    Sphere07:
+    - 100010
+    - 400010
+    - 3300010
+    - 2300010
+    Sphere16:
+    - 100012
+    - 400012
+    - 3300012
+    - 2300012
+    Sphere19:
+    - 100014
+    - 400014
+    - 3300014
+    - 2300014
+    Sphere20:
+    - 100016
+    - 400016
+    - 3300016
+    - 2300016
+    Sphere17:
+    - 100018
+    - 400018
+    - 3300018
+    - 2300018
+    Sphere18:
+    - 100020
+    - 400020
+    - 3300020
+    - 2300020
+    Cylinder04:
+    - 100022
+    - 400022
+    - 3300022
+    - 2300022
+    //RootNode:
+    - 100024
+    - 400024
+    - 11100000
+    Sphere15:
+    - 100026
+    - 400026
+    - 3300024
+    - 2300024
+    Sphere14:
+    - 100028
+    - 400028
+    - 3300026
+    - 2300026
+    Sphere09:
+    - 100030
+    - 400030
+    - 3300028
+    - 2300028
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Sphere19
+    4300002: Sphere20
+    4300004: Sphere21
+    4300006: Sphere18
+    4300008: Cylinder05
+    4300010: Sphere07
+    4300012: Sphere08
+    4300014: Sphere09
+    4300016: Sphere06
+    4300018: Cylinder03
+    4300020: Sphere14
+    4300022: Sphere15
+    4300024: Sphere16
+    4300026: Sphere17
+    4300028: Cylinder04
