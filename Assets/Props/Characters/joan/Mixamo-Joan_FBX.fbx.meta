@@ -1,0 +1,235 @@
+fileFormatVersion: 1
+guid: b765a19549e62414e9bdb106986853ba
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Joan:RightHand:
+    - 100000
+    - 400000
+    Joan:RightArm:
+    - 100002
+    - 400002
+    Joan:LeftHand:
+    - 100004
+    - 400004
+    Joan:LeftArm:
+    - 100006
+    - 400006
+    Joan:Head:
+    - 100008
+    - 400008
+    Joan:Neck1:
+    - 100010
+    - 400010
+    Joan:Neck:
+    - 100012
+    - 400012
+    Joan:Spine2:
+    - 100014
+    - 400014
+    Joan:Spine1:
+    - 100016
+    - 400016
+    Joan:Spine:
+    - 100018
+    - 400018
+    Joan:Hips:
+    - 100020
+    - 400020
+    - 13700000
+    //RootNode:
+    - 100022
+    - 400022
+    - 11100000
+    Joan_Mesh:
+    - 100024
+    - 400024
+    Joan:RightFoot:
+    - 100026
+    - 400026
+    Joan:RightLeg:
+    - 100028
+    - 400028
+    Joan:RightUpLeg:
+    - 100030
+    - 400030
+    Joan:LeftFoot:
+    - 100032
+    - 400032
+    Joan:LeftLeg:
+    - 100034
+    - 400034
+    Joan:LeftUpLeg:
+    - 100036
+    - 400036
+    Joan:RightHandThumb4:
+    - 100038
+    - 400038
+    Joan:RightHandIndex3:
+    - 100040
+    - 400040
+    Joan:RightHandMiddle4:
+    - 100042
+    - 400042
+    Joan:RightHandRing1:
+    - 100044
+    - 400044
+    Joan:RightHandIndex1:
+    - 100046
+    - 400046
+    Joan:RightHandRing3:
+    - 100048
+    - 400048
+    Joan:RightHandIndex2:
+    - 100050
+    - 400050
+    Joan:RightHandMiddle1:
+    - 100052
+    - 400052
+    Joan:LeftHandThumb1:
+    - 100054
+    - 400054
+    Joan:RightHandMiddle3:
+    - 100056
+    - 400056
+    Joan:HeadTop_End:
+    - 100058
+    - 400058
+    Joan:RightHandPinky4:
+    - 100060
+    - 400060
+    Joan:LeftHandRing1:
+    - 100062
+    - 400062
+    Joan:LeftHandMiddle2:
+    - 100064
+    - 400064
+    Joan:LeftHandPinky4:
+    - 100066
+    - 400066
+    Joan:LeftHandIndex2:
+    - 100068
+    - 400068
+    Joan:LeftHandThumb2:
+    - 100070
+    - 400070
+    Joan:RightHandPinky2:
+    - 100072
+    - 400072
+    Joan:RightHandRing2:
+    - 100074
+    - 400074
+    Joan:RightHandRing4:
+    - 100076
+    - 400076
+    Joan:RightShoulder:
+    - 100078
+    - 400078
+    Joan:LeftHandIndex1:
+    - 100080
+    - 400080
+    Joan:LeftHandMiddle4:
+    - 100082
+    - 400082
+    Joan:LeftHandPinky3:
+    - 100084
+    - 400084
+    Joan:LeftFootToeBase_End:
+    - 100086
+    - 400086
+    Joan:LeftHandRing3:
+    - 100088
+    - 400088
+    Joan:LeftHandMiddle1:
+    - 100090
+    - 400090
+    Joan:LeftHandMiddle3:
+    - 100092
+    - 400092
+    Joan:RightFootToeBase_End:
+    - 100094
+    - 400094
+    Joan:RightHandPinky1:
+    - 100096
+    - 400096
+    Joan:LeftShoulder:
+    - 100098
+    - 400098
+    Joan:LeftForeArm:
+    - 100100
+    - 400100
+    Joan:RightForeArm:
+    - 100102
+    - 400102
+    Joan:RightToeBase:
+    - 100104
+    - 400104
+    Joan:LeftToeBase:
+    - 100106
+    - 400106
+    Joan:LeftHandThumb4:
+    - 100108
+    - 400108
+    Joan:LeftHandRing2:
+    - 100110
+    - 400110
+    Joan:LeftHandIndex3:
+    - 100112
+    - 400112
+    Joan:LeftHandIndex4:
+    - 100114
+    - 400114
+    Joan:LeftHandPinky2:
+    - 100116
+    - 400116
+    Joan:LeftHandThumb3:
+    - 100118
+    - 400118
+    Joan:RightHandMiddle2:
+    - 100120
+    - 400120
+    Joan:RightHandPinky3:
+    - 100122
+    - 400122
+    Joan:RightHandIndex4:
+    - 100124
+    - 400124
+    Joan:RightHandThumb1:
+    - 100126
+    - 400126
+    Joan:LeftHandPinky1:
+    - 100128
+    - 400128
+    Joan:RightHandThumb2:
+    - 100130
+    - 400130
+    Joan:RightHandThumb3:
+    - 100132
+    - 400132
+    Joan:LeftHandRing4:
+    - 100134
+    - 400134
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Joan_Mesh
+    7400000: Take 002 //// Mixamo-Joan_FBX

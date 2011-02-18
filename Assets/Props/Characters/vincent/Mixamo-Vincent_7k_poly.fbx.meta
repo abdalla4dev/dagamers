@@ -1,0 +1,244 @@
+fileFormatVersion: 1
+guid: 24a8e04e9411df344bc36f69b8b96f34
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    MixamoVincent7k_TurboSquid_001_2010:
+    - 100000
+    - 400000
+    Vincent:RightForeArm:
+    - 100002
+    - 400002
+    Vincent:RightHandMiddle2:
+    - 100004
+    - 400004
+    Vincent:LeftFoot:
+    - 100006
+    - 400006
+    Vincent:RightHandThumb3:
+    - 100008
+    - 400008
+    Vincent:RightHandRing1:
+    - 100010
+    - 400010
+    Vincent:LeftHandPinky2:
+    - 100012
+    - 400012
+    Vincent:LeftHandIndex3:
+    - 100014
+    - 400014
+    Vincent:LeftHandThumb4:
+    - 100016
+    - 400016
+    Vincent:LeftHandThumb2:
+    - 100018
+    - 400018
+    Vincent:RightLeg:
+    - 100020
+    - 400020
+    Vincent:LeftHandMiddle4:
+    - 100022
+    - 400022
+    Vincent:RightHandMiddle1:
+    - 100024
+    - 400024
+    Vincent:LeftHandIndex4:
+    - 100026
+    - 400026
+    Vincent:RightShoulder:
+    - 100028
+    - 400028
+    //RootNode:
+    - 100030
+    - 400030
+    - 11100000
+    Vincent:RightHandThumb2:
+    - 100032
+    - 400032
+    Vincent:HeadTop_End:
+    - 100034
+    - 400034
+    Vincent:LeftForeArm:
+    - 100036
+    - 400036
+    Vincent:LeftShoulder:
+    - 100038
+    - 400038
+    Vincent:LeftHandPinky1:
+    - 100040
+    - 400040
+    Vincent:LeftHandRing1:
+    - 100042
+    - 400042
+    Vincent:LeftHandMiddle1:
+    - 100044
+    - 400044
+    Vincent:LeftHand:
+    - 100046
+    - 400046
+    Vincent:RightHandMiddle3:
+    - 100048
+    - 400048
+    Vincent:RightHandMiddle4:
+    - 100050
+    - 400050
+    Vincent:LeftHandMiddle3:
+    - 100052
+    - 400052
+    Vincent:RightHandPinky4:
+    - 100054
+    - 400054
+    Vincent:RightHandPinky3:
+    - 100056
+    - 400056
+    Vincent:LeftFootToeBase_End:
+    - 100058
+    - 400058
+    Vincent:LeftHandIndex1:
+    - 100060
+    - 400060
+    Vincent:RightHand:
+    - 100062
+    - 400062
+    Vincent:LeftHandRing3:
+    - 100064
+    - 400064
+    Vincent:LeftHandRing2:
+    - 100066
+    - 400066
+    Vincent:RightArm:
+    - 100068
+    - 400068
+    Vincent:LeftHandRing4:
+    - 100070
+    - 400070
+    Vincent:RightHandPinky1:
+    - 100072
+    - 400072
+    Vincent:RightHandIndex2:
+    - 100074
+    - 400074
+    Vincent:RightHandRing3:
+    - 100076
+    - 400076
+    Vincent:RightFoot:
+    - 100078
+    - 400078
+    Vincent:RightHandIndex4:
+    - 100080
+    - 400080
+    Vincent:LeftHandThumb3:
+    - 100082
+    - 400082
+    Vincent:LeftHandThumb1:
+    - 100084
+    - 400084
+    Vincent:RightToeBase:
+    - 100086
+    - 400086
+    Vincent:LeftHandPinky3:
+    - 100088
+    - 400088
+    Vincent:LeftHandIndex2:
+    - 100090
+    - 400090
+    Vincent:LeftHandPinky4:
+    - 100092
+    - 400092
+    Vincent:RightHandThumb4:
+    - 100094
+    - 400094
+    Vincent:RightFootToeBase_End:
+    - 100096
+    - 400096
+    Vincent:LeftUpLeg:
+    - 100098
+    - 400098
+    Vincent:RightHandIndex3:
+    - 100100
+    - 400100
+    Vincent:RightHandRing2:
+    - 100102
+    - 400102
+    Vincent:RightHandRing4:
+    - 100104
+    - 400104
+    Vincent:RightHandPinky2:
+    - 100106
+    - 400106
+    Vincent:LeftHandMiddle2:
+    - 100108
+    - 400108
+    Vincent:RightHandThumb1:
+    - 100110
+    - 400110
+    Vincent:RightHandIndex1:
+    - 100112
+    - 400112
+    Vincent:RightUpLeg:
+    - 100114
+    - 400114
+    Vincent:LeftToeBase:
+    - 100116
+    - 400116
+    Plane:
+    - 100118
+    - 400118
+    - 3300000
+    - 2300000
+    polySurface6:
+    - 100120
+    - 400120
+    Vincent:LeftLeg:
+    - 100122
+    - 400122
+    Vincent:LeftArm:
+    - 100124
+    - 400124
+    Vincent:Head:
+    - 100126
+    - 400126
+    Vincent:Neck1:
+    - 100128
+    - 400128
+    Vincent:Neck:
+    - 100130
+    - 400130
+    Vincent:Spine2:
+    - 100132
+    - 400132
+    Vincent:Spine1:
+    - 100134
+    - 400134
+    Vincent:Spine:
+    - 100136
+    - 400136
+    Vincent:Hips:
+    - 100138
+    - 400138
+    - 13700000
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: polySurface6
+    4300002: Plane
+    7400000: Take 002 //// Mixamo-Vincent_7k_poly
