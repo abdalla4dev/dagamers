@@ -1,0 +1,67 @@
+fileFormatVersion: 1
+guid: 1a042bd8c37e4ce458f989104bad0eed
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    //RootNode:
+    - 100000
+    - 400000
+    - 11100000
+    ChamferBo3:
+    - 100002
+    - 400002
+    - 3300000
+    - 2300000
+    ChamferBox:
+    - 100004
+    - 400004
+    - 3300002
+    - 2300002
+    ChamferBo0:
+    - 100006
+    - 400006
+    - 3300004
+    - 2300004
+    Plane01:
+    - 100008
+    - 400008
+    - 3300006
+    - 2300006
+    ChamferBo2:
+    - 100010
+    - 400010
+    - 3300008
+    - 2300008
+    ChamferBo1:
+    - 100012
+    - 400012
+    - 3300010
+    - 2300010
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: ChamferBox
+    4300002: Plane01
+    4300004: ChamferBo0
+    4300006: ChamferBo1
+    4300008: ChamferBo2
+    4300010: ChamferBo3
