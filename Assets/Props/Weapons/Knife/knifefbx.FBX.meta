@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: b9ece12b42f7daa4fa1703006495dc55
+guid: 7ac35af9c37b98844bd6165e25b8f7ef
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -22,30 +22,30 @@ ModelImporter:
     animationWrapMode: 0
     splitAnimations: 1
   nodeInfo:
-    //RootNode:
+    Box02:
     - 100000
     - 400000
-    - 11100000
-    Cylinder02:
-    - 100002
-    - 400002
     - 3300000
     - 2300000
-    Box02:
-    - 100004
-    - 400004
+    Box01:
+    - 100002
+    - 400002
     - 3300002
     - 2300002
-    Box01:
-    - 100006
-    - 400006
+    Cylinder02:
+    - 100004
+    - 400004
     - 3300004
     - 2300004
     Cylinder01:
-    - 100008
-    - 400008
+    - 100006
+    - 400006
     - 3300006
     - 2300006
+    //RootNode:
+    - 100008
+    - 400008
+    - 11100000
 AssetImporter:
   importerVersion: 1
   fileIDToRecycleName:
@@ -53,4 +53,4 @@ AssetImporter:
     4300002: Cylinder02
     4300004: Box01
     4300006: Box02
-    7400000: Take 001 //// knife
+    7400000: Take 001 //// knifefbx
