@@ -21,8 +21,8 @@
   <mother>
     <beforeMurder>
       <activity>watching TV</activity>
-      <activityAcc>daughter<activityAcc>
-      <activityLength>1pm to 2.30pm</acitivtyLength>
+      <activityAcc>daughter</activityAcc>
+      <activityLength>1pm to 2.30pm</activityLength>
       <witness>maid</witness>
       <alibi>true</alibi>
     </beforeMurder>
@@ -36,8 +36,8 @@
   <daughter>
     <beforeMurder>
       <activity>watching TV</activity>
-      <activityAcc>mother<activityAcc>
-      <activityLength>1pm to 2.30pm</acitivtyLength>
+      <activityAcc>mother</activityAcc>
+      <activityLength>1pm to 2.30pm</activityLength>
       <witness>maid</witness>
       <alibi>true</alibi>
     </beforeMurder>
@@ -51,8 +51,8 @@
   <son>
     <beforeMurder>
       <activity>out</activity>
-      <activityAcc>null<activityAcc>
-      <activityLength>1pm to 3pm</acitivtyLength>
+      <activityAcc>null</activityAcc>
+      <activityLength>1pm to 3pm</activityLength>
       <witness>maid</witness>
       <alibi>false</alibi>
     </beforeMurder>
@@ -66,8 +66,8 @@
   <maid>
     <beforeMurder>
       <activity>doing chores around the house</activity>
-      <activityAcc>null<activityAcc>
-      <activityLength>since 12pm</acitivtyLength>
+      <activityAcc>null</activityAcc>
+      <activityLength>since 12pm</activityLength>
       <witness>null</witness>
       <alibi>true</alibi>
     </beforeMurder>
