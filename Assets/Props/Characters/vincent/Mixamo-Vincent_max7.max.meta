@@ -21,3 +21,236 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+  nodeInfo:
+    Bip01 R Finger1Nub:
+    - 100000
+    - 400000
+    Vincent R Finger11:
+    - 100002
+    - 400002
+    Vincent R Finger12:
+    - 100004
+    - 400004
+    //RootNode:
+    - 100006
+    - 400006
+    - 11100000
+    Vincent R Finger41:
+    - 100008
+    - 400008
+    Vincent R Finger2:
+    - 100010
+    - 400010
+    Vincent R Finger21:
+    - 100012
+    - 400012
+    Vincent R Finger22:
+    - 100014
+    - 400014
+    Vincent R Finger42:
+    - 100016
+    - 400016
+    Bip01 R Finger2Nub:
+    - 100018
+    - 400018
+    Vincent R Finger3:
+    - 100020
+    - 400020
+    Vincent R Finger31:
+    - 100022
+    - 400022
+    Bip01 R Finger4Nub:
+    - 100024
+    - 400024
+    Vincent R Finger32:
+    - 100026
+    - 400026
+    Bip01 R Finger3Nub:
+    - 100028
+    - 400028
+    Vincent R Finger4:
+    - 100030
+    - 400030
+    Vincent L Clavicle:
+    - 100032
+    - 400032
+    Vincent R Forearm:
+    - 100034
+    - 400034
+    Vincent R UpperArm:
+    - 100036
+    - 400036
+    Vincent R Clavicle:
+    - 100038
+    - 400038
+    Bip01 L Finger4Nub:
+    - 100040
+    - 400040
+    Vincent L Finger42:
+    - 100042
+    - 400042
+    Vincent L Finger41:
+    - 100044
+    - 400044
+    Vincent L Finger4:
+    - 100046
+    - 400046
+    Bip01 L Finger3Nub:
+    - 100048
+    - 400048
+    Vincent L Finger32:
+    - 100050
+    - 400050
+    Vincent L Finger31:
+    - 100052
+    - 400052
+    Vincent L Finger3:
+    - 100054
+    - 400054
+    Bip01 L Finger2Nub:
+    - 100056
+    - 400056
+    Vincent L Finger22:
+    - 100058
+    - 400058
+    Vincent L Finger21:
+    - 100060
+    - 400060
+    Vincent L Finger2:
+    - 100062
+    - 400062
+    Bip01 L Finger1Nub:
+    - 100064
+    - 400064
+    Vincent L Finger12:
+    - 100066
+    - 400066
+    Vincent L Finger11:
+    - 100068
+    - 400068
+    Vincent L Finger1:
+    - 100070
+    - 400070
+    Bip01 L Finger0Nub:
+    - 100072
+    - 400072
+    Vincent L Finger02:
+    - 100074
+    - 400074
+    Vincent L Finger01:
+    - 100076
+    - 400076
+    Vincent L Finger0:
+    - 100078
+    - 400078
+    Vincent L Forearm:
+    - 100080
+    - 400080
+    Vincent L UpperArm:
+    - 100082
+    - 400082
+    Vincent R Finger1:
+    - 100084
+    - 400084
+    Vincent R Finger01:
+    - 100086
+    - 400086
+    Vincent R Finger02:
+    - 100088
+    - 400088
+    Bip01 R Finger0Nub:
+    - 100090
+    - 400090
+    MixamoVincent_Max7_Turbosquid_2010:
+    - 100092
+    - 400092
+    Bip01 R Toe0Nub:
+    - 100094
+    - 400094
+    Vincent R Toe0:
+    - 100096
+    - 400096
+    Vincent R Foot:
+    - 100098
+    - 400098
+    Vincent R Calf:
+    - 100100
+    - 400100
+    Vincent R Thigh:
+    - 100102
+    - 400102
+    Bip01 L Toe0Nub:
+    - 100104
+    - 400104
+    Vincent L Toe0:
+    - 100106
+    - 400106
+    Vincent L Foot:
+    - 100108
+    - 400108
+    Vincent L Calf:
+    - 100110
+    - 400110
+    Vincent LThigh:
+    - 100112
+    - 400112
+    Vincent R Hand:
+    - 100114
+    - 400114
+    Vincent L Hand:
+    - 100116
+    - 400116
+    Bip01 HeadNub:
+    - 100118
+    - 400118
+    Vincent Head:
+    - 100120
+    - 400120
+    Vincent Neck1:
+    - 100122
+    - 400122
+    Vincent Neck:
+    - 100124
+    - 400124
+    Vincent Spine2:
+    - 100126
+    - 400126
+    Vincent Spine1:
+    - 100128
+    - 400128
+    Vincent Spine:
+    - 100130
+    - 400130
+    Vincent Pelvis:
+    - 100132
+    - 400132
+    Bip01 Footsteps:
+    - 100134
+    - 400134
+    Vincent:
+    - 100136
+    - 400136
+    Text02:
+    - 100138
+    - 400138
+    - 3300000
+    - 2300000
+    Text01:
+    - 100140
+    - 400140
+    - 3300002
+    - 2300002
+    Vincent_Mesh:
+    - 100142
+    - 400142
+    - 13700000
+    Vincent R Finger0:
+    - 100144
+    - 400144
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Vincent_Mesh
+    4300002: Text01
+    4300004: Text02
+    7400000: Take 001 //// Mixamo-Vincent_max7
