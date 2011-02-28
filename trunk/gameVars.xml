@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<GameVars>
+  <murder>
+    <victim>Father</victim>
+    <time>2.30pm</time>
+    <murderer>son</murderer>
+    <weapon>knife</weapon>
+  </murder>
+
+  <questions>
+  1.Did you find the body?
+  2.What were you doing before mTime?
+  2b.Can anyone be your alibi?
+  2c.How long were you activity?
+  3.When did you last see victim?
+  3b.Where did you last see victim?
+  4.Did you see fAlibi going out at aTimeStart?
+  </questions>
+
+ <suspects>
+  <mother>
+    <beforeMurder>
+      <activity>watching TV</activity>
+      <activityAcc>daughter</activityAcc>
+      <activityLength>1pm to 2.30pm</activityLength>
+      <witness>maid</witness>
+      <alibi>true</alibi>
+    </beforeMurder>
+    <lastSeen>
+      <time>12pm</time>
+      <place>living room</place>
+    </lastSeen>
+    <foundBody>true</foundBody>
+  </mother>
+
+  <daughter>
+    <beforeMurder>
+      <activity>watching TV</activity>
+      <activityAcc>mother</activityAcc>
+      <activityLength>1pm to 2.30pm</activityLength>
+      <witness>maid</witness>
+      <alibi>true</alibi>
+    </beforeMurder>
+    <lastSeen>
+      <time>12pm</time>
+      <place>living room</place>
+    </lastSeen>
+    <foundBody>true</foundBody>
+  </daughter>
+
+  <son>
+    <beforeMurder>
+      <activity>out</activity>
+      <activityAcc>null</activityAcc>
+      <activityLength>1pm to 3pm</activityLength>
+      <witness>maid</witness>
+      <alibi>false</alibi>
+    </beforeMurder>
+    <lastSeen>
+      <time>12pm</time>
+      <place>living room</place>
+    </lastSeen>
+    <foundBody>false</foundBody>
+  </son>
+
+  <maid>
+    <beforeMurder>
+      <activity>doing chores around the house</activity>
+      <activityAcc>null</activityAcc>
+      <activityLength>since 12pm</activityLength>
+      <witness>null</witness>
+      <alibi>true</alibi>
+    </beforeMurder>
+    <lastSeen>
+      <time>2pm</time>
+      <place>bedroom</place>
+    </lastSeen>
+    <foundBody>false</foundBody>
+  </maid>
+ </suspects>
+
+<weapon>knife</weapon
+<weapon>shovel</weapon>
+<weapon>pipe</weapon>
+<weapon>screwdriver</weapon>
+<weapon>belt</weapon>
+
+
+</GameVars>
