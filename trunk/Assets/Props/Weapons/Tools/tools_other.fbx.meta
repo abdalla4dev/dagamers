@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: 7ac35af9c37b98844bd6165e25b8f7ef
+guid: ad3a384cfeb785a4fb0ba765124bc226
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -22,22 +22,22 @@ ModelImporter:
     animationWrapMode: 0
     splitAnimations: 1
   nodeInfo:
-    Box02:
+    Cylinder01:
     - 100000
     - 400000
     - 3300000
     - 2300000
-    Box01:
+    Cylinder02:
     - 100002
     - 400002
     - 3300002
     - 2300002
-    Cylinder02:
+    Line01:
     - 100004
     - 400004
     - 3300004
     - 2300004
-    Cylinder01:
+    Box03:
     - 100006
     - 400006
     - 3300006
@@ -46,11 +46,34 @@ ModelImporter:
     - 100008
     - 400008
     - 11100000
+    przy1:
+    - 100010
+    - 400010
+    - 3300008
+    - 2300008
+    plytka1:
+    - 100012
+    - 400012
+    - 3300010
+    - 2300010
+    Box02:
+    - 100014
+    - 400014
+    - 3300012
+    - 2300012
+    Box01:
+    - 100016
+    - 400016
+    - 3300014
+    - 2300014
 AssetImporter:
   importerVersion: 1
   fileIDToRecycleName:
-    4300000: Cylinder01
-    4300002: Cylinder02
-    4300004: Box01
-    4300006: Box02
-    7400000: Take 001 //// knifefbx
+    4300000: Box03
+    4300002: Line01
+    4300004: Cylinder02
+    4300006: Cylinder01
+    4300008: przy1
+    4300010: plytka1
+    4300012: Box02
+    4300014: Box01
