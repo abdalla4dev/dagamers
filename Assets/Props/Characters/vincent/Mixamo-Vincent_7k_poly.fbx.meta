@@ -200,11 +200,6 @@ ModelImporter:
     Vincent:LeftToeBase:
     - 100116
     - 400116
-    Plane:
-    - 100118
-    - 400118
-    - 3300000
-    - 2300000
     polySurface6:
     - 100120
     - 400120
@@ -242,3 +237,4 @@ AssetImporter:
     4300000: polySurface6
     4300002: Plane
     7400000: Take 002 //// Mixamo-Vincent_7k_poly
+    7400002: Take 001 //// Mixamo-Vincent_7k_poly
