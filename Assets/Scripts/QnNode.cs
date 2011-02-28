@@ -11,7 +11,7 @@ public class QnNode {
 	private bool unlockedNode; // is this unlocked?
 	
 	private ArrayList nextNodesList = new ArrayList(); // link to the next nodes that this qn can unlock
-	private QnNode nextQn = new QnNode();
+	private QnNode nextQn;
 	
 	void Start() {
 	}
@@ -61,6 +61,7 @@ public class QnNode {
 	}
 	
 	public void setNextQn(QnNode temp) {
+		nextQn = new QnNode();
 		nextQn = temp;
 	}
 }
