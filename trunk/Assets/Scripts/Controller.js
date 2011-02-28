@@ -45,16 +45,21 @@ function Update () {
 			moveStatus = isWalking ? "walking" : "running"; 
 			if (isWalking){
 				// invoke WALK animation here
+				animation.CrossFade(walkAnimation.name);
 			} else {
 				// call RUN animation here
+				animation.CrossFade(runAnimation.name);
 			}
 		} else {
 			// call IDLE animation here
+			animation.CrossFade(idleAnimation.name);
 		}
 		// Jump! 
-		if(Input.GetButton("Jump")) 
+		//if(Input.GetButton("Jump"))
+		if(Input.GetKeyDown(KeyCode.Space))
 		{
 			// call JUMP animation here
+			animation.CrossFade(jumpPoseAnimation.name);
 			moveDirection.y = jumpSpeed; 
 		}
     } 																	// END "IS GROUNDED"
