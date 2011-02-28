@@ -3,7 +3,7 @@ using System;
 using System.Xml;
 using System.Collections;
 
-/*public class progressChecker : MonoBehaviour {
+public class progressChecker : MonoBehaviour {
 	
 	float playTime, totalTime;
 	float CheckProgress() {
@@ -31,4 +31,4 @@ using System.Collections;
 		}
 		else return;
 	}
-}*/
+}
