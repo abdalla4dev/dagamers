@@ -68,8 +68,14 @@ public class TreeNode {
 			if(curr.getNumOfNextNodes()>0)
 				Debug.Log(curr.getNumOfNextNodes());
 		}*/
+		
+		for(int i=0; i<4; i++)
+		{
+			QnNode curr = new QnNode();
+			curr = (QnNode)startNode[i];
 		//BFS((QnNode)startNode[0]);
-		DFS((QnNode)startNode[0]);
+		DFS((QnNode)startNode[i]);
+		}
 	}
 	
 	public void BFS(QnNode start) {
@@ -110,6 +116,6 @@ public class TreeNode {
 	}
 	
 	public void printIt(QnNode node) {
-		Debug.Log(node.getQn() + "qn");
+		Debug.Log(node.getPerson() + " " + node.getQn() + " " + node.getAnswer());
 	}
 }
