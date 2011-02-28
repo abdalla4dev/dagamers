@@ -10,6 +10,8 @@ public class AddColliders : MonoBehaviour {
 	}
 	
 	void addColliders() {
+		if(transform.childCount==0)
+			gameObject.AddComponent("MeshCollider");
 		foreach (Transform child in transform)
 		{
 			child.gameObject.AddComponent("MeshCollider");
