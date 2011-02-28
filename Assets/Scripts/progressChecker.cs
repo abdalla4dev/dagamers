@@ -4,7 +4,7 @@ using System.Xml;
 using System.Collections;
 
 public class progressChecker : MonoBehaviour {
-	
+	/* got errors so colin commented out first
 	float playTime, totalTime;
 	float CheckProgress() {
 		countUnlocked(startNode);
@@ -30,5 +30,5 @@ public class progressChecker : MonoBehaviour {
 			}
 		}
 		else return;
-	}
+	}*/
 }
