@@ -232,6 +232,8 @@ public class AI : MonoBehaviour{
 		temp10.setNextQn(temp21);
 		temp21.setNextQn(temp22);
 		temp22.setNextQn(temp23);
+		
+		tree.printMania();
 	}
 }
 

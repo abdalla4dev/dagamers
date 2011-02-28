@@ -40,6 +40,10 @@ public class QnNode {
 		return nextNodesList.Count;
 	}
 	
+	public ArrayList getNextNodeList() {
+		return nextNodesList;
+	}
+	
 	public void setQn(string temp) {
 		qn = temp;
 	}
