@@ -1,6 +1,6 @@
 var target : Transform; 
-var targetHeight = 2.0; 
-var distance = 2.8; 
+var targetHeight = 0.5; 
+var distance = 1.5; 
 var maxDistance = 10; 
 var minDistance = 0.5; 
 var xSpeed = 250.0; 
@@ -30,7 +30,7 @@ function LateUpdate () {
       return; 
 	
    // If either mouse buttons are down, let them govern camera position 
-   if (Input.GetMouseButton(0) || (Input.GetMouseButton(1))){ 
+   if (Input.GetMouseButton(1)){ 
    x += Input.GetAxis("Mouse X") * xSpeed * 0.02; 
    y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02; 
    
