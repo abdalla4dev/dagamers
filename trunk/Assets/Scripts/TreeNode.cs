@@ -57,7 +57,7 @@ public class TreeNode {
 		currNode.Add(temp);
 	}
 	
-	public void printMania() {
+	public void checker() {
 		/*for (int i=0;i<1;i++) {
 			QnNode curr = new QnNode();
 			curr = (QnNode)startNode[i];
@@ -69,16 +69,29 @@ public class TreeNode {
 				Debug.Log(curr.getNumOfNextNodes());
 		}*/
 		
+		int unlockedCounter=0;
 		for(int i=0; i<4; i++)
 		{
 			QnNode curr = new QnNode();
 			curr = (QnNode)startNode[i];
-		//BFS((QnNode)startNode[0]);
-		DFS((QnNode)startNode[i]);
+		//unlockedCounter += BFS((QnNode)startNode[0]);
+		unlockedCounter += DFS((QnNode)startNode[i]);
 		}
+		
+		float currProgress = checkProgress(unlockedCounter);
 	}
 	
-	public void BFS(QnNode start) {
+	float playTime, totalTime;
+	float totalCounter;
+	float checkProgress(int unlockedCounter) {
+		float qnProgress = (unlockedCounter/totalCounter); 
+		float timeProgress = (playTime/totalTime);
+		float totalProgress = (qnProgress/timeProgress)*100;
+		return totalProgress;
+	}
+	
+	public int BFS(QnNode start) {
+		int unlocked=0;
 		Queue questions = new Queue();
 		QnNode curr = new QnNode();
 		
@@ -96,13 +109,18 @@ public class TreeNode {
 				}
 			}
 			printIt(curr);
+			if(curr.getUnlockedNode())
+				unlocked++;
 		}
-			
+		return unlocked;		
 	}
 	
-	public void DFS(QnNode start)
+	public int DFS(QnNode start)
 	{
+		int unlocked=0;
 		printIt(start);
+		if(start.getUnlockedNode())
+			unlocked++;
 		if(start.getNumOfNextNodes()>0)
 		{
 			ArrayList next = new ArrayList();
@@ -112,10 +130,11 @@ public class TreeNode {
 				DFS((QnNode)next[i]);
 			}
 		}
-			return;
+			return unlocked;
 	}
 	
 	public void printIt(QnNode node) {
 		Debug.Log(node.getPerson() + " " + node.getQn() + " " + node.getAnswer());
 	}
+	
 }
