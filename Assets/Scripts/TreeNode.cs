@@ -25,16 +25,19 @@ public class TreeNode : MonoBehaviour {
 	void Update () {
 	
 	}
-	
-	public void HumanTriggered(char suspect) {// function print out correct qn
-		QnNode temp = new QnNode();
+	//JESSICA THE TWO FUNCTIONS TT IS IMPORTANT IS THE TWO FUNCTION BELOW
+	public ArrayList HumanTriggered(char suspect) {// function return correct qns to be printed out
 		
-		for (int i=0;i<4;i++) {
+		QnNode temp = new QnNode();
+		ArrayList qnPrint = new ArrayList();
+		
+		for (int i=0;i<4;i++) { // search for the person first
 			temp = (QnNode)startNode[i];
-			if (temp.getPerson() == suspect) {
-				while (temp.getNextQn() != null) {
-					if (temp.getUnlockedNode() == true) {
-						//print out the question
+			if (temp.getPerson() == suspect) { // if got the correct person
+				while (temp.getNextQn() != null) { 
+					if (temp.getUnlockedNode() == true) { //check if question is unlocked
+						qnPrint.Add(temp.getQn()); // add unlocked qn to a Arraylist
+						temp = temp.getNextQn();
 					}
 					else {
 						temp = temp.getNextQn();
@@ -43,17 +46,18 @@ public class TreeNode : MonoBehaviour {
 				break;
 			}
 		}
+		return qnPrint; // return the Arraylist of qns to be printed
 	}
 	
-	public void ClickingTriggered(int suspect, string qn) {//update boolean function
+	public void ClickingTriggered(int suspect, string qn) {//update boolean function when clicked on a question
 		QnNode temp = new QnNode();
 		
 		for (int i=0;i<4;i++) {
 			temp = (QnNode)startNode[i];
-			if (temp.getPerson() == suspect) {
-				while (temp.getNextQn() != null) {
-					if (temp.getQn() == qn) {
-						temp.changeBooleanValues();
+			if (temp.getPerson() == suspect) { // check for the person
+				while (temp.getNextQn() != null) { 
+					if (temp.getQn() == qn) { // check for the correct qn
+						temp.changeBooleanValues(); // unlocked the values
 					}
 				}
 				break;
@@ -77,84 +81,14 @@ public class TreeNode : MonoBehaviour {
 		currNode.Add(temp);
 	}
 	
-	public void checker() {
-		/*for (int i=0;i<1;i++) {
+	public void printMania() {
+		for (int i=0;i<4;i++) {
 			QnNode curr = new QnNode();
 			curr = (QnNode)startNode[i];
 			Debug.Log(curr.getQn());
 			Debug.Log(curr.getAnswer());
 			Debug.Log(curr.getPerson());
 			Debug.Log(curr.getNumOfNextNodes());
-			if(curr.getNumOfNextNodes()>0)
-				Debug.Log(curr.getNumOfNextNodes());
-		}*/
-		
-		int unlockedCounter=0;
-		for(int i=0; i<4; i++)
-		{
-			QnNode curr = new QnNode();
-			curr = (QnNode)startNode[i];
-		//unlockedCounter += BFS((QnNode)startNode[0]);
-		unlockedCounter += DFS((QnNode)startNode[i]);
 		}
-		
-		float currProgress = checkProgress(unlockedCounter);
 	}
-	
-	float playTime, totalTime;
-	float totalCounter;
-	float checkProgress(int unlockedCounter) {
-		float qnProgress = (unlockedCounter/totalCounter); 
-		float timeProgress = (playTime/totalTime);
-		float totalProgress = (qnProgress/timeProgress)*100;
-		return totalProgress;
-	}
-	
-	public int BFS(QnNode start) {
-		int unlocked=0;
-		Queue questions = new Queue();
-		QnNode curr = new QnNode();
-		
-		questions.Enqueue(start);
-		while (questions.Count>0)
-		{
-			curr = (QnNode) questions.Dequeue();
-			if(curr.getNumOfNextNodes()>0)
-			{
-				ArrayList next = new ArrayList();
-				next = curr.getNextNodeList();
-				for(int i=0; i<next.Count; i++)
-				{
-					questions.Enqueue((QnNode)next[i]);
-				}
-			}
-			printIt(curr);
-			if(curr.getUnlockedNode())
-				unlocked++;
-		}
-		return unlocked;		
-	}
-	
-	public int DFS(QnNode start)
-	{
-		int unlocked=0;
-		printIt(start);
-		if(start.getUnlockedNode())
-			unlocked++;
-		if(start.getNumOfNextNodes()>0)
-		{
-			ArrayList next = new ArrayList();
-			next = start.getNextNodeList();
-			for(int i=0; i<next.Count; i++)
-			{
-				DFS((QnNode)next[i]);
-			}
-		}
-			return unlocked;
-	}
-	
-	public void printIt(QnNode node) {
-		Debug.Log(node.getPerson() + " " + node.getQn() + " " + node.getAnswer());
-	}
-	
 }
