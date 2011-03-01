@@ -8,7 +8,7 @@ son = '2'
 housemaid = '3'
 */
 
-public class TreeNode {
+public class TreeNode : MonoBehaviour {
 	
 	//num of suspects
 	int numOfSus;
@@ -27,18 +27,38 @@ public class TreeNode {
 	}
 	
 	public void HumanTriggered(char suspect) {// function print out correct qn
-		//first find which person is triggered
-		char person;
 		QnNode temp = new QnNode();
 		
 		for (int i=0;i<4;i++) {
 			temp = (QnNode)startNode[i];
-			
+			if (temp.getPerson() == suspect) {
+				while (temp.getNextQn() != null) {
+					if (temp.getUnlockedNode() == true) {
+						//print out the question
+					}
+					else {
+						temp = temp.getNextQn();
+					}
+				}
+				break;
+			}
 		}
 	}
 	
-	public void ClickingTriggered(int suspect) {//update boolean function
+	public void ClickingTriggered(int suspect, string qn) {//update boolean function
+		QnNode temp = new QnNode();
 		
+		for (int i=0;i<4;i++) {
+			temp = (QnNode)startNode[i];
+			if (temp.getPerson() == suspect) {
+				while (temp.getNextQn() != null) {
+					if (temp.getQn() == qn) {
+						temp.changeBooleanValues();
+					}
+				}
+				break;
+			}
+		}
 	}
 	
 	public QnNode getStartNode(int num) {
