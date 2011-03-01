@@ -68,4 +68,14 @@ public class QnNode {
 		nextQn = new QnNode();
 		nextQn = temp;
 	}
+	
+	public void changeBooleanValues() {
+		
+		QnNode temp = new QnNode();
+		
+		for (int i=0;i<nextNodesList.Count; i++) {
+			temp = (QnNode)nextNodesList[i];
+			temp.setUnlockedNode(true);
+		}
+	}
 }
