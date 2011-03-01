@@ -233,7 +233,7 @@ public class AI : MonoBehaviour{
 		temp21.setNextQn(temp22);
 		temp22.setNextQn(temp23);
 		
-		tree.printMania();
+		tree.checker();
 	}
 }
 
