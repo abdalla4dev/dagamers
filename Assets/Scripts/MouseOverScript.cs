@@ -7,6 +7,7 @@ public class MouseOverScript : MonoBehaviour {
 	public Transform targetObject;
 	public TreeNode tree;
 	public char suspect = 'd'; // to integrate with treenode.cs
+
 	
 	Color mouseOverColor = Color.yellow;
 	bool isSelected = false;
@@ -16,7 +17,9 @@ public class MouseOverScript : MonoBehaviour {
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
 	public AI AIlink;
-	
+	bool called = true;
+	string s;
+				
 	// Use this for initialization
 	void Start () {
 		//AIlink = gameObject.GetComponent("AI") as AI;
@@ -30,9 +33,9 @@ public class MouseOverScript : MonoBehaviour {
 	void OnMouseEnter(){
 		//changing all the material to be yellow upon mouse hover, once the player is close to the object
 		if(withinBoundary){
-			for(int i = 0; i < targetObject.renderer.materials.Length; i++){
-				targetObject.renderer.materials[i].color = mouseOverColor;
-			}
+			//for(int i = 0; i < targetObject.renderer.materials.Length; i++){
+			//	targetObject.renderer.materials[i].color = mouseOverColor;
+			//}
 		}
 	}
 	
@@ -40,9 +43,9 @@ public class MouseOverScript : MonoBehaviour {
 		//if user did not select the object
 		if(isSelected == false){
 			//changes back to the original material upon mouse exit
-			for(int i = 0; i < targetObject.renderer.materials.Length; i++){
-				targetObject.renderer.materials[i].color = originalColor[i];
-			}
+			//for(int i = 0; i < targetObject.renderer.materials.Length; i++){
+			//	targetObject.renderer.materials[i].color = originalColor[i];
+			//}
 		}
 	}
 	
@@ -57,11 +60,22 @@ public class MouseOverScript : MonoBehaviour {
 	void OnGUI() {
 		if(isSelected == true && withinBoundary == true && actionKey == true){
 			ArrayList myList = AIlink.tree.HumanTriggered(suspect);
-			string s = "";
-			foreach (string item in myList) {
-				s += item;
+			
+
+			if (called){		
+				foreach (string item in myList) {
+					s = item;
+				}
 			}
-			GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y), 100, 100), s);
+	
+			if (GUI.Button(new Rect(screenPos.x, (Screen.height - screenPos.y), 300, 100), s) && called) {
+				print("clicked");
+				s = AIlink.tree.ClickingTriggered(suspect,s);
+				called = false;
+			}
+			
+			//GUILayout.Box(answer);
+
 			//GUILayout.Box(s);
 		}
 	}

@@ -16,6 +16,7 @@ public class TreeNode : MonoBehaviour {
 	//start node and current node of the tree
 	ArrayList startNode = new ArrayList();
 	ArrayList currNode = new ArrayList();
+	ArrayList weaponList = new ArrayList();
 
 	// Use this for initialization
 	void  Start() {
@@ -51,7 +52,7 @@ public class TreeNode : MonoBehaviour {
 	
 	public string ClickingTriggered(char suspect, string qn) {//update boolean function when clicked on a question
 		QnNode temp = new QnNode();
-		
+
 		for (int i=0;i<4;i++) {
 			temp = (QnNode)startNode[i];
 			if (temp.getPerson() == suspect) { // check for the person
