@@ -11,6 +11,8 @@ housemaid = 'h'
 
 public class AI : MonoBehaviour{
 	
+	public TreeNode tree;
+	
 	//private XmlTextReader textReader;
 	
 	// Use this for initialization
@@ -27,7 +29,7 @@ public class AI : MonoBehaviour{
 	public void temporaryAI() {	
 		//string tempo;
 		//ScriptableObject.CreateInstance(typeof(TreeNode));
-		TreeNode tree = new TreeNode();
+		tree = new TreeNode();
 			
 		QnNode temp = new QnNode();
 		temp.setQn("Did you find the body?");
