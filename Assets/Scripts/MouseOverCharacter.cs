@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class MouseOverScript : MonoBehaviour {
+public class MouseOverCharacter : MonoBehaviour {
 	
 	public Transform targetObject;
 	public TreeNode tree;
