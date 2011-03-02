@@ -49,7 +49,7 @@ public class TreeNode : MonoBehaviour {
 		return qnPrint; // return the Arraylist of qns to be printed
 	}
 	
-	public void ClickingTriggered(int suspect, string qn) {//update boolean function when clicked on a question
+	public string ClickingTriggered(int suspect, string qn) {//update boolean function when clicked on a question
 		QnNode temp = new QnNode();
 		
 		for (int i=0;i<4;i++) {
@@ -58,11 +58,14 @@ public class TreeNode : MonoBehaviour {
 				while (temp.getNextQn() != null) { 
 					if (temp.getQn() == qn) { // check for the correct qn
 						temp.changeBooleanValues(); // unlocked the values
+						return temp.getAnswer();
 					}
 				}
 				break;
 			}
 		}
+		
+		return "0";
 	}
 	
 	public QnNode getStartNode(int num) {
