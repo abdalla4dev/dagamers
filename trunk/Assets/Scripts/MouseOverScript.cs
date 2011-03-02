@@ -19,6 +19,7 @@ public class MouseOverScript : MonoBehaviour {
 	public AI AIlink;
 	bool called = true;
 	string s;
+	string ans;
 				
 	// Use this for initialization
 	void Start () {
@@ -58,29 +59,49 @@ public class MouseOverScript : MonoBehaviour {
 	}
 	
 	void OnGUI() {
+		
+		//BUG is here
+		//action key is toggled every Left click , so it cannot click anything in the windows
 		if(isSelected == true && withinBoundary == true && actionKey == true){
-			ArrayList myList = AIlink.tree.HumanTriggered(suspect);
 			
-
-			if (called){		
-				foreach (string item in myList) {
-					s = item;
-				}
-			}
+			
+	//if (withinBoundary && Input.GetMouseButtonDown(0))	{	
+			
+			GUI.Window(2, new Rect(screenPos.x, (Screen.height - screenPos.y), 300,100), QuestionWindow, "Questions" ); //window ID is 2 coz Timeline and map are using window IDs too
 	
-			if (GUI.Button(new Rect(screenPos.x, (Screen.height - screenPos.y), 300, 100), s) && called) {
+		/*	if (GUI.Button(new Rect(screenPos.x, (Screen.height - screenPos.y), 300, 100), s) && called) {
 				print("clicked");
 				s = AIlink.tree.ClickingTriggered(suspect,s);
 				called = false;
-			}
+			}*/
 			
 			//GUILayout.Box(answer);
 
 			//GUILayout.Box(s);
+			GUI.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), AnswerWindow, "Answers");
+			
 		}
 	}
-		
 
+	void QuestionWindow(int windowID) {
+		ArrayList myList = AIlink.tree.HumanTriggered(suspect);
+		if (called) {		
+			foreach (string item in myList) {
+				if (GUILayout.Button(item)) {
+					print("clicked");
+					ans = AIlink.tree.ClickingTriggered(suspect,s);
+				//	called = false;
+
+				}
+			}
+		}
+	}		
+
+	void AnswerWindow(int windowID) {
+		if (GUILayout.Button(ans)) {
+			called = true;	
+		}	
+	}
 	
 	// Update is called once per frame
 	void Update () {
