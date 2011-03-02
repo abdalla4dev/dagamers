@@ -200,7 +200,7 @@ public class AI : MonoBehaviour{
 		temp26.setQn("DId you see son going out at 1pm?");
 		temp26.setAnswer("Yes but I only heard the car go out at 2.30pm.");
 		temp26.setUnlockedNode(false);
-		temp26.setPerson('s');
+		temp26.setPerson('h');
 		
 		temp13.addNextNodes(temp24);
 		temp16.addNextNodes(temp25);
@@ -225,13 +225,14 @@ public class AI : MonoBehaviour{
 		temp9.setNextQn(temp18);
 		temp18.setNextQn(temp19);
 		temp19.setNextQn(temp20);
-		temp20.setNextQn(temp26);
+		
 		
 		temp3.setNextQn(temp7);
 		temp7.setNextQn(temp10);
 		temp10.setNextQn(temp21);
 		temp21.setNextQn(temp22);
 		temp22.setNextQn(temp23);
+		temp23.setNextQn(temp26);
 		
 		tree.checker();
 	}
