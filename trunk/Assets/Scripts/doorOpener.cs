@@ -5,6 +5,7 @@ public class doorOpener : MonoBehaviour {
 
 	public GameObject door;
 	bool withinBoundary = false;
+	bool open = false;
 	// Use this for initialization
 	void Start () {
 		//door= new GameObject();
@@ -25,11 +26,25 @@ public class doorOpener : MonoBehaviour {
 		withinBoundary = false;
 	}
 	
-	void OnMouseEnter(){
+	IEnumerator OnMouseEnter(){
 		//changing all the material to be yellow upon mouse hover, once the player is close to the object
-		if(withinBoundary){
-				iTween.RotateTo(door, new Vector3(0,180,0), 2);
-		}			
+		if(withinBoundary && !open){
+			Vector3 doorPos = transform.TransformPoint(door.transform.position);
+			Vector3 doorPosWorld = doorPos + new Vector3(-2,0,0);
+			iTween.MoveTo(door, doorPosWorld, 2);
+				//iTween.MoveBy(door, new Vector3(0,0,-2), 2);
+			open = true;
+		}
+			
+		yield return new WaitForSeconds(5);
+		if(open)
+		{
+		open = false;
+			Vector3 doorPos = transform.TransformPoint(door.transform.position);
+			Vector3 doorPosWorld = doorPos + new Vector3(2,0,0);
+			iTween.MoveTo(door, doorPosWorld, 2);
+		//iTween.MoveBy(door, new Vector3(0,0,2),2);
+		}
 		
 	}
 }
