@@ -89,6 +89,10 @@ public class TreeNode : MonoBehaviour {
 	public QnNode getCurrNode(int num) {
 		return (QnNode)currNode[num];
 	}
+
+    public WeaponNode getWeapon(int num) {
+        return (WeaponNode)weaponList[num];
+    }
 	
 	public void addStartNode(QnNode temp) {
 		startNode.Add(temp);		
@@ -97,6 +101,14 @@ public class TreeNode : MonoBehaviour {
 	public void addCurrNode(QnNode temp) {
 		currNode.Add(temp);
 	}
+
+    public void addWeapon(string weapon, string reply)
+    {
+        WeaponNode temp = new WeaponNode();
+        temp.setWeapon(weapon);
+        temp.setReply(reply);
+        weaponList.Add(temp);
+    }
 	
 	public void checker() {
 		/*for (int i=0;i<1;i++) {
