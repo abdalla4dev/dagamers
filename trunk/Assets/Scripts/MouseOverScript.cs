@@ -5,6 +5,9 @@ using System.Collections;
 public class MouseOverScript : MonoBehaviour {
 	
 	public Transform targetObject;
+	public TreeNode tree;
+	public char suspect = 'd'; // to integrate with treenode.cs
+	
 	Color mouseOverColor = Color.yellow;
 	bool isSelected = false;
 	bool withinBoundary = false;
@@ -12,9 +15,12 @@ public class MouseOverScript : MonoBehaviour {
 	Color[] originalColor; //array to store the original material color
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
+	public AI AIlink;
 	
 	// Use this for initialization
 	void Start () {
+		//AIlink = gameObject.GetComponent("AI") as AI;
+		
 		originalColor = new Color[targetObject.renderer.materials.Length];
 		for(int i = 0; i < targetObject.renderer.materials.Length; i++){
 			originalColor[i] = targetObject.renderer.materials[i].color;
@@ -50,7 +56,13 @@ public class MouseOverScript : MonoBehaviour {
 	
 	void OnGUI() {
 		if(isSelected == true && withinBoundary == true && actionKey == true){
-			GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y), 100, 100), "Hello World!");
+			ArrayList myList = AIlink.tree.HumanTriggered(suspect);
+			string s = "";
+			foreach (string item in myList) {
+				s += item;
+			}
+			GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y), 100, 100), s);
+			//GUILayout.Box(s);
 		}
 	}
 		
