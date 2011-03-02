@@ -49,7 +49,7 @@ public class TreeNode : MonoBehaviour {
 		return qnPrint; // return the Arraylist of qns to be printed
 	}
 	
-	public string ClickingTriggered(int suspect, string qn) {//update boolean function when clicked on a question
+	public string ClickingTriggered(char suspect, string qn) {//update boolean function when clicked on a question
 		QnNode temp = new QnNode();
 		
 		for (int i=0;i<4;i++) {
@@ -67,6 +67,20 @@ public class TreeNode : MonoBehaviour {
 		
 		return "0";
 	}
+
+    public string weaponTriggered(string weapon)
+    {
+        for (int i = 0; i < weaponList.Count; i++)
+        {
+            WeaponNode temp = new WeaponNode();
+            temp = (WeaponNode)weaponList[i];
+            if (weapon == temp.getWeapon())
+            {
+                return temp.getReply();
+            }
+        }
+        return "";
+    }
 	
 	public QnNode getStartNode(int num) {
 		return (QnNode)startNode[num];

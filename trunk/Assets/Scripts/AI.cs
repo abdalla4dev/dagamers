@@ -237,6 +237,14 @@ public class AI : MonoBehaviour{
 		temp23.setNextQn(temp26);
 		
 		tree.checker();
+
+        //code for the weapon
+        tree.addWeapon("Knife", "Why is the kitchen knifein the living room");
+        tree.addWeapon("Shovel", "The shovel belongs to the garden");
+        tree.addWeapon("Pipe", "The pipe seems to be at the right place");
+        tree.addWeapon("ScrewDriver", "The screwdriver is supposed to be near the toolbox");
+        tree.addWeapon("Belt", "This is father's favorite belt.");
+        tree.addWeapon("Knife", "Why is the kitchen knifein the living room");
 	}
 }
 
