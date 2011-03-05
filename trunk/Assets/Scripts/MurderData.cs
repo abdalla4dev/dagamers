@@ -7,6 +7,15 @@ namespace MurderData
 	 * Rooms are defined here
 	 */ 
 	
+	public enum Rooms
+	{
+		Kitchen,
+		Living_Room,
+		Bedroom,
+		Garden,
+		Toilet
+	}
+	
 	public static class Kitchen
 	{
 		//define the activities not associated with weapons
@@ -134,13 +143,22 @@ namespace MurderData
 	 * Weapons are defined here 
 	 */
 	
+	public enum Weapons
+	{
+		Knife,
+		Screwdriver,
+		Towel,
+		Scissors,
+		Spanner
+	}
+	
 	public struct Knife 
 	{
 		//define the possible activities with the weapon
 		public enum Activities 
 		{
 			Cutting_Fruits,
-			Pruning_Plants
+			//Pruning_Plants
 		}
 		public readonly Activities activity;	//store the activity associated to the room
 		public Knife(Activities x) { activity = x;	}
