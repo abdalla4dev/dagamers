@@ -18,10 +18,10 @@ public class AccessingMurderData : MonoBehaviour {
 		Debug.Log(Enum.GetName(typeof(Kitchen.Generic_Activities), 1));
 		
 		System.Random rand = new System.Random();
-		Debug.Log((Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities)); //how you may wish to randomize the activities
-		Debug.Log((Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities));
-		Debug.Log((Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities));
-		Debug.Log((Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities));
+		Debug.Log("rand " + (Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities)); //how you may wish to randomize the activities
+		Debug.Log("rand " + (Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities));
+		Debug.Log("rand " + (Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities));
+		Debug.Log("rand " + (Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities));
 		
 		foreach (string s in Enum.GetNames(typeof(Living_Room.Generic_Activities))) {//access all generic living room activities
 			Debug.Log(s + " " + (int)Enum.Parse(typeof(Living_Room.Generic_Activities), s))	;
