@@ -50,16 +50,12 @@ public class GenerateTimeline : MonoBehaviour
 	public static int earliestDeath = 8; //earliest possible time that murder is committed. (can change)
 	public static int latestDeath = 24; //latest possible time that murder is committed. (can change)
 	
-	public const int numWeapons = 5; //self explanatory, used it so only need to change once here.
-	public const int numRooms = 5;
-	public const int numSuspects = 4;
-	
 	const bool guilty = true; //murderer
 	const bool murdered = true; //victim
 	
 	public static Person victim;
 	public static Person murderTruth;
-	public static int murderWeap;
+	public static Weapons murderWeap;
 	public static double deathTime; //24 hr clock. when murder was committed
 	public static double bodyFound; //24 hr clock. when body was found.
 	
@@ -76,13 +72,13 @@ public class GenerateTimeline : MonoBehaviour
 		//Debug.Log(Enum.GetName(typeof(Suspects),murderer)); //murderer name.
 		Debug.Log("victim");
 		victim = new Person(!guilty, murdered);
-		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer));
+		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer) + " weapon " + murderWeap.ToString());
 		murderTruth = new Person(guilty, !murdered);
 		Person fAlibi = genFakeAlibi();
 		deathTime = rand.Next(earliestDeath, latestDeath);
 		bodyFound = genBodyFoundTime();
 		
-		for(int i=0; i<numSuspects; i++)
+		for(int i=0; i<Globals.numSuspects; i++)
 		{
 			if(i==murderer)
 			{
@@ -95,17 +91,31 @@ public class GenerateTimeline : MonoBehaviour
 			}
 		}
 		
+		/*
+		 * modify the timeline such that
+		 * 1) Redherring witness Muderer true pre-murder activity (witness/alibi means shifting people to be in the same room)
+		 * 2) other 2 suspects are alibi to each other in pre-murder
+		 * 3) During murder, create a alibi for the redherring from one of the 2 suspects
+		 * 4) The other suspect is able to disprove Murderer's false statement
+		 */
+		// i=0 (murderer), 1(herring), 2,3(normal)
+		murderTruth.createBefMurderWitness(timeline[1]);
+		timeline[2].createBefMurderWitness(timeline[3]);
+		timeline[1].createDurMurderWitness(timeline[2]);
+		//fAlibi.createDurMurderWitness(timeline[3]);
+		timeline[0].createDurMurderWitness(timeline[3]);
+		
 		//debugging purposes.
-		for(int i=0; i<numSuspects; i++)
+		for(int i=0; i<Globals.numSuspects; i++)
 		{
 			if(i==murderer)
 			{
-				Debug.Log(Enum.GetName(typeof(Suspects), i) + " truth " + murderTruth.getMurder(Person.activity));
-				Debug.Log("fake " + fAlibi.getMurder(Person.activity));
-				Debug.Log("time " + timeline[i].getMurder(Person.activity));
+				Debug.Log("i=" + i +" "+ Enum.GetName(typeof(Suspects), i) + " truth " + murderTruth.getMurder(Person.activity));
+				Debug.Log("i=" + i +" "+"fake " + fAlibi.getMurder(Person.activity));
+				Debug.Log("i=" + i +" "+"time " + timeline[i].getMurder(Person.activity));
 			}
 			else
-				Debug.Log(Enum.GetName(typeof(Suspects), i) + " " + timeline[i].getMurder(Person.activity));
+				Debug.Log("i=" + i +" "+Enum.GetName(typeof(Suspects), i) + " " + timeline[i].getMurder(Person.activity)+ " herring="+ timeline[i].isRedHerring());
 		}
 		
 		Debug.Log(deathTime + " " + bodyFound);
@@ -115,12 +125,12 @@ public class GenerateTimeline : MonoBehaviour
 	
 	// Generate a murderer x from Suspects
 	int genMurderer(){
-		return (int)(Suspects) rand.Next(0, numSuspects);
+		return (int)(Suspects) rand.Next(0, Globals.numSuspects);
 	}
 	
 	//generate murder weapon
-	int genWeap() {
-		return (int) (Weapons) rand.Next(0, numWeapons);
+	Weapons genWeap() {
+		return (Weapons) rand.Next(0, Globals.numWeapons);
 	}
 	
 	//generate time when body was found (based on deathTime)
@@ -138,7 +148,7 @@ public class GenerateTimeline : MonoBehaviour
 		int roomIndex;
 		do
  		{
-			roomIndex = (int)(Rooms) rand.Next(0, numRooms);
+			roomIndex = (int)(Rooms) rand.Next(0, Globals.numRooms);
  		} while (Enum.GetName(typeof(Rooms), roomIndex)==murderTruth.getMurder(Person.place)); //random a room that is not murder room.
 		
 		fake.setMurder(Enum.GetName(typeof(Rooms), roomIndex), Person.place); //set murder room to new room
