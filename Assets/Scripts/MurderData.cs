@@ -7,6 +7,13 @@ namespace MurderData
 	 * Rooms are defined here
 	 */ 
 	
+	public struct Globals 
+	{
+		public const int numWeapons = 5; //self explanatory, used it so only need to change once here.
+		public const int numRooms = 5;
+		public const int numSuspects = 4;	
+	}
+	
 	public enum Rooms
 	{
 		Kitchen,
