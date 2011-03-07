@@ -61,6 +61,7 @@ public class Person {
 		foreach(String s in toCopy.getAftMurder())
 		aftMurder.Add(s);
 		fakeAlibi = true;
+		murderer = true;
 		/*befMurder = toCopy.getBefMurder();
 		duringMurder = toCopy.getMurder();
 		aftMurder = toCopy.getAftMurder();*/
@@ -150,16 +151,19 @@ public class Person {
 		aftMurder[pos] = s;
 	}
 	
-	public void createBefMurderWitness(Person witness) {
+	public void createBefMurderWitness(Person witness, int wIdx, int ownIdx) {
+		if (rand==null)
+			rand = new System.Random();
 		//shift witness to be in the same room as "this"
 		witness.befMurder[place] = this.befMurder[place];
 		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.befMurder[place]);
 		//give the witness a generic activity in that room
 		//witness.befMurder[activity] = ((room.Generic_Activities) rand.Next(0, room.Num_Activities)).ToString();
+		
 		switch (room)
 		{
 			case Rooms.Kitchen:
-				witness.befMurder[activity] = ( (Kitchen.Generic_Activities) rand.Next(0, Kitchen.Num_Activities) ).ToString(); 
+				witness.setBefMurder(( (Kitchen.Generic_Activities) rand.Next(0, Kitchen.Num_Activities) ).ToString(), activity); 
 				break;
 			case Rooms.Living_Room:
 				witness.befMurder[activity] = ( (Living_Room.Generic_Activities) rand.Next(0, Living_Room.Num_Activities) ).ToString(); 
@@ -170,7 +174,7 @@ public class Person {
 			case Rooms.Garden:
 				witness.befMurder[activity] = ( (Garden.Generic_Activities) rand.Next(0, Garden.Num_Activities) ).ToString(); 
 				break;
-			case Rooms.Toilet:
+			case Rooms.Toilet:		
 				witness.befMurder[activity] = ( (Toilet.Generic_Activities) rand.Next(0, Toilet.Num_Activities) ).ToString(); 
 				break;
 			default: break;
@@ -178,9 +182,18 @@ public class Person {
 		
 		//set witness.befMurder[alibi]=this.Suspect and this.befMurder[alibi]=witness.Suspect
 		//but name is not stored in Person
+		
+		this.befMurder[alibi] = Enum.GetName(typeof(Suspects), wIdx);
+		witness.befMurder[alibi] = Enum.GetName(typeof(Suspects), ownIdx);
+		
+/* 		Debug.Log("witness " + Enum.GetName(typeof(Suspects), otherIdx) + " " + this.befMurder[alibi]);
+ * 		Debug.Log("this " + Enum.GetName(typeof(Suspects), ownIdx) + " " + witness.befMurder[alibi]);
+ */
 	}
 	
-	public void createDurMurderWitness(Person witness) {
+	public void createDurMurderWitness(Person witness, int wIdx, int ownIdx) {
+		if (rand==null)
+			rand = new System.Random();
 		//shift witness to be in the same room as "this"
 		witness.duringMurder[place] = this.duringMurder[place];
 		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.duringMurder[place]);
@@ -206,6 +219,8 @@ public class Person {
 		
 		//set witness.duringMurder[alibi]=this.Suspect and this.duringMurder[alibi]=witness.Suspect
 		//but name is not stored in Person
+		this.duringMurder[alibi] = Enum.GetName(typeof(Suspects), wIdx);
+		witness.duringMurder[alibi] = Enum.GetName(typeof(Suspects), ownIdx);
 	}
 	
 	/*generates befMurder List*/
@@ -258,6 +273,8 @@ public class Person {
 			 }
 		}
 		
+		befMurder.Add("null"); //alibi
+		
 		//debugging purposes.
 		for(int i=0; i<befMurder.Count; i++)
 			Debug.Log(i + " befMurder " + befMurder[i]);
@@ -282,6 +299,7 @@ public class Person {
 		{
 			duringMurder.Add(GenerateTimeline.victim.duringMurder[place]);
 			duringMurder.Add("murder");
+			duringMurder.Add("null");//alibi
 			for(int i=0; i<duringMurder.Count; i++)
 				Debug.Log(i + " duringMurder " + duringMurder[i]);
 			return;
@@ -299,6 +317,7 @@ public class Person {
 			duringMurder.Add(getWeapActivity(room,weapon));
 			GenerateTimeline.redHerring = true;
 			redHerring = true;
+			duringMurder.Add("null"); //alibi
 			for(int i=0; i<duringMurder.Count; i++)
 				Debug.Log(i + " duringMurder redHerring " + duringMurder[i]);
 			return;
@@ -334,6 +353,8 @@ public class Person {
 				default:
 					break;
 			 }
+			 
+			 duringMurder.Add("null"); //alibi
 			
 			 //debugging purposes.
 			for(int i=0; i<duringMurder.Count; i++)
@@ -392,6 +413,8 @@ public class Person {
 			 }
 		 }
 		 
+		 aftMurder.Add("null"); //alibi
+		 
 		 //debugging purposes.
 		 for(int i=0; i<aftMurder.Count; i++)
 		Debug.Log(i + " aftMurder " + aftMurder[i]);
@@ -401,7 +424,6 @@ public class Person {
 	String getWeapActivity(Rooms room, Weapons weapon)
 	{
 		String s="";
-		int act;
 		
 		if(room == Rooms.Kitchen)
 		{

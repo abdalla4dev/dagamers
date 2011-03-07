@@ -99,28 +99,67 @@ public class GenerateTimeline : MonoBehaviour
 		 * 4) The other suspect is able to disprove Murderer's false statement
 		 */
 		// i=0 (murderer), 1(herring), 2,3(normal)
-		murderTruth.createBefMurderWitness(timeline[1]);
+		/*murderTruth.createBefMurderWitness(timeline[1]);
 		timeline[2].createBefMurderWitness(timeline[3]);
 		timeline[1].createDurMurderWitness(timeline[2]);
 		//fAlibi.createDurMurderWitness(timeline[3]);
-		timeline[0].createDurMurderWitness(timeline[3]);
+		timeline[0].createDurMurderWitness(timeline[3]);*/
+		
+		int redHerringIndex, suspect1, suspect2;
+		redHerringIndex = -1;
+		suspect1 = -1;
+		suspect2 = -1;
+		
+		for(int i=0; i<timeline.Count; i++)
+		{
+			if(timeline[i].isRedHerring())
+				redHerringIndex = i;
+			else if(timeline[i].isMurderer())
+				continue;
+			else if(suspect1==-1)
+				suspect1 = i;
+			else 
+				suspect2=i;
+		}
+		Debug.Log("redherring " + Enum.GetName(typeof(Suspects),redHerringIndex) + " " + redHerringIndex);
+		Debug.Log("suspect1 " + Enum.GetName(typeof(Suspects),suspect1) + " " + suspect1);
+		Debug.Log("suspect2 " + Enum.GetName(typeof(Suspects),suspect2) + " " + suspect2);
+		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer) + " " + murderer + timeline[murderer].isMurderer());
+		fAlibi.createBefMurderWitness(timeline[redHerringIndex], redHerringIndex, murderer); //murderer and redherring are alibis. (IF NO ALIBI USE -1)
+		timeline[suspect1].createBefMurderWitness(timeline[suspect2], suspect2, suspect1); //suspect1 and suspect2 are each other's alibi.
+		timeline[redHerringIndex].createDurMurderWitness(timeline[suspect1], suspect1, redHerringIndex); //redherring and suspect1 are alibis.
+		timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
+		
+		for(int i=0; i<timeline.Count; i++)
+		{
+			if(timeline[i].getAftMurder(Person.alibi)=="null")
+				for(int j=0; j<timeline.Count; j++)
+				{
+					if(j!=i && timeline[i].getAftMurder(Person.place)==timeline[j].getAftMurder(Person.place))
+					{
+						timeline[i].setAftMurder(Enum.GetName(typeof(Suspects),j), Person.alibi);
+						timeline[j].setAftMurder(Enum.GetName(typeof(Suspects),i), Person.alibi);
+					}						
+				}
+		}
 		
 		//debugging purposes.
-		for(int i=0; i<Globals.numSuspects; i++)
-		{
-			if(i==murderer)
-			{
-				Debug.Log("i=" + i +" "+ Enum.GetName(typeof(Suspects), i) + " truth " + murderTruth.getMurder(Person.activity));
-				Debug.Log("i=" + i +" "+"fake " + fAlibi.getMurder(Person.activity));
-				Debug.Log("i=" + i +" "+"time " + timeline[i].getMurder(Person.activity));
-			}
-			else
-				Debug.Log("i=" + i +" "+Enum.GetName(typeof(Suspects), i) + " " + timeline[i].getMurder(Person.activity)+ " herring="+ timeline[i].isRedHerring());
-		}
+/* 		for(int i=0; i<Globals.numSuspects; i++)
+ * 		{
+ * 			if(i==murderer)
+ * 			{
+ * 				Debug.Log("i=" + i +" "+ Enum.GetName(typeof(Suspects), i) + " truth " + murderTruth.getMurder(Person.activity));
+ * 				Debug.Log("i=" + i +" "+"fake " + fAlibi.getMurder(Person.activity));
+ * 				Debug.Log("i=" + i +" "+"time " + timeline[i].getMurder(Person.activity));
+ * 			}
+ * 			else
+ * 				Debug.Log("i=" + i +" "+Enum.GetName(typeof(Suspects), i) + " " + timeline[i].getMurder(Person.activity)+ " herring="+ timeline[i].isRedHerring());
+ * 		}
+ */
 		
 		Debug.Log(deathTime + " " + bodyFound);
 				
-		
+		PrintMethod();
 	}
 	
 	// Generate a murderer x from Suspects
@@ -188,6 +227,213 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log(murderTruth.getAftMurder(i));}
 		
 		return fake;
+	}
+	
+	/*METHODS TO GET RESULTS*/
+	/*FOR INDIVIDUALS*/
+	String getPersonDetails(int time, int person, int pos)	//asking a person for where, what and alibi.
+	{
+		if(time==0)
+			return timeline[person].getBefMurder(pos);
+		if(time==1)
+			return timeline[person].getMurder(pos);
+		if(time==2)
+			return timeline[person].getAftMurder(pos);
+		else return "invalid";
+	}
+	
+	String befMurderWeap(int person,int weapon)	//asking if a person used a murder weap weapon before murder
+	{
+		String act = timeline[person].getBefMurder(Person.activity);
+		switch(weapon)
+		{
+			case 0:
+				foreach (string s in Enum.GetNames(typeof(Knife.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 1:
+				foreach (string s in Enum.GetNames(typeof(Screwdriver.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 2:
+				foreach (string s in Enum.GetNames(typeof(Towel.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 3:
+				foreach (string s in Enum.GetNames(typeof(Scissors.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 4:
+				foreach (string s in Enum.GetNames(typeof(Spanner.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			default:
+				break;
+		}
+		return "null";
+	}
+	
+	String durMurderWeap(int person,int weapon)	//asking if a person used a murder weap weapon during murder
+	{
+		String act = timeline[person].getMurder(Person.activity);
+		switch(weapon)
+		{
+			case 0:
+				foreach (string s in Enum.GetNames(typeof(Knife.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 1:
+				foreach (string s in Enum.GetNames(typeof(Screwdriver.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 2:
+				foreach (string s in Enum.GetNames(typeof(Towel.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 3:
+				foreach (string s in Enum.GetNames(typeof(Scissors.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 4:
+				foreach (string s in Enum.GetNames(typeof(Spanner.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			default:
+				break;
+		}		return "null";
+	}
+	
+	String aftMurderWeap(int person, int weapon)	//asking if a person used a murder weap weapon after murder
+	{
+		String act = timeline[person].getAftMurder(Person.activity);
+		switch(weapon)
+		{
+			case 0:
+				foreach (string s in Enum.GetNames(typeof(Knife.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 1:
+				foreach (string s in Enum.GetNames(typeof(Screwdriver.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 2:
+				foreach (string s in Enum.GetNames(typeof(Towel.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 3:
+				foreach (string s in Enum.GetNames(typeof(Scissors.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			case 4:
+				foreach (string s in Enum.GetNames(typeof(Spanner.Activities))) { 
+					if(s==act)
+						return act;
+				}
+				break;
+			default:
+				break;
+		}
+		return "null";
+	}
+	
+	/*FOR ASKING ABOUT OTHERS*/
+	String getOtherPersonDetails(int time, int self, int other, int pos)	//ask someone about other person's activities.
+	{
+		if(time==0)
+		{
+			if(!timeline[other].isMurderer())
+				return timeline[other].getBefMurder(pos);
+			else
+				return murderTruth.getBefMurder(pos);
+		}
+		if(time==1)
+			return timeline[other].getBefMurder(pos);
+		if(time==2)
+		{
+			if(!timeline[other].isMurderer())
+				return timeline[other].getBefMurder(pos);
+			else
+				return murderTruth.getBefMurder(pos);
+		}
+		else return "invalid";
+	}
+	
+	bool isAlibi(int time, int self, int other)	//returns if self/other can vouch for each other
+	{
+		if(time==0)
+		{
+			if(timeline[self].getBefMurder(Person.alibi) == timeline[other].getBefMurder(Person.alibi))
+				return true;
+			else return false;
+		}
+		if(time==1)
+		{
+			if(timeline[self].getMurder(Person.alibi) == timeline[other].getMurder(Person.alibi))
+				return true;
+			else return false;
+		}
+		if(time==2)
+		{
+			if(timeline[self].getAftMurder(Person.alibi) == timeline[other].getAftMurder(Person.alibi))
+				return true;
+			else return false;
+		}
+		else return false;
+	}
+	
+	void PrintMethod()
+	{
+		Debug.Log("PRINT");
+		
+		Debug.Log("BEFMURDER");
+		for(int i=0; i<Globals.numSuspects; i++)
+		{
+			Debug.Log(  Enum.GetName(typeof(Suspects), i) + " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer() + " " +timeline[i].getBefMurder(Person.place) + " " + timeline[i].getBefMurder(Person.activity) + " " + timeline[i].getBefMurder(Person.alibi));
+		}
+		Debug.Log("MURDER");
+		for(int i=0; i<timeline.Count; i++)
+		{
+			Debug.Log(Enum.GetName(typeof(Suspects), i) +  " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer() + " " + timeline[i].getMurder(Person.place) + " " + timeline[i].getMurder(Person.activity) + " " + timeline[i].getMurder(Person.alibi));
+		}
+		Debug.Log("AFTMURDER");
+		for(int i=0; i<timeline.Count; i++)
+		{
+			Debug.Log(Enum.GetName(typeof(Suspects), i) + " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer()  + " " + timeline[i].getAftMurder(Person.place) + " " + timeline[i].getAftMurder(Person.activity) + " " + timeline[i].getAftMurder(Person.alibi));
+		}
+		
+		Debug.Log("MURDER TRUTH");
+		Debug.Log(  murderTruth.getBefMurder(Person.place) + " " + murderTruth.getBefMurder(Person.activity) + " " + murderTruth.getBefMurder(Person.alibi));
+		Debug.Log( murderTruth.getMurder(Person.place) + " " + murderTruth.getMurder(Person.activity) + " " + murderTruth.getMurder(Person.alibi));
+		Debug.Log( murderTruth.getAftMurder(Person.place) + " " + murderTruth.getAftMurder(Person.activity) + " " + murderTruth.getAftMurder(Person.alibi));
+
 	}
 	
 }
