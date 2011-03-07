@@ -6,11 +6,11 @@ public class doorOpener : MonoBehaviour {
 	public GameObject door;
 	bool withinBoundary = false;
 	bool open = false;
-	// Use this for initialization
+	public int doorRotation = 175;
+	public int doorRotateBack = 90;
+	
 	void Start () {
-		//door= new GameObject();
-		//door = GameObject.Find("InnerDoor0");
-		
+	
 	}
 	
 	// Update is called once per frame
@@ -26,24 +26,25 @@ public class doorOpener : MonoBehaviour {
 		withinBoundary = false;
 	}
 	
-	IEnumerator OnMouseEnter(){
-		//changing all the material to be yellow upon mouse hover, once the player is close to the object
+	IEnumerator OnMouseDown(){
 		if(withinBoundary && !open){
 			Vector3 doorPos = transform.TransformPoint(door.transform.position);
 			Vector3 doorPosWorld = doorPos + new Vector3(-2,0,0);
-			iTween.MoveTo(door, doorPosWorld, 2);
-				//iTween.MoveBy(door, new Vector3(0,0,-2), 2);
+			//iTween.MoveTo(door, doorPosWorld, 2);
+			//iTween.MoveBy(door, new Vector3(0,0,-2), 2);
+			iTween.RotateTo(door, iTween.Hash("y",doorRotation,"time",1.0));
 			open = true;
 		}
 			
 		yield return new WaitForSeconds(5);
 		if(open)
 		{
-		open = false;
 			Vector3 doorPos = transform.TransformPoint(door.transform.position);
 			Vector3 doorPosWorld = doorPos + new Vector3(2,0,0);
-			iTween.MoveTo(door, doorPosWorld, 2);
-		//iTween.MoveBy(door, new Vector3(0,0,2),2);
+			//iTween.MoveTo(door, doorPosWorld, 2);
+			//iTween.MoveBy(door, new Vector3(0,0,2),2);
+			iTween.RotateTo(door, iTween.Hash("y",90,"time",1.0));
+			open = false;
 		}
 		
 	}
