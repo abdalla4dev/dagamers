@@ -1,0 +1,59 @@
+fileFormatVersion: 1
+guid: dc71d3eab9c7ee042adf1f31e833c44f
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    //RootNode:
+    - 100000
+    - 400000
+    - 11100000
+    Omni02:
+    - 100002
+    - 400002
+    Omni01:
+    - 100046
+    - 400046
+    ChamferBo2:
+    - 100056
+    - 400056
+    - 3300050
+    - 2300050
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Box309
+    4300002: Box311
+    4300004: Box314
+    4300006: Box312
+    4300008: Loft92
+    4300010: Box310
+    4300012: Loft91
+    4300014: Box385
+    4300016: ChamferBox
+    4300018: ChamferBo0
+    4300020: ChamferBo1
+    4300022: ChamferBo2
+    4300024: Sphere06
+    4300026: ChamferBo3
+    4300028: ChamferBo4
+    4300030: ChamferBo5
+    4300032: ChamferBo6
