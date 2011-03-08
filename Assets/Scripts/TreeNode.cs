@@ -1,5 +1,6 @@
 using UnityEngine; 
 using System.Collections;
+using MurderData;
 
 /*
 mother = '0'
@@ -16,6 +17,7 @@ public class TreeNode : MonoBehaviour {
 	//start node and current node of the tree
 	ArrayList startNode = new ArrayList();
 	ArrayList currNode = new ArrayList();
+	ArrayList currQn = new ArrayList();
 	ArrayList weaponList = new ArrayList();
 
 	// Use this for initialization
@@ -83,12 +85,8 @@ public class TreeNode : MonoBehaviour {
         return "";
     }
 	
-	public QnNode getStartNode(int num) {
+	/*public QnNode getStartNode(int num) {
 		return (QnNode)startNode[num];
-	}
-	
-	public QnNode getCurrNode(int num) {
-		return (QnNode)currNode[num];
 	}
 
     public WeaponNode getWeapon(int num) {
@@ -97,12 +95,50 @@ public class TreeNode : MonoBehaviour {
 	
 	public void addStartNode(QnNode temp) {
 		startNode.Add(temp);		
+	}*/
+	
+	public int getNumOfCurrNodes() {
+		return currNode.Count;
 	}
 	
-	public void addCurrNode(QnNode temp) {
-		currNode.Add(temp);
+	public void removeOldNodes(int num) {
+		for (int i=0;i<num;i++) {
+			currNode.Remove(0);
+		}
 	}
-
+	
+	public void setQnNode(string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int person) {
+		QnNode newNode = new QnNode();
+		newNode.setQn(tempQn);
+		newNode.setAnswer(tempAns);
+		newNode.setPerson(sus);
+		newNode.setUnlockedNode(unlocked);
+		
+		if (node == 's') {
+			startNode.Add(newNode);
+			currQn.Add(newNode);
+		}
+		else {
+			for (int i=0; i<Globals.numSuspects;i++) {
+				if (sus == ((QnNode)currQn[i]).getPerson()) {
+					((QnNode)currQn[i]).setNextQn(newNode);
+					currQn.Remove(i);
+					currQn.Add(((QnNode)currQn[i]).getNextQn());
+				}
+			}
+		}
+		
+		if (unlocker) {
+			currNode.Add(newNode);
+		}
+		
+		for (int i=0;i<currNode.Count;i++) {
+			if (((QnNode)currNode[i]).getPerson() == person) {
+				((QnNode)currNode[i]).addNextNodes(newNode);
+			}
+		}
+	}
+	
     public void addWeapon(string weapon, string reply)
     {
         WeaponNode temp = new WeaponNode();
@@ -111,7 +147,7 @@ public class TreeNode : MonoBehaviour {
         weaponList.Add(temp);
     }
 	
-	public void checker() {
+	/*public void checker() {
 		/*for (int i=0;i<1;i++) {
 			QnNode curr = new QnNode();
 			curr = (QnNode)startNode[i];
@@ -121,7 +157,7 @@ public class TreeNode : MonoBehaviour {
 			Debug.Log(curr.getNumOfNextNodes());
 			if(curr.getNumOfNextNodes()>0)
 				Debug.Log(curr.getNumOfNextNodes());
-		}*/
+		}
 		
 		int unlockedCounter=0;
 		for(int i=0; i<4; i++)
@@ -189,5 +225,5 @@ public class TreeNode : MonoBehaviour {
 	
 	public void printIt(QnNode node) {
 		Debug.Log(node.getPerson() + " " + node.getQn() + " " + node.getAnswer());
-	}
+	}*/
 }
