@@ -15,7 +15,17 @@ public class doorOpener : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetKeyDown(KeyCode.E)){
+			if(withinBoundary && !open){
+				iTween.RotateTo(door, iTween.Hash("y",doorRotation,"time",2.0));
+				open = true;
+			}
+			else if(withinBoundary && open)
+			{
+				iTween.RotateTo(door, iTween.Hash("y",90,"time",2.0));
+				open = false;
+			}
+		}
 	}
 	
 	void OnTriggerEnter(Collider other){
@@ -24,28 +34,5 @@ public class doorOpener : MonoBehaviour {
 	
 	void OnTriggerExit(Collider other){
 		withinBoundary = false;
-	}
-	
-	IEnumerator OnMouseDown(){
-		if(withinBoundary && !open){
-			Vector3 doorPos = transform.TransformPoint(door.transform.position);
-			Vector3 doorPosWorld = doorPos + new Vector3(-2,0,0);
-			//iTween.MoveTo(door, doorPosWorld, 2);
-			//iTween.MoveBy(door, new Vector3(0,0,-2), 2);
-			iTween.RotateTo(door, iTween.Hash("y",doorRotation,"time",1.0));
-			open = true;
-		}
-			
-		yield return new WaitForSeconds(5);
-		if(open)
-		{
-			Vector3 doorPos = transform.TransformPoint(door.transform.position);
-			Vector3 doorPosWorld = doorPos + new Vector3(2,0,0);
-			//iTween.MoveTo(door, doorPosWorld, 2);
-			//iTween.MoveBy(door, new Vector3(0,0,2),2);
-			iTween.RotateTo(door, iTween.Hash("y",90,"time",1.0));
-			open = false;
-		}
-		
 	}
 }
