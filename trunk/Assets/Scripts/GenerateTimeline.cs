@@ -61,7 +61,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	public static bool redHerring = false; //only 1 redHerring for now, so this is to keep track if there alr is one.
 	
-	List<Person> timeline = new List<Person>();
+	public static List<Person> timeline = new List<Person>();
 	
 	System.Random rand;
 	
