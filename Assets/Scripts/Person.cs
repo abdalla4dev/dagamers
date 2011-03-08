@@ -105,6 +105,10 @@ public class Person {
 		return redHerring;
 	}
 	
+	public Weapons getRHWeap()
+	{
+		return rhWeap;
+	}
 	/*accessors and mutators for befMurder*/
 	public List<String> getBefMurder() //returns whole list.
 	{
