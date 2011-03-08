@@ -50,6 +50,8 @@ public class Person {
 	bool redHerring = false; 
 	bool fakeAlibi = false;
 	
+	Weapons rhWeap;
+	
 	System.Random rand;
 	
 	public Person(Person toCopy)
@@ -314,6 +316,8 @@ public class Person {
 				weapon = (Weapons) rand.Next(0, Globals.numWeapons);
 			} while (weapon == GenerateTimeline.murderWeap);
 			
+			rhWeap = weapon;
+			
 			duringMurder.Add(getWeapActivity(room,weapon));
 			GenerateTimeline.redHerring = true;
 			redHerring = true;
@@ -389,6 +393,12 @@ public class Person {
 			 GenerateTimeline.redHerring = true;
 			 redHerring = true;
 		 }*/
+		if(redHerring)
+		{
+			aftMurder.Add(getWeapActivity(room, rhWeap));
+			aftMurder.Add("null"); //alibi
+			return;
+		}
 		else //find generic activity for chosen room
 		{
 			 switch(room)
