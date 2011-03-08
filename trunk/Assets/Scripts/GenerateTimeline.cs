@@ -65,6 +65,12 @@ public class GenerateTimeline : MonoBehaviour
 	
 	System.Random rand;
 	
+	public Transform knife; 
+	public Transform screwdriver;
+	public Transform towel;
+	public Transform scissors;
+	public Transform spanner;
+	
 	void Start() {
 		rand= new System.Random();
 		int murderer = genMurderer();
@@ -130,6 +136,8 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[redHerringIndex].createDurMurderWitness(timeline[suspect1], suspect1, redHerringIndex); //redherring and suspect1 are alibis.
 		timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
 		
+		placeWeapons(redHerringIndex, murderer);
+		
 		for(int i=0; i<timeline.Count; i++)
 		{
 			if(timeline[i].getAftMurder(Person.alibi)=="null")
@@ -142,6 +150,7 @@ public class GenerateTimeline : MonoBehaviour
 					}						
 				}
 		}
+		
 		
 		//debugging purposes.
 /* 		for(int i=0; i<Globals.numSuspects; i++)
@@ -227,6 +236,152 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log(murderTruth.getAftMurder(i));}
 		
 		return fake;
+	}
+	
+	
+	
+	void placeWeapons(int RH, int M)
+	{
+		List<Vector3> positions = new List<Vector3>();
+		List<Rooms> place = new List<Rooms>();
+		
+		positions.Add(new Vector3(3.95f, 0.304f, 5.756f));
+		place.Add(Rooms.Living_Room);
+		
+		positions.Add(new Vector3(-6.397f, 0.307f, 5.028f));
+		place.Add(Rooms.Toilet);
+		
+		positions.Add(new Vector3(1.689f, 1.636f, 0.398f));
+		place.Add(Rooms.Living_Room);
+		
+		positions.Add(new Vector3(-11.947f, 1.043f, -4.134f));
+		place.Add(Rooms.Garden);
+		
+		positions.Add(new Vector3(-2.738f, 0.935f, 4.734f));
+		place.Add(Rooms.Bedroom);
+		
+		positions.Add(new Vector3(7.434f, 0.304f, -1.128f));
+		place.Add(Rooms.Kitchen);
+		
+		positions.Add(new Vector3(3.822f, 1.13f, -4.796f));
+		place.Add(Rooms.Kitchen);
+		
+		positions.Add(new Vector3(-0.793f, 0.908f, -5.246f));
+		place.Add(Rooms.Toilet);
+		
+		positions.Add(new Vector3(-11.94f, 1.043f, 4.414f));
+		place.Add(Rooms.Garden);
+		
+		positions.Add(new Vector3(-4.98f, 0.973f, -3.933f));
+		place.Add(Rooms.Bedroom);
+		
+		positions.Add(new Vector3(-3.521f, 0.484f, -5.913f));
+		place.Add(Rooms.Bedroom);
+		
+		positions.Add(new Vector3(-6.422f, 0.484f, 0.944f));
+		place.Add(Rooms.Bedroom);
+		
+		String mRoom = timeline[M].getAftMurder(Person.place); //last room murderer was in
+		String rhRoom= timeline[RH].getAftMurder(Person.place); //last room rh was in
+		
+		List<int> weapRooms = new List<int>();
+		
+		for(int i=0; i<place.Count; i++)
+		{
+			Rooms r = place[i];
+			if(mRoom==r.ToString()) //if murder room add to weapRooms
+				weapRooms.Add(i);
+		}
+		
+		int pos = weapRooms[rand.Next(0, weapRooms.Count)]; //random a position
+		switch(murderWeap)
+		{
+			case Weapons.Knife:
+				knife.transform.position = positions[pos];
+				break;
+			case Weapons.Screwdriver:
+				screwdriver.transform.position = positions[pos];
+				break;
+			case Weapons.Towel:
+				towel.transform.position = positions[pos];
+				break;
+			case Weapons.Scissors:
+				scissors.transform.position = positions[pos];
+				break;
+			case Weapons.Spanner:
+				spanner.transform.position = positions[pos];;
+				break;
+			default:
+				break;
+		}
+		
+		weapRooms.Clear();
+		
+		for(int i=0; i<place.Count; i++)
+		{
+			Rooms r = place[i];
+			if(rhRoom==r.ToString())
+				weapRooms.Add(i);
+		}
+		
+		int pos2= weapRooms[rand.Next(0, weapRooms.Count)];
+		
+		switch(timeline[RH].getRHWeap())
+		{
+			case Weapons.Knife:
+				knife.transform.position = positions[pos2];
+				break;
+			case Weapons.Screwdriver:
+				screwdriver.transform.position = positions[pos2];
+				break;
+			case Weapons.Towel:
+				towel.transform.position = positions[pos2];
+				break;
+			case Weapons.Scissors:
+				scissors.transform.position = positions[pos2];
+				break;
+			case Weapons.Spanner:
+				spanner.transform.position = positions[pos2];
+				break;
+			default:
+				break;
+		}
+		
+		foreach(Weapons w in Enum.GetValues(typeof(MurderData.Weapons)))
+		{
+			if(w==timeline[RH].getRHWeap() || w==murderWeap)
+				continue;
+			else
+			{
+				int randPos;
+				do
+				{
+					 randPos = rand.Next(0, positions.Count);
+				}while(randPos==pos || randPos==pos2);
+				
+				switch(w)
+				{
+					case Weapons.Knife:
+						knife.transform.position = positions[randPos];
+						break;
+					case Weapons.Screwdriver:
+						screwdriver.transform.position = positions[randPos];
+						break;
+					case Weapons.Towel:
+						towel.transform.position = positions[randPos];
+						break;
+					case Weapons.Scissors:
+						scissors.transform.position = positions[randPos];
+						break;
+					case Weapons.Spanner:
+						spanner.transform.position = positions[randPos];
+						break;
+					default:
+						break;
+				}
+			}
+		}
+		
 	}
 	
 	/*METHODS TO GET RESULTS*/
