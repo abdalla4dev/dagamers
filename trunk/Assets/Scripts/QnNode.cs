@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections; 
+using MurderData;
 
 public class QnNode {
 	
@@ -7,7 +8,7 @@ public class QnNode {
 	
 	private string qn; // the questions and sub questions
 	private string answer; // answer to the questions
-	private char person; // for which person
+	private int person; // for which person
 	private bool unlockedNode; // is this unlocked?
 	
 	private ArrayList nextNodesList = new ArrayList(); // link to the next nodes that this qn can unlock
@@ -24,7 +25,7 @@ public class QnNode {
 		return answer;
 	}
 	
-	public char getPerson() {
+	public int getPerson() {
 		return person;
 	}
 	
@@ -40,8 +41,10 @@ public class QnNode {
 		return nextNodesList.Count;
 	}
 	
-	public ArrayList getNextNodeList() {
-		return nextNodesList;
+	public QnNode getNextNode(int i) {
+		QnNode temp = new QnNode();
+		temp = (QnNode)nextNodesList[i];
+		return temp;
 	}
 	
 	public void setQn(string temp) {
@@ -52,7 +55,7 @@ public class QnNode {
 		answer= temp;
 	}
 	
-	public void setPerson(char temp) {
+	public void setPerson(int temp) {
 		person = temp;
 	}
 	
