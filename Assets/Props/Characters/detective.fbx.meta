@@ -1,0 +1,231 @@
+fileFormatVersion: 1
+guid: df946524fb1d50741aa36ff79565ba1c
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 0
+    animationWrapMode: 0
+    splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: 2
+        lastFrame: 62
+        loop: 1
+        wrapMode: 2
+      run:
+        firstFrame: 84
+        lastFrame: 116
+        loop: 1
+        wrapMode: 2
+      walk:
+        firstFrame: 84
+        lastFrame: 116
+        loop: 1
+        wrapMode: 2
+      jump_pose:
+        firstFrame: 118
+        lastFrame: 123
+        loop: 0
+        wrapMode: 0
+  nodeInfo:
+    Bip001 R Thigh:
+    - 100000
+    - 400000
+    Bip001 L Toe0:
+    - 100002
+    - 400002
+    Bip001 L Foot:
+    - 100004
+    - 400004
+    Bip001 L Calf:
+    - 100006
+    - 400006
+    Bip001 L Thigh:
+    - 100008
+    - 400008
+    helmet_bone:
+    - 100010
+    - 400010
+    Bip001 Head:
+    - 100012
+    - 400012
+    Bip001 R Hand:
+    - 100014
+    - 400014
+    Bip001 L Hand:
+    - 100016
+    - 400016
+    Bip001 Neck:
+    - 100018
+    - 400018
+    Bip001 Spine1:
+    - 100020
+    - 400020
+    Bip001 Spine:
+    - 100022
+    - 400022
+    Bip001 Pelvis:
+    - 100024
+    - 400024
+    Bip001:
+    - 100026
+    - 400026
+    - 13700000
+    //RootNode:
+    - 100028
+    - 400028
+    - 11100000
+    Toon_Vince_Geo:
+    - 100030
+    - 400030
+    Bip001 R Toe0:
+    - 100032
+    - 400032
+    Bip001 R Foot:
+    - 100034
+    - 400034
+    Bip001 R Calf:
+    - 100036
+    - 400036
+    Bip001 L Finger11:
+    - 100038
+    - 400038
+    hip_adjustment_bone_left:
+    - 100040
+    - 400040
+    Bip001 R Finger3:
+    - 100042
+    - 400042
+    Bip001 L Forearm:
+    - 100044
+    - 400044
+    Bip001 L Finger32:
+    - 100046
+    - 400046
+    Bip001 L Finger02:
+    - 100048
+    - 400048
+    Bip001 R Finger12:
+    - 100050
+    - 400050
+    Bip001 L Finger3:
+    - 100052
+    - 400052
+    Bip001 L Finger12:
+    - 100054
+    - 400054
+    Bip001 R Finger22:
+    - 100056
+    - 400056
+    Bip001 R Finger41:
+    - 100058
+    - 400058
+    Bip001 R Finger4:
+    - 100060
+    - 400060
+    Bip001 R Finger31:
+    - 100062
+    - 400062
+    Bip001 L Finger1:
+    - 100064
+    - 400064
+    Bip001 R Finger02:
+    - 100066
+    - 400066
+    Bip001 R Finger2:
+    - 100068
+    - 400068
+    Bip001 L Finger01:
+    - 100070
+    - 400070
+    Bip001 L Finger41:
+    - 100072
+    - 400072
+    Bip001 R Clavicle:
+    - 100074
+    - 400074
+    Bip001 L Finger31:
+    - 100076
+    - 400076
+    Bip001 R Forearm:
+    - 100078
+    - 400078
+    Bip001 L Finger22:
+    - 100080
+    - 400080
+    Bip001 L Finger42:
+    - 100082
+    - 400082
+    Bip001 L Clavicle:
+    - 100084
+    - 400084
+    Bip001 L Finger21:
+    - 100086
+    - 400086
+    Bip001 L Finger4:
+    - 100088
+    - 400088
+    Bip001 L UpperArm:
+    - 100090
+    - 400090
+    hip_adjustment_bone_right:
+    - 100092
+    - 400092
+    Bip001 R Finger01:
+    - 100094
+    - 400094
+    Bip001 R Finger0:
+    - 100096
+    - 400096
+    Bip001 R UpperArm:
+    - 100098
+    - 400098
+    Bip001 R Finger11:
+    - 100100
+    - 400100
+    Bip001 R Finger32:
+    - 100102
+    - 400102
+    Bip001 R Finger21:
+    - 100104
+    - 400104
+    Bip001 L Finger0:
+    - 100106
+    - 400106
+    Bip001 R Finger42:
+    - 100108
+    - 400108
+    Bip001 R Finger1:
+    - 100110
+    - 400110
+    Bip001 L Finger2:
+    - 100112
+    - 400112
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Toon_Vince_Geo
+    7400000: Take 001 //// detective
+    7400002: idle //// detective
+    7400004: idle0 //// detective
+    7400006: idle01 //// detective
+    7400008: idle012 //// detective
+    7400010: run //// detective
+    7400012: walk //// detective
+    7400014: jump_pose //// detective
+    7400016: jump //// detective
