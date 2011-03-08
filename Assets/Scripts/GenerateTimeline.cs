@@ -71,6 +71,12 @@ public class GenerateTimeline : MonoBehaviour
 	public Transform scissors;
 	public Transform spanner;
 	
+	public Rooms knifeLoc;
+	public Rooms screwdriverLoc;
+	public Rooms towelLoc;
+	public Rooms scissorsLoc;
+	public Rooms spannerLoc;
+	
 	void Start() {
 		rand= new System.Random();
 		int murderer = genMurderer();
@@ -245,22 +251,22 @@ public class GenerateTimeline : MonoBehaviour
 		List<Vector3> positions = new List<Vector3>();
 		List<Rooms> place = new List<Rooms>();
 		
-		positions.Add(new Vector3(3.95f, 0.304f, 5.756f));
+		positions.Add(new Vector3(3.95f, 0.304f, 5.756f)); //change for knife
 		place.Add(Rooms.Living_Room);
 		
-		positions.Add(new Vector3(-6.397f, 0.307f, 5.028f));
+		positions.Add(new Vector3(-6.397f, 0.307f, 5.028f)); //move up for sd
 		place.Add(Rooms.Toilet);
 		
 		positions.Add(new Vector3(1.689f, 1.636f, 0.398f));
 		place.Add(Rooms.Living_Room);
 		
-		positions.Add(new Vector3(-11.947f, 1.043f, -4.134f));
+		positions.Add(new Vector3(-11.947f, 1.043f, -4.134f)); //move down for spanner
 		place.Add(Rooms.Garden);
 		
 		positions.Add(new Vector3(-2.738f, 0.935f, 4.734f));
 		place.Add(Rooms.Bedroom);
 		
-		positions.Add(new Vector3(7.434f, 0.304f, -1.128f));
+		positions.Add(new Vector3(7.434f, 0.304f, -1.128f));//move up for scissors
 		place.Add(Rooms.Kitchen);
 		
 		positions.Add(new Vector3(3.822f, 1.13f, -4.796f));
@@ -275,7 +281,7 @@ public class GenerateTimeline : MonoBehaviour
 		positions.Add(new Vector3(-4.98f, 0.973f, -3.933f));
 		place.Add(Rooms.Bedroom);
 		
-		positions.Add(new Vector3(-3.521f, 0.484f, -5.913f));
+		positions.Add(new Vector3(-3.521f, 0.484f, -5.913f)); //move up for towel
 		place.Add(Rooms.Bedroom);
 		
 		positions.Add(new Vector3(-6.422f, 0.484f, 0.944f));
@@ -298,18 +304,23 @@ public class GenerateTimeline : MonoBehaviour
 		{
 			case Weapons.Knife:
 				knife.transform.position = positions[pos];
+				knifeLoc = place[pos];
 				break;
 			case Weapons.Screwdriver:
 				screwdriver.transform.position = positions[pos];
+				screwdriverLoc = place[pos];
 				break;
 			case Weapons.Towel:
 				towel.transform.position = positions[pos];
+				towelLoc = place[pos];
 				break;
 			case Weapons.Scissors:
 				scissors.transform.position = positions[pos];
+				scissorsLoc = place[pos];
 				break;
 			case Weapons.Spanner:
-				spanner.transform.position = positions[pos];;
+				spanner.transform.position = positions[pos];
+				spannerLoc = place[pos];
 				break;
 			default:
 				break;
@@ -330,18 +341,23 @@ public class GenerateTimeline : MonoBehaviour
 		{
 			case Weapons.Knife:
 				knife.transform.position = positions[pos2];
+				knifeLoc = place[pos2];
 				break;
 			case Weapons.Screwdriver:
 				screwdriver.transform.position = positions[pos2];
+				screwdriverLoc = place[pos2];
 				break;
 			case Weapons.Towel:
 				towel.transform.position = positions[pos2];
+				towelLoc = place[pos2];
 				break;
 			case Weapons.Scissors:
 				scissors.transform.position = positions[pos2];
+				scissorsLoc = place[pos2];
 				break;
 			case Weapons.Spanner:
 				spanner.transform.position = positions[pos2];
+				spannerLoc = place[pos2];
 				break;
 			default:
 				break;
@@ -363,18 +379,23 @@ public class GenerateTimeline : MonoBehaviour
 				{
 					case Weapons.Knife:
 						knife.transform.position = positions[randPos];
+						knifeLoc = place[randPos];
 						break;
 					case Weapons.Screwdriver:
 						screwdriver.transform.position = positions[randPos];
+						screwdriverLoc = place[randPos];
 						break;
 					case Weapons.Towel:
 						towel.transform.position = positions[randPos];
+						towelLoc = place[randPos];
 						break;
 					case Weapons.Scissors:
 						scissors.transform.position = positions[randPos];
+						scissorsLoc = place[randPos];
 						break;
 					case Weapons.Spanner:
 						spanner.transform.position = positions[randPos];
+						spannerLoc = place[randPos];
 						break;
 					default:
 						break;
@@ -564,6 +585,34 @@ public class GenerateTimeline : MonoBehaviour
 		else return false;
 	}
 	
+	/*RETURN WEAPON LOCATION*/
+	Rooms getWeapLoc(Weapons weap) 
+	{
+		Rooms room = Rooms.Kitchen;
+		switch(weap)
+		{
+		case Weapons.Knife:
+				room = knifeLoc;
+				break;
+			case Weapons.Screwdriver:
+				room = screwdriverLoc;
+				break;
+			case Weapons.Towel:
+				room = towelLoc;
+				break;
+			case Weapons.Scissors:
+				room = scissorsLoc;
+				break;
+			case Weapons.Spanner:
+				room = spannerLoc;
+				break;
+			default:
+				break;
+		}
+		
+		return room;
+	}
+	
 	void PrintMethod()
 	{
 		Debug.Log("PRINT");
@@ -589,6 +638,12 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log( murderTruth.getMurder(Person.place) + " " + murderTruth.getMurder(Person.activity) + " " + murderTruth.getMurder(Person.alibi));
 		Debug.Log( murderTruth.getAftMurder(Person.place) + " " + murderTruth.getAftMurder(Person.activity) + " " + murderTruth.getAftMurder(Person.alibi));
 
+		Debug.Log("WEAPON LOCS");
+		Debug.Log("knife" + knifeLoc.ToString());
+		Debug.Log("screwdriver " + screwdriverLoc.ToString());
+		Debug.Log("spanner " + spannerLoc.ToString());
+		Debug.Log("towel " + towelLoc.ToString());
+		Debug.Log("scissors " + scissorsLoc.ToString());
 	}
 	
 }
