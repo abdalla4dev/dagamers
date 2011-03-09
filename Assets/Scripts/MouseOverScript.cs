@@ -17,6 +17,7 @@ public class MouseOverScript : MonoBehaviour {
 	Color[] originalColor; //array to store the original material color
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
+	Vector3 charOffset = new Vector3(0,2,0);
 	public AI AIlink;
 	bool called = true;
 	string s;
@@ -66,6 +67,11 @@ public class MouseOverScript : MonoBehaviour {
 		withinBoundary = false;
 	}
 	
+	void TriggerToggle(){
+		
+		
+	}
+	
 	void OnGUI() {
 		GUI.skin = customSkin;
 		//BUG is here
@@ -96,7 +102,7 @@ public class MouseOverScript : MonoBehaviour {
 		ArrayList myList = AI.tree.HumanTriggered(suspect);
 
 		
-		ArrayList myList = AI.tree.HumanTriggered(suspect);
+		//ArrayList myList = AI.tree.HumanTriggered(suspect);
 		if (called) {		
 			foreach (string item in myList) {
 				if (GUILayout.Button(item)) {
@@ -117,8 +123,12 @@ public class MouseOverScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		screenPos = Camera.main.WorldToScreenPoint(targetObject.position + offset);
-		
+		if(targetObject.name == "knife1" || targetObject.name == "scissors" || targetObject.name == "spanner1" || targetObject.name == "screwdriver" || targetObject.name == "towel"){
+			screenPos = Camera.main.WorldToScreenPoint(targetObject.position + offset);
+		}
+		else{
+			screenPos = Camera.main.WorldToScreenPoint(targetObject.position + charOffset);
+		}
 		if(Input.GetKeyDown(KeyCode.E)){
 			
 			if(withinBoundary == true){
