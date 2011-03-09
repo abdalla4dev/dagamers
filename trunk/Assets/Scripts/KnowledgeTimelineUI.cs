@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using MurderData;
 
 public class KnowledgeTimelineUI : MonoBehaviour {
 
@@ -14,9 +15,15 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 	
 	public GUIStyle boxStyle;
 	public GUIStyle labelStyle;
+	
+	public GenerateTimeline theTimeline;
+	
+	private int startTime;
 		
 	// Use this for initialization
 	void Start () {
+		theTimeline = gameObject.GetComponent<GenerateTimeline>();
+		startTime = (int) GenerateTimeline.deathTime;
 	}
 	
 	// Update is called once per frame
@@ -33,37 +40,94 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 	}
 	
 	void TimelineFunction (int windowID) {
+		
+		theTimeline = gameObject.GetComponent<GenerateTimeline>();
+		
+	/*	Debug.Log("scrollview death time: " + GenerateTimeline.deathTime);
+		Debug.Log("scrollview wife pre place: " + GenerateTimeline.getPersonDetails(0,0,0));*/
+		
 		// Draw any Controls inside the window here
 		scrollPos = GUILayout.BeginScrollView(scrollPos);
 		
+		string preMurderTime = startTime +  "00 hrs";
+		string murderTime = (startTime+1)+  "00 hrs";
+		string postMurderTime = (startTime+2)+  "00 hrs";
+		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Suspects", labelStyle, GUILayout.Height(50));
-			GUILayout.Label("1200 hrs", labelStyle, GUILayout.Width(120));
-			GUILayout.Label("1300 hrs", labelStyle);
-			GUILayout.Label("1400 hrs", labelStyle);
-			GUILayout.Label("1500 hrs", labelStyle);
-			GUILayout.Label("1600 hrs", labelStyle);
+			GUILayout.Label(preMurderTime, labelStyle, GUILayout.Width(120));
+			GUILayout.Label(murderTime, labelStyle);
+			GUILayout.Label(postMurderTime, labelStyle);
+			//GUILayout.Label("1500 hrs", labelStyle);
+			//GUILayout.Label("1600 hrs", labelStyle);
 		GUILayout.EndHorizontal();
+		
+		string wifePreMurder = "At " + GenerateTimeline.getPersonDetails(0,0,0) +", "+ GenerateTimeline.getPersonDetails(0,0,1) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(0,0, Person.alibi );
+		string wifeMurder = "At " + GenerateTimeline.getPersonDetails(1,0,Person.place) +", "+ GenerateTimeline.getPersonDetails(1,0,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(1,0, Person.alibi);
+		string wifePostMurder = "At " + GenerateTimeline.getPersonDetails(2,0,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,0,Person.activity)
+			+", seen by "+ GenerateTimeline.getPersonDetails(2,0, Person.alibi);
 		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Wife", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
-			GUI.backgroundColor = Color.red;
-			GUILayout.Box("info related to wife at 1200", boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Space(480);	
+			GUI.backgroundColor = Color.magenta;
+			GUILayout.Box(wifePreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(wifeMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(wifePostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			//GUILayout.Space(480);	
 		GUILayout.EndHorizontal();
+		
+		string sonPreMurder = "At " + GenerateTimeline.getPersonDetails(0,1,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,1,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(0,1, Person.alibi);
+		string sonMurder = "At " + GenerateTimeline.getPersonDetails(1,1,Person.place) +", "+ GenerateTimeline.getPersonDetails(1,1,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(1,1, Person.alibi);
+		string sonPostMurder = "At " + GenerateTimeline.getPersonDetails(2,1,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,1,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(2,1, Person.alibi);
 		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Son", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
-			GUILayout.Space(240);
+			//GUILayout.Space(240);
 			GUI.backgroundColor = Color.yellow;
-			GUILayout.Box("info related to son at 1400", boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Space(240);
+			GUILayout.Box(sonPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(sonMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(sonPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			//GUILayout.Space(240);
 		GUILayout.EndHorizontal();
 		
-		GUILayout.Label("Daughter", labelStyle, GUILayout.Height(50));
-		GUILayout.Label("Maid", labelStyle, GUILayout.Height(50));
+		string daughterPreMurder = "At " + GenerateTimeline.getPersonDetails(0,2,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,2,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(0,2, Person.alibi);
+		string daughterMurder = "At " + GenerateTimeline.getPersonDetails(1,2,Person.place) +", "+ GenerateTimeline.getPersonDetails(1,2,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(1,2, Person.alibi);
+		string daughterPostMurder = "At " + GenerateTimeline.getPersonDetails(2,2,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,2,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(2,2, Person.alibi);
+		
+		GUILayout.BeginHorizontal();
+			GUILayout.Label("Daughter", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUI.backgroundColor = Color.green;
+			GUILayout.Box(daughterPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(daughterMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(daughterPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+		GUILayout.EndHorizontal();
+		
+		string maidPreMurder = "At " + GenerateTimeline.getPersonDetails(0,3,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,3,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(0,3, Person.alibi);
+		string maidMurder = "At " + GenerateTimeline.getPersonDetails(1,3,Person.place) +", "+ GenerateTimeline.getPersonDetails(1,3,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(1,3, Person.alibi);
+		string maidPostMurder = "At " + GenerateTimeline.getPersonDetails(2,3,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,3,Person.activity) 
+			+", seen by "+ GenerateTimeline.getPersonDetails(2,3, Person.alibi);
+		
+		GUILayout.BeginHorizontal();
+			GUILayout.Label("Maid", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUI.backgroundColor = Color.cyan;
+			GUILayout.Box(maidPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(maidMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			GUILayout.Box(maidPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+		GUILayout.EndHorizontal();
 		
 		GUILayout.EndScrollView();
+		
+		//Debug.Log("In theTimeline Scrollview\n" + wifePreMurder + "\n"+ wifeMurder);
 	}
 
 }

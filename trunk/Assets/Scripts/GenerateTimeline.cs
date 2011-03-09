@@ -63,8 +63,6 @@ public class GenerateTimeline : MonoBehaviour
 	
 	public static List<Person> timeline = new List<Person>();
 	
-	System.Random rand;
-	
 	public Transform knife; 
 	public Transform screwdriver;
 	public Transform towel;
@@ -76,6 +74,8 @@ public class GenerateTimeline : MonoBehaviour
 	public Rooms towelLoc;
 	public Rooms scissorsLoc;
 	public Rooms spannerLoc;
+	
+	System.Random rand;
 	
 	public AI AIlink;
 	
@@ -410,7 +410,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	/*METHODS TO GET RESULTS*/
 	/*FOR INDIVIDUALS*/
-	String getPersonDetails(int time, int person, int pos)	//asking a person for where, what and alibi.
+	public static String getPersonDetails(int time, int person, int pos)	//asking a person for where, what and alibi.
 	{
 		if(time==0)
 			return timeline[person].getBefMurder(pos);
