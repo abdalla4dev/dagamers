@@ -142,7 +142,14 @@ public class GenerateTimeline : MonoBehaviour
 		fAlibi.createBefMurderWitness(timeline[redHerringIndex], redHerringIndex, murderer); //murderer and redherring are alibis. (IF NO ALIBI USE -1)
 		timeline[suspect1].createBefMurderWitness(timeline[suspect2], suspect2, suspect1); //suspect1 and suspect2 are each other's alibi.
 		timeline[redHerringIndex].createDurMurderWitness(timeline[suspect1], suspect1, redHerringIndex); //redherring and suspect1 are alibis.
-		timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
+		
+		if(!timeline[suspect2].isFoundBody() && !timeline[suspect1].isFoundBody() && !timeline[redHerringIndex].isFoundBody())
+		{
+			timeline[suspect2].makeFindBody(murderTruth);
+		}
+		//else
+		//	timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
+		
 		
 		//placeWeapons(redHerringIndex, murderer);
 		
@@ -647,6 +654,13 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log("spanner " + spannerLoc.ToString());
 		Debug.Log("towel " + towelLoc.ToString());
 		Debug.Log("scissors " + scissorsLoc.ToString());
+		
+		for(int i=0; i<timeline.Count; i++)
+		{
+			if(timeline[i].isFoundBody())
+				Debug.Log(i + " " + timeline[i].getMurder(Person.place));
+			Debug.Log(timeline[i].isFoundBody() + " " + i);
+		}
 	}
 	
 }
