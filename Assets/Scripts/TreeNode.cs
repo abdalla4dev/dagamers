@@ -119,7 +119,8 @@ public class TreeNode : MonoBehaviour {
 			currQn.Add(newNode);
 		}
 		else {
-			for (int i=0; i<Globals.numSuspects;i++) {
+			print(currQn.Count);
+			for (int i=0; i<currQn.Count;i++) {
 				if (sus == ((QnNode)currQn[i]).getPerson()) {
 					((QnNode)currQn[i]).setNextQn(newNode);
 					currQn.Remove(i);
