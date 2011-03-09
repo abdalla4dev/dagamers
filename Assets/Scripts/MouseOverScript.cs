@@ -91,7 +91,8 @@ public class MouseOverScript : MonoBehaviour {
 	}
 
 	void QuestionWindow(int windowID) {
-		ArrayList myList = AIlink.tree.HumanTriggered(suspect);
+		//cannot compile this
+		/*ArrayList myList = AIlink.tree.HumanTriggered(suspect);
 		if (called) {		
 			foreach (string item in myList) {
 				if (GUILayout.Button(item)) {
@@ -101,7 +102,7 @@ public class MouseOverScript : MonoBehaviour {
 
 				}
 			}
-		}
+		}*/
 	}		
 
 	void AnswerWindow(int windowID) {
