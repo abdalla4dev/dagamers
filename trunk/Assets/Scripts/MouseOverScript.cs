@@ -7,6 +7,7 @@ public class MouseOverScript : MonoBehaviour {
 	public Transform targetObject;
 	public TreeNode tree;
 	public char suspect = 'd'; // to integrate with treenode.cs
+	public GUISkin customSkin;
 
 	
 	Color mouseOverColor = Color.yellow;
@@ -66,7 +67,7 @@ public class MouseOverScript : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		
+		GUI.skin = customSkin;
 		//BUG is here
 		//action key is toggled every Left click , so it cannot click anything in the windows
 		if(withinBoundary == true && actionKey == true){
@@ -91,20 +92,11 @@ public class MouseOverScript : MonoBehaviour {
 	}
 
 	void QuestionWindow(int windowID) {
-<<<<<<< .mine
-<<<<<<< .mine
-/*		ArrayList myList = AIlink.tree.HumanTriggered(suspect);
-=======
-		//cannot compile this
-		/*ArrayList myList = AIlink.tree.HumanTriggered(suspect);
-=======
 
 		ArrayList myList = AI.tree.HumanTriggered(suspect);
 
 		
 		ArrayList myList = AI.tree.HumanTriggered(suspect);
->>>>>>> .r115
->>>>>>> .r110
 		if (called) {		
 			foreach (string item in myList) {
 				if (GUILayout.Button(item)) {
