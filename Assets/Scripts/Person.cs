@@ -201,6 +201,11 @@ public class Person {
 		if (rand==null)
 			rand = new System.Random();
 		//shift witness to be in the same room as "this"
+		
+		if(witness.isFoundBody() && this.duringMurder[place]!=GenerateTimeline.murderTruth.duringMurder[place])
+		{
+			witness.foundBody = false;
+		}
 		witness.duringMurder[place] = this.duringMurder[place];
 		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.duringMurder[place]);
 		switch (room)
@@ -227,6 +232,36 @@ public class Person {
 		//but name is not stored in Person
 		this.duringMurder[alibi] = Enum.GetName(typeof(Suspects), wIdx);
 		witness.duringMurder[alibi] = Enum.GetName(typeof(Suspects), ownIdx);
+	}
+	
+	public void makeFindBody(Person murderTruth)
+	{
+		this.foundBody = true;
+		
+		this.duringMurder[place] = murderTruth.duringMurder[place];
+		
+		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.duringMurder[place]);
+		
+		switch (room)
+		{
+			case Rooms.Kitchen:
+				this.duringMurder[activity] = ( (Kitchen.Generic_Activities) rand.Next(0, Kitchen.Num_Activities) ).ToString(); 
+				break;
+			case Rooms.Living_Room:
+				this.duringMurder[activity] = ( (Living_Room.Generic_Activities) rand.Next(0, Living_Room.Num_Activities) ).ToString(); 
+				break;
+			case Rooms.Bedroom:
+				this.duringMurder[activity] = ( (Bedroom.Generic_Activities) rand.Next(0, Bedroom.Num_Activities) ).ToString(); 
+				break;
+			case Rooms.Garden:
+				this.duringMurder[activity] = ( (Garden.Generic_Activities) rand.Next(0, Garden.Num_Activities) ).ToString(); 
+				break;
+			case Rooms.Toilet:
+				this.duringMurder[activity] = ( (Toilet.Generic_Activities) rand.Next(0, Toilet.Num_Activities) ).ToString(); 
+				break;
+			default: break;
+		}
+		
 	}
 	
 	/*generates befMurder List*/
