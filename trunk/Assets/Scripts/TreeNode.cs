@@ -71,7 +71,7 @@ public class TreeNode : MonoBehaviour {
 		return "0";
 	}
 
-    public string weaponTriggered(string weapon)
+   /* public string weaponTriggered(string weapon)
     {
         for (int i = 0; i < weaponList.Count; i++)
         {
@@ -83,7 +83,7 @@ public class TreeNode : MonoBehaviour {
             }
         }
         return "";
-    }
+    }*/
 	
 	/*public QnNode getStartNode(int num) {
 		return (QnNode)startNode[num];
@@ -135,17 +135,31 @@ public class TreeNode : MonoBehaviour {
 		for (int i=0;i<currNode.Count;i++) {
 			if (((QnNode)currNode[i]).getPerson() == person) {
 				((QnNode)currNode[i]).addNextNodes(newNode);
+				Debug.Log(((QnNode)currNode[i]).getQn());
+			}
+		}
+		
+		for (int i=0;i<startNode.Count;i++) {
+			Debug.Log(((QnNode)startNode[i]).getQn()+i);
+			Debug.Log(((QnNode)startNode[i]).getAnswer()+i);
+			if (((QnNode)startNode[i]).getNumOfNextNodes() != 0) {
+				for (int j=0;j<((QnNode)startNode[i]).getNumOfNextNodes();j++) {
+					QnNode something = new QnNode();
+					something = ((QnNode)startNode[i]).getNextNode(j);
+					Debug.Log(something.getQn());
+					Debug.Log("hello");
+				}
 			}
 		}
 	}
 	
-    public void addWeapon(string weapon, string reply)
+    /*public void addWeapon(string weapon, string reply)
     {
         WeaponNode temp = new WeaponNode();
         temp.setWeapon(weapon);
         temp.setReply(reply);
         weaponList.Add(temp);
-    }
+    }*/
 	
 	/*public void checker() {
 		/*for (int i=0;i<1;i++) {
