@@ -24,22 +24,22 @@ ModelImporter:
     clips:
       idle:
         firstFrame: 2
-        lastFrame: 62
-        loop: 1
+        lastFrame: 72
+        loop: 0
         wrapMode: 2
       run:
-        firstFrame: 84
-        lastFrame: 116
-        loop: 1
+        firstFrame: 75
+        lastFrame: 100
+        loop: 0
         wrapMode: 2
       walk:
-        firstFrame: 84
-        lastFrame: 116
-        loop: 1
+        firstFrame: 101
+        lastFrame: 141
+        loop: 0
         wrapMode: 2
       jump_pose:
-        firstFrame: 118
-        lastFrame: 123
+        firstFrame: 142
+        lastFrame: 168
         loop: 0
         wrapMode: 0
   nodeInfo:
