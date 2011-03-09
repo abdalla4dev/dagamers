@@ -77,6 +77,8 @@ public class GenerateTimeline : MonoBehaviour
 	public Rooms scissorsLoc;
 	public Rooms spannerLoc;
 	
+	public AI AIlink;
+	
 	void Start() {
 		rand= new System.Random();
 		int murderer = genMurderer();
@@ -142,7 +144,7 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[redHerringIndex].createDurMurderWitness(timeline[suspect1], suspect1, redHerringIndex); //redherring and suspect1 are alibis.
 		timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
 		
-		placeWeapons(redHerringIndex, murderer);
+		//placeWeapons(redHerringIndex, murderer);
 		
 		for(int i=0; i<timeline.Count; i++)
 		{
@@ -175,6 +177,7 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log(deathTime + " " + bodyFound);
 				
 		PrintMethod();
+		AI.tree = AI.qnGenerator();
 	}
 	
 	// Generate a murderer x from Suspects
@@ -246,7 +249,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	
 	
-	void placeWeapons(int RH, int M)
+	/*void placeWeapons(int RH, int M)
 	{
 		List<Vector3> positions = new List<Vector3>();
 		List<Rooms> place = new List<Rooms>();
@@ -403,7 +406,7 @@ public class GenerateTimeline : MonoBehaviour
 			}
 		}
 		
-	}
+	}*/
 	
 	/*METHODS TO GET RESULTS*/
 	/*FOR INDIVIDUALS*/

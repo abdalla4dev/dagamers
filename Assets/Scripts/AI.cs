@@ -12,13 +12,10 @@ housemaid = 'h'
 
 public class AI : MonoBehaviour{
 	
-	public TreeNode tree;
-	public GenerateTimeline GTlink;
-	//private XmlTextReader textReader;
+	public static TreeNode tree = new TreeNode();
 	
 	// Use this for initialization
 	void  Start() {
-		tree = qnGenerator();
 	}
 	
 	// Update is called once per frame
@@ -27,7 +24,7 @@ public class AI : MonoBehaviour{
 	}
 	
 	// this function generate questions based on  the timeline generated
-	public TreeNode qnGenerator() {
+	public static TreeNode qnGenerator() {
 		
 		TreeNode temp = new TreeNode();
 		string question;
@@ -66,7 +63,7 @@ public class AI : MonoBehaviour{
 				}
 			}
 			if (i == 4) {
-				for (int j=0;j<4;j++) {
+				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "What are you doing before" + GenerateTimeline.deathTime + "?";
 					answer = "I was" + GenerateTimeline.timeline[i].getBefMurder(1) + ".";
 					temp.setQnNode(question,answer,j,false,true,'n',unlocker);
@@ -75,21 +72,21 @@ public class AI : MonoBehaviour{
 				oldQn = temp.getNumOfCurrNodes();
 			}
 			if (i == 5) {
-				for (int j=0;j<4;j++) {
+				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Where are you" + GenerateTimeline.timeline[i].getBefMurder(1) + "before" + GenerateTimeline.deathTime + "?";
 					answer = "I was at" + GenerateTimeline.timeline[i].getBefMurder(0) + ".";
 					tree.setQnNode(question,answer,j,false,false,'n',i);
 				}
 			}
 			if (i == 6) {
-				for (int j=0;j<4;j++) {
+				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "For how long?";
 					answer = "1 hr.";
 					tree.setQnNode(question,answer,j,false,false,'n',i);
 				}
 			}
 			if (i == 7) {
-				for (int j=0;j<4;j++) {
+				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Can anybody be your alibi?";
 					answer = "Yes, " + GenerateTimeline.timeline[i].getBefMurder(2) + ".";
 					tree.setQnNode(question,answer,j,false,true,'n',i);
@@ -98,7 +95,7 @@ public class AI : MonoBehaviour{
 				oldQn = temp.getNumOfCurrNodes();
 			}
 			if (i == 8) {
-				for (int j=0;j<4;j++) {
+				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Did you see " +  GenerateTimeline.timeline[i].getBefMurder(2) + " at " + GenerateTimeline.deathTime + "?";
 					answer = "Yes";
 					tree.setQnNode(question,answer,j,false,true,'n',0);
