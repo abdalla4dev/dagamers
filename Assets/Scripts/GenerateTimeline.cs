@@ -70,11 +70,11 @@ public class GenerateTimeline : MonoBehaviour
 	public Transform scissors;
 	public Transform spanner;
 	
-	public Rooms knifeLoc;
-	public Rooms screwdriverLoc;
-	public Rooms towelLoc;
-	public Rooms scissorsLoc;
-	public Rooms spannerLoc;
+	public static Rooms knifeLoc;
+	public static Rooms screwdriverLoc;
+	public static Rooms towelLoc;
+	public static Rooms scissorsLoc;
+	public static Rooms spannerLoc;
 	
 	System.Random rand;
 	
