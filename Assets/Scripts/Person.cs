@@ -219,10 +219,10 @@ public class Person {
 			rand = new System.Random();
 		//shift witness to be in the same room as "this"
 		
-		if(witness.isFoundBody() && this.duringMurder[place]!=GenerateTimeline.murderTruth.duringMurder[place])
+		/*if(witness.isFoundBody() && this.duringMurder[place]!=GenerateTimeline.murderTruth.duringMurder[place])
 		{
 			witness.foundBody = false;
-		}
+		}*/
 		witness.duringMurder[place] = this.duringMurder[place];
 		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.duringMurder[place]);
 		switch (room)
@@ -248,6 +248,8 @@ public class Person {
 		//set witness.duringMurder[alibi]=this.Suspect and this.duringMurder[alibi]=witness.Suspect
 		//but name is not stored in Person
 		this.duringMurder[alibi] = Enum.GetName(typeof(Suspects), wIdx);
+		if(this.isMurderer())
+			return;
 		witness.duringMurder[alibi] = Enum.GetName(typeof(Suspects), ownIdx);
 	}
 	
