@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections; 
 using MurderData;
+using System.Collections.Generic;
 
 public class QnNode {
 	
@@ -11,10 +12,10 @@ public class QnNode {
 	private int person; // for which person
 	private bool unlockedNode; // is this unlocked?
 	
-	private ArrayList nextNodesList = new ArrayList(); // link to the next nodes that this qn can unlock
-	private QnNode nextQn;
+	private List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
+	private QnNode nextQn = new QnNode();
 	
-	void Start() {
+	public QnNode() {
 	}
 	
 	public string getQn() {
@@ -43,7 +44,7 @@ public class QnNode {
 	
 	public QnNode getNextNode(int i) {
 		QnNode temp = new QnNode();
-		temp = (QnNode)nextNodesList[i];
+		temp = nextNodesList[i];
 		return temp;
 	}
 	
@@ -52,7 +53,7 @@ public class QnNode {
 	}
 
 	public void setAnswer(string temp) {
-		answer= temp;
+		answer = temp;
 	}
 	
 	public void setPerson(int temp) {
@@ -60,7 +61,7 @@ public class QnNode {
 	}
 	
 	public void setUnlockedNode(bool temp) {
-		unlockedNode= temp; 
+		unlockedNode = temp; 
 	}
 	
 	public void addNextNodes(QnNode temp) {
@@ -68,7 +69,6 @@ public class QnNode {
 	}
 	
 	public void setNextQn(QnNode temp) {
-		nextQn = new QnNode();
 		nextQn = temp;
 	}
 	
@@ -77,7 +77,7 @@ public class QnNode {
 		QnNode temp = new QnNode();
 		
 		for (int i=0;i<nextNodesList.Count; i++) {
-			temp = (QnNode)nextNodesList[i];
+			temp = nextNodesList[i];
 			temp.setUnlockedNode(true);
 		}
 	}
