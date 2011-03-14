@@ -39,12 +39,10 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(question,"No, I did not.",j,true,false,'s',0);
 					}
 				}
-				//oldQn = temp.getNumOfCurrNodes();
-				//Debug.Log(oldQn);
-				//temp.BFS();
-				//temp.DFS();
+				oldQn = temp.getNumOfCurrNodes();
+				Debug.Log(oldQn);
 			}
-			/*if (i == 2) { // question 2
+			if (i == 2) { // question 2
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "When did you last see the victim?";
 					answer = "I last saw him at " + Convert.ToString(GenerateTimeline.deathTime-1) + ".";
@@ -53,7 +51,7 @@ public class AI : MonoBehaviour{
 				temp.BFS();
 				temp.DFS();
 			}
-			if (i == 3) { // question three
+			/*if (i == 3) { // question three
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Where did you last see the victim?";
 					answer = "I last saw him at" + GenerateTimeline.victim.getBefMurder(0) + ".";
