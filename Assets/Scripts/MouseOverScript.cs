@@ -7,10 +7,11 @@ public class MouseOverScript : MonoBehaviour {
 	public Transform targetObject;
 	public TreeNode tree;
 	public char suspect = 'd'; // to integrate with treenode.cs
+	public GUISkin customSkin;
 
 	
 	Color mouseOverColor = Color.yellow;
-	bool isSelected = false;
+	bool displayText = false;
 	bool withinBoundary = false;
 	bool actionKey = false;
 	Color[] originalColor; //array to store the original material color
@@ -48,12 +49,11 @@ public class MouseOverScript : MonoBehaviour {
 		//if user did not select the object
 		if(targetObject.name == "knife1" || targetObject.name == "scissors" || targetObject.name == "spanner1" || targetObject.name == "screwdriver" || targetObject.name == "towel"){
 			//if user did not select the object
-			if(isSelected == false){
 				//changes back to the original material upon mouse exit
 				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
 					targetObject.renderer.materials[i].color = originalColor[i];
 				}
-			}
+			
 		}
 	}
 	
@@ -65,11 +65,20 @@ public class MouseOverScript : MonoBehaviour {
 		withinBoundary = false;
 	}
 	
+	//upon movement, the gui text box will disappear
+	void TriggerToggle(){
+		if((Input.GetKeyDown(KeyCode.W)) || (Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.S)) || (Input.GetKeyDown(KeyCode.D))){
+			displayText = false;
+			actionKey = false;
+		}
+		
+	}
+	
 	void OnGUI() {
 		
 		//BUG is here
 		//action key is toggled every Left click , so it cannot click anything in the windows
-		if(withinBoundary == true && actionKey == true){
+		if(displayText){
 			
 			
 	//if (withinBoundary && Input.GetMouseButtonDown(0))	{	
@@ -116,23 +125,18 @@ public class MouseOverScript : MonoBehaviour {
 	void Update () {
 		screenPos = Camera.main.WorldToScreenPoint(targetObject.position + offset);
 		
-		if(Input.GetKeyDown(KeyCode.E)){
-			
-			if(withinBoundary == true){
-				actionKey = !actionKey;
-				
-				//~ if(actionKey){
-					//~ isSelected = true;
-				//~ }
-				//~ else{
-					//~ isSelected = false;
-				//~ }
+		
+		TriggerToggle();
+		
+		if(Input.GetMouseButtonDown(0)){
+			if(withinBoundary == true && actionKey == false){
+				actionKey = true;
+				displayText = true;
 			}
 		}
 		
 		if(!(withinBoundary)){
 			actionKey = false;
-			//isSelected = false;
 		}
 	}
 }
