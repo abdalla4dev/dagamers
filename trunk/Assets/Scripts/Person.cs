@@ -64,7 +64,6 @@ public class Person {
 		aftMurder.Add(s);
 		fakeAlibi = true;
 		murderer = true;
-		foundBody = toCopy.foundBody;
 		/*befMurder = toCopy.getBefMurder();
 		duringMurder = toCopy.getMurder();
 		aftMurder = toCopy.getAftMurder();*/
@@ -101,31 +100,15 @@ public class Person {
 		return foundBody;
 	}
 	
-	public void setFoundBody(bool fb)
-	{
-		foundBody = fb;
-	}
-	
 	public bool isRedHerring()
 	{
 		return redHerring;
-	}
-	
-	public void setRedHerring(bool rh)
-	{
-		redHerring = rh;
 	}
 	
 	public Weapons getRHWeap()
 	{
 		return rhWeap;
 	}
-	
-	public void setRHWeap(Weapons w)
-	{
-		rhWeap = w;
-	}
-	
 	/*accessors and mutators for befMurder*/
 	public List<String> getBefMurder() //returns whole list.
 	{
@@ -219,10 +202,10 @@ public class Person {
 			rand = new System.Random();
 		//shift witness to be in the same room as "this"
 		
-		/*if(witness.isFoundBody() && this.duringMurder[place]!=GenerateTimeline.murderTruth.duringMurder[place])
+		if(witness.isFoundBody() && this.duringMurder[place]!=GenerateTimeline.murderTruth.duringMurder[place])
 		{
 			witness.foundBody = false;
-		}*/
+		}
 		witness.duringMurder[place] = this.duringMurder[place];
 		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.duringMurder[place]);
 		switch (room)
@@ -248,8 +231,6 @@ public class Person {
 		//set witness.duringMurder[alibi]=this.Suspect and this.duringMurder[alibi]=witness.Suspect
 		//but name is not stored in Person
 		this.duringMurder[alibi] = Enum.GetName(typeof(Suspects), wIdx);
-		if(this.isMurderer())
-			return;
 		witness.duringMurder[alibi] = Enum.GetName(typeof(Suspects), ownIdx);
 	}
 	
@@ -294,40 +275,22 @@ public class Person {
 		befMurder.Add(room.ToString());
 		 
 		if(murderer) //if murderer get activity for murder weap in chosen room
-		{
 			befMurder.Add(getWeapActivity(room, GenerateTimeline.murderWeap));
-			//befMurder.Add("null"); //alibi
-			//return;
-		}
-	 	int test = rand.Next(2);
-		//Debug.Log("TEST" + test + " " + " timeline count = " + GenerateTimeline.timeline.Count);
-		if(!murdered && !murderer && !GenerateTimeline.redHerring && (test==0  || GenerateTimeline.timeline.Count==3))  //generate red herring. not sure where supposed to generate so comment out first.
-	  	 {
-			
-			Debug.Log("NO RH " + GenerateTimeline.timeline.Count);
-			
-				
-				Weapons weapon;
-		  		 do
-		  		 {
-		  			 weapon = (Weapons) rand.Next(0,Globals.numWeapons);
-		  		 }while (weapon==GenerateTimeline.murderWeap);
-				
-				rhWeap = weapon;
-		  		 
-		  		 befMurder.Add(getWeapActivity(room,weapon));
-		  		 GenerateTimeline.redHerring = true;
-		  		 redHerring = true;
-				/*befMurder.Add("null"); //alibi*/
-				//Debug.Log("RH " + redHerring);
-				//Debug.Log(befMurder[activity]);
-			//return;*/
-			
-	  	}
-	 
+	/* 	 else if((rand.Next(2)/100)==0 && !GenerateTimeline.redHerring)  //generate red herring. not sure where supposed to generate so comment out first.
+	 * 	 {
+	 * 		 int weapon;
+	 * 		 do
+	 * 		 {
+	 * 			 weapon = rand.Next(GenerateTimeline.numWeapons);
+	 * 		 }while (weapon==GenerateTimeline.murderWeap);
+	 * 		 
+	 * 		 befMurder.Add(getWeapActivity(roomIndex,weapon));
+	 * 		 GenerateTimeline.redHerring = true;
+	 * 		 redHerring = true;
+	 * 	 }
+	 */
 		else	//otherwise find generic activity for chosen room
 		{
-			Debug.Log("NOT RH GIVE ACT");
 			 switch(room)
 			 {
 				 case Rooms.Kitchen:
@@ -350,9 +313,6 @@ public class Person {
 					break;
 			 }
 		}
-		
-		if(redHerring)
-		Debug.Log(befMurder[place] + " " + befMurder[activity]);
 		
 		befMurder.Add("null"); //alibi
 		
@@ -386,7 +346,7 @@ public class Person {
 			return;
 		}
 		
-		/*if((rand.Next(2)/100)==0 && !GenerateTimeline.redHerring) //generate red herring.
+		if((rand.Next(2)/100)==0 && !GenerateTimeline.redHerring) //generate red herring.
 		{
 			duringMurder.Add(room.ToString());
 			Weapons weapon;
@@ -404,24 +364,16 @@ public class Person {
 			for(int i=0; i<duringMurder.Count; i++)
 				Debug.Log(i + " duringMurder redHerring " + duringMurder[i]);
 			return;
-		} */
-		
-		if(redHerring)
-		{
-			duringMurder.Add(room.ToString());
-			duringMurder.Add(getWeapActivity(room, rhWeap));
-			duringMurder.Add("null"); //alibi.
-			return;
-		}
+		} 
 		else
 		{
 			duringMurder.Add(room.ToString());	//normal, if neither murderer nor murdered.
-			/*if(duringMurder[place]==GenerateTimeline.victim.duringMurder[place])	//if was in the same room as dead body then found body.
+			if(duringMurder[place]==GenerateTimeline.victim.duringMurder[place])	//if was in the same room as dead body then found body.
 			{
 				foundBody = true;
 				/*duringMurder.Add("Found_Body"); //if found body was an activity.
-				return;
-			}*/
+				return;*/
+			}
 			
 			//find generic activity for chosen room
 			 switch(room)
@@ -448,8 +400,8 @@ public class Person {
 			 duringMurder.Add("null"); //alibi
 			
 			 //debugging purposes.
-			/*for(int i=0; i<duringMurder.Count; i++)
-				Debug.Log(i + " duringMurder " + duringMurder[i]);*/
+			for(int i=0; i<duringMurder.Count; i++)
+				Debug.Log(i + " duringMurder " + duringMurder[i]);
 		 }
 	} // end genMurder()
 	
@@ -462,28 +414,11 @@ public class Person {
 		
 		//randomise room
 		Rooms room = (Rooms) rand.Next(0, Globals.numRooms);
-				
-		if(room.ToString() == GenerateTimeline.victim.duringMurder[place])
-		{
-			foundBody = true;
-			GenerateTimeline.someoneFoundBody = true;
-		}
-		
-		Debug.Log("FIND BODY " + foundBody + " " + GenerateTimeline.timeline.Count + " " +GenerateTimeline.someoneFoundBody);
-		if(GenerateTimeline.timeline.Count==3 && !GenerateTimeline.someoneFoundBody)
-		{
-			room = (Rooms) Enum.Parse(typeof(Rooms),GenerateTimeline.victim.duringMurder[place]);
-			foundBody = true;
-			GenerateTimeline.someoneFoundBody = true;
-		}
-		
 		aftMurder.Add(room.ToString());
 		
 		if(murderer) //murderer has activity in chosen room with murder weap. NOTE: can change cos i'm not sure if supposed to be this.
 		{
 			aftMurder.Add(getWeapActivity(room, GenerateTimeline.murderWeap));
-			aftMurder.Add("null"); //alibi.
-			return;
 		}
 		/*else if((rand.Next(2)/100)==0 && !GenerateTimeline.redHerring)  //generate red herring. not sure where supposed to generate so comment out first.
 		 {
@@ -530,12 +465,12 @@ public class Person {
 		 aftMurder.Add("null"); //alibi
 		 
 		 //debugging purposes.
-		/* for(int i=0; i<aftMurder.Count; i++)
-		Debug.Log(i + " aftMurder " + aftMurder[i]);*/
+		 for(int i=0; i<aftMurder.Count; i++)
+		Debug.Log(i + " aftMurder " + aftMurder[i]);
 	}
 	
 	/*method to get the activity that's linked to a certain weapon and room*/
-	public String getWeapActivity(Rooms room, Weapons weapon)
+	String getWeapActivity(Rooms room, Weapons weapon)
 	{
 		String s="";
 		

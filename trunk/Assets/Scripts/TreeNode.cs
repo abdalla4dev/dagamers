@@ -1,6 +1,7 @@
 using UnityEngine; 
 using System.Collections;
 using MurderData;
+using System.Collections.Generic;
 
 /*
 mother = '0'
@@ -9,27 +10,21 @@ son = '2'
 housemaid = '3'
 */
 
-public class TreeNode : MonoBehaviour {
+public class TreeNode {
 	
 	//num of suspects
 	int numOfSus;
 	
 	//start node and current node of the tree
-	ArrayList startNode = new ArrayList();
-	ArrayList currNode = new ArrayList();
-	ArrayList currQn = new ArrayList();
-	ArrayList weaponList = new ArrayList();
-
-	// Use this for initialization
-	void  Start() {
+	private List<QnNode> startNode = new List<QnNode>();
+	private List<QnNode> currNode = new List<QnNode>();
+	private List<QnNode> currQn = new List<QnNode>(); //stores the currQn down the list of Qn
+	//ArrayList weaponList = new ArrayList();
+	
+	public TreeNode() {
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	//JESSICA THE TWO FUNCTIONS TT IS IMPORTANT IS THE TWO FUNCTION BELOW
-	public ArrayList HumanTriggered(char suspect) {// function return correct qns to be printed out
+	public ArrayList retreiveQn(int suspect) {// function return correct qns to be printed out
 		
 		QnNode temp = new QnNode();
 		ArrayList qnPrint = new ArrayList();
@@ -52,7 +47,7 @@ public class TreeNode : MonoBehaviour {
 		return qnPrint; // return the Arraylist of qns to be printed
 	}
 	
-	public string ClickingTriggered(char suspect, string qn) {//update boolean function when clicked on a question
+	public string retreiveAnswer(int suspect, string qn) {//update boolean function when clicked on a question
 		QnNode temp = new QnNode();
 
 		for (int i=0;i<4;i++) {
@@ -61,7 +56,7 @@ public class TreeNode : MonoBehaviour {
 				while (temp.getNextQn() != null) { 
 					if (temp.getQn() == qn) { // check for the correct qn
 						temp.changeBooleanValues(); // unlocked the values
-						return temp.getAnswer();
+						return temp.getAnswer(); // return the answer
 					}
 				}
 				break;
@@ -103,55 +98,42 @@ public class TreeNode : MonoBehaviour {
 	
 	public void removeOldNodes(int num) {
 		for (int i=0;i<num;i++) {
-			currNode.Remove(0);
+			currNode.RemoveAt(0);
 		}
 	}
-	
+	// set a QnNode according to the information given 
 	public void setQnNode(string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int person) {
-		QnNode newNode = new QnNode();
-		newNode.setQn(tempQn);
+		
+		QnNode temp = new QnNode();
+		/*newNode.setQn(tempQn); // add the info into the newNode
 		newNode.setAnswer(tempAns);
 		newNode.setPerson(sus);
 		newNode.setUnlockedNode(unlocked);
 		
-		if (node == 's') {
+		if (node == 's') { // if newNode is the start of the TreeNode, add to startNode
 			startNode.Add(newNode);
 			currQn.Add(newNode);
 		}
-		else {
-			print(currQn.Count);
+		else {// else, will convert the currQn to the one now
+			Debug.Log(currQn.Count);
 			for (int i=0; i<currQn.Count;i++) {
-				if (sus == ((QnNode)currQn[i]).getPerson()) {
-					((QnNode)currQn[i]).setNextQn(newNode);
-					currQn.Remove(i);
-					currQn.Add(((QnNode)currQn[i]).getNextQn());
+				if (sus == currQn[i].getPerson()) {
+					//currQn[i].setNextQn(newNode);
+					//currQn.RemoveAt(i);
+					//currQn.Insert(i,newNode);
 				}
 			}
 		}
 		
-		if (unlocker) {
+		if (unlocker) { // if this question unlock anything, will add to the currNode
 			currNode.Add(newNode);
 		}
 		
-		for (int i=0;i<currNode.Count;i++) {
-			if (((QnNode)currNode[i]).getPerson() == person) {
-				((QnNode)currNode[i]).addNextNodes(newNode);
-				Debug.Log(((QnNode)currNode[i]).getQn());
+		for (int i=0;i<currNode.Count;i++) { // int person will tell us to which currNode we need to attach the newNode to  
+			if (currNode[i].getPerson() == person) {
+				currNode[i].addNextNodes(newNode);
 			}
-		}
-		
-		for (int i=0;i<startNode.Count;i++) {
-			Debug.Log(((QnNode)startNode[i]).getQn()+i);
-			Debug.Log(((QnNode)startNode[i]).getAnswer()+i);
-			if (((QnNode)startNode[i]).getNumOfNextNodes() != 0) {
-				for (int j=0;j<((QnNode)startNode[i]).getNumOfNextNodes();j++) {
-					QnNode something = new QnNode();
-					something = ((QnNode)startNode[i]).getNextNode(j);
-					Debug.Log(something.getQn());
-					Debug.Log("hello");
-				}
-			}
-		}
+		}*/
 	}
 	
     /*public void addWeapon(string weapon, string reply)
@@ -193,52 +175,44 @@ public class TreeNode : MonoBehaviour {
 		float timeProgress = (playTime/totalTime);
 		float totalProgress = (qnProgress/timeProgress)*100;
 		return totalProgress;
-	}
-	
-	public int BFS(QnNode start) {
-		int unlocked=0;
-		Queue questions = new Queue();
-		QnNode curr = new QnNode();
-		
-		questions.Enqueue(start);
-		while (questions.Count>0)
-		{
-			curr = (QnNode) questions.Dequeue();
-			if(curr.getNumOfNextNodes()>0)
-			{
-				ArrayList next = new ArrayList();
-				next = curr.getNextNodeList();
-				for(int i=0; i<next.Count; i++)
-				{
-					questions.Enqueue((QnNode)next[i]);
-				}
-			}
-			printIt(curr);
-			if(curr.getUnlockedNode())
-				unlocked++;
-		}
-		return unlocked;		
-	}
-	
-	public int DFS(QnNode start)
-	{
-		int unlocked=0;
-		printIt(start);
-		if(start.getUnlockedNode())
-			unlocked++;
-		if(start.getNumOfNextNodes()>0)
-		{
-			ArrayList next = new ArrayList();
-			next = start.getNextNodeList();
-			for(int i=0; i<next.Count; i++)
-			{
-				DFS((QnNode)next[i]);
-			}
-		}
-			return unlocked;
-	}
-	
-	public void printIt(QnNode node) {
-		Debug.Log(node.getPerson() + " " + node.getQn() + " " + node.getAnswer());
 	}*/
+	
+	public void DFS() {
+		
+		QnNode temp = new QnNode();
+		
+		for(int i=0;i<startNode.Count;i++) {
+			printNode(startNode[i]);
+			while (startNode[i].getNextQn() != null) {
+				temp = startNode[i].getNextQn();
+				printNode(temp);
+			}
+		}
+	}
+	
+	public void BFS()
+	{
+		List<QnNode> BFS = new List<QnNode>();
+		int oldNodes = 0;
+		for (int i=0; i<startNode.Count;i++) {
+			BFS.Add(startNode[i]);
+		}
+		while (BFS.Count > 0) {
+			if (BFS[0].getNumOfNextNodes() == 0) {
+				printNode(BFS[0]);
+				BFS.RemoveAt(0);
+			}
+			else if (BFS[0].getNumOfNextNodes() > 0) {
+				for (int i=0;i<BFS[0].getNumOfNextNodes();i++) {
+					BFS.Add(BFS[0].getNextNode(i));
+				}
+				printNode(BFS[0]);
+				BFS.RemoveAt(0);
+			}
+		}
+	}
+	
+	public void printNode(QnNode nodePrinted) {
+		Debug.Log(nodePrinted.getQn() + " " + nodePrinted.getAnswer() + " " + nodePrinted.getPerson());
+	}
 }

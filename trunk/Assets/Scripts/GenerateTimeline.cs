@@ -55,13 +55,11 @@ public class GenerateTimeline : MonoBehaviour
 	
 	public static Person victim;
 	public static Person murderTruth;
-	Person fAlibi;
 	public static Weapons murderWeap;
 	public static double deathTime; //24 hr clock. when murder was committed
 	public static double bodyFound; //24 hr clock. when body was found.
 	
 	public static bool redHerring = false; //only 1 redHerring for now, so this is to keep track if there alr is one.
-	public static bool someoneFoundBody = false;
 	
 	public static List<Person> timeline = new List<Person>();
 	
@@ -71,11 +69,11 @@ public class GenerateTimeline : MonoBehaviour
 	public Transform scissors;
 	public Transform spanner;
 	
-	public static Rooms knifeLoc;
-	public static Rooms screwdriverLoc;
-	public static Rooms towelLoc;
-	public static Rooms scissorsLoc;
-	public static Rooms spannerLoc;
+	public Rooms knifeLoc;
+	public Rooms screwdriverLoc;
+	public Rooms towelLoc;
+	public Rooms scissorsLoc;
+	public Rooms spannerLoc;
 	
 	System.Random rand;
 	
@@ -90,6 +88,7 @@ public class GenerateTimeline : MonoBehaviour
 		victim = new Person(!guilty, murdered);
 		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer) + " weapon " + murderWeap.ToString());
 		murderTruth = new Person(guilty, !murdered);
+		Person fAlibi = genFakeAlibi();
 		deathTime = rand.Next(earliestDeath, latestDeath);
 		bodyFound = genBodyFoundTime();
 		
@@ -97,7 +96,6 @@ public class GenerateTimeline : MonoBehaviour
 		{
 			if(i==murderer)
 			{
-				fAlibi = genFakeAlibi();
 				timeline.Add(fAlibi);
 			}
 			else
@@ -121,75 +119,41 @@ public class GenerateTimeline : MonoBehaviour
 		//fAlibi.createDurMurderWitness(timeline[3]);
 		timeline[0].createDurMurderWitness(timeline[3]);*/
 		
-		int redHerringIndex;//, suspect1, suspect2;
+		int redHerringIndex, suspect1, suspect2;
 		redHerringIndex = -1;
-		//suspect1 = -1;
-		//suspect2 = -1;
+		suspect1 = -1;
+		suspect2 = -1;
 		
-		List<int> innocents = new List<int>();
 		for(int i=0; i<timeline.Count; i++)
 		{
-			if(timeline[i].isFoundBody())
-				Debug.Log("FOUND B " + Enum.GetName(typeof(Suspects),i));
 			if(timeline[i].isRedHerring())
 				redHerringIndex = i;
 			else if(timeline[i].isMurderer())
 				continue;
-			else
-				innocents.Add(i);
+			else if(suspect1==-1)
+				suspect1 = i;
+			else 
+				suspect2=i;
 		}
-		Debug.Log("redherring " + timeline[redHerringIndex].isMurderer() + timeline[redHerringIndex].isRedHerring() + Enum.GetName(typeof(Suspects),redHerringIndex) + " " + redHerringIndex);
-		Debug.Log("suspect1 "  + timeline[innocents[0]].isMurderer() + timeline[innocents[0]].isRedHerring() + Enum.GetName(typeof(Suspects),innocents[0]) + " " + innocents[0]);
-		Debug.Log("suspect2 " + timeline[innocents[1]].isMurderer() + timeline[innocents[1]].isRedHerring() + Enum.GetName(typeof(Suspects),innocents[1]) + " " + innocents[1]);
-		Debug.Log("murderer " + timeline[murderer].isMurderer() + timeline[murderer].isRedHerring() + Enum.GetName(typeof(Suspects),murderer) + " " + murderer);
-		
-		int m = rand.Next(2);
-		int n;
-		if(m==0)
-			n = 1;
-		else
-			n = 0;
-		
-		fAlibi.createBefMurderWitness(timeline[innocents[m]], innocents[m], murderer);
-		timeline[redHerringIndex].createBefMurderWitness(timeline[innocents[n]], innocents[n], redHerringIndex);
-		
-		m = rand.Next(2);
-		if(m==0)
-			n = 1;
-		else
-			n = 0;
-		
-		fAlibi.createDurMurderWitness(timeline[innocents[m]], innocents[m], murderer);
-		timeline[redHerringIndex].createDurMurderWitness(timeline[innocents[n]], innocents[n], redHerringIndex);
-		
-		for(int i=0; i<timeline.Count; i++)
-		{
-			if(timeline[i].getAftMurder(Person.alibi)=="null")
-				for(int j=0; j<timeline.Count; j++)
-				{
-					if(j!=i && timeline[i].getAftMurder(Person.place)==timeline[j].getAftMurder(Person.place))
-					{
-						timeline[i].setAftMurder(Enum.GetName(typeof(Suspects),j), Person.alibi);
-						timeline[j].setAftMurder(Enum.GetName(typeof(Suspects),i), Person.alibi);
-					}						
-				}
-		}
-		
-		/*fAlibi.createBefMurderWitness(timeline[redHerringIndex], redHerringIndex, murderer); //murderer and redherring are alibis. (IF NO ALIBI USE -1)
+		Debug.Log("redherring " + Enum.GetName(typeof(Suspects),redHerringIndex) + " " + redHerringIndex);
+		Debug.Log("suspect1 " + Enum.GetName(typeof(Suspects),suspect1) + " " + suspect1);
+		Debug.Log("suspect2 " + Enum.GetName(typeof(Suspects),suspect2) + " " + suspect2);
+		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer) + " " + murderer + timeline[murderer].isMurderer());
+		fAlibi.createBefMurderWitness(timeline[redHerringIndex], redHerringIndex, murderer); //murderer and redherring are alibis. (IF NO ALIBI USE -1)
 		timeline[suspect1].createBefMurderWitness(timeline[suspect2], suspect2, suspect1); //suspect1 and suspect2 are each other's alibi.
 		timeline[redHerringIndex].createDurMurderWitness(timeline[suspect1], suspect1, redHerringIndex); //redherring and suspect1 are alibis.
 		
 		if(!timeline[suspect2].isFoundBody() && !timeline[suspect1].isFoundBody() && !timeline[redHerringIndex].isFoundBody())
 		{
 			timeline[suspect2].makeFindBody(murderTruth);
-		}*/
+		}
 		//else
 		//	timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
 		
 		
 		//placeWeapons(redHerringIndex, murderer);
 		
-		/*for(int i=0; i<timeline.Count; i++)
+		for(int i=0; i<timeline.Count; i++)
 		{
 			if(timeline[i].getAftMurder(Person.alibi)=="null")
 				for(int j=0; j<timeline.Count; j++)
@@ -200,7 +164,7 @@ public class GenerateTimeline : MonoBehaviour
 						timeline[j].setAftMurder(Enum.GetName(typeof(Suspects),i), Person.alibi);
 					}						
 				}
-		}*/
+		}
 		
 		
 		//debugging purposes.
@@ -220,7 +184,7 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log(deathTime + " " + bodyFound);
 				
 		PrintMethod();
-		//AI.tree = AI.qnGenerator();
+		AI.tree = AI.qnGenerator();
 	}
 	
 	// Generate a murderer x from Suspects
@@ -274,43 +238,6 @@ public class GenerateTimeline : MonoBehaviour
 				break;
 		}
 		
-		Debug.Log("FAKE timeline count " + timeline.Count + " " + !someoneFoundBody);
-		if(!someoneFoundBody && timeline.Count==3)
-		{
-			Debug.Log("GOT IN");
-			Rooms room = (Rooms) Enum.Parse(typeof(Rooms), victim.getMurder(Person.place));
-			fake.setAftMurder(room.ToString(), Person.place);
-			murderTruth.setAftMurder(room.ToString(), Person.place);
-			
-			fake.setAftMurder(fake.getWeapActivity(room, murderWeap), Person.activity);
-			murderTruth.setAftMurder(murderTruth.getWeapActivity(room, murderWeap), Person.activity);
-			
-			fake.setFoundBody(true);
-			murderTruth.setFoundBody(true);
-			
-			someoneFoundBody = true;
-		}
-		
-		if(!redHerring && timeline.Count==3)
-		{
-			Debug.Log("GOT IN HERE");
-			Person p = timeline[rand.Next(3)];
-			
-			Rooms r1 = (Rooms) Enum.Parse(typeof(Rooms),p.getBefMurder(Person.place));
-			Rooms r2 = (Rooms) Enum.Parse(typeof(Rooms),p.getMurder(Person.place));
-			
-			Weapons rhWeap;
-			do
-	  		 {
-	  			 rhWeap = (Weapons) rand.Next(0,Globals.numWeapons);
-	  		 }while (rhWeap==murderWeap);
-			
-			p.setBefMurder(p.getWeapActivity(r1, rhWeap), Person.activity);
-			p.setMurder(p.getWeapActivity(r2, rhWeap), Person.activity);
-			
-			p.setRedHerring(true);
-			redHerring = true;
-		}
 		//debugging purposes.
 		for(int i=0; i<2; i++)
 		{Debug.Log(i + " fake " + fake.getBefMurder(i));
@@ -713,7 +640,7 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log("AFTMURDER");
 		for(int i=0; i<timeline.Count; i++)
 		{
-			Debug.Log(Enum.GetName(typeof(Suspects), i) + " found body " + timeline[i].isFoundBody() + " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer()  + " " + timeline[i].getAftMurder(Person.place) + " " + timeline[i].getAftMurder(Person.activity) + " " + timeline[i].getAftMurder(Person.alibi));
+			Debug.Log(Enum.GetName(typeof(Suspects), i) + " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer()  + " " + timeline[i].getAftMurder(Person.place) + " " + timeline[i].getAftMurder(Person.activity) + " " + timeline[i].getAftMurder(Person.alibi));
 		}
 		
 		Debug.Log("MURDER TRUTH");
