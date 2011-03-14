@@ -77,8 +77,6 @@ public class GenerateTimeline : MonoBehaviour
 	
 	System.Random rand;
 	
-	public AI AIlink;
-	
 	void Start() {
 		rand= new System.Random();
 		int murderer = genMurderer();
