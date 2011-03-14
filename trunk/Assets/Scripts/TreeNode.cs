@@ -104,8 +104,8 @@ public class TreeNode {
 	// set a QnNode according to the information given 
 	public void setQnNode(string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int person) {
 		
-		QnNode temp = new QnNode();
-		/*newNode.setQn(tempQn); // add the info into the newNode
+		QnNode newNode = new QnNode();
+		newNode.setQn(tempQn); // add the info into the newNode
 		newNode.setAnswer(tempAns);
 		newNode.setPerson(sus);
 		newNode.setUnlockedNode(unlocked);
@@ -119,8 +119,8 @@ public class TreeNode {
 			for (int i=0; i<currQn.Count;i++) {
 				if (sus == currQn[i].getPerson()) {
 					//currQn[i].setNextQn(newNode);
-					//currQn.RemoveAt(i);
-					//currQn.Insert(i,newNode);
+					currQn.RemoveAt(i);
+					currQn.Insert(i,newNode);
 				}
 			}
 		}
@@ -133,7 +133,7 @@ public class TreeNode {
 			if (currNode[i].getPerson() == person) {
 				currNode[i].addNextNodes(newNode);
 			}
-		}*/
+		}
 	}
 	
     /*public void addWeapon(string weapon, string reply)
