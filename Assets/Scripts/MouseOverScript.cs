@@ -76,6 +76,8 @@ public class MouseOverScript : MonoBehaviour {
 	
 	void OnGUI() {
 		
+		GUI.skin = customSkin;
+		
 		//BUG is here
 		//action key is toggled every Left click , so it cannot click anything in the windows
 		if(displayText){
