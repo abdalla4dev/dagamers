@@ -76,12 +76,7 @@ public class GenerateTimeline : MonoBehaviour
 	public Rooms spannerLoc;
 	
 	System.Random rand;
-	
-<<<<<<< .mine
-	//public AI AIlink;
-	
-=======
->>>>>>> .r133
+
 	void Start() {
 		rand= new System.Random();
 		int murderer = genMurderer();
