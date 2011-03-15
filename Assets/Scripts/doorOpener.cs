@@ -16,15 +16,7 @@ public class doorOpener : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.E)){
-			if(withinBoundary && !open){
-				iTween.RotateTo(door, iTween.Hash("y",doorRotation,"time",2.0));
-				open = true;
-			}
-			else if(withinBoundary && open)
-			{
-				iTween.RotateTo(door, iTween.Hash("y",90,"time",2.0));
-				open = false;
-			}
+			openDoor();
 		}
 	}
 	
@@ -34,5 +26,21 @@ public class doorOpener : MonoBehaviour {
 	
 	void OnTriggerExit(Collider other){
 		withinBoundary = false;
+	}
+	
+	void OnMouseDown(){
+		openDoor();
+	}
+	
+	void openDoor(){
+		if(withinBoundary && !open){
+			iTween.RotateTo(door, iTween.Hash("y",doorRotation,"time",2.0));
+			open = true;
+		}
+		else if(withinBoundary && open)
+		{
+			iTween.RotateTo(door, iTween.Hash("y",90,"time",2.0));
+			open = false;
+		}
 	}
 }
