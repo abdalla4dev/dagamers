@@ -34,7 +34,7 @@ public class TreeNode {
 						temp = temp.NextQn;
 					}
 				}
-				break;
+				//break;
 			}
 		}
 		return qnPrint; // return the Arraylist of qns to be printed
@@ -51,8 +51,11 @@ public class TreeNode {
 						temp.changeBooleanValues(); // unlocked the values
 						return temp.Ans; // return the answer
 					}
+					else {
+						temp = temp.NextQn;
+					}
 				}
-				break;
+				//break;
 			}
 		}
 		
