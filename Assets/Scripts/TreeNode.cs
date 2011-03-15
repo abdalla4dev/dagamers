@@ -12,7 +12,7 @@ public class TreeNode {
 	private List<QnNode> currNode = new List<QnNode>();
 	private List<QnNode> currQn = new List<QnNode>(); //stores the currQn down the list of Qn
 	private List<QnNode> nextCurrNode = new List<QnNode>();
-	//ArrayList weaponList = new ArrayList();
+	private List<WeaponNode> weaponList = new List<WeaponNode>();
 	
 	public TreeNode() {
 	}
@@ -59,7 +59,7 @@ public class TreeNode {
 		return "0";
 	}
 
-   /* public string weaponTriggered(string weapon)
+    public string weaponTriggered(string weapon)
     {
         for (int i = 0; i < weaponList.Count; i++)
         {
@@ -71,19 +71,11 @@ public class TreeNode {
             }
         }
         return "";
-    }*/
-	
-	/*public QnNode getStartNode(int num) {
-		return (QnNode)startNode[num];
-	}
+    }
 
     public WeaponNode getWeapon(int num) {
         return (WeaponNode)weaponList[num];
     }
-	
-	public void addStartNode(QnNode temp) {
-		startNode.Add(temp);		
-	}*/
 	
 	public int getNumOfCurrNodes() {
 		return currNode.Count;
@@ -142,13 +134,13 @@ public class TreeNode {
 		}*/
 	}
 	
-    /*public void addWeapon(string weapon, string reply)
+    public void addWeapon(string weapon, string reply)
     {
         WeaponNode temp = new WeaponNode();
         temp.setWeapon(weapon);
         temp.setReply(reply);
         weaponList.Add(temp);
-    }*/
+    }
 	
 	/*public void checker() {
 		/*for (int i=0;i<1;i++) {

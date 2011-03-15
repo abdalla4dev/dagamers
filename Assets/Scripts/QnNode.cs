@@ -11,16 +11,6 @@ public class QnNode {
 	protected List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
 	protected QnNode nextQuestion;
 	
-	/*public QnNode(QnNode temp){
-		qn = temp.getQn();
-		answer = temp.getAnswer();
-		person = temp.getPerson();
-		unlockedNode = temp.getUnlockedNode();
-		for(int i=0;i<temp.getNumOfNextNodes();i++){
-			nextNodesList.Add(temp.getNextNode(i));
-		}
-	}*/
-	
 	public QnNode(QnNode next) {
 		nextQuestion = null;
 	}
