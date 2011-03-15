@@ -1,42 +1,73 @@
-using UnityEngine;
 using System.Collections; 
-using MurderData;
 using System.Collections.Generic;
 
 public class QnNode {
 	
-	private string qn; // the questions and sub questions
-	private string answer; // answer to the questions
-	private int person; // for which person
-	private bool unlockedNode; // is this unlocked?
+	protected string question; // the questions and sub questions
+	protected string answer; // answer to the questions
+	protected int suspect; // for which person
+	protected bool unlockedNode; // is this unlocked?
 	
-	private List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
-	private QnNode nextQn;
+	protected List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
+	protected QnNode nextQuestion;
 	
-	public QnNode() {
+	/*public QnNode(QnNode temp){
+		qn = temp.getQn();
+		answer = temp.getAnswer();
+		person = temp.getPerson();
+		unlockedNode = temp.getUnlockedNode();
+		for(int i=0;i<temp.getNumOfNextNodes();i++){
+			nextNodesList.Add(temp.getNextNode(i));
+		}
+	}*/
+	
+	public QnNode(QnNode next) {
+		nextQuestion = null;
 	}
 	
-	public QnNode() {
+	public string Qn {
+		get {
+			return question;
+		}
+		set {
+			question = value;
+		}
 	}
 	
-	public string getQn() {
-		return qn;
+	public string Ans {
+		get {
+			return answer;
+		}
+		set {
+			answer = value;
+		}
 	}
 	
-	public string getAnswer() {
-		return answer;
+	public int Sus {
+		get {
+			return suspect;
+		}
+		set {
+			suspect= value;
+		}
 	}
 	
-	public int getPerson() {
-		return person;
+	public bool Unlocked {
+		get {
+			return unlockedNode;
+		}
+		set {
+			unlockedNode = value;
+		}
 	}
 	
-	public bool getUnlockedNode() {
-		return unlockedNode;
-	}
-	
-	public QnNode getNextQn() {
-		return nextQn;
+	public QnNode NextQn {
+		get {
+			return nextQuestion;
+		}
+		set {
+			nextQuestion = value;
+		}
 	}
 	
 	public int getNumOfNextNodes() {
@@ -44,42 +75,23 @@ public class QnNode {
 	}
 	
 	public QnNode getNextNode(int i) {
-		QnNode temp = new QnNode();
+		QnNode temp = new QnNode(null);
 		temp = nextNodesList[i];
 		return temp;
 	}
 	
-	public void setQn(string temp) {
-		qn = temp;
-	}
-
-	public void setAnswer(string temp) {
-		answer= temp;
-	}
-	
-	public void setPerson(int temp) {
-		person = temp;
-	}
-	
-	public void setUnlockedNode(bool temp) {
-		unlockedNode= temp; 
-	}
-	
-	public void addNextNodes(QnNode temp) {
+	public void addNextNode(QnNode temp) {
 		nextNodesList.Add(temp);
 	}
-	
-	public void setNextQn(QnNode temp) {
-		nextQn = QnNode(temp);
-	}
+
 	
 	public void changeBooleanValues() {
 		
-		QnNode temp = new QnNode();
+		QnNode temp = new QnNode(null);
 		
 		for (int i=0;i<nextNodesList.Count; i++) {
 			temp = nextNodesList[i];
-			temp.setUnlockedNode(true);
+			temp.Unlocked = true;
 		}
 	}
 }

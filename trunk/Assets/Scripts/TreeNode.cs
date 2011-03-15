@@ -1,14 +1,6 @@
-using UnityEngine; 
+using UnityEngine;
 using System.Collections;
-using MurderData;
 using System.Collections.Generic;
-
-/*
-mother = '0'
-daughter = '1'
-son = '2'
-housemaid = '3'
-*/
 
 public class TreeNode {
 	
@@ -19,6 +11,7 @@ public class TreeNode {
 	private List<QnNode> startNode = new List<QnNode>();
 	private List<QnNode> currNode = new List<QnNode>();
 	private List<QnNode> currQn = new List<QnNode>(); //stores the currQn down the list of Qn
+	private List<QnNode> nextCurrNode = new List<QnNode>();
 	//ArrayList weaponList = new ArrayList();
 	
 	public TreeNode() {
@@ -26,19 +19,19 @@ public class TreeNode {
 	
 	public ArrayList retreiveQn(int suspect) {// function return correct qns to be printed out
 		
-		QnNode temp = new QnNode();
+		QnNode temp = new QnNode(null);
 		ArrayList qnPrint = new ArrayList();
 		
 		for (int i=0;i<4;i++) { // search for the person first
-			temp = (QnNode)startNode[i];
-			if (temp.getPerson() == suspect) { // if got the correct person
-				while (temp.getNextQn() != null) { 
-					if (temp.getUnlockedNode() == true) { //check if question is unlocked
-						qnPrint.Add(temp.getQn()); // add unlocked qn to a Arraylist
-						temp = temp.getNextQn();
+			temp = startNode[i];
+			if (temp.Sus == suspect) { // if got the correct person
+				while (temp.NextQn != null) { 
+					if (temp.Unlocked == true) { //check if question is unlocked
+						qnPrint.Add(temp.Qn); // add unlocked qn to a Arraylist
+						temp = temp.NextQn;
 					}
 					else {
-						temp = temp.getNextQn();
+						temp = temp.NextQn;
 					}
 				}
 				break;
@@ -48,15 +41,15 @@ public class TreeNode {
 	}
 	
 	public string retreiveAnswer(int suspect, string qn) {//update boolean function when clicked on a question
-		QnNode temp = new QnNode();
+		QnNode temp = new QnNode(null);
 
 		for (int i=0;i<4;i++) {
-			temp = (QnNode)startNode[i];
-			if (temp.getPerson() == suspect) { // check for the person
-				while (temp.getNextQn() != null) { 
-					if (temp.getQn() == qn) { // check for the correct qn
+			temp = startNode[i];
+			if (temp.Sus == suspect) { // check for the person
+				while (temp.NextQn != null) { 
+					if (temp.Qn == qn) { // check for the correct qn
 						temp.changeBooleanValues(); // unlocked the values
-						return temp.getAnswer(); // return the answer
+						return temp.Ans; // return the answer
 					}
 				}
 				break;
@@ -102,38 +95,51 @@ public class TreeNode {
 		}
 	}
 	// set a QnNode according to the information given 
-	public void setQnNode(string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int person) {
+	public void setQnNode(string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int attachedPer) {
 		
-		QnNode newNode = new QnNode();
-		newNode.setQn(tempQn); // add the info into the newNode
-		newNode.setAnswer(tempAns);
-		newNode.setPerson(sus);
-		newNode.setUnlockedNode(unlocked);
-		
+		QnNode newNode = new QnNode(null);
+		newNode.Qn = tempQn; // add the info into the newNode
+		newNode.Ans = tempAns;
+		newNode.Sus = sus;
+		newNode.Unlocked = unlocked;
 		if (node == 's') { // if newNode is the start of the TreeNode, add to startNode
 			startNode.Add(newNode);
 			currQn.Add(newNode);
 		}
 		else {// else, will convert the currQn to the one now
-			Debug.Log(currQn.Count);
 			for (int i=0; i<currQn.Count;i++) {
-				if (sus == currQn[i].getPerson()) {
-					//currQn[i].setNextQn(newNode);
+				if (sus == currQn[i].Sus) {
+					currQn[i].NextQn = newNode;
 					currQn.RemoveAt(i);
 					currQn.Insert(i,newNode);
 				}
 			}
 		}
 		
-		if (unlocker) { // if this question unlock anything, will add to the currNode
-			currNode.Add(newNode);
+		if (unlocker) { // if this question unlock anything, will add to the nextCurrNode
+			nextCurrNode.Add(newNode);
 		}
-		
 		for (int i=0;i<currNode.Count;i++) { // int person will tell us to which currNode we need to attach the newNode to  
-			if (currNode[i].getPerson() == person) {
-				currNode[i].addNextNodes(newNode);
+			if (currNode[i].Sus == attachedPer) {		
+				currNode[i].addNextNode(newNode);
 			}
 		}
+	}
+	
+	public void moveToCurrNode() {
+		while (currNode.Count > 0) {
+			currNode.RemoveAt(0);
+		}
+		while (nextCurrNode.Count > 0) {
+			currNode.Add(nextCurrNode[0]);
+			nextCurrNode.RemoveAt(0);
+		}
+		/*for (int i=0;i<nextCurrNode.Count;i++) {
+			printNode(nextCurrNode[i]);
+		}
+		for (int i=0;i<currNode.Count;i++) {
+			printNode(currNode[i]);
+		}*/
 	}
 	
     /*public void addWeapon(string weapon, string reply)
@@ -179,12 +185,13 @@ public class TreeNode {
 	
 	public void DFS() {
 		
-		QnNode temp = new QnNode();
+		QnNode temp = new QnNode(null);
 		
 		for(int i=0;i<startNode.Count;i++) {
 			printNode(startNode[i]);
-			while (startNode[i].getNextQn() != null) {
-				temp = startNode[i].getNextQn();
+			temp = startNode[i];
+			while (temp.NextQn != null) {
+				temp = temp.NextQn;
 				printNode(temp);
 			}
 		}
@@ -193,9 +200,9 @@ public class TreeNode {
 	public void BFS()
 	{
 		List<QnNode> BFS = new List<QnNode>();
-		int oldNodes = 0;
 		for (int i=0; i<startNode.Count;i++) {
 			BFS.Add(startNode[i]);
+			//Debug.Log(startNode[i].Qn);
 		}
 		while (BFS.Count > 0) {
 			if (BFS[0].getNumOfNextNodes() == 0) {
@@ -213,6 +220,6 @@ public class TreeNode {
 	}
 	
 	public void printNode(QnNode nodePrinted) {
-		Debug.Log(nodePrinted.getQn() + " " + nodePrinted.getAnswer() + " " + nodePrinted.getPerson());
+		Debug.Log(nodePrinted.Qn + " " + nodePrinted.Ans + " " + nodePrinted.Sus);
 	}
 }
