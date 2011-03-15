@@ -5,8 +5,8 @@ public class WeaponNode {
 	
 	private string weapon;
 	private string reply;
-	// Use this for initialization
-	void Start () {
+	
+	public WeaponNode() {
 	
 	}
 	
