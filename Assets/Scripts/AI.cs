@@ -23,7 +23,6 @@ public class AI : MonoBehaviour{
 		string question;
 		string answer;
 		int unlocker = 0;
-		int oldQn = 0;
 		// This runs a loop that covers all the questions 
 		// each question comes in the form of a 'if' loop
 		for (int i=1; i<=8;i++) {
@@ -39,62 +38,61 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(question,"No, I did not.",j,true,false,'s',0);
 					}
 				}
-				oldQn = temp.getNumOfCurrNodes();
-				Debug.Log(oldQn);
+				temp.moveToCurrNode();
+				
 			}
-			if (i == 2) { // question 2
+			else if (i == 2) { // question 2
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "When did you last see the victim?";
 					answer = "I last saw him at " + Convert.ToString(GenerateTimeline.deathTime-1) + ".";
 					temp.setQnNode(question,answer,j,false,false,'n',unlocker);
 				}
-				temp.BFS();
-				temp.DFS();
 			}
-			/*if (i == 3) { // question three
+			else if (i == 3) { // question three
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Where did you last see the victim?";
-					answer = "I last saw him at" + GenerateTimeline.victim.getBefMurder(0) + ".";
+					answer = "I last saw him at " + GenerateTimeline.victim.getBefMurder(0) + ".";
 					temp.setQnNode(question,answer,j,false,false,'n',unlocker);
 				}
 			}
-			if (i == 4) { // question four
+			else if (i == 4) { // question four
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "What are you doing before" + GenerateTimeline.deathTime + "?";
-					answer = "I was" + GenerateTimeline.timeline[j].getBefMurder(1) + ".";
+					question = "What are you doing before " + GenerateTimeline.deathTime + "?";
+					answer = "I was " + GenerateTimeline.timeline[j].getBefMurder(1) + ".";
 					temp.setQnNode(question,answer,j,false,true,'n',unlocker);
 				}
-				temp.removeOldNodes(oldQn);
-				oldQn = temp.getNumOfCurrNodes();
+				temp.moveToCurrNode();
+				
 			}
-			if (i == 5) { // question 5
+			else if (i == 5) { // question 5
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Where are you" + GenerateTimeline.timeline[j].getBefMurder(1) + "before" + GenerateTimeline.deathTime + "?";
-					answer = "I was at" + GenerateTimeline.timeline[j].getBefMurder(0) + ".";
-					tree.setQnNode(question,answer,j,false,false,'n',i);
+					question = "Where are you " + GenerateTimeline.timeline[j].getBefMurder(1) + " before " + GenerateTimeline.deathTime + "?";
+					answer = "I was at " + GenerateTimeline.timeline[j].getBefMurder(0) + ".";
+					temp.setQnNode(question,answer,j,false,false,'n',j);
 				}
 			}
 			if (i == 6) { // question 6
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "For how long?";
 					answer = "1 hr.";
-					tree.setQnNode(question,answer,j,false,false,'n',i);
+					temp.setQnNode(question,answer,j,false,false,'n',j);
 				}
 			}
 			if (i == 7) { // question 7
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Can anybody be your alibi?";
 					answer = "Yes, " + GenerateTimeline.timeline[j].getBefMurder(2) + ".";
-					tree.setQnNode(question,answer,j,false,true,'n',i);
+					temp.setQnNode(question,answer,j,false,true,'n',j);
 				}
-				temp.removeOldNodes(oldQn);
-				oldQn = temp.getNumOfCurrNodes();
+				temp.moveToCurrNode();
+				temp.BFS();
+				temp.DFS();
 			}
-			if (i == 8) { //question 8
+			/*if (i == 8) { //question 8
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Did you see " +  GenerateTimeline.timeline[j].getBefMurder(2) + " at " + GenerateTimeline.deathTime + "?";
 					answer = "Yes";
-					tree.setQnNode(question,answer,j,false,true,'n',0);
+					temp.setQnNode(question,answer,j,false,true,'n',0);
 				}
 			}*/
 		}
