@@ -39,7 +39,7 @@ public class doorOpener : MonoBehaviour {
 		}
 		else if(withinBoundary && open)
 		{
-			iTween.RotateTo(door, iTween.Hash("y",90,"time",2.0));
+			iTween.RotateTo(door, iTween.Hash("y",doorRotateBack,"time",2.0));
 			open = false;
 		}
 	}
