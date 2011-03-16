@@ -6,8 +6,12 @@ public class WeaponNode {
 	private string weapon;
 	private string reply;
 	
-	public WeaponNode() {
+	public WeaponNode(string weapTemp, string repTemp) {
+		weapon = weapTemp;
+		reply = repTemp;
+	}
 	
+	public WeaponNode() {
 	}
 	
 	public string getWeapon() {

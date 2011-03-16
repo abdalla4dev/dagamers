@@ -3,16 +3,26 @@ using System.Collections.Generic;
 
 public class QnNode {
 	
+	protected int questionNumber;
 	protected string question; // the questions and sub questions
 	protected string answer; // answer to the questions
 	protected int suspect; // for which person
 	protected bool unlockedNode; // is this unlocked?
 	
 	protected List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
-	protected QnNode nextQuestion;
+	protected QnNode nextQuestion; //link to the next question
 	
 	public QnNode(QnNode next) {
 		nextQuestion = null;
+	}
+	
+	public int QnNum {
+		get {
+			return questionNumber;
+		}
+		set {
+			questionNumber = value;
+		}
 	}
 	
 	public string Qn {

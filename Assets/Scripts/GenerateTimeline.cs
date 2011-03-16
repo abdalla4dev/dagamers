@@ -89,7 +89,7 @@ public class GenerateTimeline : MonoBehaviour
 		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer) + " weapon " + murderWeap.ToString());
 		murderTruth = new Person(guilty, !murdered);
 		deathTime = rand.Next(earliestDeath, latestDeath);
-		bodyFound = genBodyFoundTime();
+		bodyFound = deathTime+1;//genBodyFoundTime();
 		
 		for(int i=0; i<Globals.numSuspects; i++)
 		{
