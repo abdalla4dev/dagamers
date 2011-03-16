@@ -5,6 +5,9 @@ using MurderData;
 
 public class KnowledgeMapUIv2 : MonoBehaviour {
 	
+	public Texture buttonTexture; 
+	public GUIStyle buttonStyle;
+	
 	private bool showMap = false;
 	private Rect windowRect = new Rect (20, 60, 600, 600);
 	//enum the possible rooms and coordinates in the map
@@ -82,7 +85,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		if (GUILayout.Button("Knowledge Map", GUILayout.Height(25))) showMap = !showMap;
+		if (GUILayout.Button(buttonTexture, buttonStyle, GUILayout.Width(200))) showMap = !showMap;
 		
 		if (showMap) {
 			//draw the floor plan texture
