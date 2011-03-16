@@ -62,12 +62,12 @@ public class TreeNode {
 		return "0";
 	}
 
-    public string weaponTriggered(string weapon)
+    public string retreiveWeapon(string weapon)
     {
         for (int i = 0; i < weaponList.Count; i++)
         {
             WeaponNode temp = new WeaponNode();
-            temp = (WeaponNode)weaponList[i];
+            temp = weaponList[i];
             if (weapon == temp.getWeapon())
             {
                 return temp.getReply();
@@ -90,10 +90,11 @@ public class TreeNode {
 		}
 	}
 	// set a QnNode according to the information given 
-	public void setQnNode(string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int attachedPer) {
+	public void setQnNode(int tempNum, string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int attachedPer) {
 		
 		QnNode newNode = new QnNode(null);
-		newNode.Qn = tempQn; // add the info into the newNode
+		newNode.QnNum = tempNum; // add the info into the newNode
+		newNode.Qn = tempQn; 
 		newNode.Ans = tempAns;
 		newNode.Sus = sus;
 		newNode.Unlocked = unlocked;
@@ -115,8 +116,9 @@ public class TreeNode {
 			nextCurrNode.Add(newNode);
 		}
 		for (int i=0;i<currNode.Count;i++) { // int person will tell us to which currNode we need to attach the newNode to  
-			if (currNode[i].Sus == attachedPer) {		
+			if (currNode[i].QnNum == attachedPer/10 && (currNode[i].Sus == attachedPer%10 || attachedPer%10 == 4)) {		
 				currNode[i].addNextNode(newNode);
+				//Debug.Log("in" + tempNum);
 			}
 		}
 	}
@@ -137,12 +139,14 @@ public class TreeNode {
 		}*/
 	}
 	
-    public void addWeapon(string weapon, string reply)
+    public void setWeaponNode(string weapon, string reply)
     {
-        WeaponNode temp = new WeaponNode();
-        temp.setWeapon(weapon);
-        temp.setReply(reply);
+        WeaponNode temp = new WeaponNode(weapon,reply);
         weaponList.Add(temp);
+		for (int i=0;i<weaponList.Count;i++){
+			Debug.Log(weaponList[i].getWeapon());
+			Debug.Log(weaponList[i].getReply());
+		}
     }
 	
 	/*public void checker() {
@@ -215,6 +219,6 @@ public class TreeNode {
 	}
 	
 	public void printNode(QnNode nodePrinted) {
-		Debug.Log(nodePrinted.Qn + " " + nodePrinted.Ans + " " + nodePrinted.Sus);
+		Debug.Log(nodePrinted.Qn + " " + nodePrinted.Ans + " " + nodePrinted.Sus + " " + nodePrinted.QnNum);
 	}
 }
