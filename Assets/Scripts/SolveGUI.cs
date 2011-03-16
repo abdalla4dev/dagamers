@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 public class SolveGUI : MonoBehaviour {
 	
+	public Texture buttonTexture; 
+	public GUIStyle buttonStyle;
+	
 	private bool showSolver = false;
 	private Rect windowRect = new Rect(20, 60, 600, 600);
 	private object selection;
@@ -86,7 +89,7 @@ public class SolveGUI : MonoBehaviour {
 	
 	void OnGUI() {
 		GUILayout.Space(50);
-		if (GUILayout.Button("Solve", GUILayout.Height(25))) showSolver = !showSolver;
+		if (GUILayout.Button(buttonTexture, buttonStyle, GUILayout.Height(25))) showSolver = !showSolver;
 		if (showSolver) GUILayout.Window(4, windowRect, SolveFunction, "Solve!");
 	}
 	

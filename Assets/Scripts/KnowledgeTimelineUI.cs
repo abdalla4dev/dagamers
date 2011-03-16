@@ -3,13 +3,15 @@ using System.Collections;
 using MurderData;
 
 public class KnowledgeTimelineUI : MonoBehaviour {
+	
+	public Texture buttonTexture; 
+	public GUIStyle buttonStyle;
 
 	private Rect windowRect = new Rect (20, 60, 512, 256);
-
 	private bool showWindow = false; //to determine whether the player wants to see the window or not 
 	
 	private Vector2 scrollPos = new Vector2(0.5F, 0.5F);
-	
+			
 	public GUIStyle timelineStyle;
 	public GUIContent timelineContent;
 	
@@ -33,7 +35,7 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 	void OnGUI () {
 		
 		GUILayout.Space(25);
-		if (GUILayout.Button("Knowledge Timeline", GUILayout.Height(25))) showWindow = !showWindow;
+		if (GUILayout.Button(buttonTexture, buttonStyle, GUILayout.Width(200))) showWindow = !showWindow;
 		
 		if (showWindow) GUILayout.Window(1, windowRect, TimelineFunction, timelineContent, timelineStyle);
 
