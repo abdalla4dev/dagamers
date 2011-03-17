@@ -49,6 +49,10 @@ public class Person {
 	bool foundBody = false;
 	bool redHerring = false; 
 	bool fakeAlibi = false;
+	//to menghui: please refer to this part for your gui coding
+	bool[] befUnlocked = {false,false};
+	bool[] duringUnlocked = {false,false};
+	bool[] aftUnlocked = {false,false};
 	
 	Weapons rhWeap;
 	
@@ -173,7 +177,31 @@ public class Person {
 	{
 		aftMurder[pos] = s;
 	}
+	//menghui, the accessors start here
+	public bool getBefUnlocked(int i) {
+		return befUnlocked[i];
+	}
 	
+	public void setBefUnlocked(int i, bool val) {
+		befUnlocked[i] = val;
+	}
+	
+	public bool getDuringUnlocked(int i) {
+		return duringUnlocked[i];
+	}
+	
+	public void setDuringUnlocked(int i, bool val) {
+		duringUnlocked[i] = val;
+	}	
+	
+	public bool getAftUnlocked(int i) {
+		return aftUnlocked[i];
+	}
+	
+	public void setAftUnlocked(int i, bool val) {
+		aftUnlocked[i] = val;
+	}
+	// end here
 	public void createBefMurderWitness(Person witness, int wIdx, int ownIdx) {
 		if (rand==null)
 			rand = new System.Random();
@@ -711,6 +739,4 @@ public class Person {
 		}
 		return s;
 	}
-	
-	
 }
