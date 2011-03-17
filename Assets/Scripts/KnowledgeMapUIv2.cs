@@ -37,7 +37,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		theTimeline = gameObject.GetComponent<GenerateTimeline>();
-		/*switch(GenerateTimeline.knifeLoc) {
+		switch(GenerateTimeline.knifeLoc) {
 			case Rooms.Bedroom:		bedroomTexture=knifeTexture; break;
 			case Rooms.Garden:		gardenTexture=knifeTexture; break;
 			case Rooms.Kitchen:		kitchenTexture=knifeTexture; break;
@@ -76,7 +76,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 			case Rooms.Living_Room:	LRTexture=spannerTexture; break;
 			case Rooms.Toilet:		toiletTexture=spannerTexture; break;
 			default: break;
-		}*/
+		}
 	}
 	
 	// Update is called once per frame
