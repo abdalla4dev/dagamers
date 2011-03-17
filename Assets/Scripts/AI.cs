@@ -61,7 +61,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 4) { // question 4
 				for (int j=0;j<Globals.numSuspects;j++) {
-					if (GenerateTimeline.timeline[j].getRHWeap() != null) {
+					if (GenerateTimeline.timeline[j].isRedHerring() || GenerateTimeline.timeline[j].isMurderer()) {
 						string thing = GenerateTimeline.timeline[j].getRHWeap().ToString();
 						question = "What were you doing before " + GenerateTimeline.bodyFound + "?";
 						answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + " using " + thing + ".";
@@ -72,7 +72,7 @@ public class AI : MonoBehaviour{
 						answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + ".";
 						temp.setQnNode(4,question,answer,j,false,false,'n',10+unlocker);
 					}
-				}	
+				}
 			}
 			else if (i == 5) { // question 5
 				for (int j=0;j<Globals.numSuspects;j++) {
@@ -91,7 +91,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 7) { // question 7
 				for (int j=0;j<Globals.numSuspects;j++) {
-					if (GenerateTimeline.timeline[j].getRHWeap() != null) {
+					if (GenerateTimeline.timeline[j].isRedHerring() || GenerateTimeline.timeline[j].isMurderer()) {
 						string thing = GenerateTimeline.timeline[j].getRHWeap().ToString();
 						question = "What were you doing after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
 						answer = "I was " + GenerateTimeline.getPersonDetails(0,j,1) + " using " + thing + ".";
@@ -103,7 +103,6 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(7,question,answer,j,false,false,'n',24);
 					}
 				}
-				
 			}
 			else if (i == 8) { // question 8
 				for (int j=0;j<Globals.numSuspects;j++) {
@@ -111,9 +110,8 @@ public class AI : MonoBehaviour{
 					answer = "I was at " + GenerateTimeline.getPersonDetails(0,j,0) + ".";
 					temp.setQnNode(8,question,answer,j,false,false,'n',24);
 				}
-				
 			}
-			if (i == 9) { // question 9
+			else if (i == 9) { // question 9
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "How long were you " + GenerateTimeline.getPersonDetails(0,j,1) + " after " + Convert.ToString(GenerateTimeline.deathTime-1) +"?";
 					answer = "1 hr.";
@@ -160,8 +158,8 @@ public class AI : MonoBehaviour{
 					}
 				}
 			}
-			temp.BFS();
 			temp.DFS();
+			//temp.BFS();
 		}
 		
 		/*for (int i=0;i<GenerateTimeline.timeline.Count;i++){ // add all potential murder weapons to the list
@@ -185,8 +183,8 @@ public class AI : MonoBehaviour{
 			}
 			else {
 				isWeapon = false;
-			}
-		}*/
+			}*/
+		}
 		
 		return temp;
 	}

@@ -215,7 +215,9 @@ public class GenerateTimeline : MonoBehaviour
 		
 		fake.setMurder(Enum.GetName(typeof(Rooms), roomIndex), Person.place); //set murder room to new room
 		
-		switch (roomIndex)	//find generic activity for new room
+		fake.setMurder(fake.getWeapActivity((Rooms)roomIndex,murderWeap), Person.activity);
+		
+		/*switch (roomIndex)	//find generic activity for new room
 		{
 			case 0:
 				 fake.setMurder(Enum.GetName(typeof(Kitchen.Generic_Activities), (Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities)),Person.activity);
@@ -234,7 +236,7 @@ public class GenerateTimeline : MonoBehaviour
 				 break;
 			default:
 				break;
-		}
+		}*/
 		
 		//Debug.Log("FAKE timeline count " + timeline.Count + " " + !someoneFoundBody);
 		if(!someoneFoundBody && timeline.Count==3)
