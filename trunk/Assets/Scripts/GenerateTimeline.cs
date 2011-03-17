@@ -182,6 +182,8 @@ public class GenerateTimeline : MonoBehaviour
  */
 		
 		Debug.Log(deathTime + " " + bodyFound);
+		
+		placeWeapons(redHerringIndex, murderer);
 				
 		PrintMethod();
 		AI.tree = AI.qnGenerator();
@@ -300,6 +302,7 @@ public class GenerateTimeline : MonoBehaviour
 	{
 		List<Vector3> positions = new List<Vector3>();
 		List<Rooms> place = new List<Rooms>();
+		List<int> usedPos = new List<int>();
 		
 		positions.Add(new Vector3(3.95f, 0.304f, 5.756f)); //change for knife
 		place.Add(Rooms.Living_Room);
@@ -350,6 +353,8 @@ public class GenerateTimeline : MonoBehaviour
 		}
 		
 		int pos = weapRooms[rand.Next(0, weapRooms.Count)]; //random a position
+		usedPos.Add(pos);
+		Debug.Log(murderWeap + " MWEAP " + pos + " " + place[pos]);
 		switch(murderWeap)
 		{
 			case Weapons.Knife:
@@ -386,7 +391,8 @@ public class GenerateTimeline : MonoBehaviour
 		}
 		
 		int pos2= weapRooms[rand.Next(0, weapRooms.Count)];
-		
+		usedPos.Add(pos2);
+		Debug.Log(timeline[RH].getRHWeap() + " RH " + pos2 + " " + place[pos2]);
 		switch(timeline[RH].getRHWeap())
 		{
 			case Weapons.Knife:
@@ -423,29 +429,36 @@ public class GenerateTimeline : MonoBehaviour
 				do
 				{
 					 randPos = rand.Next(0, positions.Count);
-				}while(randPos==pos || randPos==pos2);
+				}while(usedPos.Contains(randPos));
+				
+				usedPos.Add(randPos);
 				
 				switch(w)
 				{
 					case Weapons.Knife:
 						knife.transform.position = positions[randPos];
 						knifeLoc = place[randPos];
+						Debug.Log("knife " + randPos + " " + place[randPos]);
 						break;
 					case Weapons.Screwdriver:
 						screwdriver.transform.position = positions[randPos];
 						screwdriverLoc = place[randPos];
+					Debug.Log("sd " + randPos + " " + place[randPos]);
 						break;
 					case Weapons.Towel:
 						towel.transform.position = positions[randPos];
 						towelLoc = place[randPos];
+					Debug.Log("t " + randPos + " " + place[randPos]);
 						break;
 					case Weapons.Scissors:
 						scissors.transform.position = positions[randPos];
 						scissorsLoc = place[randPos];
+					Debug.Log("sc " + randPos + " " + place[randPos]);
 						break;
 					case Weapons.Spanner:
 						spanner.transform.position = positions[randPos];
 						spannerLoc = place[randPos];
+					Debug.Log("sp " + randPos + " " + place[randPos]);
 						break;
 					default:
 						break;
