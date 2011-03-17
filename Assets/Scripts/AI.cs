@@ -121,8 +121,14 @@ public class AI : MonoBehaviour{
 			else if (i == 10) { // question 10
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Can anybody be your alibi for the time period before " + GenerateTimeline.bodyFound + "?";
-					answer = "Yes, " + GenerateTimeline.getPersonDetails(1,j,2) + ".";
-					temp.setQnNode(10,question,answer,j,false,true,'n',60+j);
+					if (GenerateTimeline.getPersonDetails(1,j,2) == "null") {
+						answer = "No, I was alone.";
+						temp.setQnNode(10,question,answer,j,false,true,'n',60+j);
+					}
+					else {
+						answer = "Yes, " + GenerateTimeline.getPersonDetails(1,j,2) + ".";
+						temp.setQnNode(10,question,answer,j,false,true,'n',60+j);
+					}
 				}
 				temp.moveToCurrNode();
 			}
@@ -150,17 +156,21 @@ public class AI : MonoBehaviour{
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(0,j,2) + " for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
 					for (int k=0;k<Globals.numSuspects;k++) {
-						if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(0,j,2)) {
+						if (GenerateTimeline.murderer == k) {
+							answer = "No, He was not at " + GenerateTimeline.getPersonDetails(0,k,0);
+							temp.setQnNode(13,question,answer,j,false,false,'n',110+k);
+							break;
+						}
+						else if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(0,j,2)) {
 							answer = "Yes, he was " + GenerateTimeline.getPersonDetails(0,k,1) + " at the " + GenerateTimeline.getPersonDetails(0,k,0) + ".";
 							temp.setQnNode(13,question,answer,j,false,false,'n',110+k);
 							break;
 						}
 					}
 				}
+				temp.BFS();
 				temp.DFS();
 			}
-			
-			//temp.BFS();
 		}
 		return temp;
 		/*for (int i=0;i<GenerateTimeline.timeline.Count;i++){ // add all potential murder weapons to the list
