@@ -1,5 +1,6 @@
 using System.Collections; 
 using System.Collections.Generic;
+using UnityEngine;
 
 public class QnNode {
 	
@@ -88,10 +89,13 @@ public class QnNode {
 	public void changeBooleanValues() {
 		
 		QnNode temp = new QnNode(null);
-		
+
 		for (int i=0;i<nextNodesList.Count; i++) {
+			
 			temp = nextNodesList[i];
 			temp.Unlocked = true;
+			nextNodesList.RemoveAt(i);
+			nextNodesList.Insert(i,temp);
 		}
 	}
 	

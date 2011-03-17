@@ -143,21 +143,20 @@ public class AI : MonoBehaviour{
 			else if (i == 12) { // question 12
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(1,j,2) + " for the time period before " + GenerateTimeline.bodyFound + "?";
-					for (int k=0;k<Globals.numSuspects;k++) {
-						Debug.Log(GenerateTimeline.murderer);
-						if (GenerateTimeline.getPersonDetails(1,j,2) != "null"){ 
-							Debug.Log((int)Enum.Parse(typeof(Suspects),GenerateTimeline.getPersonDetails(1,j,2)));
-						}
-						if (GenerateTimeline.getPersonDetails(1,j,2) != "null" && GenerateTimeline.murderer == (int)Enum.Parse(typeof(Suspects),GenerateTimeline.getPersonDetails(1,j,2))) {
-							Debug.Log("got in");
-							answer = "No, " + GenerateTimeline.getPersonDetails(1,j,2) + " was not at " + GenerateTimeline.getPersonDetails(1,k,0) + ".";
-							temp.setQnNode(12,question,answer,j,false,false,'n',100+k);
-							break;
-						}
-						else if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(1,j,2)) {
-							answer = "Yes, " + GenerateTimeline.getPersonDetails(1,j,2) + " was " + GenerateTimeline.getPersonDetails(1,k,1) + " at the " + GenerateTimeline.getPersonDetails(1,k,0) + ".";
-							temp.setQnNode(12,question,answer,j,false,false,'n',100+k);
-							break;
+					if (GenerateTimeline.getPersonDetails(1,j,2) == "null") {
+						question = "Can you vouch for " + Enum.GetName(typeof(Suspects),GenerateTimeline.murderer) + " for the time period before " + GenerateTimeline.bodyFound + "?";
+						answer = "No, " + Enum.GetName(typeof(Suspects),GenerateTimeline.murderer) + " was not in the " + GenerateTimeline.getPersonDetails(1,j,0) + ".";
+						temp.setQnNode(12,question,answer,j,false,false,'n',100+GenerateTimeline.murderer);
+					}
+					else if (GenerateTimeline.murderer == j) {
+					}
+					else {
+						for (int k=0;k<Globals.numSuspects;k++) {
+							if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(1,j,2)) {
+								answer = "Yes, " + GenerateTimeline.getPersonDetails(1,j,2) + " was " + GenerateTimeline.getPersonDetails(1,k,1) + " at " + GenerateTimeline.getPersonDetails(1,k,0);
+								temp.setQnNode(12,question,answer,j,false,false,'n',100+k);
+								break;
+							}
 						}
 					}
 				}
@@ -168,14 +167,14 @@ public class AI : MonoBehaviour{
 					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(0,j,2) + " for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
 					for (int k=0;k<Globals.numSuspects;k++) {
 						if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(0,j,2)) {
-							answer = "Yes, he was " + GenerateTimeline.getPersonDetails(0,k,1) + " at the " + GenerateTimeline.getPersonDetails(0,k,0) + ".";
+							answer = "Yes, " + GenerateTimeline.getPersonDetails(0,j,2) + " was " + GenerateTimeline.getPersonDetails(0,k,1) + " at " + GenerateTimeline.getPersonDetails(0,k,0) + ".";
 							temp.setQnNode(13,question,answer,j,false,false,'n',110+k);
 							break;
 						}
 					}
 				}
-				//temp.BFS();
-				//temp.DFS();
+				temp.BFS();
+				temp.DFS();
 			}
 		}
 		return temp;

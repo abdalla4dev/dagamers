@@ -36,7 +36,11 @@ public class TreeNode {
 						temp = temp.NextQn;
 					}
 				}
-				//break;
+				if (temp.QnNum == 13) {
+					if (temp.Unlocked == true) {
+						qnPrint.Add(temp.Qn);
+					}
+				}
 			}
 		}
 		return qnPrint; // return the Arraylist of qns to be printed
@@ -58,7 +62,9 @@ public class TreeNode {
 						temp = temp.NextQn;
 					}
 				}
-				//break;
+				if (temp.QnNum == 13) {
+					return temp.Ans;
+				}
 			}
 		}
 		
