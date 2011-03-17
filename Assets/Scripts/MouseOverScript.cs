@@ -39,29 +39,29 @@ public class MouseOverScript : MonoBehaviour {
 		}
 	}
 	
-	void OnMouseEnter(){
-		//changing all the material to be yellow upon mouse hover, once the player is close to the object
-		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-			//changing all the material to be yellow upon mouse hover, once the player is close to the object
-			if(withinBoundary){
-				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
-					targetObject.renderer.materials[i].color = mouseOverColor;
-				}
-			}
-		}
-	}
+//	void OnMouseEnter(){
+//		//changing all the material to be yellow upon mouse hover, once the player is close to the object
+//		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+//			//changing all the material to be yellow upon mouse hover, once the player is close to the object
+//			if(withinBoundary){
+//				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
+//					targetObject.renderer.materials[i].color = mouseOverColor;
+//				}
+//			}
+//		}
+//	}
 	
-	void OnMouseExit(){
-		//if user did not select the object
-		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-			//if user did not select the object
-				//changes back to the original material upon mouse exit
-				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
-					targetObject.renderer.materials[i].color = originalColor[i];
-				}
-			
-		}
-	}
+//	void OnMouseExit(){
+//		//if user did not select the object
+//		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+//			//if user did not select the object
+//				//changes back to the original material upon mouse exit
+//				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
+//					targetObject.renderer.materials[i].color = originalColor[i];
+//				}
+//			
+//		}
+//	}
 	
 	void OnTriggerEnter(Collider other){
 		withinBoundary = true;
@@ -91,7 +91,7 @@ public class MouseOverScript : MonoBehaviour {
 			
 			if(called == false){
 				if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-					GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), AnswerWindow, "" + weapon);
+//					GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), AnswerWindow, "" + weapon);
 				}
 				else{
 				GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), AnswerWindow, "" + suspect);
@@ -105,9 +105,9 @@ public class MouseOverScript : MonoBehaviour {
 		//ArrayList weaponList = AI.weaponTriggered((int)Enum.Parse(typeof(Weapons), weapon));
 		
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-			ans = AI.weaponTriggered(weapon);
-			ans = ans.Replace('_', ' ');
-			ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
+//			ans = AI.weaponTriggered(weapon);
+//			ans = ans.Replace('_', ' ');
+//			ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 			called = false;
 		}
 		
@@ -133,7 +133,7 @@ public class MouseOverScript : MonoBehaviour {
 	void AnswerWindow(int windowID) {
 		if(called == false){
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-				GUILayout.Box(ans);
+				//GUILayout.Box(ans);
 				called = true;
 			}
 			//print("answering");
