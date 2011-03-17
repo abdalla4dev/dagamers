@@ -69,6 +69,7 @@ public class Person {
 		fakeAlibi = true;
 		murderer = true;
 		foundBody = toCopy.foundBody;
+		rhWeap = toCopy.rhWeap;
 		/*befMurder = toCopy.getBefMurder();
 		duringMurder = toCopy.getMurder();
 		aftMurder = toCopy.getAftMurder();*/
@@ -323,6 +324,8 @@ public class Person {
 		 
 		if(murderer) //if murderer get activity for murder weap in chosen room
 		{
+			rhWeap = GenerateTimeline.murderWeap;
+			Debug.Log(rhWeap);
 			befMurder.Add(getWeapActivity(room, GenerateTimeline.murderWeap));
 			//befMurder.Add("null"); //alibi
 			//return;
