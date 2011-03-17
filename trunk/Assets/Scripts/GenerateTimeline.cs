@@ -183,7 +183,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 		Debug.Log(deathTime + " " + bodyFound);
 		
-		placeWeapons(redHerringIndex, murderer);
+		//placeWeapons(redHerringIndex, murderer);
 				
 		PrintMethod();
 		AI.tree = AI.qnGenerator();
