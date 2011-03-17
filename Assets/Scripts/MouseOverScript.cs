@@ -14,6 +14,7 @@ public class MouseOverScript : MonoBehaviour {
 	bool displayText = false;
 	bool withinBoundary = false;
 	bool actionKey = false;
+	bool overObject = false;
 	
 	Color[] originalColor; //array to store the original material color
 	Vector3 offset = Vector3.up;
@@ -62,6 +63,14 @@ public class MouseOverScript : MonoBehaviour {
 //			
 //		}
 //	}
+	void OnMouseEnter(){
+		overObject = true;
+	}
+	
+	void OnMouseExit(){
+		overObject = false;
+		
+	}
 	
 	void OnTriggerEnter(Collider other){
 		withinBoundary = true;
@@ -159,7 +168,7 @@ public class MouseOverScript : MonoBehaviour {
 		TriggerToggle();
 		
 		if(Input.GetMouseButtonDown(0)){
-			if(withinBoundary == true && actionKey == false){
+			if(withinBoundary == true && actionKey == false && overObject == true){
 				actionKey = true;
 				displayText = true;
 			}
