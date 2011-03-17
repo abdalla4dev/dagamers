@@ -94,4 +94,8 @@ public class QnNode {
 			temp.Unlocked = true;
 		}
 	}
+	
+	public void setGUIBool() {
+		GenerateTimeline.checkBool(questionNumber,suspect);
+	}
 }

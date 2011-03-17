@@ -129,9 +129,9 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 13) { // question 13
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(1,j,2) + " for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
+					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(0,j,2) + " for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
 					for (int k=0;k<Globals.numSuspects;k++) {
-						if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(1,j,2)) {
+						if (Enum.GetName(typeof(Suspects),k) == GenerateTimeline.getPersonDetails(0,j,2)) {
 							answer = "Yes, he was " + GenerateTimeline.getPersonDetails(0,k,1) + " at the " + GenerateTimeline.getPersonDetails(0,k,0) + ".";
 							temp.setQnNode(13,question,answer,j,false,false,'n',110+k);
 							break;
