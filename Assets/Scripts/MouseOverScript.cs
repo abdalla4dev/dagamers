@@ -124,7 +124,6 @@ public class MouseOverScript : MonoBehaviour {
 			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(Suspects), suspect));
 			
 			foreach (string item in myList) {
-				Debug.Log(item);
 				//item = item.Replace('_', ' ');
 				//item = item.ToLower();
 				if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
