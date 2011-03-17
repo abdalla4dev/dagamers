@@ -107,7 +107,7 @@ public class MouseOverScript : MonoBehaviour {
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
 			ans = AI.weaponTriggered(weapon);
 			ans = ans.Replace('_', ' ');
-			ans = ans.ToLower();
+			ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 			called = false;
 		}
 		
@@ -117,12 +117,13 @@ public class MouseOverScript : MonoBehaviour {
 			foreach (string item in myList) {
 				//item = item.Replace('_', ' ');
 				//item = item.ToLower();
-				if (GUILayout.Button((item.Replace('_', ' ')).ToLower())) {
+				if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
 					//print("clicked");
 					s = item;
 					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(Suspects), suspect), s);
 					ans = ans.Replace('_', ' ');
-					ans = ans.ToLower();
+					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
+					ans = ans.Replace(" i ", " I ");
 					called = false;
 				}
 			}
