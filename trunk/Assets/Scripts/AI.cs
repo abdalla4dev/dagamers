@@ -157,11 +157,12 @@ public class AI : MonoBehaviour{
 						}
 					}
 				}
+				temp.DFS();
 			}
-			temp.DFS();
+			
 			//temp.BFS();
 		}
-		
+		return temp;
 		/*for (int i=0;i<GenerateTimeline.timeline.Count;i++){ // add all potential murder weapons to the list
 			if (GenerateTimeline.timeline[i].getRHWeap() != null) {
 				potentialWeapon.Add(GenerateTimeline.timeline[i].getRHWeap().ToString());
@@ -183,10 +184,8 @@ public class AI : MonoBehaviour{
 			}
 			else {
 				isWeapon = false;
-			}*/
-		}
-		
-		return temp;
+			}
+		}*/
 	}
 	
 	public static ArrayList HumanTriggered(int suspect) {
