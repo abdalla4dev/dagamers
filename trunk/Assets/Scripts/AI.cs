@@ -47,7 +47,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 2) { // question 2
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "when did you last see the victim?";
+					question = "When did you last see the victim?";
 					answer = "I last saw him at " + Convert.ToString(GenerateTimeline.deathTime-1) + ".";
 					temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
 				}
