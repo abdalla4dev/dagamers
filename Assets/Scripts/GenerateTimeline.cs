@@ -102,7 +102,7 @@ public class GenerateTimeline : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log(Enum.GetName(typeof(Suspects),i));
+				//Debug.Log(Enum.GetName(typeof(Suspects),i));
 				timeline.Add(new Person(!guilty, !murdered));
 			}
 		}
@@ -115,8 +115,8 @@ public class GenerateTimeline : MonoBehaviour
 		
 		for(int i=0; i<timeline.Count; i++)
 		{
-			if(timeline[i].isFoundBody())
-				Debug.Log("FOUND B " + Enum.GetName(typeof(Suspects),i));
+			/*if(timeline[i].isFoundBody())
+				Debug.Log("FOUND B " + Enum.GetName(typeof(Suspects),i));*/
 			if(timeline[i].isRedHerring())
 				redHerringIndex = i;
 			else if(timeline[i].isMurderer())
@@ -124,10 +124,11 @@ public class GenerateTimeline : MonoBehaviour
 			else
 				innocents.Add(i);
 		}
-		Debug.Log("redherring " + timeline[redHerringIndex].isMurderer() + timeline[redHerringIndex].isRedHerring() + Enum.GetName(typeof(Suspects),redHerringIndex) + " " + redHerringIndex);
+		/*Debug.Log("redherring " + timeline[redHerringIndex].isMurderer() + timeline[redHerringIndex].isRedHerring() + Enum.GetName(typeof(Suspects),redHerringIndex) + " " + redHerringIndex);
 		Debug.Log("suspect1 "  + timeline[innocents[0]].isMurderer() + timeline[innocents[0]].isRedHerring() + Enum.GetName(typeof(Suspects),innocents[0]) + " " + innocents[0]);
 		Debug.Log("suspect2 " + timeline[innocents[1]].isMurderer() + timeline[innocents[1]].isRedHerring() + Enum.GetName(typeof(Suspects),innocents[1]) + " " + innocents[1]);
 		Debug.Log("murderer " + timeline[murderer].isMurderer() + timeline[murderer].isRedHerring() + Enum.GetName(typeof(Suspects),murderer) + " " + murderer);
+		*/
 		
 		int m = rand.Next(2);
 		int n;
@@ -235,10 +236,10 @@ public class GenerateTimeline : MonoBehaviour
 				break;
 		}
 		
-		Debug.Log("FAKE timeline count " + timeline.Count + " " + !someoneFoundBody);
+		//Debug.Log("FAKE timeline count " + timeline.Count + " " + !someoneFoundBody);
 		if(!someoneFoundBody && timeline.Count==3)
 		{
-			Debug.Log("GOT IN");
+			//Debug.Log("GOT IN");
 			Rooms room = (Rooms) Enum.Parse(typeof(Rooms), victim.getMurder(Person.place));
 			fake.setAftMurder(room.ToString(), Person.place);
 			murderTruth.setAftMurder(room.ToString(), Person.place);
@@ -254,7 +255,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 		if(!redHerring && timeline.Count==3)
 		{
-			Debug.Log("GOT IN HERE");
+			//Debug.Log("GOT IN HERE");
 			Person p = timeline[rand.Next(3)];
 			
 			Rooms r1 = (Rooms) Enum.Parse(typeof(Rooms),p.getBefMurder(Person.place));
@@ -272,8 +273,9 @@ public class GenerateTimeline : MonoBehaviour
 			p.setRedHerring(true);
 			redHerring = true;
 		}
+		
 		//debugging purposes.
-		for(int i=0; i<2; i++)
+		/*for(int i=0; i<2; i++)
 		{Debug.Log(i + " fake " + fake.getBefMurder(i));
 		Debug.Log(murderTruth.getBefMurder(i));}
 		
@@ -283,7 +285,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 		for(int i=0; i<2; i++)
 		{Debug.Log(i + " fake " + fake.getAftMurder(i));
-		Debug.Log(murderTruth.getAftMurder(i));}
+		Debug.Log(murderTruth.getAftMurder(i));}*/
 		
 		return fake;
 	}

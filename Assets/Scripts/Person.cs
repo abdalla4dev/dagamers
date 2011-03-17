@@ -332,7 +332,7 @@ public class Person {
 		if(!murdered && !murderer && !GenerateTimeline.redHerring && (test==0  || GenerateTimeline.timeline.Count==3))  //generate red herring. not sure where supposed to generate so comment out first.
 	  	 {
 			
-			Debug.Log("NO RH " + GenerateTimeline.timeline.Count);
+			//Debug.Log("NO RH " + GenerateTimeline.timeline.Count);
 			
 				
 				Weapons weapon;
@@ -355,7 +355,7 @@ public class Person {
 	 
 		else	//otherwise find generic activity for chosen room
 		{
-			Debug.Log("NOT RH GIVE ACT");
+			//Debug.Log("NOT RH GIVE ACT");
 			 switch(room)
 			 {
 				 case Rooms.Kitchen:
@@ -379,14 +379,12 @@ public class Person {
 			 }
 		}
 		
-		if(redHerring)
-		Debug.Log(befMurder[place] + " " + befMurder[activity]);
 		
 		befMurder.Add("null"); //alibi
 		
 		//debugging purposes.
-		for(int i=0; i<befMurder.Count; i++)
-			Debug.Log(i + " befMurder " + befMurder[i]);
+		/*for(int i=0; i<befMurder.Count; i++)
+			Debug.Log(i + " befMurder " + befMurder[i]);*/
 	}
 	
 	/*generates duringMurder List*/
@@ -399,8 +397,8 @@ public class Person {
 		{
 			duringMurder.Add(room.ToString());
 			duringMurder.Add("dead");
-			for(int i=0; i<duringMurder.Count; i++)
-				Debug.Log(i + " duringMurder " + duringMurder[i]);
+			/*for(int i=0; i<duringMurder.Count; i++)
+				Debug.Log(i + " duringMurder " + duringMurder[i]);*/
 			return;
 		}
 		
@@ -409,8 +407,8 @@ public class Person {
 			duringMurder.Add(GenerateTimeline.victim.duringMurder[place]);
 			duringMurder.Add("murder");
 			duringMurder.Add("null");//alibi
-			for(int i=0; i<duringMurder.Count; i++)
-				Debug.Log(i + " duringMurder " + duringMurder[i]);
+			/*for(int i=0; i<duringMurder.Count; i++)
+				Debug.Log(i + " duringMurder " + duringMurder[i]);*/
 			return;
 		}
 		
@@ -497,7 +495,7 @@ public class Person {
 			GenerateTimeline.someoneFoundBody = true;
 		}
 		
-		Debug.Log("FIND BODY " + foundBody + " " + GenerateTimeline.timeline.Count + " " +GenerateTimeline.someoneFoundBody);
+		//Debug.Log("FIND BODY " + foundBody + " " + GenerateTimeline.timeline.Count + " " +GenerateTimeline.someoneFoundBody);
 		if(GenerateTimeline.timeline.Count==3 && !GenerateTimeline.someoneFoundBody)
 		{
 			room = (Rooms) Enum.Parse(typeof(Rooms),GenerateTimeline.victim.duringMurder[place]);
