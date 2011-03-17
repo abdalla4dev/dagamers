@@ -725,4 +725,23 @@ public class GenerateTimeline : MonoBehaviour
 			}
 		}
 	}
+	
+	// Create window to tell the story
+	private Rect windowRect = new Rect(200, 100, 400, 200);
+	bool displayWindow = true;
+	public GUIStyle windowStyle;
+	public GUIStyle labelStyle;
+	public GUIStyle buttonStyle;
+	
+	void OnGUI() {
+		if (displayWindow == true)
+			windowRect = GUILayout.Window(0, windowRect, DoMyWindow, "Welcome to DaDetective", windowStyle);
+	}
+	
+	void DoMyWindow(int windowID) {
+		GUILayout.Label(startPara,labelStyle);
+        if (GUILayout.Button("Start Game!", buttonStyle)){
+			displayWindow = !(displayWindow);
+		}
+    }
 }
