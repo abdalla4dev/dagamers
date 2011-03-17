@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using MurderData;
+using System.Collections.Generic;
 
 public class AI : MonoBehaviour{
 	
@@ -23,6 +24,10 @@ public class AI : MonoBehaviour{
 		string question;
 		string answer;
 		int unlocker = 0;
+		string reply;
+		string weapon;
+		List<string> potentialWeapon = new List<string>();
+		bool isWeapon = false;
 		// This runs a loop that covers all the questions 
 		// each question comes in the form of a 'if' loop
 		for (int i=1; i<=13;i++) {
@@ -56,9 +61,17 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 4) { // question 4
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "What were you doing before " + GenerateTimeline.bodyFound + "?";
-					answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + ".";
-					temp.setQnNode(4,question,answer,j,false,false,'n',10+unlocker);
+					if (GenerateTimeline.timeline[j].getRHWeap() != null) {
+						string weapon = GenerateTimeline.timeline[j].getRHWeap().ToString();
+						question = "What were you doing before " + GenerateTimeline.bodyFound + "?";
+						answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + " using " + weapon + ".";
+						temp.setQnNode(4,question,answer,j,false,false,'n',10+unlocker);
+					}
+					else {
+						question = "What were you doing before " + GenerateTimeline.bodyFound + "?";
+						answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + ".";
+						temp.setQnNode(4,question,answer,j,false,false,'n',10+unlocker);
+					}
 				}	
 			}
 			else if (i == 5) { // question 5
@@ -78,9 +91,17 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 7) { // question 7
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "What were you doing after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
-					answer = "I was " + GenerateTimeline.getPersonDetails(0,j,1) + ".";
-					temp.setQnNode(7,question,answer,j,false,false,'n',24);
+					if (GenerateTimeline.timeline[j].getRHWeap() != null) {
+						string weapon = GenerateTimeline.timeline[j].getRHWeap().ToString();
+						question = "What were you doing after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
+						answer = "I was " + GenerateTimeline.getPersonDetails(0,j,1) + " using " + weapon + ".";
+						temp.setQnNode(7,question,answer,j,false,false,'n',24);
+					}
+					else {
+						question = "What were you doing after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
+						answer = "I was " + GenerateTimeline.getPersonDetails(0,j,1) + ".";
+						temp.setQnNode(7,question,answer,j,false,false,'n',24);
+					}
 				}
 				
 			}
@@ -143,18 +164,29 @@ public class AI : MonoBehaviour{
 			temp.DFS();
 		}
 		
-		for (int i=0;i<Globals.numWeapons;i++) {
-			string weapon = Enum.GetName(typeof(Weapons),i);
-			string reply;
-			if (weapon == GenerateTimeline.murderWeap.ToString()) {
-				reply = "The murder weapon is not supposed to be in this room.";
+		for (int i=0;i<GenerateTimeline.timeline.Count;i++){ // add all potential murder weapons to the list
+			if (GenerateTimeline.timeline[i].getRHWeap() != null) {
+				potentialWeapon.Add(GenerateTimeline.timeline[i].getRHWeap().ToString());
+			}
+		}
+		
+		/*for (int i=0;i<Globals.numWeapons;i++) { // for each weapon 
+			weapon = Enum.GetName(typeof(Weapons),i);
+			for (int j=0;j<potentialWeapon.Count;j++) { // check with eacn weapon in the potentialWeapon list
+				if (potentialWeapon[j] == weapon) {
+					reply = weapon + " is not supposed to be in this room.";
+					temp.setWeaponNode(weapon,reply);
+					isWeapon = true;
+				}
+			}
+			if (!isWeapon) {
+				reply = weapon + " is in the correct room.";
 				temp.setWeaponNode(weapon,reply);
 			}
 			else {
-				reply = "The murder weapon is in the correct room.";
-				temp.setWeaponNode(weapon,reply);
+				isWeapon = false;
 			}
-		}
+		}*/
 		
 		return temp;
 	}

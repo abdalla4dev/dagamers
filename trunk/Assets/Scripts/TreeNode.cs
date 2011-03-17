@@ -7,12 +7,14 @@ public class TreeNode {
 	//num of suspects
 	int numOfSus;
 	
-	//start node and current node of the tree
+	//start node and current node of the QnNode tree
 	private List<QnNode> startNode = new List<QnNode>();
 	private List<QnNode> currNode = new List<QnNode>();
 	private List<QnNode> currQn = new List<QnNode>(); //stores the currQn down the list of Qn
 	private List<QnNode> nextCurrNode = new List<QnNode>();
 	private List<WeaponNode> weaponList = new List<WeaponNode>();
+	
+	//start node and current node of weaponNode tree
 	
 	public TreeNode() {
 	}
@@ -49,6 +51,7 @@ public class TreeNode {
 				while (temp.NextQn != null) { 
 					if (temp.Qn == qn) { // check for the correct qn
 						temp.changeBooleanValues(); // unlocked the values
+						temp.setGUIBool();
 						return temp.Ans; // return the answer
 					}
 					else {
