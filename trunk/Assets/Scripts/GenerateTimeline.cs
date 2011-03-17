@@ -730,10 +730,10 @@ public class GenerateTimeline : MonoBehaviour
 				if (qnNum == 4) {
 					timeline[i].setBefUnlocked(0, true);
 				}
-				else if (qnNum == 5) {
+				else if (qnNum == 6) {
 					timeline[i].setBefUnlocked(1, true);
 				}
-				else if (qnNum == 7) {
+				else if (qnNum == 5) {
 					timeline[i].setDuringUnlocked(0, true);
 				}
 				else if (qnNum == 8) {
