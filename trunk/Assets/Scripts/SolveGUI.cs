@@ -116,8 +116,7 @@ public class SolveGUI : MonoBehaviour {
 		//roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
 		if (GUILayout.Button("Solve!") ) {
 			List<string> answer = GenerateTimeline.murderTruth.getMurder();
-			if (answer[Person.place] == roomSelection && 
-				GenerateTimeline.murderWeap.ToString() == weaponSelection && 
+			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
 				Enum.GetName(typeof(Suspects), GenerateTimeline.murderer) == suspectSelection) {
 				//check if game solved
 				Debug.Log("Solved");
