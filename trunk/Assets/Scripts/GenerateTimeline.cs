@@ -296,7 +296,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	
 	
-	/*void placeWeapons(int RH, int M)
+	void placeWeapons(int RH, int M)
 	{
 		List<Vector3> positions = new List<Vector3>();
 		List<Rooms> place = new List<Rooms>();
@@ -453,7 +453,7 @@ public class GenerateTimeline : MonoBehaviour
 			}
 		}
 		
-	}*/
+	}
 	
 	public String createStartPara(String murderRoom)
 	{
@@ -739,7 +739,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void OnGUI() {
 		if (displayWindow == true)
-			windowRect = GUILayout.Window(0, windowRect, DoMyWindow, "Welcome to DaDetective", windowStyle);
+			windowRect = GUILayout.Window(5, windowRect, DoMyWindow, "Welcome to DaDetective", windowStyle);
 	}
 	
 	void DoMyWindow(int windowID) {
