@@ -80,9 +80,9 @@ public class SolveGUI : MonoBehaviour {
 		for (int i=0; i< Globals.numSuspects; i++) {
 			suspectAnswers.Add(Enum.GetName(typeof(Suspects), i));
 		}
-		for (int i=0; i<Globals.numRooms; i++) {
+		/*for (int i=0; i<Globals.numRooms; i++) {
 			roomAnswers.Add(Enum.GetName(typeof(Rooms),i));
-		}
+		}*/
 		for (int i=0; i<Globals.numWeapons; i++) {
 			weaponAnswers.Add(Enum.GetName(typeof(Weapons),i));
 		}
@@ -112,8 +112,8 @@ public class SolveGUI : MonoBehaviour {
 		suspectSelection = SelectList(suspectAnswers ,suspectSelection, OnCheckboxItemGUI);
 		GUILayout.Label("using ...");
 		weaponSelection = SelectList(weaponAnswers ,weaponSelection, OnCheckboxItemGUI);
-		GUILayout.Label("in ...");
-		roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
+		//GUILayout.Label("in ...");
+		//roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
 		if (GUILayout.Button("Solve!") ) {
 			List<string> answer = GenerateTimeline.murderTruth.getMurder();
 			if (answer[Person.place] == roomSelection && 
