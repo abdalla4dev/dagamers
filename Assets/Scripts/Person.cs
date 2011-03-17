@@ -179,24 +179,24 @@ public class Person {
 		aftMurder[pos] = s;
 	}
 	//menghui, the accessors start here
-	public bool getBefUnlocked(int i) {
-		return befUnlocked[i];
+	public bool getBefUnlocked() {
+		return befUnlocked[0] && befUnlocked[1];
 	}
 	
 	public void setBefUnlocked(int i, bool val) {
 		befUnlocked[i] = val;
 	}
 	
-	public bool getDuringUnlocked(int i) {
-		return duringUnlocked[i];
+	public bool getDuringUnlocked() {
+		return duringUnlocked[0] && duringUnlocked[1];
 	}
 	
 	public void setDuringUnlocked(int i, bool val) {
 		duringUnlocked[i] = val;
 	}	
 	
-	public bool getAftUnlocked(int i) {
-		return aftUnlocked[i];
+	public bool getAftUnlocked() {
+		return aftUnlocked[0] && aftUnlocked[1];
 	}
 	
 	public void setAftUnlocked(int i, bool val) {

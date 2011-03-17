@@ -79,11 +79,13 @@ public class GenerateTimeline : MonoBehaviour
 	
 	System.Random rand;
 	
+	public static int murderer;
+	
 	public static String startPara;
 	
 	void Start() {
 		rand= new System.Random();
-		int murderer = genMurderer();
+		murderer = genMurderer();
 		murderWeap = genWeap();
 		//Debug.Log(Enum.GetName(typeof(Suspects),murderer)); //murderer name.
 		Debug.Log("victim");

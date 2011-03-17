@@ -73,10 +73,16 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Wife", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
-			GUI.backgroundColor = Color.magenta;
-			GUILayout.Box(wifePreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(wifeMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(wifePostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			//GUI.backgroundColor = Color.magenta;
+			if (GenerateTimeline.timeline[0].getBefUnlocked()) {
+				GUILayout.Box(wifePreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[0].getDuringUnlocked()) {
+				GUILayout.Box(wifeMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[0].getAftUnlocked()) {
+				GUILayout.Box(wifePostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
 			//GUILayout.Space(480);	
 		GUILayout.EndHorizontal();
 		
@@ -90,10 +96,16 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Son", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
 			//GUILayout.Space(240);
-			GUI.backgroundColor = Color.yellow;
-			GUILayout.Box(sonPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(sonMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(sonPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			//GUI.backgroundColor = Color.yellow;
+			if (GenerateTimeline.timeline[1].getBefUnlocked()) {
+				GUILayout.Box(sonPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[1].getDuringUnlocked()) {
+				GUILayout.Box(sonMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[1].getAftUnlocked()) {
+				GUILayout.Box(sonPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
 			//GUILayout.Space(240);
 		GUILayout.EndHorizontal();
 		
@@ -106,10 +118,16 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Daughter", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
-			GUI.backgroundColor = Color.green;
-			GUILayout.Box(daughterPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(daughterMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(daughterPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			//GUI.backgroundColor = Color.green;
+			if (GenerateTimeline.timeline[2].getBefUnlocked()) {
+				GUILayout.Box(daughterPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[2].getDuringUnlocked()) {
+				GUILayout.Box(daughterMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[2].getAftUnlocked()) {
+				GUILayout.Box(daughterPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120); 
 		GUILayout.EndHorizontal();
 		
 		string maidPreMurder = "At " + GenerateTimeline.getPersonDetails(0,3,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,3,Person.activity) 
@@ -121,10 +139,16 @@ public class KnowledgeTimelineUI : MonoBehaviour {
 		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Maid", labelStyle, GUILayout.Height(50), GUILayout.Width(120));
-			GUI.backgroundColor = Color.cyan;
-			GUILayout.Box(maidPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(maidMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
-			GUILayout.Box(maidPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			//GUI.backgroundColor = Color.cyan;
+			if (GenerateTimeline.timeline[3].getBefUnlocked()) {
+				GUILayout.Box(maidPreMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[3].getDuringUnlocked()) {
+				GUILayout.Box(maidMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
+			if (GenerateTimeline.timeline[3].getAftUnlocked()) {
+				GUILayout.Box(maidPostMurder, boxStyle, GUILayout.Width(120), GUILayout.Height(50));
+			} else GUILayout.Space(120);
 		GUILayout.EndHorizontal();
 		
 		GUILayout.EndScrollView();
