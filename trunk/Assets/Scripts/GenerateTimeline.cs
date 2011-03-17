@@ -79,6 +79,8 @@ public class GenerateTimeline : MonoBehaviour
 	
 	System.Random rand;
 	
+	public static String startPara;
+	
 	void Start() {
 		rand= new System.Random();
 		int murderer = genMurderer();
@@ -105,26 +107,12 @@ public class GenerateTimeline : MonoBehaviour
 			}
 		}
 		
-		/*
-		 * modify the timeline such that
-		 * 1) Redherring witness Muderer true pre-murder activity (witness/alibi means shifting people to be in the same room)
-		 * 2) other 2 suspects are alibi to each other in pre-murder
-		 * 3) During murder, create a alibi for the redherring from one of the 2 suspects
-		 * 4) The other suspect is able to disprove Murderer's false statement
-		 */
-		// i=0 (murderer), 1(herring), 2,3(normal)
-		/*murderTruth.createBefMurderWitness(timeline[1]);
-		timeline[2].createBefMurderWitness(timeline[3]);
-		timeline[1].createDurMurderWitness(timeline[2]);
-		//fAlibi.createDurMurderWitness(timeline[3]);
-		timeline[0].createDurMurderWitness(timeline[3]);*/
 		
-		int redHerringIndex;//, suspect1, suspect2;
+		int redHerringIndex;
 		redHerringIndex = -1;
-		//suspect1 = -1;
-		//suspect2 = -1;
 		
 		List<int> innocents = new List<int>();
+		
 		for(int i=0; i<timeline.Count; i++)
 		{
 			if(timeline[i].isFoundBody())
@@ -173,32 +161,7 @@ public class GenerateTimeline : MonoBehaviour
 				}
 		}
 		
-		/*fAlibi.createBefMurderWitness(timeline[redHerringIndex], redHerringIndex, murderer); //murderer and redherring are alibis. (IF NO ALIBI USE -1)
-		timeline[suspect1].createBefMurderWitness(timeline[suspect2], suspect2, suspect1); //suspect1 and suspect2 are each other's alibi.
-		timeline[redHerringIndex].createDurMurderWitness(timeline[suspect1], suspect1, redHerringIndex); //redherring and suspect1 are alibis.
-		
-		if(!timeline[suspect2].isFoundBody() && !timeline[suspect1].isFoundBody() && !timeline[redHerringIndex].isFoundBody())
-		{
-			timeline[suspect2].makeFindBody(murderTruth);
-		}*/
-		//else
-		//	timeline[murderer].createDurMurderWitness(timeline[suspect2], suspect2, murderer); //murderer and suspect2 are alibis.
-		
-		
-		//placeWeapons(redHerringIndex, murderer);
-		
-		/*for(int i=0; i<timeline.Count; i++)
-		{
-			if(timeline[i].getAftMurder(Person.alibi)=="null")
-				for(int j=0; j<timeline.Count; j++)
-				{
-					if(j!=i && timeline[i].getAftMurder(Person.place)==timeline[j].getAftMurder(Person.place))
-					{
-						timeline[i].setAftMurder(Enum.GetName(typeof(Suspects),j), Person.alibi);
-						timeline[j].setAftMurder(Enum.GetName(typeof(Suspects),i), Person.alibi);
-					}						
-				}
-		}*/
+		startPara = createStartPara(victim.getMurder(Person.place));
 		
 		
 		//debugging purposes.
@@ -485,6 +448,14 @@ public class GenerateTimeline : MonoBehaviour
 		}
 		
 	}*/
+	
+	public String createStartPara(String murderRoom)
+	{
+		String mRoom = murderRoom.Replace('_', ' ');
+		String s = "Mr. XXX, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
+		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he/she murder with and when did he commit the murder.";
+		return s;
+	}
 	
 	/*METHODS TO GET RESULTS*/
 	/*FOR INDIVIDUALS*/
