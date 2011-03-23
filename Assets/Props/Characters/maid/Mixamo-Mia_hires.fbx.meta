@@ -1,0 +1,326 @@
+fileFormatVersion: 1
+guid: 8f751338bd27c82429509b9e5ecd465e
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Mia:LeftHand:
+    - 100000
+    - 400000
+    Mia:LeftForeArm:
+    - 100002
+    - 400002
+    Mia:LeftArm:
+    - 100004
+    - 400004
+    Mia:RightCheek:
+    - 100006
+    - 400006
+    Mia:LeftCheek:
+    - 100008
+    - 400008
+    Mia:LeftNostril:
+    - 100010
+    - 400010
+    Mia:TongueBack:
+    - 100012
+    - 400012
+    Mia:TongueTip:
+    - 100014
+    - 400014
+    Mia:JawEND:
+    - 100016
+    - 400016
+    Mia:Jaw:
+    - 100018
+    - 400018
+    Mia:LeftEye1:
+    - 100020
+    - 400020
+    Mia:LeftEye:
+    - 100022
+    - 400022
+    Mia:HeadTop_End:
+    - 100024
+    - 400024
+    Mia:Head:
+    - 100026
+    - 400026
+    Mia:Neck1:
+    - 100028
+    - 400028
+    Mia:Neck:
+    - 100030
+    - 400030
+    Mia:Spine2:
+    - 100032
+    - 400032
+    Mia:Spine1:
+    - 100034
+    - 400034
+    Mia:Spine:
+    - 100036
+    - 400036
+    Mia:Hips:
+    - 100038
+    - 400038
+    BodyGeo:
+    - 100040
+    - 400040
+    - 13700000
+    HairGeo:
+    - 100042
+    - 400042
+    - 13700002
+    LashesGeo:
+    - 100044
+    - 400044
+    - 13700004
+    TeethGeo:
+    - 100046
+    - 400046
+    - 13700006
+    EyesGeo:
+    - 100048
+    - 400048
+    - 13700008
+    Mia:RightFoot:
+    - 100050
+    - 400050
+    Mia:RightLeg:
+    - 100052
+    - 400052
+    Mia:RightUpLeg:
+    - 100054
+    - 400054
+    Mia:LeftToeBase:
+    - 100056
+    - 400056
+    Mia:LeftFoot:
+    - 100058
+    - 400058
+    Mia:LeftLeg:
+    - 100060
+    - 400060
+    Mia:LeftUpLeg:
+    - 100062
+    - 400062
+    Mia:RightHand:
+    - 100064
+    - 400064
+    Mia:RightArm:
+    - 100066
+    - 400066
+    Mia:LeftHandMiddle2:
+    - 100068
+    - 400068
+    Mia:LeftHandMiddle3:
+    - 100070
+    - 400070
+    Mia:RightHandRing2:
+    - 100072
+    - 400072
+    Mia:RightHandThumb1:
+    - 100074
+    - 400074
+    Mia:RightHandThumb2:
+    - 100076
+    - 400076
+    Mia:LeftHandThumb4:
+    - 100078
+    - 400078
+    Mia:LeftHandMiddle1:
+    - 100080
+    - 400080
+    Mia:RightHandThumb3:
+    - 100082
+    - 400082
+    Mia:RightHandThumb4:
+    - 100084
+    - 400084
+    Mia:LeftHandPinky3:
+    - 100086
+    - 400086
+    Mia:LeftHandPinky4:
+    - 100088
+    - 400088
+    Mia:RightShoulder:
+    - 100090
+    - 400090
+    Mia:RightForeArm:
+    - 100092
+    - 400092
+    Mia:RightHandIndex1:
+    - 100094
+    - 400094
+    Mia:RightHandIndex2:
+    - 100096
+    - 400096
+    Mia:RightHandIndex3:
+    - 100098
+    - 400098
+    Mia:RightHandIndex4:
+    - 100100
+    - 400100
+    Mia:RightHandMiddle1:
+    - 100102
+    - 400102
+    Mia:RightHandMiddle2:
+    - 100104
+    - 400104
+    Mia:RightHandMiddle3:
+    - 100106
+    - 400106
+    Mia:RightHandMiddle4:
+    - 100108
+    - 400108
+    Mia:LeftHandRing3:
+    - 100110
+    - 400110
+    Mia:LeftHandRing4:
+    - 100112
+    - 400112
+    Mia:LeftHandPinky1:
+    - 100114
+    - 400114
+    Mia:LeftHandPinky2:
+    - 100116
+    - 400116
+    Mia:RightHandRing1:
+    - 100118
+    - 400118
+    Mia:LeftHandMiddle4:
+    - 100120
+    - 400120
+    Mia:RightFootToeBase_End:
+    - 100122
+    - 400122
+    //RootNode:
+    - 100124
+    - 400124
+    - 11100000
+    Mia:RightHandPinky1:
+    - 100126
+    - 400126
+    Mia:LeftHandIndex2:
+    - 100128
+    - 400128
+    Mia:LeftHandIndex1:
+    - 100130
+    - 400130
+    Mia:RightHandRing4:
+    - 100132
+    - 400132
+    Mia:RightHandRing3:
+    - 100134
+    - 400134
+    Mia:LeftHandRing2:
+    - 100136
+    - 400136
+    Mia:LeftHandRing1:
+    - 100138
+    - 400138
+    Mia:RightToeBase:
+    - 100140
+    - 400140
+    Mia:LeftFootToeBase_End:
+    - 100142
+    - 400142
+    Mia:RightHandPinky2:
+    - 100144
+    - 400144
+    Mia:LeftHandIndex3:
+    - 100146
+    - 400146
+    Mia:LeftHandIndex4:
+    - 100148
+    - 400148
+    Mia:RightHandPinky3:
+    - 100150
+    - 400150
+    Mia:RightHandPinky4:
+    - 100152
+    - 400152
+    Mia:LeftHandThumb3:
+    - 100154
+    - 400154
+    Mia:LeftHandThumb2:
+    - 100156
+    - 400156
+    Mia:LeftHandThumb1:
+    - 100158
+    - 400158
+    Mia:LeftShoulder:
+    - 100160
+    - 400160
+    Mia:RightLipUpper:
+    - 100162
+    - 400162
+    Mia:RightNostril:
+    - 100164
+    - 400164
+    Mia:RightEyelidLower:
+    - 100166
+    - 400166
+    Mia:RightEyelidUpper:
+    - 100168
+    - 400168
+    Mia:RightIOuterBrow:
+    - 100170
+    - 400170
+    Mia:RightInnerBrow:
+    - 100172
+    - 400172
+    Mia:LeftIOuterBrow:
+    - 100174
+    - 400174
+    Mia:LeftInnerBrow:
+    - 100176
+    - 400176
+    Mia:LeftEyelidUpper:
+    - 100178
+    - 400178
+    Mia:LeftEyelidLower:
+    - 100180
+    - 400180
+    Mia:LeftLipUpper:
+    - 100182
+    - 400182
+    Mia:RightLipLower:
+    - 100184
+    - 400184
+    Mia:RightLipCorner:
+    - 100186
+    - 400186
+    Mia:LeftLipLower:
+    - 100188
+    - 400188
+    Mia:LeftLipCorner:
+    - 100190
+    - 400190
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: EyesGeo
+    4300002: TeethGeo
+    4300004: LashesGeo
+    4300006: HairGeo
+    4300008: BodyGeo
