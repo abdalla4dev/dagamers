@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections; 
+using System.Collections.Generic;
 
 namespace MurderData
 {	
@@ -7,150 +8,36 @@ namespace MurderData
 	 * Rooms are defined here
 	 */ 
 	
-	public struct Globals 
+	public static class Globals 
 	{
 		public const int numWeapons = 5; //self explanatory, used it so only need to change once here.
 		public const int numRooms = 5;
 		public const int numSuspects = 4;	
+		
+		public static readonly List<Room> room;
+		static Globals() {
+			room.Add(new Room("Kitchen"));
+			room.Add(new Room("Living Room"));
+			room.Add(new Room("Master Bedroom"));
+			room.Add(new Room("Garden"));
+			room.Add(new Room("Master Bedroom Toilet"));
+			/*room.Add(new Room("Bedroom"));
+			room.Add(new Room("Toilet"));*/
+		}
 	}
 	
-	public enum Rooms
+	public enum RmEnum
 	{
 		Kitchen,
 		Living_Room,
-		Bedroom,
+		Master_Bedroom,
 		Garden,
-		Toilet
+		MBR_Toilet/*,
+		Bedroom,
+		Toilet*/
 	}
 	
-	public static class Kitchen
-	{
-		//define the activities not associated with weapons
-		public enum Generic_Activities
-		{
-			Washing_Dishes, 	//0
-			Cooking,			//1
-			Chatting_On_Phone,	//2
-			Making_Tea			//3
-		}
-		public static readonly int Num_Activities = 4;
-		
-		//define the weapons
-		public static readonly Knife knife;
-		public static readonly Screwdriver screwdriver;
-		public static readonly Towel towel;
-		public static readonly Scissors scissors;
-		public static readonly Spanner spanner;
-		static Kitchen() {
-			knife = new Knife(Knife.Activities.Cutting_Fruits);	//define the only possible activity in this room with this weapon
-			screwdriver = new Screwdriver(Screwdriver.Activities.Fixing_Light);
-			towel = new Towel(Towel.Activities.Cleaning_Floor);
-			scissors = new Scissors(Scissors.Activities.Doing_Handicraft);
-			spanner = new Spanner(Spanner.Activities.Tightening_Tap);
-		}
-	}
-	
-	public static class Living_Room 
-	{
-		public enum Generic_Activities
-		{
-			Watching_TV,
-			Doing_Work,
-			Relaxing_On_Couch
-		}
-		public static readonly int Num_Activities = 3;
-		
-		public static readonly Knife knife;
-		public static readonly Screwdriver screwdriver;
-		public static readonly Towel towel;
-		public static readonly Scissors scissors;
-		public static readonly Spanner spanner;
-		static Living_Room() {
-			knife = new Knife(Knife.Activities.Cutting_Fruits);	//define the only possible activity in this room with this weapon
-			screwdriver = new Screwdriver(Screwdriver.Activities.Fixing_Light);
-			towel = new Towel(Towel.Activities.Cleaning_Floor);
-			scissors = new Scissors(Scissors.Activities.Doing_Handicraft);
-			spanner = new Spanner(Spanner.Activities.Tightening_Pipe);
-		}
-	}
-	
-	public static class Bedroom
-	{
-		public enum Generic_Activities
-		{
-			Sleeping,
-			Chatting_On_Phone,
-			Relaxing,
-			Reading_Book
-		}
-		public static readonly int Num_Activities = 4;
-		
-		public static readonly Knife knife;
-		public static readonly Screwdriver screwdriver;
-		public static readonly Towel towel;
-		public static readonly Scissors scissors;
-		public static readonly Spanner spanner;
-		static Bedroom() {
-			knife = new Knife(Knife.Activities.Cutting_Fruits);	//define the only possible activity in this room with this weapon
-			screwdriver = new Screwdriver(Screwdriver.Activities.Fixing_Light);
-			towel = new Towel(Towel.Activities.Cleaning_Floor);
-			scissors = new Scissors(Scissors.Activities.Doing_Handicraft);
-			spanner = new Spanner(Spanner.Activities.Tightening_Pipe);
-		}
-	}
-	
-	public static class Garden 
-	{
-		public enum Generic_Activities
-		{
-			Gardening,
-			Enjoying_The_View,
-			Watering_The_Plants
-		}
-		public static readonly int Num_Activities = 3;
-		
-		public static readonly Knife knife;
-		public static readonly Screwdriver screwdriver;
-		public static readonly Towel towel;
-		public static readonly Scissors scissors;
-		public static readonly Spanner spanner;
-		static Garden() {
-			knife = new Knife(Knife.Activities.Cutting_Fruits);	//define the only possible activity in this room with this weapon
-			screwdriver = new Screwdriver(Screwdriver.Activities.Fixing_Light);
-			towel = new Towel(Towel.Activities.Washing_Car);
-			scissors = new Scissors(Scissors.Activities.Pruning_Plants);
-			spanner = new Spanner(Spanner.Activities.Tightening_Pipe);
-		}
-	}
-	
-	public static class Toilet
-	{
-		public enum Generic_Activities
-		{
-			Cleaning,
-			Doing_Business
-		}
-		public static readonly int Num_Activities = 2;
-		
-		public static readonly Knife knife;
-		public static readonly Screwdriver screwdriver;
-		public static readonly Towel towel;
-		public static readonly Scissors scissors;
-		public static readonly Spanner spanner;
-		static Toilet() {
-			knife = new Knife(Knife.Activities.Cutting_Fruits);	//define the only possible activity in this room with this weapon
-			screwdriver = new Screwdriver(Screwdriver.Activities.Fixing_Light);
-			towel = new Towel(Towel.Activities.Bathing);
-			scissors = new Scissors(Scissors.Activities.Cutting_Hair);
-			spanner = new Spanner(Spanner.Activities.Tightening_Pipe);
-		}
-	}
-	
-	/*
-	 * Weapons are defined here 
-	 */
-	
-	public enum Weapons
+	public enum WpnEnum
 	{
 		Knife,
 		Screwdriver,
@@ -159,63 +46,136 @@ namespace MurderData
 		Spanner
 	}
 	
-	public struct Knife 
-	{
-		//define the possible activities with the weapon
-		public enum Activities 
-		{
-			Cutting_Fruits,
-			//Pruning_Plants
+	public class Room {
+		public readonly string name; // the room name
+		public readonly List<string> Generic_Activities;
+		public readonly List<Weapon> WeaponList;
+		public Room(string s) {
+			name = s;
+			if (name == "Kitchen") {
+				Generic_Activities.Add("washing the dishes");
+				Generic_Activities.Add("cooking");
+				Generic_Activities.Add("chatting on the phone");
+				Generic_Activities.Add("making tea");
+			} else if (name == "Living Room") {
+				Generic_Activities.Add("watching TV");
+				Generic_Activities.Add("doing my work");
+				Generic_Activities.Add("relaxing on the couch");
+			} else if (name == "Master Bedroom") {
+				Generic_Activities.Add("sleeping");
+				Generic_Activities.Add("chatting on the phone");
+				Generic_Activities.Add("relaxing");
+				Generic_Activities.Add("reading a book");
+			} else if (name == "Garden") {
+				Generic_Activities.Add("gardening");
+				Generic_Activities.Add("enjoying the view");
+				Generic_Activities.Add("watering the plants");
+			} else if (name == "Master Bedroom Toilet") {
+				Generic_Activities.Add("cleaning");
+				Generic_Activities.Add("doing business");
+			} /*else if (name == "Bedroom") {
+				
+			} else if (name == "Toilet") {
+				
+			}*/
+			
+			//name is already initialized to the room name
+			WeaponList.Add(new Weapon("Knife", name));
+			WeaponList.Add(new Weapon("Screwdriver", name));
+			WeaponList.Add(new Weapon("Towel", name));
+			WeaponList.Add(new Weapon("Scissors", name));
+			WeaponList.Add(new Weapon("Spanner", name));
 		}
-		public readonly Activities activity;	//store the activity associated to the room
-		public Knife(Activities x) { activity = x;	}
 	}
 	
-	public struct Screwdriver
-	{
-		public enum Activities { Fixing_Light }
-		public readonly Activities activity;
-		public Screwdriver (Activities x) { activity = x; }
-	}
-	
-	public struct Towel 
-	{
-		public enum Activities 
-		{
-			Cleaning_Floor,
-			Washing_Car,
-			Bathing
+	public class Weapon {
+		public readonly string name; // the weapon name
+		public readonly List<string> activity;
+		public Weapon(string wpn, string room) {
+			name = wpn;
+			if (name == "Knife") {
+				if (room == "Kitchen") {
+					activity.Add("cutting fruits");
+				} else if (room == "Living Room") {
+					activity.Add("cutting fruits");
+				} else if (room == "Master Bedroom") {
+					activity.Add("cutting fruits");
+				} else if (room == "Garden") {
+					activity.Add("cutting fruits");
+				} else if (room == "Master Bedroom Toilet") {
+					activity.Add("cutting fruits");
+				}/* else if (room == "Bedroom") {
+					
+				} else if (room == "Toilet") {
+					
+				}*/
+			} else if (name == "Screwdriver") {
+				if (room == "Kitchen") {
+					activity.Add("fixing the light");
+				} else if (room == "Living Room") {
+					activity.Add("fixing the light");
+				} else if (room == "Master Bedroom") {
+					activity.Add("fixing the light");
+				} else if (room == "Garden") {
+					activity.Add("fixing the light");
+				} else if (room == "Master Bedroom Toilet") {
+					activity.Add("fixing the light");
+				}/* else if (room == "Bedroom") {
+					
+				} else if (room == "Toilet") {
+					
+				}*/
+			} else if (name == "Towel") {
+				if (room == "Kitchen") {
+					activity.Add("cleaning the floor");
+				} else if (room == "Living Room") {
+					activity.Add("cleaning the floor");
+				} else if (room == "Master Bedroom") {
+					activity.Add("cleaning the floor");
+				} else if (room == "Garden") {
+					activity.Add("washing the car");
+				} else if (room == "Master Bedroom Toilet") {
+					activity.Add("bathing");
+				}/* else if (room == "Bedroom") {
+					
+				} else if (room == "Toilet") {
+					
+				}*/
+			} else if (name == "Scissors") {
+				if (room == "Kitchen") {
+					activity.Add("doing handicraft");
+				} else if (room == "Living Room") {
+					activity.Add("doing handicraft");
+				} else if (room == "Master Bedroom") {
+					activity.Add("doing handicraft");
+				} else if (room == "Garden") {
+					activity.Add("pruning the plants");
+				} else if (room == "Master Bedroom Toilet") {
+					activity.Add("cutting my hair");
+				}/* else if (room == "Bedroom") {
+					
+				} else if (room == "Toilet") {
+					
+				}*/
+			} else if (name == "Spanner") {
+				if (room == "Kitchen") {
+					activity.Add("tightening the tap");
+				} else if (room == "Living Room") {
+					activity.Add("tightening the pipe");
+				} else if (room == "Master Bedroom") {
+					activity.Add("tightening the pipe");
+				} else if (room == "Garden") {
+					activity.Add("tightening the pipe");
+				} else if (room == "Master Bedroom Toilet") {
+					activity.Add("tightening the pipe");
+				}/* else if (room == "Bedroom") {
+					
+				} else if (room == "Toilet") {
+					
+				}*/
+			}
 		}
-		public readonly Activities activity;
-		public Towel(Activities x) { activity = x; }
 	}
-	
-	public struct Scissors 
-	{
-		public enum Activities 
-		{
-			Doing_Handicraft,
-			Pruning_Plants,
-			Cutting_Hair
-		}
-		public readonly Activities activity;
-		public Scissors(Activities x) { activity = x; }
-	}
-	
-	public struct Spanner
-	{
-		public enum Activities
-		{
-			Tightening_Tap,
-			Tightening_Pipe
-		}
-		public readonly Activities activity;
-		public Spanner(Activities x) { activity = x; }
-	}
-	
-	/*
-	 * Suspects are defined here
-	 */ 
 	
 	public enum Suspects
 	{
