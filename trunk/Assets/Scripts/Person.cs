@@ -40,28 +40,43 @@ public class Person {
 	//New code here 
 	private List<TimelineSlot> truthTimeline = new List<TimelineSlot>(3); //truthTimeline[0] is befMurder, 1 is durMurder and 2 is aftMurder
 	private List<TimelineSlot> falseTimeline = new List<TimelineSlot>(3);
+	public readonly SuspectEnum name;
+	public readonly bool isVictim;
+	public readonly bool isMurderer;
+	public bool foundBody;
 	//End new code, the rest can delete if not useful
-	
-	public const int place = 0;
-	public const int activity = 1;
-	public const int alibi = 2;
-	
-	List<String> befMurder = new List<String>();
-	List<String> duringMurder = new List<String>();
-	List<String> aftMurder = new List<String>();
 
-	bool murderer, murdered;
-	bool foundBody = false;
-	bool redHerring = false; 
-	bool fakeAlibi = false;
 	//to menghui: please refer to this part for your gui coding
 	bool[] befUnlocked = {false,false};
 	bool[] duringUnlocked = {false,false};
 	bool[] aftUnlocked = {false,false};
 	
-	Weapons rhWeap;
-	
 	System.Random rand;
+	
+	public Person(SuspectEnum s, bool victim, bool murderer) {
+		name = s;
+		isVictim = victim;
+		isMurderer = murderer;
+	}
+	
+	public void setBeforeMurder(double start, RmEnum p, string activity, WpnEnum w) {
+		truthTimeline.Insert(0, new TimelineSlot(start, p, activity, w));
+	}
+	public void setDuringMurder(double start, RmEnum p, string activity, WpnEnum w) {
+		truthTimeline.Insert(1, new TimelineSlot(start, p, activity, w));
+	}
+	public void setAfterMurder(double start, RmEnum p, string activity, WpnEnum w) {
+		truthTimeline.Insert(2, new TimelineSlot(start, p, activity, w));
+	}
+	public void setFakeBeforeMurder(double start, RmEnum p, string activity, WpnEnum w) {
+		falseTimeline.Insert(0, new TimelineSlot(start, p, activity, w));
+	}
+	public void setFakeDuringMurder(double start, RmEnum p, string activity, WpnEnum w) {
+		falseTimeline.Insert(1, new TimelineSlot(start, p, activity, w));
+	}
+	public void setFakeAfterMurder(double start, RmEnum p, string activity, WpnEnum w) {
+		falseTimeline.Insert(2, new TimelineSlot(start, p, activity, w));
+	}
 	
 	public Person(Person toCopy)
 	{
@@ -91,20 +106,6 @@ public class Person {
 	}
 	
 	/* accessors for bools*/
-	public bool isFakeAlibi()
-	{
-		return fakeAlibi;
-	}
-	
-	public bool isMurderer()
-	{
-		return murderer;
-	}
-	
-	public bool isMurdered()
-	{
-		return murdered;
-	}
 	
 	public bool isFoundBody()
 	{
@@ -114,26 +115,6 @@ public class Person {
 	public void setFoundBody(bool fb)
 	{
 		foundBody = fb;
-	}
-	
-	public bool isRedHerring()
-	{
-		return redHerring;
-	}
-	
-	public void setRedHerring(bool rh)
-	{
-		redHerring = rh;
-	}
-	
-	public Weapons getRHWeap()
-	{
-		return rhWeap;
-	}
-	
-	public void setRHWeap(Weapons w)
-	{
-		rhWeap = w;
 	}
 	
 	/*accessors and mutators for befMurder*/
