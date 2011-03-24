@@ -177,7 +177,7 @@ namespace MurderData
 		}
 	}
 	
-	public enum Suspects
+	public enum SuspectEnum
 	{
 		Wife,
 		Son,
