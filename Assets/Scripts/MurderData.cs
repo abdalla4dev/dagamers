@@ -24,6 +24,16 @@ namespace MurderData
 			/*room.Add(new Room("Bedroom"));
 			room.Add(new Room("Toilet"));*/
 		}
+		
+		public static RmEnum randRoom(RmEnum rm) {
+			//return a room different from r
+			System.Random r = new System.Random();
+			RmEnum toReturn;
+			do {
+				toReturn = r.Next(0, numRooms);
+			} while (toReturn == rm);
+			return toReturn;
+		}
 	}
 	
 	public enum RmEnum
@@ -43,7 +53,8 @@ namespace MurderData
 		Screwdriver,
 		Towel,
 		Scissors,
-		Spanner
+		Spanner,
+		None
 	}
 	
 	public class Room {
@@ -85,6 +96,10 @@ namespace MurderData
 			WeaponList.Add(new Weapon("Towel", name));
 			WeaponList.Add(new Weapon("Scissors", name));
 			WeaponList.Add(new Weapon("Spanner", name));
+		}
+		public string randomGA() {
+			System.Random r = new System.Random();
+			return Generic_Activities[r.Next(0, Generic_Activities.Count)];
 		}
 	}
 	
@@ -182,6 +197,13 @@ namespace MurderData
 		Wife,
 		Son,
 		Daughter,
-		Maid
+		Maid,
+		Father
+	}
+	
+	public enum GameDiffEnum {
+		Easy,
+		Medium,
+		Hard
 	}
 }

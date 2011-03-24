@@ -12,14 +12,16 @@ public class TimelineSlot  {
 	public readonly RmEnum place;
 	public readonly string activity;
 	public readonly WpnEnum weapon;
-	public readonly SuspectEnum person;
+	public List<SuspectEnum> alibi = new List<SuspectEnum>();
+	//public readonly SuspectEnum person; //probably not needed as its stored in person alr
 	
-	public TimelineSlot(double start, RmEnum p, string a, WpnEnum wpn, SuspectEnum s) {
+	public TimelineSlot(double start, RmEnum p, string a, WpnEnum wpn/*, SuspectEnum s*/) {
 		startTime = start;
+		endTime = start + 1;
 		place = p;
 		activity = a;
 		weapon = wpn;
-		person = s;
+	//	person = s;
 	}
 	
 	public string getStartTime() {
@@ -29,5 +31,9 @@ public class TimelineSlot  {
 			hour-=12;
 			return ""+hour+":"+minutes+"pm";
 		} else return ""+hour+":"+minutes+"am";
+	}
+	
+	public string getDuration() {
+		return "" + (endTime-startTime) + " hour";
 	}
 }

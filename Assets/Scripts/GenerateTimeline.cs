@@ -47,23 +47,25 @@ public class GenerateTimeline : MonoBehaviour
 	
 	*/
 	
-	public static int earliestDeath = 8; //earliest possible time that murder is committed. (can change)
-	public static int latestDeath = 24; //latest possible time that murder is committed. (can change)
+	public const int earliestDeath = 8; //earliest possible time that murder is committed. (can change)
+	public const int latestDeath = 20; //latest possible time that murder is committed. (can change)
 	
-	const bool guilty = true; //murderer
-	const bool murdered = true; //victim
+	//easy is 6 contradictions, medium is 1 real and at most 2 fake contradictions, hard is same as medium but harder to uncover fact
+	public static GameDiffEnum difficulty = GameDiffEnum.Easy;
+	private static int numContradiction = 0;
 	
 	public static Person victim;
-	public static Person murderTruth;
-	Person fAlibi;
-	public static Weapons murderWeap;
+	public static Person murderer;
+	public static WpnEnum murderWeap;
+	public static RmEnum murderLoc;
 	public static double deathTime; //24 hr clock. when murder was committed
 	public static double bodyFound; //24 hr clock. when body was found.
-	
-	public static bool redHerring = false; //only 1 redHerring for now, so this is to keep track if there alr is one.
+	public static int befMurderTime;
+	public static int aftMurderTime;
+
 	public static bool someoneFoundBody = false;
 	
-	public static List<Person> timeline = new List<Person>();
+	public static List<Person> timeline = new List<Person>(4);
 	
 	public Transform knife; 
 	public Transform screwdriver;
@@ -71,29 +73,46 @@ public class GenerateTimeline : MonoBehaviour
 	public Transform scissors;
 	public Transform spanner;
 	
-	public static Rooms knifeLoc;
-	public static Rooms screwdriverLoc;
-	public static Rooms towelLoc;
-	public static Rooms scissorsLoc;
-	public static Rooms spannerLoc;
+	public static RmEnum knifeLoc;
+	public static RmEnum screwdriverLoc;
+	public static RmEnum towelLoc;
+	public static RmEnum scissorsLoc;
+	public static RmEnum spannerLoc;
 	
-	System.Random rand;
-	
-	public static int murderer;
+	System.Random rand = new System.Random();
 	
 	public static String startPara;
 	
 	void Start() {
-		rand= new System.Random();
-		murderer = genMurderer();
+		initializeContradictionNum();
+		SuspectEnum murdererEnum = genMurderer();
 		murderWeap = genWeap();
-		//Debug.Log(Enum.GetName(typeof(Suspects),murderer)); //murderer name.
-		Debug.Log("victim");
-		victim = new Person(!guilty, murdered);
-		Debug.Log("murderer " + Enum.GetName(typeof(Suspects),murderer) + " weapon " + murderWeap.ToString());
-		murderTruth = new Person(guilty, !murdered);
+	
 		deathTime = rand.Next(earliestDeath, latestDeath);
 		bodyFound = deathTime+1;//genBodyFoundTime();
+		befMurderTime = deathTime-1;
+		aftMurderTime = deathTime+1;
+		
+		victim = new Person(SuspectEnum.Father, true, false);
+		murderer = new Person(murdererEnum, false, true);
+		for (int i=0; i<Globals.numSuspects; i++) {
+			if (i == (int)murdererEnum) timeline.Insert(i, murderer);
+			else timeline.Insert(i, new Person((SuspectEnum)i, false, false));
+		}
+
+		int victimBefMurderRoom = rand.Next(0, Globals.numRooms);
+		victim.setBeforeMurder(befMurderTime, (RmEnum)victimBefMurderRoom, Globals.room[victimBefMurderRoom].randomGA(), WpnEnum.None);
+		int victimDurMurderRoom = rand.Next(0, Globals.numRooms);
+		victim.setDuringMurder(deathTime, victimDurMurderRoom, "dead", WpnEnum.None);
+		timeline[(int)murdererEnum].setDuringMurder(deathTime, victimDurMurderRoom, "murder", murderWeap); //truth: murderer killed victim
+		RmEnum murdererDurMurLieRm = Globals.randRoom((RmEnum)victimDurMurderRoom);
+		timeline[(int)murdererEnum].setFakeDuringMurder(deathTime, 
+			murdererDurMurLieRm, 
+			Globals.room[(int)murdererDurMurLie].WeaponList[(int)murderWeap].activity[0],
+			murderWeap); //murderer lies about his DurMurder activity
+		//then need to place a person into this room, which the murderer lied about being in to create the contradiction
+		
+		//***generate the suspects+activities in pairs***truth+fake pairs
 		
 		for(int i=0; i<Globals.numSuspects; i++)
 		{
@@ -189,14 +208,19 @@ public class GenerateTimeline : MonoBehaviour
 		AI.tree = AI.qnGenerator();
 	}
 	
+	private static void initializeContradictionNum() {
+		if (difficulty == GameDiffEnum.Easy) numContradiction = 6;
+		else numContradiction = 3;
+	}
+	
 	// Generate a murderer x from Suspects
-	int genMurderer(){
-		return (int)(Suspects) rand.Next(0, Globals.numSuspects);
+	private SuspectEnum genMurderer() {
+		return (SuspectEnum) rand.Next(0, Globals.numSuspects);
 	}
 	
 	//generate murder weapon
-	Weapons genWeap() {
-		return (Weapons) rand.Next(0, Globals.numWeapons);
+	private WpnEnum genWeap() {
+		return (WpnEnum) rand.Next(0, Globals.numWeapons);
 	}
 	
 	//generate time when body was found (based on deathTime)
