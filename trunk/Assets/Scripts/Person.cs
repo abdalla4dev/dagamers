@@ -37,6 +37,11 @@ public class Person {
 	is there a simpler method?
 	*/
 	
+	//New code here 
+	private List<TimelineSlot> truthTimeline = new List<TimelineSlot>(3); //truthTimeline[0] is befMurder, 1 is durMurder and 2 is aftMurder
+	private List<TimelineSlot> falseTimeline = new List<TimelineSlot>(3);
+	//End new code, the rest can delete if not useful
+	
 	public const int place = 0;
 	public const int activity = 1;
 	public const int alibi = 2;
