@@ -99,20 +99,54 @@ public class GenerateTimeline : MonoBehaviour
 			if (i == (int)murdererEnum) timeline.Insert(i, murderer);
 			else timeline.Insert(i, new Person((SuspectEnum)i, false, false));
 		}
-
+		
+		//victim was doing something
 		int victimBefMurderRoom = rand.Next(0, Globals.numRooms);
 		victim.setBeforeMurder(befMurderTime, (RmEnum)victimBefMurderRoom, Globals.room[victimBefMurderRoom].randomGA(), WpnEnum.None);
+		//victim died
 		int victimDurMurderRoom = rand.Next(0, Globals.numRooms);
-		victim.setDuringMurder(deathTime, victimDurMurderRoom, "dead", WpnEnum.None);
+		victim.setDuringMurder(deathTime, (RmEnum)victimDurMurderRoom, "dead", WpnEnum.None);
+		//murderer's truth timeline
+		timeline[(int)murdererEnum].setBeforeMurder(befMurderTime, Globals.randRoom(victimBefMurderRoom), "acquiring murder weapon", murderWeap);
 		timeline[(int)murdererEnum].setDuringMurder(deathTime, victimDurMurderRoom, "murder", murderWeap); //truth: murderer killed victim
+		timeline[(int)murdererEnum].setAfterMurder(aftMurderTime, Globals.randRoom(victimDurMurderRoom), "disposing murder weapon", murderWeap);
+		//murderer's lies
+		timeline[(int)murdererEnum].setFakeBeforeMurder(befMurderTime, 
+			timeline[(int)murdererEnum].getBeforeMurderRoom(), 
+			Globals.room[timeline[(int)murdererEnum].getBeforeMurderRoom()].WeaponList[(int)murderWeap].activity[0],
+			murderWeap);//murderer lies about his befMurder activity
 		RmEnum murdererDurMurLieRm = Globals.randRoom((RmEnum)victimDurMurderRoom);
 		timeline[(int)murdererEnum].setFakeDuringMurder(deathTime, 
 			murdererDurMurLieRm, 
 			Globals.room[(int)murdererDurMurLie].WeaponList[(int)murderWeap].activity[0],
-			murderWeap); //murderer lies about his DurMurder activity
-		//then need to place a person into this room, which the murderer lied about being in to create the contradiction
+			murderWeap); //murderer lies about his DurMurder room and activity
+		timeline[(int)murdererEnum].setFakeAfterMurder(aftMurderTime,
+			timeline[(int)murdererEnum].getAfterMurderRoom(),
+			Globals.room[timeline[(int)murdererEnum].getAfterMurderRoom()].WeaponList[(int)murderWeap].activity[0],
+			murderWeap); //murderer lies about his AftMurder activity
 		
 		//***generate the suspects+activities in pairs***truth+fake pairs
+		//need to place a person into these fake rooms, which the murderer lied about being in to create the contradiction
+		int[] BMpairing,DMpairing,AMpairing; //{lie, truth, lie, truth}. index 0 is always the murderer
+		BMpairing = genNumSequence(murdererEnum);
+		DMpairing = genNumSequence(murdererEnum);
+		AMpairing = genNumSequence(murdererEnum);
+		timeline[BMpairing[1]].setBeforeMurder(befMurderTime, 
+			timeline[BMpairing[0]].getFakeBeforeMurderRoom(), 
+			Globals.room[timeline[BMpairing[0]].getFakeBeforeMurderRoom()].randomGA(), 
+			WpnEnum.None); //saw the murderer "acquiring murder weapon"
+		timeline[DMpairing[1]].setDuringMurder(deathTime, 
+			timeline[DMpairing[0]].getFakeDuringMurderRoom(), 
+			Globals.room[timeline[DMpairing[0]].getFakeDuringMurderRoom()].randomGA(),
+			WpnEnum.None); //did not see the murderer in where he claimed to be, and doing what he claimed to be doing
+		timeline[AMpairing[1]].setAfterMurder(deathTime, 
+			timeline[AMpairing[0]].getFakeAfterMurderRoom(), 
+			Globals.room[timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
+			WpnEnum.None); // saw the murderer "disposing murder weapon"
+		
+		//do the same for index 2 and 3 now.
+		
+		
 		
 		for(int i=0; i<Globals.numSuspects; i++)
 		{
@@ -223,6 +257,33 @@ public class GenerateTimeline : MonoBehaviour
 		return (WpnEnum) rand.Next(0, Globals.numWeapons);
 	}
 	
+	//generates a number sequence of 0-3. 
+	// temp[0] lies, temp[1]'s truth can uncover temp[0]'s lie. 
+	// temp[2] lies, temp[3]'s truth can uncover temp[2]'s lie. 
+	private int[] genNumSequence(SuspectEnum murderer) {
+		int[] temp = new int[4];
+		bool[] isUsed = {false, false, false, false};
+		
+		temp[0] = (int) murderer;
+		do {
+			temp[1] = rand.Next(0, Globals.numSuspects);
+		} while (temp[0] == temp[1]);
+		
+		isUsed[temp[0]] = true;
+		isUsed[temp[1]] = true;
+		
+		int j=2;
+		for (int i=0; i<isUsed.Length; i++) {
+			if (!isUsed[i]) {
+				temp[j] = i;
+				isUsed[i] = true;
+				j++;
+			}
+		}
+		
+		return temp;
+	}
+	
 	//generate time when body was found (based on deathTime)
 	double genBodyFoundTime()
 	{
@@ -230,6 +291,7 @@ public class GenerateTimeline : MonoBehaviour
 		double time = deathTime + (minutes/100);
 		return time;		
 	}
+	
 	
 	//generate murderer's fake alibi.
 	Person genFakeAlibi(){
