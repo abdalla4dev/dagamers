@@ -78,6 +78,25 @@ public class Person {
 		falseTimeline.Insert(2, new TimelineSlot(start, p, activity, w));
 	}
 	
+	public RmEnum getBeforeMurderRoom() {
+		return truthTimeline[0].place;
+	}
+	public RmEnum getDuringMurderRoom() {
+		return truthTimeline[1].place;
+	}
+	public RmEnum getAfterMurderRoom() {
+		return truthTimeline[2].place;
+	}
+	public RmEnum getFakeBeforeMurderRoom() {
+		return falseTimeline[0].place;
+	}
+	public RmEnum getFakeDuringMurderRoom() {
+		return fakeTimeline[1].place;
+	}
+	public RmEnum getFakeAfterMurderRoom() {
+		return falseTimeline[2].place;
+	}
+	
 	public Person(Person toCopy)
 	{
 		foreach(String s in toCopy.getBefMurder())

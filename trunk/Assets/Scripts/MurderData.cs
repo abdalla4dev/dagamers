@@ -26,11 +26,11 @@ namespace MurderData
 		}
 		
 		public static RmEnum randRoom(RmEnum rm) {
-			//return a room different from r
+			//return a room different from rm
 			System.Random r = new System.Random();
 			RmEnum toReturn;
 			do {
-				toReturn = r.Next(0, numRooms);
+				toReturn = (RmEnum)r.Next(0, numRooms);
 			} while (toReturn == rm);
 			return toReturn;
 		}
