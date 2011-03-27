@@ -130,6 +130,39 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[(int)murdererEnum].setReturnLieDM();
 		timeline[(int)murdererEnum].setReturnLieAM();
 		
+		switch(difficulty) {
+			case GameDiffEnum.Easy: GenerateEasyGame(); break;
+			case GameDiffEnum.Medium: GenerateMediumGame(); break;
+			case GameDiffEnum.Hard: GenerateHardGame(); break;
+		}
+		
+		startPara = createStartPara(victim.getDuringMurderRoom());
+		
+		//Debug.Log(deathTime + " " + bodyFound);
+		
+		placeWeaponsInWorld(redHerringIndex, murderer);
+				
+		PrintMethod();
+		AI.tree = AI.qnGenerator();
+	}
+	
+	private static void initializeContradictionNum() {
+		if (difficulty == GameDiffEnum.Easy) numContradiction = 6;
+		else numContradiction = 3;
+	}
+	
+	private static void initializeWeaponLocations() {
+		knifeLoc = RmEnum.Kitchen;
+		screwdriverLoc = RmEnum.Living_Room;
+		towelLoc = RmEnum.MBR_Toilet;
+		scissorsLoc = RmEnum.Master_Bedroom;
+		spannerLoc = RmEnum.Garden;
+	}
+	private static void placeWeapon(WpnEnum w, RmEnum r) {
+		
+	}
+	
+	private static void GenerateEasyGame() {
 		//***generate the suspects+activities in pairs***truth+fake pairs
 		//need to place a person into these fake rooms, which the murderer lied about being in to create the contradiction
 		int[] BMpairing,DMpairing,AMpairing; //{lie, truth, lie, truth}. index 0 is always the murderer
@@ -213,31 +246,14 @@ public class GenerateTimeline : MonoBehaviour
 		//place the weapons that were used
 		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
 		placeWeapon(RHWpn, timeline[AMpairing[2]].getAfterMurderRoom());
-		
-		startPara = createStartPara(victim.getDuringMurderRoom());
-		
-		//Debug.Log(deathTime + " " + bodyFound);
-		
-		placeWeaponsInWorld(redHerringIndex, murderer);
-				
-		PrintMethod();
-		AI.tree = AI.qnGenerator();
 	}
 	
-	private static void initializeContradictionNum() {
-		if (difficulty == GameDiffEnum.Easy) numContradiction = 6;
-		else numContradiction = 3;
+	private static void GenerateMediumGame() {
+		//only has 3 contradictions	
 	}
-	
-	private static void initializeWeaponLocations() {
-		knifeLoc = RmEnum.Kitchen;
-		screwdriverLoc = RmEnum.Living_Room;
-		towelLoc = RmEnum.MBR_Toilet;
-		scissorsLoc = RmEnum.Master_Bedroom;
-		spannerLoc = RmEnum.Garden;
-	}
-	private static void placeWeapon(WpnEnum w, RmEnum r) {
-		
+	private static void GenerateHardGame() {
+		//only has 3 contradictions
+		//need to uncover 2 facts in order to overcome a contradiction
 	}
 	
 	// Generate a murderer x from Suspects
