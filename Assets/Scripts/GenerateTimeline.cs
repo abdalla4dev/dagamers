@@ -66,6 +66,7 @@ public class GenerateTimeline : MonoBehaviour
 	public static bool someoneFoundBody = false;
 	
 	public static List<Person> timeline = new List<Person>(4);
+	public static List<Fact> facts = new List<Fact>();
 	
 	public Transform knife; 
 	public Transform screwdriver;
@@ -85,6 +86,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void Start() {
 		initializeContradictionNum();
+		initializeWeaponLocations();
 		SuspectEnum murdererEnum = genMurderer();
 		murderWeap = genWeap();
 	
@@ -124,10 +126,15 @@ public class GenerateTimeline : MonoBehaviour
 			timeline[(int)murdererEnum].getAfterMurderRoom(),
 			Globals.room[timeline[(int)murdererEnum].getAfterMurderRoom()].WeaponList[(int)murderWeap].activity[0],
 			murderWeap); //murderer lies about his AftMurder activity
+		timeline[(int)murdererEnum].setReturnLieBM();
+		timeline[(int)murdererEnum].setReturnLieDM();
+		timeline[(int)murdererEnum].setReturnLieAM();
 		
 		//***generate the suspects+activities in pairs***truth+fake pairs
 		//need to place a person into these fake rooms, which the murderer lied about being in to create the contradiction
 		int[] BMpairing,DMpairing,AMpairing; //{lie, truth, lie, truth}. index 0 is always the murderer
+		//index 1 will be able to confirm that murderer was not doing what he said he was
+		// what murderer was doing (murderer truthtimeline) is placed in facts in the scene
 		BMpairing = genNumSequence(murdererEnum);
 		DMpairing = genNumSequence(murdererEnum);
 		AMpairing = genNumSequence(murdererEnum);
@@ -143,100 +150,75 @@ public class GenerateTimeline : MonoBehaviour
 			timeline[AMpairing[0]].getFakeAfterMurderRoom(), 
 			Globals.room[timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
 			WpnEnum.None); // saw the murderer "disposing murder weapon"
+		//record what index 0 was doing into facts
+		//assuming all facts are accessed from CCTV in master bedrrom for now
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getBeforeMurderFact(), murdererEnum));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getDuringMurderFact(), murdererEnum));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getAfterMurderFact(), murdererEnum));
 		
 		//do the same for index 2 and 3 now.
+		//index 2 is doing weapon activity and lies
+		//index 3 is able to confirm index 2 is not doing so, and index2's truth timeline is placed into facts in the scene
+		WpnEnum RHWpn = genWeap(murderWeap);
+		RmEnum RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+		//the truth of what index 2 is doing
+		timeline[BMpairing[2]].setBeforeMurder(befMurderTime, 
+			RHBefMurRoom, 
+			Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
+			RHWpn);
+		RmEnum RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+		timeline[DMpairing[2]].setDuringMurder(deathTime,
+			RHDurMurRoom,
+			Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
+			RHWpn);
+		RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+		timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
+			RHAftMurRoom,
+			Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
+			RHWpn);
+		//the lies of index 2
+		timeline[BMpairing[2]].setFakeBeforeMurder(befMurderTime, 
+			RHBefMurRoom,
+			Globals.room[(int)RHBefMurRoom].randomGA(),
+			WpnEnum.None);
+		timeline[DMpairing[2]].setFakeDuringMurder(deathTime,
+			RHDurMurRoom,
+			Globals.room[(int)RHDurMurRoom].randomGA(),
+			WpnEnum.None);
+		timeline[AMpairing[2]].setFakeAfterMurder(aftMurderTime, 
+			RHAftMurRoom,
+			Globals.room[(int)RHAftMurRoom].randomGA(),
+			WpnEnum.None);
+		//place index 3 into index2's room so as to disprove index2's lies
+		timeline[BMpairing[3]].setBeforeMurder(befMurderTime,
+			RHBefMurRoom,
+			Globals.room[(int)RHBefMurRoom].randomGA(),
+			WpnEnum.None);
+		timeline[DMpairing[3]].setDuringMurder(deathTime,
+			RHDurMurRoom,
+			Globals.room[(int)RHDurMurRoom].randomGA(),
+			WpnEnum.None);
+		timeline[AMpairing[3]].setAfterMurder(aftMurderTime, 
+			RHAftMurRoom,
+			Globals.room[(int)RHAftMurRoom].randomGA(),
+			WpnEnum.None);
+		timeline[BMpairing[2]].setReturnLieBM();
+		timeline[DMpairing[2]].setReturnLieDM();
+		timeline[AMpairing[2]].setReturnLieAM();
+		//record what index 2 was doing into facts
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
 		
+		//place the weapons that were used
+		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
+		placeWeapon(RHWpn, timeline[AMpairing[2]].getAfterMurderRoom());
 		
+		startPara = createStartPara(victim.getDuringMurderRoom());
 		
-		for(int i=0; i<Globals.numSuspects; i++)
-		{
-			if(i==murderer)
-			{
-				fAlibi = genFakeAlibi();
-				timeline.Add(fAlibi);
-			}
-			else
-			{
-				//Debug.Log(Enum.GetName(typeof(Suspects),i));
-				timeline.Add(new Person(!guilty, !murdered));
-			}
-		}
+		//Debug.Log(deathTime + " " + bodyFound);
 		
-		
-		int redHerringIndex;
-		redHerringIndex = -1;
-		
-		List<int> innocents = new List<int>();
-		
-		for(int i=0; i<timeline.Count; i++)
-		{
-			/*if(timeline[i].isFoundBody())
-				Debug.Log("FOUND B " + Enum.GetName(typeof(Suspects),i));*/
-			if(timeline[i].isRedHerring())
-				redHerringIndex = i;
-			else if(timeline[i].isMurderer())
-				continue;
-			else
-				innocents.Add(i);
-		}
-		/*Debug.Log("redherring " + timeline[redHerringIndex].isMurderer() + timeline[redHerringIndex].isRedHerring() + Enum.GetName(typeof(Suspects),redHerringIndex) + " " + redHerringIndex);
-		Debug.Log("suspect1 "  + timeline[innocents[0]].isMurderer() + timeline[innocents[0]].isRedHerring() + Enum.GetName(typeof(Suspects),innocents[0]) + " " + innocents[0]);
-		Debug.Log("suspect2 " + timeline[innocents[1]].isMurderer() + timeline[innocents[1]].isRedHerring() + Enum.GetName(typeof(Suspects),innocents[1]) + " " + innocents[1]);
-		Debug.Log("murderer " + timeline[murderer].isMurderer() + timeline[murderer].isRedHerring() + Enum.GetName(typeof(Suspects),murderer) + " " + murderer);
-		*/
-		
-		int m = rand.Next(2);
-		int n;
-		if(m==0)
-			n = 1;
-		else
-			n = 0;
-		
-		fAlibi.createBefMurderWitness(timeline[innocents[m]], innocents[m], murderer);
-		timeline[redHerringIndex].createBefMurderWitness(timeline[innocents[n]], innocents[n], redHerringIndex);
-		
-		m = rand.Next(2);
-		if(m==0)
-			n = 1;
-		else
-			n = 0;
-		
-		fAlibi.createDurMurderWitness(timeline[innocents[m]], innocents[m], murderer);
-		timeline[redHerringIndex].createDurMurderWitness(timeline[innocents[n]], innocents[n], redHerringIndex);
-		
-		for(int i=0; i<timeline.Count; i++)
-		{
-			if(timeline[i].getAftMurder(Person.alibi)=="null")
-				for(int j=0; j<timeline.Count; j++)
-				{
-					if(j!=i && timeline[i].getAftMurder(Person.place)==timeline[j].getAftMurder(Person.place))
-					{
-						timeline[i].setAftMurder(Enum.GetName(typeof(Suspects),j), Person.alibi);
-						timeline[j].setAftMurder(Enum.GetName(typeof(Suspects),i), Person.alibi);
-					}						
-				}
-		}
-		
-		startPara = createStartPara(victim.getMurder(Person.place));
-		
-		
-		//debugging purposes.
-/* 		for(int i=0; i<Globals.numSuspects; i++)
- * 		{
- * 			if(i==murderer)
- * 			{
- * 				Debug.Log("i=" + i +" "+ Enum.GetName(typeof(Suspects), i) + " truth " + murderTruth.getMurder(Person.activity));
- * 				Debug.Log("i=" + i +" "+"fake " + fAlibi.getMurder(Person.activity));
- * 				Debug.Log("i=" + i +" "+"time " + timeline[i].getMurder(Person.activity));
- * 			}
- * 			else
- * 				Debug.Log("i=" + i +" "+Enum.GetName(typeof(Suspects), i) + " " + timeline[i].getMurder(Person.activity)+ " herring="+ timeline[i].isRedHerring());
- * 		}
- */
-		
-		Debug.Log(deathTime + " " + bodyFound);
-		
-		//placeWeapons(redHerringIndex, murderer);
+		placeWeaponsInWorld(redHerringIndex, murderer);
 				
 		PrintMethod();
 		AI.tree = AI.qnGenerator();
@@ -247,6 +229,17 @@ public class GenerateTimeline : MonoBehaviour
 		else numContradiction = 3;
 	}
 	
+	private static void initializeWeaponLocations() {
+		knifeLoc = RmEnum.Kitchen;
+		screwdriverLoc = RmEnum.Living_Room;
+		towelLoc = RmEnum.MBR_Toilet;
+		scissorsLoc = RmEnum.Master_Bedroom;
+		spannerLoc = RmEnum.Garden;
+	}
+	private static void placeWeapon(WpnEnum w, RmEnum r) {
+		
+	}
+	
 	// Generate a murderer x from Suspects
 	private SuspectEnum genMurderer() {
 		return (SuspectEnum) rand.Next(0, Globals.numSuspects);
@@ -255,6 +248,15 @@ public class GenerateTimeline : MonoBehaviour
 	//generate murder weapon
 	private WpnEnum genWeap() {
 		return (WpnEnum) rand.Next(0, Globals.numWeapons);
+	}
+	
+	// generate weapon different from that passed in
+	private WpnEnum genWeap(WpnEnum w) {
+		WpnEnum temp;
+		do {
+			temp = (WpnEnum) rand.Next(0, Globals.numWeapons);
+		} while(temp == w);
+		return temp;
 	}
 	
 	//generates a number sequence of 0-3. 
@@ -292,139 +294,47 @@ public class GenerateTimeline : MonoBehaviour
 		return time;		
 	}
 	
-	
-	//generate murderer's fake alibi.
-	Person genFakeAlibi(){
-		
-		Person fake = new Person(murderTruth);
-		int roomIndex;
-		do
- 		{
-			roomIndex = (int)(Rooms) rand.Next(0, Globals.numRooms);
- 		} while (Enum.GetName(typeof(Rooms), roomIndex)==murderTruth.getMurder(Person.place)); //random a room that is not murder room.
-		
-		fake.setMurder(Enum.GetName(typeof(Rooms), roomIndex), Person.place); //set murder room to new room
-		
-		fake.setMurder(fake.getWeapActivity((Rooms)roomIndex,murderWeap), Person.activity);
-		
-		/*switch (roomIndex)	//find generic activity for new room
-		{
-			case 0:
-				 fake.setMurder(Enum.GetName(typeof(Kitchen.Generic_Activities), (Kitchen.Generic_Activities) rand.Next(0,Kitchen.Num_Activities)),Person.activity);
-				 break;
-			 case 1:
-				 fake.setMurder(Enum.GetName(typeof(Living_Room.Generic_Activities), (Living_Room.Generic_Activities) rand.Next(0,Living_Room.Num_Activities)),Person.activity);
-				 break;
-			 case 2:
-				 fake.setMurder(Enum.GetName(typeof(Bedroom.Generic_Activities), (Bedroom.Generic_Activities) rand.Next(0,Bedroom.Num_Activities)),Person.activity);
-				 break;
-			 case 3:
-				 fake.setMurder(Enum.GetName(typeof(Garden.Generic_Activities), (Garden.Generic_Activities) rand.Next(0,Garden.Num_Activities)),Person.activity);
-				 break;
-			 case 4:
-				 fake.setMurder(Enum.GetName(typeof(Toilet.Generic_Activities), (Toilet.Generic_Activities) rand.Next(0,Toilet.Num_Activities)),Person.activity);
-				 break;
-			default:
-				break;
-		}*/
-		
-		//Debug.Log("FAKE timeline count " + timeline.Count + " " + !someoneFoundBody);
-		if(!someoneFoundBody && timeline.Count==3)
-		{
-			//Debug.Log("GOT IN");
-			Rooms room = (Rooms) Enum.Parse(typeof(Rooms), victim.getMurder(Person.place));
-			fake.setAftMurder(room.ToString(), Person.place);
-			murderTruth.setAftMurder(room.ToString(), Person.place);
-			
-			fake.setAftMurder(fake.getWeapActivity(room, murderWeap), Person.activity);
-			murderTruth.setAftMurder(murderTruth.getWeapActivity(room, murderWeap), Person.activity);
-			
-			fake.setFoundBody(true);
-			murderTruth.setFoundBody(true);
-			
-			someoneFoundBody = true;
-		}
-		
-		if(!redHerring && timeline.Count==3)
-		{
-			//Debug.Log("GOT IN HERE");
-			Person p = timeline[rand.Next(3)];
-			
-			Rooms r1 = (Rooms) Enum.Parse(typeof(Rooms),p.getBefMurder(Person.place));
-			Rooms r2 = (Rooms) Enum.Parse(typeof(Rooms),p.getMurder(Person.place));
-			
-			Weapons rhWeap;
-			do
-	  		 {
-	  			 rhWeap = (Weapons) rand.Next(0,Globals.numWeapons);
-	  		 }while (rhWeap==murderWeap);
-			
-			p.setBefMurder(p.getWeapActivity(r1, rhWeap), Person.activity);
-			p.setMurder(p.getWeapActivity(r2, rhWeap), Person.activity);
-			
-			p.setRedHerring(true);
-			redHerring = true;
-		}
-		
-		//debugging purposes.
-		/*for(int i=0; i<2; i++)
-		{Debug.Log(i + " fake " + fake.getBefMurder(i));
-		Debug.Log(murderTruth.getBefMurder(i));}
-		
-		for(int i=0; i<2; i++)
-		{Debug.Log(i + " fake " + fake.getMurder(i));
-		Debug.Log(murderTruth.getMurder(i));}
-		
-		for(int i=0; i<2; i++)
-		{Debug.Log(i + " fake " + fake.getAftMurder(i));
-		Debug.Log(murderTruth.getAftMurder(i));}*/
-		
-		return fake;
-	}
-	
-	
-	
-	void placeWeapons(int RH, int M)
+	void placeWeaponsInWorld(int RH, int M)
 	{
 		List<Vector3> positions = new List<Vector3>();
-		List<Rooms> place = new List<Rooms>();
+		List<RmEnum> place = new List<RmEnum>();
 		List<int> usedPos = new List<int>();
 		
 		positions.Add(new Vector3(3.95f, 0.304f, 5.756f)); //change for knife
-		place.Add(Rooms.Living_Room);
+		place.Add(RmEnum.Living_Room);
 		
 		positions.Add(new Vector3(-6.397f, 0.307f, 5.028f)); //move up for sd
-		place.Add(Rooms.Toilet);
+		place.Add(RmEnum.Toilet);
 		
 		positions.Add(new Vector3(1.689f, 1.636f, 0.398f));
-		place.Add(Rooms.Living_Room);
+		place.Add(RmEnum.Living_Room);
 		
 		positions.Add(new Vector3(-11.947f, 1.043f, -4.134f)); //move down for spanner
-		place.Add(Rooms.Garden);
+		place.Add(RmEnum.Garden);
 		
 		positions.Add(new Vector3(-2.738f, 0.935f, 4.734f));
-		place.Add(Rooms.Bedroom);
+		place.Add(RmEnum.Bedroom);
 		
 		positions.Add(new Vector3(7.434f, 0.304f, -1.128f));//move up for scissors
-		place.Add(Rooms.Kitchen);
+		place.Add(RmEnum.Kitchen);
 		
 		positions.Add(new Vector3(3.822f, 1.13f, -4.796f));
-		place.Add(Rooms.Kitchen);
+		place.Add(RmEnum.Kitchen);
 		
 		positions.Add(new Vector3(-0.793f, 0.908f, -5.246f));
-		place.Add(Rooms.Toilet);
+		place.Add(RmEnum.Toilet);
 		
 		positions.Add(new Vector3(-11.94f, 1.043f, 4.414f));
-		place.Add(Rooms.Garden);
+		place.Add(RmEnum.Garden);
 		
 		positions.Add(new Vector3(-4.98f, 0.973f, -3.933f));
-		place.Add(Rooms.Bedroom);
+		place.Add(RmEnum.Bedroom);
 		
 		positions.Add(new Vector3(-3.521f, 0.484f, -5.913f)); //move up for towel
-		place.Add(Rooms.Bedroom);
+		place.Add(RmEnum.Bedroom);
 		
 		positions.Add(new Vector3(-6.422f, 0.484f, 0.944f));
-		place.Add(Rooms.Bedroom);
+		place.Add(RmEnum.Bedroom);
 		
 		String mRoom = timeline[M].getAftMurder(Person.place); //last room murderer was in
 		String rhRoom= timeline[RH].getAftMurder(Person.place); //last room rh was in
@@ -433,7 +343,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 		for(int i=0; i<place.Count; i++)
 		{
-			Rooms r = place[i];
+			RmEnum r = place[i];
 			if(mRoom==r.ToString()) //if murder room add to weapRooms
 				weapRooms.Add(i);
 		}
@@ -471,7 +381,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 		for(int i=0; i<place.Count; i++)
 		{
-			Rooms r = place[i];
+			RmEnum r = place[i];
 			if(rhRoom==r.ToString())
 				weapRooms.Add(i);
 		}
@@ -554,7 +464,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 	}
 	
-	public String createStartPara(String murderRoom)
+	private String createStartPara(String murderRoom)
 	{
 		String mRoom = murderRoom.Replace('_', ' ');
 		String s = "Mr. XXX, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
@@ -573,201 +483,6 @@ public class GenerateTimeline : MonoBehaviour
 		if(time==2)
 			return timeline[person].getAftMurder(pos);
 		else return "invalid";
-	}
-	
-	String befMurderWeap(int person,int weapon)	//asking if a person used a murder weap weapon before murder
-	{
-		String act = timeline[person].getBefMurder(Person.activity);
-		switch(weapon)
-		{
-			case 0:
-				foreach (string s in Enum.GetNames(typeof(Knife.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 1:
-				foreach (string s in Enum.GetNames(typeof(Screwdriver.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 2:
-				foreach (string s in Enum.GetNames(typeof(Towel.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 3:
-				foreach (string s in Enum.GetNames(typeof(Scissors.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 4:
-				foreach (string s in Enum.GetNames(typeof(Spanner.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			default:
-				break;
-		}
-		return "null";
-	}
-	
-	String durMurderWeap(int person,int weapon)	//asking if a person used a murder weap weapon during murder
-	{
-		String act = timeline[person].getMurder(Person.activity);
-		switch(weapon)
-		{
-			case 0:
-				foreach (string s in Enum.GetNames(typeof(Knife.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 1:
-				foreach (string s in Enum.GetNames(typeof(Screwdriver.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 2:
-				foreach (string s in Enum.GetNames(typeof(Towel.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 3:
-				foreach (string s in Enum.GetNames(typeof(Scissors.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 4:
-				foreach (string s in Enum.GetNames(typeof(Spanner.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			default:
-				break;
-		}		return "null";
-	}
-	
-	String aftMurderWeap(int person, int weapon)	//asking if a person used a murder weap weapon after murder
-	{
-		String act = timeline[person].getAftMurder(Person.activity);
-		switch(weapon)
-		{
-			case 0:
-				foreach (string s in Enum.GetNames(typeof(Knife.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 1:
-				foreach (string s in Enum.GetNames(typeof(Screwdriver.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 2:
-				foreach (string s in Enum.GetNames(typeof(Towel.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 3:
-				foreach (string s in Enum.GetNames(typeof(Scissors.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			case 4:
-				foreach (string s in Enum.GetNames(typeof(Spanner.Activities))) { 
-					if(s==act)
-						return act;
-				}
-				break;
-			default:
-				break;
-		}
-		return "null";
-	}
-	
-	/*FOR ASKING ABOUT OTHERS*/
-	String getOtherPersonDetails(int time, int self, int other, int pos)	//ask someone about other person's activities.
-	{
-		if(time==0)
-		{
-			if(!timeline[other].isMurderer())
-				return timeline[other].getBefMurder(pos);
-			else
-				return murderTruth.getBefMurder(pos);
-		}
-		if(time==1)
-			return timeline[other].getBefMurder(pos);
-		if(time==2)
-		{
-			if(!timeline[other].isMurderer())
-				return timeline[other].getBefMurder(pos);
-			else
-				return murderTruth.getBefMurder(pos);
-		}
-		else return "invalid";
-	}
-	
-	bool isAlibi(int time, int self, int other)	//returns if self/other can vouch for each other
-	{
-		if(time==0)
-		{
-			if(timeline[self].getBefMurder(Person.alibi) == timeline[other].getBefMurder(Person.alibi))
-				return true;
-			else return false;
-		}
-		if(time==1)
-		{
-			if(timeline[self].getMurder(Person.alibi) == timeline[other].getMurder(Person.alibi))
-				return true;
-			else return false;
-		}
-		if(time==2)
-		{
-			if(timeline[self].getAftMurder(Person.alibi) == timeline[other].getAftMurder(Person.alibi))
-				return true;
-			else return false;
-		}
-		else return false;
-	}
-	
-	/*RETURN WEAPON LOCATION*/
-	Rooms getWeapLoc(Weapons weap) 
-	{
-		Rooms room = Rooms.Kitchen;
-		switch(weap)
-		{
-		case Weapons.Knife:
-				room = knifeLoc;
-				break;
-			case Weapons.Screwdriver:
-				room = screwdriverLoc;
-				break;
-			case Weapons.Towel:
-				room = towelLoc;
-				break;
-			case Weapons.Scissors:
-				room = scissorsLoc;
-				break;
-			case Weapons.Spanner:
-				room = spannerLoc;
-				break;
-			default:
-				break;
-		}
-		
-		return room;
 	}
 	
 	void PrintMethod()
