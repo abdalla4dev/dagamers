@@ -250,10 +250,166 @@ public class GenerateTimeline : MonoBehaviour
 	
 	private static void GenerateMediumGame() {
 		//only has 3 contradictions	
+		//***generate the suspects+activities in pairs***truth+fake pairs
+		//need to place a person into these fake rooms, which the murderer lied about being in to create the contradiction
+		int[] BMpairing,DMpairing,AMpairing; //{lie, truth, lie, truth}. index 0 is always the murderer
+		//index 1 will be able to confirm that murderer was not doing what he said he was
+		// what murderer was doing (murderer truthtimeline) is placed in facts in the scene
+		BMpairing = genNumSequence(murdererEnum);
+		DMpairing = genNumSequence(murdererEnum);
+		AMpairing = genNumSequence(murdererEnum);
+		
+		//choose only one slot for murderer's contradiction.
+		//record what index 0 was doing into facts
+		//assuming all facts are accessed from CCTV in master bedrrom for now
+		int chosen = rand.Next(3);
+		switch(chosen)
+		{
+			case 0:
+				timeline[BMpairing[1]].setBeforeMurder(befMurderTime, 
+					timeline[BMpairing[0]].getFakeBeforeMurderRoom(), 
+					Globals.room[timeline[BMpairing[0]].getFakeBeforeMurderRoom()].randomGA(), 
+					WpnEnum.None); //saw the murderer "acquiring murder weapon"
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getBeforeMurderFact(), murdererEnum));
+			break;
+			case 1:
+				timeline[DMpairing[1]].setDuringMurder(deathTime, 
+					timeline[DMpairing[0]].getFakeDuringMurderRoom(), 
+					Globals.room[timeline[DMpairing[0]].getFakeDuringMurderRoom()].randomGA(),
+					WpnEnum.None); //did not see the murderer in where he claimed to be, and doing what he claimed to be doing
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getDuringMurderFact(), murdererEnum));
+			break;
+			case 2:
+				timeline[AMpairing[1]].setAfterMurder(deathTime, 
+					timeline[AMpairing[0]].getFakeAfterMurderRoom(), 
+					Globals.room[timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
+					WpnEnum.None); // saw the murderer "disposing murder weapon"
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getAfterMurderFact(), murdererEnum));
+			break;			
+		}
+		
+		//do the same for index 2 and 3 now for remaining unchosen slot only. (cos only left 2 contradictions)
+		//index 2 is doing weapon activity and lies
+		//index 3 is able to confirm index 2 is not doing so, and index2's truth timeline is placed into facts in the scene
+		WpnEnum RHWpn = genWeap(murderWeap);
+		switch(chosen)
+		{
+			case 0:
+				//truth
+				RmEnum RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				timeline[DMpairing[2]].setDuringMurder(deathTime,
+					RHDurMurRoom,
+					Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
+					RHWpn);
+				RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
+					RHAftMurRoom,
+					Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
+					RHWpn);
+				//lies
+				timeline[DMpairing[2]].setFakeDuringMurder(deathTime,
+				RHDurMurRoom,
+				Globals.room[(int)RHDurMurRoom].randomGA(),
+				WpnEnum.None);
+				timeline[AMpairing[2]].setFakeAfterMurder(aftMurderTime, 
+				RHAftMurRoom,
+				Globals.room[(int)RHAftMurRoom].randomGA(),
+				WpnEnum.None);
+				//alibi
+				timeline[BMpairing[3]].setBeforeMurder(befMurderTime,
+				RHBefMurRoom,
+				Globals.room[(int)RHBefMurRoom].randomGA(),
+				WpnEnum.None);
+				timeline[AMpairing[3]].setAfterMurder(aftMurderTime, 
+				RHAftMurRoom,
+				Globals.room[(int)RHAftMurRoom].randomGA(),
+				WpnEnum.None);
+				timeline[DMpairing[2]].setReturnLieDM();
+				timeline[AMpairing[2]].setReturnLieAM();
+				//add fact
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+				break;
+		case 1:
+				//truth
+				RmEnum RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				timeline[BMpairing[2]].setBeforeMurder(befMurderTime, 
+				RHBefMurRoom, 
+				Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
+				RHWpn);
+				RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
+					RHAftMurRoom,
+					Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
+					RHWpn);
+				//lies
+				timeline[BMpairing[2]].setFakeBeforeMurder(befMurderTime, 
+					RHBefMurRoom,
+					Globals.room[(int)RHBefMurRoom].randomGA(),
+					WpnEnum.None);
+				timeline[AMpairing[2]].setFakeAfterMurder(aftMurderTime, 
+					RHAftMurRoom,
+					Globals.room[(int)RHAftMurRoom].randomGA(),
+					WpnEnum.None);
+				//alibis
+				timeline[BMpairing[3]].setBeforeMurder(befMurderTime,
+					RHBefMurRoom,
+					Globals.room[(int)RHBefMurRoom].randomGA(),
+					WpnEnum.None);
+				timeline[AMpairing[3]].setAfterMurder(aftMurderTime, 
+					RHAftMurRoom,
+					Globals.room[(int)RHAftMurRoom].randomGA(),
+					WpnEnum.None);
+				timeline[BMpairing[2]].setReturnLieBM();
+				timeline[AMpairing[2]].setReturnLieAM();
+				//add fact
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+				break;
+		case 2:
+				//truth
+				RmEnum RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				timeline[BMpairing[2]].setBeforeMurder(befMurderTime, 
+					RHBefMurRoom, 
+					Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
+					RHWpn);
+				RmEnum RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				timeline[DMpairing[2]].setDuringMurder(deathTime,
+					RHDurMurRoom,
+					Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
+					RHWpn);
+				//lies
+				timeline[BMpairing[2]].setFakeBeforeMurder(befMurderTime, 
+					RHBefMurRoom,
+					Globals.room[(int)RHBefMurRoom].randomGA(),
+					WpnEnum.None);
+				timeline[DMpairing[2]].setFakeDuringMurder(deathTime,
+					RHDurMurRoom,
+					Globals.room[(int)RHDurMurRoom].randomGA(),
+					WpnEnum.None);
+				//alibis
+				timeline[BMpairing[3]].setBeforeMurder(befMurderTime,
+					RHBefMurRoom,
+					Globals.room[(int)RHBefMurRoom].randomGA(),
+					WpnEnum.None);
+				timeline[DMpairing[3]].setDuringMurder(deathTime,
+					RHDurMurRoom,
+					Globals.room[(int)RHDurMurRoom].randomGA(),
+					WpnEnum.None);
+				timeline[BMpairing[2]].setReturnLieBM();
+				timeline[DMpairing[2]].setReturnLieDM();
+				//facts
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+				break;
+		}
+		//place the weapons that were used
+		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
+		placeWeapon(RHWpn, timeline[AMpairing[2]].getAfterMurderRoom());
 	}
 	private static void GenerateHardGame() {
 		//only has 3 contradictions
-		//need to uncover 2 facts in order to overcome a contradiction
+		//need to uncover 2 facts in order to overcome a contradiction		
 	}
 	
 	// Generate a murderer x from Suspects
