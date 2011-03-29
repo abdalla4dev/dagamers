@@ -102,6 +102,10 @@ public class GenerateTimeline : MonoBehaviour
 			else timeline.Insert(i, new Person((SuspectEnum)i, false, false));
 		}
 		
+		RmEnum RHBefMurRoom;
+		RmEnum RHDurMurRoom;
+		RmEnum RHAftMurRoom;
+		
 		//victim was doing something
 		int victimBefMurderRoom = rand.Next(0, Globals.numRooms);
 		victim.setBeforeMurder(befMurderTime, (RmEnum)victimBefMurderRoom, Globals.room[victimBefMurderRoom].randomGA(), WpnEnum.None);
@@ -159,7 +163,13 @@ public class GenerateTimeline : MonoBehaviour
 		spannerLoc = RmEnum.Garden;
 	}
 	private static void placeWeapon(WpnEnum w, RmEnum r) {
-		
+		switch (w) {
+			case WpnEnum.Knife: knifeLoc = r; break;
+			case WpnEnum.Scissors: scissorsLoc = r; break;
+			case WpnEnum.Screwdriver: screwdriverLoc = r; break;
+			case WpnEnum.Spanner: spannerLoc = r; break;
+			case WpnEnum.Towel: towelLoc = r; break;
+		}
 	}
 	
 	private static void GenerateEasyGame() {
@@ -193,18 +203,18 @@ public class GenerateTimeline : MonoBehaviour
 		//index 2 is doing weapon activity and lies
 		//index 3 is able to confirm index 2 is not doing so, and index2's truth timeline is placed into facts in the scene
 		WpnEnum RHWpn = genWeap(murderWeap);
-		RmEnum RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+		RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
 		//the truth of what index 2 is doing
 		timeline[BMpairing[2]].setBeforeMurder(befMurderTime, 
 			RHBefMurRoom, 
 			Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
 			RHWpn);
-		RmEnum RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+		RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 		timeline[DMpairing[2]].setDuringMurder(deathTime,
 			RHDurMurRoom,
 			Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
 			RHWpn);
-		RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+		RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
 		timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
 			RHAftMurRoom,
 			Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
@@ -296,12 +306,12 @@ public class GenerateTimeline : MonoBehaviour
 		{
 			case 0:
 				//truth
-				RmEnum RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 				timeline[DMpairing[2]].setDuringMurder(deathTime,
 					RHDurMurRoom,
 					Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
 					RHWpn);
-				RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
 				timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
 					RHAftMurRoom,
 					Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
@@ -332,12 +342,12 @@ public class GenerateTimeline : MonoBehaviour
 				break;
 		case 1:
 				//truth
-				RmEnum RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
 				timeline[BMpairing[2]].setBeforeMurder(befMurderTime, 
 				RHBefMurRoom, 
 				Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
 				RHWpn);
-				RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
 				timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
 					RHAftMurRoom,
 					Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
@@ -368,12 +378,12 @@ public class GenerateTimeline : MonoBehaviour
 				break;
 		case 2:
 				//truth
-				RmEnum RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				RHBefMurRoom = Globals.randRoom(victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
 				timeline[BMpairing[2]].setBeforeMurder(befMurderTime, 
 					RHBefMurRoom, 
 					Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
 					RHWpn);
-				RmEnum RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				RHDurMurRoom = Globals.randRoom(victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 				timeline[DMpairing[2]].setDuringMurder(deathTime,
 					RHDurMurRoom,
 					Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
