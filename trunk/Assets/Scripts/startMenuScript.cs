@@ -29,7 +29,7 @@ public class startMenuScript : MonoBehaviour {
 			Application.LoadLevel("main"); 
 		}
 		else if (playOrQuit == 555){
-			Application.LoadLevel("StartMenu"); 
+			Application.LoadLevel("LoadingScreen"); 
 		}
 		else {
 			var isWebPlayer = (Application.platform == RuntimePlatform.OSXWebPlayer || Application.platform == RuntimePlatform.WindowsWebPlayer);
