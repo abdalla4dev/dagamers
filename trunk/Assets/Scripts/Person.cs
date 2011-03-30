@@ -131,6 +131,114 @@ public class Person {
 		foundBody = fb;
 	}
 	
+	public WpnEnum getBMWpn() {
+		if (shouldReturnLies[0]) {	
+			return falseTimeline[0].weapon;
+		}
+		else {
+			return truthTimeline[0].weapon;
+		}
+	}
+	
+	public WpnEnum getDMWpn() {
+		if (shouldReturnLies[1]) {	
+			return falseTimeline[1].weapon;
+		}
+		else {
+			return truthTimeline[1].weapon;
+		}
+	}
+	
+	public WpnEnum getAMWpn() {
+		if (shouldReturnLies[2]) {	
+			return falseTimeline[2].weapon;
+		}
+		else {
+			return truthTimeline[2].weapon;
+		}
+	}
+	
+	public RmEnum getBMPlace() {
+		if (shouldReturnLies[0]) {	
+			return falseTimeline[0].place;
+		}
+		else {
+			return truthTimeline[0].place;
+		}
+	}
+	
+	public RmEnum getAMPlace() {
+		if (shouldReturnLies[1]) {	
+			return falseTimeline[1].place;
+		}
+		else {
+			return truthTimeline[1].place;
+		}
+	}
+	
+	public RmEnum getDMPlace() {
+		if (shouldReturnLies[2]) {	
+			return falseTimeline[2].place;
+		}
+		else {
+			return truthTimeline[2].place;
+		}
+	}
+	
+	public RmEnum getBMActivity() {
+		if (shouldReturnLies[0]) {	
+			return falseTimeline[0].activity;
+		}
+		else {
+			return truthTimeline[0].activity;
+		}
+	}
+	
+	public RmEnum getDMActivity() {
+		if (shouldReturnLies[1]) {	
+			return falseTimeline[1].activity;
+		}
+		else {
+			return truthTimeline[1].activity;
+		}
+	}
+	
+	public RmEnum getAMActivity() {
+		if (shouldReturnLies[2]) {	
+			return falseTimeline[2].activity;
+		}
+		else {
+			return truthTimeline[2].activity;
+		}
+	}
+	
+	public List<SuspectEnum> getBMAlibi() {
+		if (shouldReturnLies[0]) {
+			return falseTimeline[0].alibi;
+		}
+		else {
+			return truthTimeline[0].alibi;
+		}
+	}
+	
+	public List<SuspectEnum> getDMAlibi() {
+		if (shouldReturnLies[1]) {
+			return falseTimeline[1].alibi;
+		}
+		else {
+			return truthTimeline[1].alibi;
+		}
+	}
+	
+	public List<SuspectEnum> getAMAlibi() {
+		if (shouldReturnLies[2]) {
+			return falseTimeline[2].alibi;
+		}
+		else {
+			return truthTimeline[2].alibi;
+		}
+	}
+	
 	//accessor for befMurder
 	public String getBefMurder(int pos) //returns String at specified position
 	{
