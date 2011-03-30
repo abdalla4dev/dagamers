@@ -58,8 +58,8 @@ public class GenerateTimeline : MonoBehaviour
 	public static Person murderer;
 	public static WpnEnum murderWeap;
 	public static RmEnum murderLoc;
-	public static double deathTime; //24 hr clock. when murder was committed
-	public static double bodyFound; //24 hr clock. when body was found.
+	public static int deathTime; //24 hr clock. when murder was committed
+	public static int bodyFound; //24 hr clock. when body was found.
 	public static int befMurderTime;
 	public static int aftMurderTime;
 
@@ -101,7 +101,7 @@ public class GenerateTimeline : MonoBehaviour
 			if (i == (int)murdererEnum) timeline.Insert(i, murderer);
 			else timeline.Insert(i, new Person((SuspectEnum)i, false, false));
 		}
-		
+	
 		RmEnum RHBefMurRoom;
 		RmEnum RHDurMurRoom;
 		RmEnum RHAftMurRoom;
@@ -667,7 +667,7 @@ public class GenerateTimeline : MonoBehaviour
 		else return "invalid";
 	}
 	
-	void PrintMethod()
+	/*void PrintMethod()
 	{
 		Debug.Log("PRINT");
 		
@@ -724,7 +724,7 @@ public class GenerateTimeline : MonoBehaviour
 				}				
 			}
 		}
-	}
+	}*/
 	
 	// Create window to tell the story
 	private Rect windowRect = new Rect(200, 100, 400, 200);

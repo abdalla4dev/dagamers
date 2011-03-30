@@ -30,11 +30,11 @@ public class AI : MonoBehaviour{
 		//bool isWeapon = false;
 		// This runs a loop that covers all the questions 
 		// each question comes in the form of a 'if' loop
-		for (int i=1; i<=13;i++) {
+		for (int i=1; i<=20;i++) {
 			if (i == 1) { // question 1
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Did you find the body?";
-					answer = "Yes, I found it at " + GenerateTimeline.bodyFound + ".";
+					answer = "Yes, I found it at " + GenerateTimeline.aftMurderTime + ".";
 					if (GenerateTimeline.timeline[j].isFoundBody()) {
 						temp.setQnNode(1,question,answer,j,true,true,'s',0);
 						unlocker = j;
@@ -44,32 +44,32 @@ public class AI : MonoBehaviour{
 					}
 				}
 				temp.moveToCurrNode();
-			}
+			}//generate the victim to be with a person
 			else if (i == 2) { // question 2
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "When did you last see the victim?";
-					answer = "I last saw him at " + Convert.ToString(GenerateTimeline.deathTime-1) + ".";
+					answer = "I last saw him at " + Convert.ToString(GenerateTimeline.bodyFound-3) + ".";
 					temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
 				}
 			}
 			else if (i == 3) { // question 3
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Where did you last see the victim?";
-					answer = "I last saw him at " + GenerateTimeline.victim.getBefMurder(0) + ".";
+					answer = "I last saw him at " + GenerateTimeline.victim.getBMPlace() + ".";
 					temp.setQnNode(3,question,answer,j,false,false,'n',10+unlocker);
 				}
-			}
+			}//
 			else if (i == 4) { // question 4
 				for (int j=0;j<Globals.numSuspects;j++) {
-					if (GenerateTimeline.timeline[j].isRedHerring() || GenerateTimeline.timeline[j].isMurderer()) {
-						string thing = GenerateTimeline.timeline[j].getRHWeap().ToString();
-						question = "What were you doing before " + GenerateTimeline.bodyFound + "?";
-						answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + " using " + thing + ".";
+					if (GenerateTimeline.timeline[j].getDMWpn() != WpnEnum.None) {
+						question = "What were you doing around the time " + GenerateTimeline.bodyFound + "?";
+						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " using " + GenerateTimeline.timeline[j].getAMWpn() + " from " + 
+						Convert.ToString(GenerateTimeline.bodyFound-1) + " to " + GenerateTimeline.bodyFound;
 						temp.setQnNode(4,question,answer,j,false,true,'n',10+unlocker);
 					}
 					else {
-						question = "What were you doing before " + GenerateTimeline.bodyFound + "?";
-						answer = "I was " + GenerateTimeline.getPersonDetails(1,j,1) + ".";
+						question = "What were you doing around the time " + GenerateTimeline.bodyFound + "?";
+						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + Convert.ToString(GenerateTimeline.bodyFound-1) + " to " + GenerateTimeline.bodyFound;
 						temp.setQnNode(4,question,answer,j,false,true,'n',10+unlocker);
 					}
 				}
@@ -77,92 +77,137 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 5) { // question 5
 				for (int j=0;j<Globals.numSuspects;j++) {
-					if (GenerateTimeline.timeline[j].isRedHerring() || GenerateTimeline.timeline[j].isMurderer()) {
-						string thing = GenerateTimeline.timeline[j].getRHWeap().ToString();
-						question = "What were you doing after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
-						answer = "I was " + GenerateTimeline.getPersonDetails(0,j,1) + " using " + thing + ".";
+					if (GenerateTimeline.timeline[j].getDMWpn() != WpnEnum.None) {
+						question = "What were you doing around the time " + Convert.ToString(GenerateTimeline.bodyFound-2) + "?";
+						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " using " + GenerateTimeline.timeline[j].getBMWpn() + " from " + 
+						Convert.ToString(GenerateTimeline.bodyFound-3) + " to " + Convert.ToString(GenerateTimeline.bodyFound-2);
 						temp.setQnNode(5,question,answer,j,false,true,'n',24);
 					}
 					else {
-						question = "What were you doing after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
-						answer = "I was " + GenerateTimeline.getPersonDetails(0,j,1) + ".";
+						question = "What were you doing around the time " + Convert.ToString(GenerateTimeline.bodyFound-2) + "?";
+						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + Convert.ToString(GenerateTimeline.bodyFound-3) + " to " + Convert.ToString(GenerateTimeline.bodyFound-2);
 						temp.setQnNode(5,question,answer,j,false,true,'n',24);
 					}
 				}
 			}
 			else if (i == 6) { // question 6
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Where are you " + GenerateTimeline.getPersonDetails(1,j,1) + " before " + GenerateTimeline.bodyFound + "?";
-					answer = "I was at " + GenerateTimeline.getPersonDetails(1,j,0) + ".";
-					temp.setQnNode(6,question,answer,j,false,false,'n',40+j);
+					if (GenerateTimeline.timeline[j].getDMWpn() != WpnEnum.None) {
+						question = "What were you doing between " + Convert.ToString(GenerateTimeline.bodyFound-2) + " to " + Convert.ToString(GenerateTimeline.bodyFound-1) +"?";
+						answer = "I was " + GenerateTimeline.timeline[j].getDMActivity() + " using " + GenerateTimeline.timeline[j].getDMWpn() + ".";
+						temp.setQnNode(5,question,answer,j,false,true,'n',24);
+					}
+					else {
+						question = "What were you doing between " + Convert.ToString(GenerateTimeline.bodyFound-2) + " to " + Convert.ToString(GenerateTimeline.bodyFound-1) +"?";
+						answer = "I was " + GenerateTimeline.timeline[j].getDMActivity() + ".";
+						temp.setQnNode(6,question,answer,j,false,true,'n',24);
+					}
 				}
 			}
 			else if (i == 7) { // question 7
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "How long were you " + GenerateTimeline.getPersonDetails(1,j,1) + " before " + GenerateTimeline.bodyFound +"?";
-					answer = "1 hr.";
-					temp.setQnNode(7,question,answer,j,false,true,'n',40+j);
+					question = "Where are you " + GenerateTimeline.timeline[j].getAMActivity() + " around the time " + GenerateTimeline.bodyFound + "?";
+					answer = "I was at " + GenerateTimeline.timeline[j].getAMPlace() + ".";
+					temp.setQnNode(7,question,answer,j,false,false,'n',40+j);
 				}
 				temp.moveToCurrNode();
 			}
 			else if (i == 8) { // question 8
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Where are you " + GenerateTimeline.getPersonDetails(0,j,1) + " after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
-					answer = "I was at " + GenerateTimeline.getPersonDetails(0,j,0) + ".";
+					question = "Where are you " + GenerateTimeline.timeline[j].getBMActivity() + " around the time " + Convert.ToString(GenerateTimeline.bodyFound-3) + "?";
+					answer = "I was at " + GenerateTimeline.timeline[j].getBMPlace() + ".";
 					temp.setQnNode(8,question,answer,j,false,false,'n',50+j);
 				}
 			}
 			else if (i == 9) { // question 9
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "How long were you " + GenerateTimeline.getPersonDetails(0,j,1) + " after " + Convert.ToString(GenerateTimeline.deathTime-1) +"?";
-					answer = "1 hr.";
-					temp.setQnNode(9,question,answer,j,false,true,'n',50+j);
+					question = "Where are you " + GenerateTimeline.timeline[j].getDMActivity() + " between " + Convert.ToString(GenerateTimeline.bodyFound-2) + " and " + Convert.ToString(GenerateTimeline.bodyFound-1);
+					answer = "I was at " + GenerateTimeline.timeline[j].getDMPlace() + ".";
+					temp.setQnNode(9,question,answer,j,false,false,'n',60+j);
 				}
 			}
 			else if (i == 10) { // question 10
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can anybody be your alibi for the time period before " + GenerateTimeline.bodyFound + "?";
-					if (GenerateTimeline.getPersonDetails(1,j,2) == "null") {
+					question = "Can anybody be your alibi for the time period around " + GenerateTimeline.bodyFound + "?";
+					List<SuspectEnum> tempAli = new List<SuspectEnum>();
+					tempAli = GenerateTimeline.timeline[j].getAMAlibi();
+					if (tempAli.Count == 0) {
 						answer = "No, I was alone.";
 						temp.setQnNode(10,question,answer,j,false,false,'n',70+j);
 					}
 					else {
-						answer = "Yes, " + GenerateTimeline.getPersonDetails(1,j,2) + ".";
-						temp.setQnNode(10,question,answer,j,false,true,'n',70+j);
+						answer = "Yes, I was with ";
+						for (int k=0;k<tempAli.Count;k++) {
+							answer += " and " + tempAli[k]; 
+						}
+						answer += ".";
+						temp.setQnNode(10,question,answer,j,false,false,'n',70+j);
 					}
 				}
 				temp.moveToCurrNode();
 			}
 			else if (i == 11) { // question 11
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can anybody be your alibi for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
-					answer = "Yes, " + GenerateTimeline.getPersonDetails(0,j,2) + ".";
-					temp.setQnNode(11,question,answer,j,false,true,'n',90+j);
+					question = "Can anybody be your alibi for the time period around " + Convert.ToString(GenerateTimeline.bodyFound-3) + "?";
+					List<SuspectEnum> tempAli = new List<SuspectEnum>();
+					tempAli = GenerateTimeline.timeline[j].getBMAlibi();
+					if (tempAli.Count == 0) {
+						answer = "No, I was alone.";
+						temp.setQnNode(11,question,answer,j,false,false,'n',80+j);
+					}
+					else {
+						answer = "Yes, I was with ";
+						for (int k=0;k<tempAli.Count;k++) {
+							answer += " and " + tempAli[k]; 
+						}
+						answer += ".";
+						temp.setQnNode(11,question,answer,j,false,false,'n',80+j);
+					}
 				}
 			}
 			else if (i == 12) { // question 12
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(1,j,2) + " for the time period before " + GenerateTimeline.bodyFound + "?";
-					if (GenerateTimeline.getPersonDetails(1,j,2) == "null") {
-						question = "Can you vouch for " + Enum.GetName(typeof(SuspectEnum),GenerateTimeline.murderer) + " for the time period before " + GenerateTimeline.bodyFound + "?";
-						answer = "No, " + Enum.GetName(typeof(SuspectEnum),GenerateTimeline.murderer) + " was not in the " + GenerateTimeline.getPersonDetails(1,j,0) + ".";
-						temp.setQnNode(12,question,answer,j,false,false,'n',100+GenerateTimeline.murderer);
-					}
-					else if (GenerateTimeline.murderer == j) {
+					question = "Can anybody be your alibi for the time period from " + Convert.ToString(GenerateTimeline.bodyFound-2) +
+					" to " + Convert.ToString(GenerateTimeline.bodyFound-1) + "?";
+					List<SuspectEnum> tempAli = new List<SuspectEnum>();
+					tempAli = GenerateTimeline.timeline[j].getDMAlibi();
+					if (tempAli.Count == 0) {
+						answer = "No, I was alone.";
+						temp.setQnNode(12,question,answer,j,false,false,'n',90+j);
 					}
 					else {
-						for (int k=0;k<Globals.numSuspects;k++) {
-							if (Enum.GetName(typeof(SuspectEnum),k) == GenerateTimeline.getPersonDetails(1,j,2)) {
-								answer = "Yes, " + GenerateTimeline.getPersonDetails(1,j,2) + " was " + GenerateTimeline.getPersonDetails(1,k,1) + " at " + GenerateTimeline.getPersonDetails(1,k,0);
-								temp.setQnNode(12,question,answer,j,false,false,'n',100+k);
-								break;
+						answer = "Yes, I was with " + Enum.GetName(typeof(SuspectEnum),tempAli[0]);
+						for (int k=1;k<tempAli.Count;k++) {
+							answer += " and " + Enum.GetName(typeof(SuspectEnum),tempAli[k]); 
+						}
+						answer += ".";
+						temp.setQnNode(12,question,answer,j,false,false,'n',90+j);
+					}
+				}
+			}
+			else if (i == 13) { // question 13
+				for (int j=0;j<Globals.numSuspects;j++) {
+					List<SuspectEnum> tempAli = new List<SuspectEnum>();
+					tempAli = GenerateTimeline.timeline[j].getBMAlibi();
+					if (tempAli.Count != 0) {
+						for (int k=0;k<tempAli.Count;k++) {
+							question = "Can you vouch for " + Enum.GetName(typeof(SuspectEnum),j) + " for the time period around " + GenerateTimeline.bodyFound + "?";
+							for (int m=0;m<Globals.numSuspects;m++) {
+								if (tempAli[k] == m) {
+									List<SuspectEnum> checkAli = new List<SuspectEnum>();
+									checkAli = GenerateTimeline.timeline[m].getBMAlibi();
+									for (int n=0;n<checkAli.Count;n++) {
+										if (checkAli[n] == j) {
+										}
+									}
+								}
 							}
 						}
 					}
 				}
 				temp.moveToCurrNode();
 			}
-			else if (i == 13) { // question 13
+			/*else if (i == 13) { // question 13
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(0,j,2) + " for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
 					for (int k=0;k<Globals.numSuspects;k++) {
@@ -175,7 +220,7 @@ public class AI : MonoBehaviour{
 				}
 				temp.BFS();
 				temp.DFS();
-			}
+			}*/
 		}
 		return temp;
 		/*for (int i=0;i<GenerateTimeline.timeline.Count;i++){ // add all potential murder weapons to the list
