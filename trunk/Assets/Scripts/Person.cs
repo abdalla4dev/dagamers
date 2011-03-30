@@ -120,6 +120,24 @@ public class Person {
 	public void setReturnLieAM() {
 		shouldReturnLies[2] = true;
 	}
+	public void setBMAlibi(SuspectEnum other) {
+		truthTimeline[0].alibi.Add(other);
+	}
+	public void setBMFakeAlibi(SuspectEnum other) {
+		falseTimeline[0].alibi.Add(other);
+	}
+	public void setDMAlibi(SuspectEnum other) {
+		truthTimeline[1].alibi.Add(other);
+	}
+	public void setDMFakeAlibi(SuspectEnum other) {
+		falseTimeline[1].alibi.Add(other);
+	}
+	public void setAMAlibi(SuspectEnum other) {
+		truthTimeline[2].alibi.Add(other);
+	}
+	public void setAMFakeAlibi(SuspectEnum other) {
+		falseTimeline[2].alibi.Add(other);
+	}
 	
 	//accessors for bools
 	public bool isFoundBody()
