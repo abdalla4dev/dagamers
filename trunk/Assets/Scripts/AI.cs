@@ -187,18 +187,29 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 13) { // question 13
 				for (int j=0;j<Globals.numSuspects;j++) {
+					bool isAlibi = false;
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
-					tempAli = GenerateTimeline.timeline[j].getBMAlibi();
-					if (tempAli.Count != 0) {
-						for (int k=0;k<tempAli.Count;k++) {
+					tempAli = GenerateTimeline.timeline[j].getAMAlibi();
+					if (tempAli.Count != 0) { // if got alibi
+						for (int k=0;k<tempAli.Count;k++) { // for each alibi
 							question = "Can you vouch for " + Enum.GetName(typeof(SuspectEnum),j) + " for the time period around " + GenerateTimeline.bodyFound + "?";
-							for (int m=0;m<Globals.numSuspects;m++) {
-								if (tempAli[k] == m) {
+							for (int m=0;m<Globals.numSuspects;m++) { 
+								if (tempAli[k] == (SuspectEnum)m) { // if this suspect is the alibi
 									List<SuspectEnum> checkAli = new List<SuspectEnum>();
-									checkAli = GenerateTimeline.timeline[m].getBMAlibi();
+									checkAli = GenerateTimeline.timeline[m].getAMAlibi();
 									for (int n=0;n<checkAli.Count;n++) {
-										if (checkAli[n] == j) {
+										if (checkAli[n] == (SuspectEnum)m) { //if this suspect alibi is the same
+											answer = "Yes, he was with me.";
+											isAlibi = true;
+											temp.setQnNode(13,question,answer,m,false,false,'n',100+j);
 										}
+									}
+									if (!isAlibi) {
+										answer = "No, he was not with me.";
+										temp.setQnNode(13,question,answer,m,false,false,'n',100+j);
+									}
+									else {
+										isAlibi = false;
 									}
 								}
 							}
@@ -207,21 +218,74 @@ public class AI : MonoBehaviour{
 				}
 				temp.moveToCurrNode();
 			}
-			/*else if (i == 13) { // question 13
+			else if (i == 14) { // question 14
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can you vouch for " + GenerateTimeline.getPersonDetails(0,j,2) + " for the time period after " + Convert.ToString(GenerateTimeline.deathTime-1) + "?";
-					for (int k=0;k<Globals.numSuspects;k++) {
-						if (Enum.GetName(typeof(SuspectEnum),k) == GenerateTimeline.getPersonDetails(0,j,2)) {
-							answer = "Yes, " + GenerateTimeline.getPersonDetails(0,j,2) + " was " + GenerateTimeline.getPersonDetails(0,k,1) + " at " + GenerateTimeline.getPersonDetails(0,k,0) + ".";
-							temp.setQnNode(13,question,answer,j,false,false,'n',110+k);
-							break;
+					bool isAlibi = false;
+					List<SuspectEnum> tempAli = new List<SuspectEnum>();
+					tempAli = GenerateTimeline.timeline[j].getBMAlibi();
+					if (tempAli.Count != 0) { // if got alibi
+						for (int k=0;k<tempAli.Count;k++) { // for each alibi
+							question = "Can you vouch for " + Enum.GetName(typeof(SuspectEnum),j) + " for the time period around " + Convert.ToString(GenerateTimeline.bodyFound-3) + "?";
+							for (int m=0;m<Globals.numSuspects;m++) { 
+								if (tempAli[k] == (SuspectEnum)m) { // if this suspect is the alibi
+									List<SuspectEnum> checkAli = new List<SuspectEnum>();
+									checkAli = GenerateTimeline.timeline[m].getBMAlibi();
+									for (int n=0;n<checkAli.Count;n++) {
+										if (checkAli[n] == (SuspectEnum)m) { //if this suspect alibi is the same
+											answer = "Yes, he was with me.";
+											isAlibi = true;
+											temp.setQnNode(13,question,answer,m,false,false,'n',110+j);
+										}
+									}
+									if (!isAlibi) {
+										answer = "No, he was not with me.";
+										temp.setQnNode(13,question,answer,m,false,false,'n',110+j);
+									}
+									else {
+										isAlibi = false;
+									}
+								}
+							}
 						}
 					}
 				}
-				temp.BFS();
-				temp.DFS();
-			}*/
+			}
+			else if (i == 15) { // question 15
+				for (int j=0;j<Globals.numSuspects;j++) {
+					bool isAlibi = false;
+					List<SuspectEnum> tempAli = new List<SuspectEnum>();
+					tempAli = GenerateTimeline.timeline[j].getDMAlibi();
+					if (tempAli.Count != 0) { // if got alibi
+						for (int k=0;k<tempAli.Count;k++) { // for each alibi
+							question = "Can you vouch for " + Enum.GetName(typeof(SuspectEnum),j) + " for the time period from " + Convert.ToString(GenerateTimeline.bodyFound-2) + " to " + Convert.ToString(GenerateTimeline.bodyFound-2) + "?";
+							for (int m=0;m<Globals.numSuspects;m++) { 
+								if (tempAli[k] == (SuspectEnum)m) { // if this suspect is the alibi
+									List<SuspectEnum> checkAli = new List<SuspectEnum>();
+									checkAli = GenerateTimeline.timeline[m].getDMAlibi();
+									for (int n=0;n<checkAli.Count;n++) {
+										if (checkAli[n] == (SuspectEnum)m) { //if this suspect alibi is the same
+											answer = "Yes, he was with me.";
+											isAlibi = true;
+											temp.setQnNode(13,question,answer,m,false,false,'n',120+j);
+										}
+									}
+									if (!isAlibi) {
+										answer = "No, he was not with me.";
+										temp.setQnNode(13,question,answer,m,false,false,'n',120+j);
+									}
+									else {
+										isAlibi = false;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
+		
+		temp.BFS();
+		temp.DFS();
 		return temp;
 		/*for (int i=0;i<GenerateTimeline.timeline.Count;i++){ // add all potential murder weapons to the list
 			if (GenerateTimeline.timeline[i].getRHWeap() != null) {
