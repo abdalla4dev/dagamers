@@ -67,6 +67,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	public static List<Person> timeline = new List<Person>(4);
 	public static List<Fact> facts = new List<Fact>();
+	public static List<Fact> wpnFacts = new List<Fact>(5);
 	
 	public Transform knife; 
 	public Transform screwdriver;
@@ -272,6 +273,13 @@ public class GenerateTimeline : MonoBehaviour
 		//place the weapons that were used
 		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
 		placeWeapon(RHWpn, timeline[AMpairing[2]].getAfterMurderRoom());
+		
+		wpnFacts.Insert((int)WpnEnum.Knife, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Knife, WpnEnum.Knife==RHWpn||WpnEnum.Knife==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn||WpnEnum.Scissors==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn||WpnEnum.Screwdriver==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn||WpnEnum.Towel==murderWeap));
+	
 	}
 	
 	private static void GenerateMediumGame(SuspectEnum murdererEnum, int victimBefMurderRoom, int victimDurMurderRoom) {
@@ -345,9 +353,9 @@ public class GenerateTimeline : MonoBehaviour
 				Globals.room[(int)RHAftMurRoom].randomGA(),
 				WpnEnum.None);
 				//alibi
-				timeline[BMpairing[3]].setBeforeMurder(befMurderTime,
-				RHBefMurRoom,
-				Globals.room[(int)RHBefMurRoom].randomGA(),
+				timeline[DMpairing[3]].setDuringMurder(deathTime,
+				RHDurMurRoom,
+				Globals.room[(int)RHDurMurRoom].randomGA(),
 				WpnEnum.None);
 				timeline[AMpairing[3]].setAfterMurder(aftMurderTime, 
 				RHAftMurRoom,
