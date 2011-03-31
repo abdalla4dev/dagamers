@@ -26,7 +26,7 @@ public class startMenuScript : MonoBehaviour {
 	
 	void OnMouseDown () {
 		if(playOrQuit == 1){
-			Application.LoadLevel("main"); 
+			Application.LoadLevel("LoadingScreen"); 
 		}
 		else if (playOrQuit == 555){
 			Application.LoadLevel("LoadingScreen"); 
