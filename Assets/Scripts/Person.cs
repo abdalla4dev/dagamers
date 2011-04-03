@@ -63,6 +63,12 @@ public class Person {
 		name = s;
 		isVictim = victim;
 		isMurderer = murderer;
+		
+		// fill the slots, then replace as needed later
+		for (int i=0; i<3; i++) {
+			truthTimeline.Add(new TimelineSlot());
+			falseTimeline.Add(new TimelineSlot());
+		}
 	}
 	
 	public void setBeforeMurder(double start, RmEnum p, string activity, WpnEnum w) {
@@ -97,7 +103,7 @@ public class Person {
 		return falseTimeline[0].place;
 	}
 	public RmEnum getFakeDuringMurderRoom() {
-		return fakeTimeline[1].place;
+		return falseTimeline[1].place;
 	}
 	public RmEnum getFakeAfterMurderRoom() {
 		return falseTimeline[2].place;
@@ -185,7 +191,7 @@ public class Person {
 		}
 	}
 	
-	public RmEnum getAMPlace() {
+	public RmEnum getDMPlace() {
 		if (shouldReturnLies[1]) {	
 			return falseTimeline[1].place;
 		}
@@ -194,7 +200,7 @@ public class Person {
 		}
 	}
 	
-	public RmEnum getDMPlace() {
+	public RmEnum getAMPlace() {
 		if (shouldReturnLies[2]) {	
 			return falseTimeline[2].place;
 		}
@@ -203,7 +209,7 @@ public class Person {
 		}
 	}
 	
-	public RmEnum getBMActivity() {
+	public string getBMActivity() {
 		if (shouldReturnLies[0]) {	
 			return falseTimeline[0].activity;
 		}
@@ -212,7 +218,7 @@ public class Person {
 		}
 	}
 	
-	public RmEnum getDMActivity() {
+	public string getDMActivity() {
 		if (shouldReturnLies[1]) {	
 			return falseTimeline[1].activity;
 		}
@@ -221,7 +227,7 @@ public class Person {
 		}
 	}
 	
-	public RmEnum getAMActivity() {
+	public string getAMActivity() {
 		if (shouldReturnLies[2]) {	
 			return falseTimeline[2].activity;
 		}
@@ -262,29 +268,32 @@ public class Person {
 	{
 		if (shouldReturnLies[0]) {//0 is before murder
 			switch(pos) {
+				case (Person.place):
+					return falseTimeline[0].place.ToString();
+					//break;
 				case (Person.activity):
 					return falseTimeline[0].activity;
-					break;
+					//break;
 				case (Person.alibi):
-					return falseTimeline[0].alibi[0];
-					break;
-				case (Person.place):
-					return falseTimeline[0].place;
-					break;
+					return falseTimeline[0].alibi[0].ToString();
+					//break;
+				//default:break;
 			}
 		} else {
 			switch(pos) {
+				case (Person.place):
+					return truthTimeline[0].place.ToString();
+					//break;
 				case (Person.activity):
 					return truthTimeline[0].activity;
-					break;
+					//break;
 				case (Person.alibi):
-					return truthTimeline[0].alibi[0];
-					break;
-				case (Person.place):
-					return truthTimeline[0].place;
-					break;
+					return truthTimeline[0].alibi[0].ToString();
+					//break;
 			}
 		}
+		// should never be reached
+		return string.Empty;
 	}
 	
 	//accessors and mutators for duringMurder	
@@ -292,29 +301,31 @@ public class Person {
 	{
 		if (shouldReturnLies[1]) {//1 is during murder
 			switch(pos) {
+				case (Person.place):
+					return falseTimeline[1].place.ToString();
+					//break;
 				case (Person.activity):
 					return falseTimeline[1].activity;
-					break;
+					//break;
 				case (Person.alibi):
-					return falseTimeline[1].alibi[0];
-					break;
-				case (Person.place):
-					return falseTimeline[1].place;
-					break;
+					return falseTimeline[1].alibi[0].ToString();
+					//break;
 			}
 		} else {
 			switch(pos) {
+				case (Person.place):
+					return truthTimeline[1].place.ToString();
+					//break;
 				case (Person.activity):
 					return truthTimeline[1].activity;
-					break;
+					//break;
 				case (Person.alibi):
-					return truthTimeline[1].alibi[0];
-					break;
-				case (Person.place):
-					return truthTimeline[1].place;
-					break;
+					return truthTimeline[1].alibi[0].ToString();
+					//break;
 			}
 		}
+		//should never be reached
+		return string.Empty;
 	}
 
 	//accessor for aftMurder
@@ -322,29 +333,31 @@ public class Person {
 	{
 		if (shouldReturnLies[2]) {//2 is after murder
 			switch(pos) {
+				case (Person.place):
+					return falseTimeline[2].place.ToString();
+					//break;
 				case (Person.activity):
 					return falseTimeline[2].activity;
-					break;
+					//break;
 				case (Person.alibi):
-					return falseTimeline[2].alibi[0];
-					break;
-				case (Person.place):
-					return falseTimeline[2].place;
-					break;
+					return falseTimeline[2].alibi[0].ToString();
+					//break;
 			}
 		} else {
 			switch(pos) {
+				case (Person.place):
+					return truthTimeline[2].place.ToString();
+					//break;
 				case (Person.activity):
 					return truthTimeline[2].activity;
-					break;
+					//break;
 				case (Person.alibi):
-					return truthTimeline[2].alibi[0];
-					break;
-				case (Person.place):
-					return truthTimeline[2].place;
-					break;
+					return truthTimeline[2].alibi[0].ToString();
+					//break;
 			}
 		}
+		//should never be reached
+		return string.Empty;
 	}
 
 	//menghui, the accessors start here
@@ -372,34 +385,4 @@ public class Person {
 		aftUnlocked[i] = val;
 	}
 	// end here
-	
-	public void makeFindBody(Person murderTruth)
-	{
-		this.foundBody = true;
-		
-		this.duringMurder[place] = murderTruth.duringMurder[place];
-		
-		Rooms room = (Rooms) Enum.Parse(typeof(Rooms), this.duringMurder[place]);
-		
-		switch (room)
-		{
-			case Rooms.Kitchen:
-				this.duringMurder[activity] = ( (Kitchen.Generic_Activities) rand.Next(0, Kitchen.Num_Activities) ).ToString(); 
-				break;
-			case Rooms.Living_Room:
-				this.duringMurder[activity] = ( (Living_Room.Generic_Activities) rand.Next(0, Living_Room.Num_Activities) ).ToString(); 
-				break;
-			case Rooms.Bedroom:
-				this.duringMurder[activity] = ( (Bedroom.Generic_Activities) rand.Next(0, Bedroom.Num_Activities) ).ToString(); 
-				break;
-			case Rooms.Garden:
-				this.duringMurder[activity] = ( (Garden.Generic_Activities) rand.Next(0, Garden.Num_Activities) ).ToString(); 
-				break;
-			case Rooms.Toilet:
-				this.duringMurder[activity] = ( (Toilet.Generic_Activities) rand.Next(0, Toilet.Num_Activities) ).ToString(); 
-				break;
-			default: break;
-		}
-		
-	}
 }

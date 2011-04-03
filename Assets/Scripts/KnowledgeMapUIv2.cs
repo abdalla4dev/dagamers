@@ -38,43 +38,43 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 	void Start () {
 		theTimeline = gameObject.GetComponent<GenerateTimeline>();
 		switch(GenerateTimeline.knifeLoc) {
-			case Rooms.Bedroom:		bedroomTexture=knifeTexture; break;
-			case Rooms.Garden:		gardenTexture=knifeTexture; break;
-			case Rooms.Kitchen:		kitchenTexture=knifeTexture; break;
-			case Rooms.Living_Room:	LRTexture=knifeTexture; break;
-			case Rooms.Toilet:		toiletTexture=knifeTexture; break;
+			case RmEnum.Master_Bedroom:		bedroomTexture=knifeTexture; break;
+			case RmEnum.Garden:		gardenTexture=knifeTexture; break;
+			case RmEnum.Kitchen:		kitchenTexture=knifeTexture; break;
+			case RmEnum.Living_Room:	LRTexture=knifeTexture; break;
+			case RmEnum.MBR_Toilet:		toiletTexture=knifeTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.screwdriverLoc) {
-			case Rooms.Bedroom:		bedroomTexture=screwdriverTexture; break;
-			case Rooms.Garden:		gardenTexture=screwdriverTexture; break;
-			case Rooms.Kitchen:		kitchenTexture=screwdriverTexture; break;
-			case Rooms.Living_Room:	LRTexture=screwdriverTexture; break;
-			case Rooms.Toilet:		toiletTexture=screwdriverTexture; break;
+			case RmEnum.Master_Bedroom:		bedroomTexture=screwdriverTexture; break;
+			case RmEnum.Garden:		gardenTexture=screwdriverTexture; break;
+			case RmEnum.Kitchen:		kitchenTexture=screwdriverTexture; break;
+			case RmEnum.Living_Room:	LRTexture=screwdriverTexture; break;
+			case RmEnum.MBR_Toilet:		toiletTexture=screwdriverTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.towelLoc) {
-			case Rooms.Bedroom:		bedroomTexture=towelTexture; break;
-			case Rooms.Garden:		gardenTexture=towelTexture; break;
-			case Rooms.Kitchen:		kitchenTexture=towelTexture; break;
-			case Rooms.Living_Room:	LRTexture=towelTexture; break;
-			case Rooms.Toilet:		toiletTexture=towelTexture; break;
+			case RmEnum.Master_Bedroom:		bedroomTexture=towelTexture; break;
+			case RmEnum.Garden:		gardenTexture=towelTexture; break;
+			case RmEnum.Kitchen:		kitchenTexture=towelTexture; break;
+			case RmEnum.Living_Room:	LRTexture=towelTexture; break;
+			case RmEnum.MBR_Toilet:		toiletTexture=towelTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.scissorsLoc) {
-			case Rooms.Bedroom:		bedroomTexture=scissorsTexture; break;
-			case Rooms.Garden:		gardenTexture=scissorsTexture; break;
-			case Rooms.Kitchen:		kitchenTexture=scissorsTexture; break;
-			case Rooms.Living_Room:	LRTexture=scissorsTexture; break;
-			case Rooms.Toilet:		toiletTexture=scissorsTexture; break;
+			case RmEnum.Master_Bedroom:		bedroomTexture=scissorsTexture; break;
+			case RmEnum.Garden:		gardenTexture=scissorsTexture; break;
+			case RmEnum.Kitchen:		kitchenTexture=scissorsTexture; break;
+			case RmEnum.Living_Room:	LRTexture=scissorsTexture; break;
+			case RmEnum.MBR_Toilet:		toiletTexture=scissorsTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.spannerLoc) {
-			case Rooms.Bedroom:		bedroomTexture=spannerTexture; break;
-			case Rooms.Garden:		gardenTexture=spannerTexture; break;
-			case Rooms.Kitchen:		kitchenTexture=spannerTexture; break;
-			case Rooms.Living_Room:	LRTexture=spannerTexture; break;
-			case Rooms.Toilet:		toiletTexture=spannerTexture; break;
+			case RmEnum.Master_Bedroom:		bedroomTexture=spannerTexture; break;
+			case RmEnum.Garden:		gardenTexture=spannerTexture; break;
+			case RmEnum.Kitchen:		kitchenTexture=spannerTexture; break;
+			case RmEnum.Living_Room:	LRTexture=spannerTexture; break;
+			case RmEnum.MBR_Toilet:		toiletTexture=spannerTexture; break;
 			default: break;
 		}
 	}
@@ -107,7 +107,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 		
 		GUILayout.Space(100);
 		GUILayout.BeginHorizontal();
-			//Bedroom
+			//Master_Bedroom
 			GUILayout.Space(150);
 			if (GUILayout.Button(bedroomTexture, GUILayout.Width(50), GUILayout.Height(50)) ) showMW = !showMW;
 		GUILayout.EndHorizontal();

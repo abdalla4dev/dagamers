@@ -119,13 +119,13 @@ public class MouseOverScript : MonoBehaviour {
 		}
 		
 		else{
-			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(Suspects), suspect));
+			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
 			
 			foreach (string item in myList) {
 				if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
 					//print("clicked");
 					s = item;
-					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(Suspects), suspect), s);
+					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
 					ans = ans.Replace('_', ' ');
 					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 					ans = ans.Replace(" i ", " I ");

@@ -24,9 +24,11 @@ public class TimelineSlot  {
 	//	person = s;
 	}
 	
+	public TimelineSlot() {}
+	
 	public string getStartTime() {
 		int hour = (int) startTime;
-		int minutes = (startTime - hour)*60;
+		int minutes = (int) ((startTime - hour)*60);
 		if (hour>12) {
 			hour-=12;
 			return ""+hour+":"+minutes+"pm";

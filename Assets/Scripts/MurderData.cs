@@ -14,7 +14,7 @@ namespace MurderData
 		public const int numRooms = 5;
 		public const int numSuspects = 4;	
 		
-		public static readonly List<Room> room;
+		public static readonly List<Room> room = new List<Room>(5);
 		static Globals() {
 			room.Add(new Room("Kitchen"));
 			room.Add(new Room("Living Room"));
@@ -68,8 +68,8 @@ namespace MurderData
 	
 	public class Room {
 		public readonly string name; // the room name
-		public readonly List<string> Generic_Activities;
-		public readonly List<Weapon> WeaponList;
+		public readonly List<string> Generic_Activities = new List<string>();
+		public readonly List<Weapon> WeaponList = new List<Weapon>();
 		public Room(string s) {
 			name = s;
 			if (name == "Kitchen") {
@@ -114,7 +114,7 @@ namespace MurderData
 	
 	public class Weapon {
 		public readonly string name; // the weapon name
-		public readonly List<string> activity;
+		public readonly List<string> activity = new List<string>();
 		public Weapon(string wpn, string room) {
 			name = wpn;
 			if (name == "Knife") {
