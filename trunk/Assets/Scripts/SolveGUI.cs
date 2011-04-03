@@ -78,13 +78,13 @@ public class SolveGUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		for (int i=0; i< Globals.numSuspects; i++) {
-			suspectAnswers.Add(Enum.GetName(typeof(Suspects), i));
+			suspectAnswers.Add(Enum.GetName(typeof(SuspectEnum), i));
 		}
 		/*for (int i=0; i<Globals.numRooms; i++) {
 			roomAnswers.Add(Enum.GetName(typeof(Rooms),i));
 		}*/
 		for (int i=0; i<Globals.numWeapons; i++) {
-			weaponAnswers.Add(Enum.GetName(typeof(Weapons),i));
+			weaponAnswers.Add(Enum.GetName(typeof(WpnEnum),i));
 		}
 		//Debug.Log(answers[0] + " " +answers[1] + " " +answers[2] + " " +answers[3]);
 		/*answers.Add("Wife");
@@ -115,14 +115,14 @@ public class SolveGUI : MonoBehaviour {
 		//GUILayout.Label("in ...");
 		//roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
 		if (GUILayout.Button("Solve!") ) {
-			List<string> answer = GenerateTimeline.murderTruth.getMurder();
+			string place_answer = GenerateTimeline.murderer.getDuringMurderRoom().ToString(); //not used for answering, coz there's no questions about place of murder
 			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
-				Enum.GetName(typeof(Suspects), GenerateTimeline.murderer) == suspectSelection) {
+				Enum.GetName(typeof(SuspectEnum), GenerateTimeline.murderer) == suspectSelection) {
 				//check if game solved
 				Debug.Log("Solved");
 				solved = true;
 			} else {
-				Debug.Log("Answer is " + answer[Person.place] + " " + GenerateTimeline.murderWeap.ToString() + " " +Enum.GetName(typeof(Suspects), GenerateTimeline.murderer));
+				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " +Enum.GetName(typeof(SuspectEnum), GenerateTimeline.murderer));
 			}
 		}
 	}

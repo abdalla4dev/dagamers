@@ -7,9 +7,9 @@ public class loadingScreen : MonoBehaviour {
 	float progress;
 	
 	// Use this for initialization
-	void Start () {
+	IEnumerable Start () {
 		async = Application.LoadLevelAsync ("main");
-    	yield async;
+    	yield return async;
 		Debug.Log("Loading complete");
 	}
 	

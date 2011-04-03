@@ -275,11 +275,10 @@ public class GenerateTimeline : MonoBehaviour
 		placeWeapon(RHWpn, timeline[AMpairing[2]].getAfterMurderRoom());
 		
 		wpnFacts.Insert((int)WpnEnum.Knife, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Knife, WpnEnum.Knife==RHWpn||WpnEnum.Knife==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn||WpnEnum.Scissors==murderWeap));
 		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn||WpnEnum.Screwdriver==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
 		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn||WpnEnum.Towel==murderWeap));
-	
+		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn||WpnEnum.Scissors==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[AMpairing[2]].getAfterMurderFact(), timeline[AMpairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
 	}
 	
 	private static void GenerateMediumGame(SuspectEnum murdererEnum, int victimBefMurderRoom, int victimDurMurderRoom) {
@@ -491,7 +490,7 @@ public class GenerateTimeline : MonoBehaviour
 				j++;
 			}
 		}
-		
+		Debug.Log("Rand seq " + temp[0] + " " +temp[1] + " " +temp[2] + " " +temp[3] + " end");
 		return temp;
 	}
 	
@@ -732,7 +731,7 @@ public class GenerateTimeline : MonoBehaviour
 				Debug.Log(i + " " + timeline[i].getMurder(Person.place));
 			Debug.Log(timeline[i].isFoundBody() + " " + i);
 		}
-	}
+	}*/
 	
 	public static void checkBool(int qnNum, int sus) {
 		for (int i=0;i<timeline.Count;i++) {
@@ -751,7 +750,7 @@ public class GenerateTimeline : MonoBehaviour
 				}				
 			}
 		}
-	}*/
+	}
 	
 	// Create window to tell the story
 	private Rect windowRect = new Rect(200, 100, 400, 200);
