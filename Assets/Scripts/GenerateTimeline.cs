@@ -345,8 +345,8 @@ public class GenerateTimeline : MonoBehaviour
 					WpnEnum.None); // saw the murderer "disposing murder weapon"
 				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getAfterMurderFact(), murdererEnum)); //you're returning disposing murder weapon?!?!?!?! don't need to set return lie for 0 and 1 ???
 			
-				timeline[AMpairing[0]].setFoundBody();
-				timeline[AMpairing[1]].setFoundBody();
+				timeline[AMpairing[0]].setFoundBody(true);
+				timeline[AMpairing[1]].setFoundBody(true);
 			break;			
 		}
 		
