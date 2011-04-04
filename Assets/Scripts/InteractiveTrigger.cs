@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 using System.Collections;
+using MurderData;
 
 public class InteractiveTrigger : MonoBehaviour {
 	
@@ -9,6 +11,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	public Texture2D logTex;
 	public Texture2D logBoxTex;
 	public GUISkin customSkin;
+	//public AI AIlink;
 	
 	Color mouseOverColor = Color.yellow;
 	Color[] originalColor; //array to store the original material color
@@ -19,8 +22,16 @@ public class InteractiveTrigger : MonoBehaviour {
 	bool overObject = false;
 	bool questionToggle = true;
 	
-	string suspect, weapon;
+	Vector3 offset = Vector3.up;
+	Vector3 screenPos;
+	Vector3 charOffset = new Vector3(0,2,0);
 	
+	string suspect, weapon, s, ans;
+	
+	int weaponEnum; 
+	int numQn = 0;
+	
+	float qnButtonTop = 50;
 	// Use this for initialization
 	void Start () {
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
@@ -30,42 +41,64 @@ public class InteractiveTrigger : MonoBehaviour {
 				originalColor[i] = targetObject.renderer.materials[i].color;
 			}
 		}
+		else{
+			suspect = targetObject.name;
+		}
 	}
 	
 	void OnGUI(){
 		GUI.skin = customSkin;
 		if (displayText) {
-			
-			if(questionToggle){
-				//question window
-				GUI.Window(4, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, questionBoxTex);
+			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+				GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
 			}
 			else{
-				//log window
-				GUI.Window(5, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, logBoxTex);
+				if(questionToggle){
+					//question window
+					GUI.Window(4, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, questionBoxTex);
+					
+				}
+				else{
+					//log window
+					GUI.Window(5, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, logBoxTex);
+				}
 			}
 		}
 
 	}
 	
+	void weaponWindow(int windowID){
+		weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
+		GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon"));
+	}
+	
 	void dialogueWindow(int windowID){
 		if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
 			GUI.BringWindowToBack(5);
+			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
+			GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), "I am a button");
+			foreach (string item in myList) {
+				numQn++;
+				if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
+					s = item;
+					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
+					ans = ans.Replace('_', ' ');
+					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
+					ans = ans.Replace(" i ", " I ");
+					numQn--;
+					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150, 300, 100), ans);
+				}
+			}
 			questionToggle = true;
 		}
 		else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
 			GUI.BringWindowToBack(4);
 			questionToggle = false;
 		}
-		
-		if(questionToggle){
-			GUI.Button(new Rect(40, 50, 450, 32), "Were you the one who found the body?");
-			GUI.Button(new Rect(40, 90, 450, 32), "Where were you during the time of murder?");
-			GUI.Button(new Rect(40, 130, 450, 32), "What were you doing before the time of murder?");
 			
-		}
 		
 	}
+
 	
 	void OnTriggerEnter(Collider other){
 		withinBoundary = true;
@@ -111,6 +144,13 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+			screenPos = Camera.main.WorldToScreenPoint(targetObject.position + offset);
+		}
+		else{
+			screenPos = Camera.main.WorldToScreenPoint(targetObject.position + charOffset);
+		}
 	
 		TriggerToggle();
 		
