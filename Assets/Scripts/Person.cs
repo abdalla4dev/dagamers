@@ -44,6 +44,7 @@ public class Person {
 	public readonly bool isVictim;
 	public readonly bool isMurderer;
 	public bool foundBody;
+	public bool lastSaw;
 	private bool[] shouldReturnLies = {false, false, false};
 	//End new code, the rest can delete if not useful
 	
@@ -153,6 +154,14 @@ public class Person {
 	public void setFoundBody(bool fb)
 	{
 		foundBody = fb;
+	}
+	public bool isLastSaw()
+	{
+		return lastSaw;
+	}
+	public void setLastSaw(bool ls)
+	{
+		lastSaw = ls;
 	}
 	
 	public WpnEnum getBMWpn() {
