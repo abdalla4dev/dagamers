@@ -95,16 +95,16 @@ public class MouseOverScript : MonoBehaviour {
 
 		if(displayText){
 			if(called){
-			GUILayout.Window(2, new Rect(screenPos.x, (Screen.height - screenPos.y), 300,100), QuestionWindow, "Detective"); //window ID is 2 coz Timeline and map are using window IDs too
+			GUILayout.Window(7, new Rect(screenPos.x, (Screen.height - screenPos.y), 300,100), QuestionWindow, "Detective"); //window ID is 2 coz Timeline and map are using window IDs too
 			}
 			
 			if(called == false){
 				if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-					GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), AnswerWindow, "" + weapon);
+					GUILayout.Window(6, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), AnswerWindow, "" + weapon);
 					//print("weapon name = " + weapon);
 				}
 				else{
-					GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), AnswerWindow, "" + suspect);
+					GUILayout.Window(6, new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), AnswerWindow, "" + suspect);
 				}
 			}
 		}
