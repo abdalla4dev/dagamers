@@ -55,7 +55,7 @@ public class Fact {
 					" recently to " +
 					info.activity + ". It could be the murder weapon.";
 			else
-				toReturn = "Forencis has verified that this item was not used recently.";
+				toReturn = "Forensics has verified that this item was not used recently.";
 		
 		}
 		return toReturn;

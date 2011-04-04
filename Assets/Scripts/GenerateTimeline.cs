@@ -212,9 +212,9 @@ public class GenerateTimeline : MonoBehaviour
 		
 		//record what index 0 was doing into facts
 		//assuming all facts are accessed from CCTV in master bedrrom for now
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[1]].getBeforeMurderFact(), timeline[BMpairing[1]].name));
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[DMpairing[1]].getDuringMurderFact(), timeline[DMpairing[1]].name));
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[AMpairing[1]].getAfterMurderFact(), timeline[AMpairing[1]].name));
+		facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[1]].getBeforeMurderFact(), timeline[BMpairing[1]].name));
+		facts.Add(new Fact(RmEnum.Kitchen, timeline[DMpairing[1]].getDuringMurderFact(), timeline[DMpairing[1]].name));
+		facts.Add(new Fact(RmEnum.Kitchen, timeline[AMpairing[1]].getAfterMurderFact(), timeline[AMpairing[1]].name));
 		
 		//do the same for index 2 and 3 now.
 		//index 2 is doing weapon activity and lies
@@ -270,13 +270,13 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[BMpairing[3]].setBMAlibi(timeline[BMpairing[2]].name);
 		timeline[DMpairing[2]].setDMFakeAlibi(timeline[DMpairing[3]].name);
 		timeline[DMpairing[3]].setDMAlibi(timeline[DMpairing[2]].name);
-		timeline[AMpairing[2]].setBMFakeAlibi(timeline[AMpairing[3]].name);
-		timeline[AMpairing[3]].setBMAlibi(timeline[AMpairing[2]].name);
+		timeline[AMpairing[2]].setAMFakeAlibi(timeline[AMpairing[3]].name);
+		timeline[AMpairing[3]].setAMAlibi(timeline[AMpairing[2]].name);
 		
 		//record what index 2 was doing into facts
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+		facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
+		facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+		facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
 		
 		//place the weapons that were used
 		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
@@ -304,6 +304,7 @@ public class GenerateTimeline : MonoBehaviour
 		//record what index 0 was doing into facts
 		//assuming all facts are accessed from CCTV in master bedrrom for now
 		int chosen = rand.Next(3);
+		RmEnum randomRoom;
 		switch(chosen)
 		{
 			case 0:
@@ -312,10 +313,10 @@ public class GenerateTimeline : MonoBehaviour
 					Globals.room[(int)timeline[BMpairing[0]].getFakeBeforeMurderRoom()].randomGA(), 
 					WpnEnum.None); //saw the murderer "acquiring murder weapon"
 			
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[1]].getBeforeMurderFact(), timeline[BMpairing[1]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[1]].getBeforeMurderFact(), timeline[BMpairing[1]].name));
 		
 				//normal, can be doing anything.
-				RmEnum randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 				timeline[DMpairing[1]].setDuringMurder(deathTime, 
 					randomRoom, 
 					Globals.room[(int)timeline[DMpairing[0]].getFakeDuringMurderRoom()].randomGA(),
@@ -325,23 +326,49 @@ public class GenerateTimeline : MonoBehaviour
 					randomRoom, 
 					Globals.room[(int)timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
 					WpnEnum.None);
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[DMpairing[1]].getDuringMurderFact(), (SuspectEnum)DMpairing[1]));
-				
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[DMpairing[1]].getDuringMurderFact(), (SuspectEnum)BMpairing[1]));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[AMpairing[1]].getAfterMurderFact(), (SuspectEnum)AMpairing[1]));
 			break;
 			case 1:
 				timeline[DMpairing[1]].setDuringMurder(deathTime, 
 					timeline[DMpairing[0]].getFakeDuringMurderRoom(), 
 					Globals.room[(int)timeline[DMpairing[0]].getFakeDuringMurderRoom()].randomGA(),
 					WpnEnum.None); //did not see the murderer in where he claimed to be, and doing what he claimed to be doing
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[DMpairing[1]].getDuringMurderFact(), timeline[DMpairing[1]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[DMpairing[1]].getDuringMurderFact(), timeline[DMpairing[1]].name));
+			
+				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				timeline[BMpairing[1]].setBeforeMurder(deathTime, 
+					randomRoom, 
+					Globals.room[(int)timeline[BMpairing[0]].getFakeBeforeMurderRoom()].randomGA(),
+					WpnEnum.None);
+				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getAfterMurderRoom());
+				timeline[AMpairing[1]].setAfterMurder(deathTime, 
+					randomRoom, 
+					Globals.room[(int)timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
+					WpnEnum.None);
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[1]].getBeforeMurderFact(), (SuspectEnum)BMpairing[1]));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[AMpairing[1]].getAfterMurderFact(), (SuspectEnum)AMpairing[1]));
 			break;
 			case 2:
 				timeline[AMpairing[1]].setAfterMurder(deathTime, 
 					timeline[AMpairing[0]].getFakeAfterMurderRoom(), 
 					Globals.room[(int)timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
 					WpnEnum.None); // saw the murderer "disposing murder weapon"
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[AMpairing[1]].getAfterMurderFact(), timeline[AMpairing[1]].name));
-		
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[AMpairing[1]].getAfterMurderFact(), timeline[AMpairing[1]].name));
+			
+				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				timeline[DMpairing[1]].setDuringMurder(deathTime, 
+					randomRoom, 
+					Globals.room[(int)timeline[DMpairing[0]].getFakeDuringMurderRoom()].randomGA(),
+					WpnEnum.None);
+				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				timeline[BMpairing[1]].setBeforeMurder(deathTime, 
+					randomRoom, 
+					Globals.room[(int)timeline[BMpairing[0]].getFakeBeforeMurderRoom()].randomGA(),
+					WpnEnum.None);
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[DMpairing[1]].getDuringMurderFact(), (SuspectEnum)DMpairing[1]));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[1]].getBeforeMurderFact(), (SuspectEnum)BMpairing[1]));
+					
 			break;			
 		}
 		
@@ -352,6 +379,7 @@ public class GenerateTimeline : MonoBehaviour
 		RmEnum RHBefMurRoom;
 		RmEnum RHDurMurRoom;
 		RmEnum RHAftMurRoom;
+		RmEnum innRm;
 		switch(chosen)
 		{
 			case 0:
@@ -388,8 +416,24 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[AMpairing[2]].setReturnLieAM();
 			
 				//add fact
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+			
+				innRm = Globals.randRoom((RmEnum) victimDurMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom(), timeline[BMpairing[1]].getBeforeMurderRoom());
+				//non contradiction
+				timeline[BMpairing[2]].setBeforeMurder(befMurderTime,
+				innRm,
+				Globals.room[(int)innRm].WeaponList[(int)RHWpn].activity[0],
+				RHWpn);
+				timeline[BMpairing[3]].setBeforeMurder(befMurderTime,
+				innRm,
+				Globals.room[(int)innRm].randomGA(),
+				WpnEnum.None);
+				
+				timeline[BMpairing[2]].setBMAlibi(timeline[BMpairing[3]].name);
+				timeline[BMpairing[3]].setBMAlibi(timeline[BMpairing[2]].name);
+			
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[3]].getBeforeMurderFact(), timeline[BMpairing[3]].name));
 				break;
 		case 1:
 				//truth
@@ -425,8 +469,24 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[AMpairing[2]].setReturnLieAM();
 			
 				//add fact
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
+				
+				innRm = Globals.randRoom((RmEnum) victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom(), timeline[DMpairing[1]].getDuringMurderRoom());
+				//non contradiction
+				timeline[BMpairing[2]].setDuringMurder(deathTime,
+				innRm,
+				Globals.room[(int)innRm].WeaponList[(int)RHWpn].activity[0],
+				RHWpn);
+				timeline[BMpairing[3]].setDuringMurder(deathTime,
+				innRm,
+				Globals.room[(int)innRm].randomGA(),
+				WpnEnum.None);
+				
+				timeline[DMpairing[2]].setDMAlibi(timeline[DMpairing[3]].name);
+				timeline[DMpairing[3]].setDMAlibi(timeline[DMpairing[2]].name);
+			
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[DMpairing[3]].getDuringMurderFact(), timeline[DMpairing[3]].name));
 				break;
 		case 2:
 				//truth
@@ -461,8 +521,25 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[BMpairing[2]].setReturnLieBM();
 				timeline[DMpairing[2]].setReturnLieDM();
 				//facts
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
+				
+			
+				innRm = Globals.randRoom((RmEnum) victimDurMurderRoom, timeline[(int)murdererEnum].getAfterMurderRoom(), timeline[AMpairing[1]].getAfterMurderRoom());
+				//non contradiction
+				timeline[AMpairing[2]].setDuringMurder(aftMurderTime,
+				innRm,
+				Globals.room[(int)innRm].WeaponList[(int)RHWpn].activity[0],
+				RHWpn);
+				timeline[AMpairing[3]].setDuringMurder(aftMurderTime,
+				innRm,
+				Globals.room[(int)innRm].randomGA(),
+				WpnEnum.None);
+				
+				timeline[AMpairing[2]].setAMAlibi(timeline[AMpairing[3]].name);
+				timeline[AMpairing[3]].setAMAlibi(timeline[AMpairing[2]].name);
+			
+				facts.Add(new Fact(RmEnum.Kitchen, timeline[AMpairing[3]].getAfterMurderFact(), timeline[AMpairing[3]].name));
 				break;
 		}
 		//place the weapons that were used

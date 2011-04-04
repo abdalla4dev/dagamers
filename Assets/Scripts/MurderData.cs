@@ -43,6 +43,15 @@ namespace MurderData
 			} while( toReturn==a || toReturn==b);
 			return toReturn;
 		}
+		public static RmEnum randRoom(RmEnum a, RmEnum b, RmEnum c) {
+			//return a room different from a, b and c
+			System.Random r = new System.Random();
+			RmEnum toReturn;
+			do {
+				toReturn = (RmEnum) r.Next(0, Globals.numRooms);
+			} while( toReturn==a || toReturn==b || toReturn == c);
+			return toReturn;
+		}
 	}
 	
 	public enum RmEnum
