@@ -135,6 +135,14 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[(int)murdererEnum].setReturnLieDM();
 		timeline[(int)murdererEnum].setReturnLieAM();
 		
+		//find body
+		int finder = rand.Next(0, Globals.numSuspects);
+		timeline[finder].setFoundBody(true);
+		
+		//last seen
+		int lastSaw = rand.Next(0, Globals.numSuspects);
+		timeline[lastSaw].setLastSaw(true);
+		
 		switch(difficulty) {
 			case GameDiffEnum.Easy: GenerateEasyGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
 			case GameDiffEnum.Medium: GenerateMediumGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
@@ -204,9 +212,9 @@ public class GenerateTimeline : MonoBehaviour
 		
 		//record what index 0 was doing into facts
 		//assuming all facts are accessed from CCTV in master bedrrom for now
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getBeforeMurderFact(), murdererEnum));
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getDuringMurderFact(), murdererEnum));
-		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getAfterMurderFact(), murdererEnum));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[1]].getBeforeMurderFact(), timeline[BMpairing[1]].name));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[DMpairing[1]].getDuringMurderFact(), timeline[DMpairing[1]].name));
+		facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[AMpairing[1]].getAfterMurderFact(), timeline[AMpairing[1]].name));
 		
 		//do the same for index 2 and 3 now.
 		//index 2 is doing weapon activity and lies
@@ -223,7 +231,7 @@ public class GenerateTimeline : MonoBehaviour
 			RHDurMurRoom,
 			Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
 			RHWpn);
-		RmEnum RHAftMurRoom = victim.getBeforeMurderRoom(); //Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+		RmEnum RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
 		timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
 			RHAftMurRoom,
 			Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
@@ -257,9 +265,6 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[BMpairing[2]].setReturnLieBM();
 		timeline[DMpairing[2]].setReturnLieDM();
 		timeline[AMpairing[2]].setReturnLieAM();
-		
-		timeline[AMpairing[2]].setFoundBody(true);
-		timeline[AMpairing[3]].setFoundBody(true);
 		
 		timeline[BMpairing[2]].setBMFakeAlibi(timeline[BMpairing[3]].name);
 		timeline[BMpairing[3]].setBMAlibi(timeline[BMpairing[2]].name);
@@ -307,8 +312,8 @@ public class GenerateTimeline : MonoBehaviour
 					Globals.room[(int)timeline[BMpairing[0]].getFakeBeforeMurderRoom()].randomGA(), 
 					WpnEnum.None); //saw the murderer "acquiring murder weapon"
 			
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getBeforeMurderFact(), murdererEnum));
-			
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[1]].getBeforeMurderFact(), timeline[BMpairing[1]].name));
+		
 				//normal, can be doing anything.
 				RmEnum randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 				timeline[DMpairing[1]].setDuringMurder(deathTime, 
@@ -328,25 +333,15 @@ public class GenerateTimeline : MonoBehaviour
 					timeline[DMpairing[0]].getFakeDuringMurderRoom(), 
 					Globals.room[(int)timeline[DMpairing[0]].getFakeDuringMurderRoom()].randomGA(),
 					WpnEnum.None); //did not see the murderer in where he claimed to be, and doing what he claimed to be doing
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getDuringMurderFact(), murdererEnum));
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[DMpairing[1]].getDuringMurderFact(), timeline[DMpairing[1]].name));
 			break;
 			case 2:
-				//make murderer and index 1 find body.
-				timeline[(int)murdererEnum].setAfterMurder(aftMurderTime, (RmEnum)victim.getDuringMurderRoom(), "disposing murder weapon", murderWeap);
-			
-				timeline[(int)murdererEnum].setFakeAfterMurder(aftMurderTime,
-					timeline[(int)murdererEnum].getAfterMurderRoom(),
-					Globals.room[(int)timeline[(int)murdererEnum].getAfterMurderRoom()].WeaponList[(int)murderWeap].activity[0],
-					murderWeap);
-			
 				timeline[AMpairing[1]].setAfterMurder(deathTime, 
 					timeline[AMpairing[0]].getFakeAfterMurderRoom(), 
 					Globals.room[(int)timeline[AMpairing[0]].getFakeAfterMurderRoom()].randomGA(),
 					WpnEnum.None); // saw the murderer "disposing murder weapon"
-				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[(int)murdererEnum].getAfterMurderFact(), murdererEnum)); //you're returning disposing murder weapon?!?!?!?! don't need to set return lie for 0 and 1 ???
-			
-				timeline[AMpairing[0]].setFoundBody(true);
-				timeline[AMpairing[1]].setFoundBody(true);
+				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[AMpairing[1]].getAfterMurderFact(), timeline[AMpairing[1]].name));
+		
 			break;			
 		}
 		
@@ -366,7 +361,7 @@ public class GenerateTimeline : MonoBehaviour
 					RHDurMurRoom,
 					Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
 					RHWpn);
-				RHAftMurRoom = victim.getBeforeMurderRoom();  //Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
 				timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
 					RHAftMurRoom,
 					Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
@@ -392,8 +387,6 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[DMpairing[2]].setReturnLieDM();
 				timeline[AMpairing[2]].setReturnLieAM();
 			
-				timeline[AMpairing[2]].setFoundBody(true);
-				timeline[AMpairing[3]].setFoundBody(true);
 				//add fact
 				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getDuringMurderFact(), timeline[BMpairing[2]].name));
 				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
@@ -405,7 +398,7 @@ public class GenerateTimeline : MonoBehaviour
 				RHBefMurRoom, 
 				Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
 				RHWpn);
-				RHAftMurRoom = victim.getBeforeMurderRoom(); //Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
 				timeline[AMpairing[2]].setAfterMurder(aftMurderTime, 
 					RHAftMurRoom,
 					Globals.room[(int)RHAftMurRoom].WeaponList[(int)RHWpn].activity[0],
@@ -431,8 +424,6 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[BMpairing[2]].setReturnLieBM();
 				timeline[AMpairing[2]].setReturnLieAM();
 			
-				timeline[AMpairing[2]].setFoundBody(true);
-				timeline[AMpairing[3]].setFoundBody(true);
 				//add fact
 				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getBeforeMurderFact(), timeline[BMpairing[2]].name));
 				facts.Add(new Fact(RmEnum.Master_Bedroom, timeline[BMpairing[2]].getAfterMurderFact(), timeline[BMpairing[2]].name));
