@@ -13,8 +13,8 @@ public class loadingScreen : MonoBehaviour {
 
 	}
 	void OnGUI() {
-		//if (async != null){
+		if (async != null){
 			GUI.Box(new Rect(0, Screen.height - 40, async.progress * Screen.width, 40), "");	
-		//}
+		}
 	}
 }
