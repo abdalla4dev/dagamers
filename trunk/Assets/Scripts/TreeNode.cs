@@ -12,11 +12,13 @@ public class TreeNode {
 	private List<QnNode> currNode = new List<QnNode>();
 	private List<QnNode> currQn = new List<QnNode>(); //stores the currQn down the list of Qn
 	private List<QnNode> nextCurrNode = new List<QnNode>();
-	private List<WeaponNode> weaponList = new List<WeaponNode>();
+	private List<List<string[]>> logList = new List<List<string[]>>();
+	//private List<WeaponNode> weaponList = new List<WeaponNode>();
 	
 	//start node and current node of weaponNode tree
 	
 	public TreeNode() {
+		setUpLogList();
 	}
 	
 	public ArrayList retreiveQn(int suspect) {// function return correct qns to be printed out
@@ -56,6 +58,8 @@ public class TreeNode {
 					if (temp.Qn == qn) { // check for the correct qn
 						temp.changeBooleanValues(); // unlocked the values
 						temp.setGUIBool();
+						sendToLog(temp.Qn,temp.Ans,suspect); // send the qn and answer to log and lock the qn
+						temp.Unlocked = false;
 						return temp.Ans; // return the answer
 					}
 					else {
@@ -70,8 +74,33 @@ public class TreeNode {
 		
 		return "0";
 	}
-
-    public string retreiveWeapon(string weapon)
+	
+	public void setUpLogList() {
+		List<string[]> zero = new List<string[]>();
+		List<string[]> one = new List<string[]>();
+		List<string[]> two = new List<string[]>();
+		List<string[]> three = new List<string[]>();
+		logList.Add(zero);
+		logList.Add(one);
+		logList.Add(two);
+		logList.Add(three);
+	}
+	
+	public void sendToLog(string qn, string ans, int sus) {
+		string[] logNode = new string[2];
+		logNode[0] = qn;
+		logNode[1] = ans;
+		logList[sus].Add(logNode);
+		for (int i=0;i<logList.Count;i++) {
+			for (int j=0;j<logList[i].Count;j++) {
+				string[] temp = logList[i][j];
+				Debug.Log(temp[0]);
+				Debug.Log(temp[1]);
+			}
+		}
+	}
+	
+    /*public string retreiveWeapon(string weapon)
     {
         for (int i = 0; i < weaponList.Count; i++)
         {
@@ -97,7 +126,7 @@ public class TreeNode {
 		for (int i=0;i<num;i++) {
 			currNode.RemoveAt(0);
 		}
-	}
+	}*/
 	// set a QnNode according to the information given 
 	public void setQnNode(int tempNum, string tempQn, string tempAns, int sus, bool unlocked, bool unlocker, char node, int attachedPer) {
 		
@@ -148,7 +177,7 @@ public class TreeNode {
 		}*/
 	}
 	
-    public void setWeaponNode(string weapon, string reply)
+    /*public void setWeaponNode(string weapon, string reply)
     {
         WeaponNode temp = new WeaponNode(weapon,reply);
         weaponList.Add(temp);
@@ -156,7 +185,7 @@ public class TreeNode {
 			Debug.Log(weaponList[i].getWeapon());
 			Debug.Log(weaponList[i].getReply());
 		}
-    }
+    }*/
 	
 	/*public void checker() {
 		/*for (int i=0;i<1;i++) {
