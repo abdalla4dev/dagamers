@@ -16,7 +16,7 @@ public class ToolBar : MonoBehaviour {
 	float mapButtonY = 0;
 	float mapButtonX = 0;
 	
-	float timelineWindowX, timelineWindowY, timelineWindowWidth, timelineWindowHeight, timelineButtonX, timelineButtonY;
+	float timelineWindowX, timelineWindowY, timelineWindowWidth, timelineWindowHeight, timelineButtonX, timelineButtonY, timelineInsideWinWidth, timelinePos;
 	float solveWindowX, solveWindowY, solveWindowWidth, solveWindowHeight, solveButtonX, solveButtonY;
 	//float startX = 0;
 	
@@ -63,7 +63,9 @@ public class ToolBar : MonoBehaviour {
 		
 		//timeline window
 		GUI.Window(1, new Rect(timelineWindowX, timelineWindowY, timelineWindowWidth, timelineWindowHeight), DoMyWindow, "");
-		
+		timelinePos = 0;
+		GUI.Window(32, new Rect(timelinePos, timelinePos, timelineInsideWinWidth, 768), TimelineFunction, timelineContent, timelineStyle);
+			
 		//solve window
 		GUI.Window(2, new Rect(solveWindowX, solveWindowY, solveWindowWidth, solveWindowHeight), DoMyWindow, "");
 	}
@@ -98,6 +100,36 @@ public class ToolBar : MonoBehaviour {
 			//if (GUILayout.Button(timelineTex, GUILayout.Width(30), GUILayout.Height(150))){
 			if (GUI.Button(new Rect(timelineButtonX, timelineButtonY, 32, 256), timelineTex)){
 				if(clicked == false){
+					clicked = true;
+				} else {
+					clicked = false;
+				}
+			}
+			if(clicked == true){
+				//iTween.ValueTo(gameObject, iTween.Hash("from",(new Rect(0,256,35,256)), "to",(new Rect(0,0,400,768)),"onupdate","myButton","onupdateparams","Rect","time",1));
+				timelineWindowY = 0;
+				timelineWindowWidth = 400;
+				timelineWindowHeight = Screen.height;
+				timelineButtonX = 360;
+				timelineButtonY = 256;
+				timelineInsideWinWidth = 400;
+				timelinePos = 0;
+				GUI.BringWindowToFront(32);
+			}
+			else {
+				//iTween.ValueTo(gameObject, iTween.Hash("from",(new Rect(0,0,400,768)), "to",(new Rect(0,256,35,256)),"onupdate","myButton","onupdateparams","Rect","time",1));
+				timelineWindowY = 256;
+				timelineWindowHeight = 200;
+				timelineWindowWidth = 35;
+				timelineButtonX = 0;
+				timelineButtonY = 0;
+				timelineInsideWinWidth = 0;
+				timelinePos = -400;
+				//GUI.Window(32, new Rect(0, 0, 0, 0), TimelineFunction, timelineContent, timelineStyle);
+			}
+			//GUI.Window(32, new Rect(timelinePos, timelinePos, timelineInsideWinWidth, 768), TimelineFunction, timelineContent, timelineStyle);
+			/*
+				if(clicked == false){
 					timelineWindowY = 0;
 					timelineWindowWidth = 400;
 					timelineWindowHeight = Screen.height;
@@ -105,7 +137,6 @@ public class ToolBar : MonoBehaviour {
 					timelineButtonY = 256;
 					clicked = true;
 					print("Got a click1");
-					//TimelineFunction(5);
 				}
 				else{
 					timelineWindowY = 256;
@@ -117,8 +148,10 @@ public class ToolBar : MonoBehaviour {
 				}
 			}
 			if (timelineWindowWidth	== 400) {
-				GUI.Window(999, new Rect(2, 2, 400, 768), TimelineFunction, timelineContent, timelineStyle);
+				GUI.Window(32, new Rect(2, 2, 400, 768), TimelineFunction, timelineContent, timelineStyle);
+				GUI.BringWindowToFront(32);
 			}
+			*/
 		}
 		
 		// SOLVE
@@ -153,7 +186,6 @@ public class ToolBar : MonoBehaviour {
 		
 	// imported from KnowledgeTimelineUI.cs
 	void TimelineFunction (int windowID) {
-		Debug.Log("inside timeline");	
 		theTimeline = gameObject.GetComponent<GenerateTimeline>();
 		
 	/*	Debug.Log("scrollview death time: " + GenerateTimeline.deathTime);
@@ -264,6 +296,6 @@ public class ToolBar : MonoBehaviour {
 		
 		GUILayout.EndScrollView();
 		
-		Debug.Log("In theTimeline Scrollview\n" + wifePreMurder + "\n"+ wifeMurder);
+		//Debug.Log("In theTimeline Scrollview\n" + wifePreMurder + "\n"+ wifeMurder);
 	}
 }
