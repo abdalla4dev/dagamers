@@ -284,7 +284,9 @@ public class Person {
 					return falseTimeline[0].activity;
 					//break;
 				case (Person.alibi):
-					return falseTimeline[0].alibi[0].ToString();
+					if (falseTimeline[0].alibi.Count != 0) {
+						return falseTimeline[0].alibi[0].ToString();
+					} else return "None";
 					//break;
 				//default:break;
 			}
@@ -297,7 +299,9 @@ public class Person {
 					return truthTimeline[0].activity;
 					//break;
 				case (Person.alibi):
-					return truthTimeline[0].alibi[0].ToString();
+					if (truthTimeline[0].alibi.Count !=0) {
+						return truthTimeline[0].alibi[0].ToString();
+					} else return "None";
 					//break;
 			}
 		}
@@ -317,7 +321,9 @@ public class Person {
 					return falseTimeline[1].activity;
 					//break;
 				case (Person.alibi):
-					return falseTimeline[1].alibi[0].ToString();
+					if (falseTimeline[1].alibi.Count != 0) {
+						return falseTimeline[1].alibi[0].ToString();
+					} else return "None";
 					//break;
 			}
 		} else {
@@ -329,7 +335,9 @@ public class Person {
 					return truthTimeline[1].activity;
 					//break;
 				case (Person.alibi):
-					return truthTimeline[1].alibi[0].ToString();
+					if (truthTimeline[1].alibi.Count != 0) {
+						return truthTimeline[1].alibi[0].ToString();
+					} else return "None"; 
 					//break;
 			}
 		}
@@ -349,7 +357,9 @@ public class Person {
 					return falseTimeline[2].activity;
 					//break;
 				case (Person.alibi):
-					return falseTimeline[2].alibi[0].ToString();
+					if (falseTimeline[2].alibi.Count != 0) {
+						return falseTimeline[2].alibi[0].ToString();
+					} else return "None"; 
 					//break;
 			}
 		} else {
@@ -361,7 +371,9 @@ public class Person {
 					return truthTimeline[2].activity;
 					//break;
 				case (Person.alibi):
-					return truthTimeline[2].alibi[0].ToString();
+					if (truthTimeline[2].alibi.Count != 0) {
+						return truthTimeline[2].alibi[0].ToString();
+					} else return "None";
 					//break;
 			}
 		}
