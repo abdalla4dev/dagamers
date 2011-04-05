@@ -321,8 +321,8 @@ public class AI : MonoBehaviour{
 		return tree.retreiveAnswer(suspect, qn);
 	}
 	
-	public static string weaponTriggered(string weapon) {
+	/*public static string weaponTriggered(string weapon) {
 		return tree.retreiveWeapon(weapon);
-	}
+	}*/
 }
 
