@@ -60,7 +60,7 @@ public class InteractiveTrigger : MonoBehaviour {
 				}
 				else{
 					//log window
-					GUI.Window(5, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, logBoxTex);
+					GUI.Window(4, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, logBoxTex);
 				}
 			}
 		}
@@ -74,8 +74,12 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	void dialogueWindow(int windowID){
 		if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
-			GUI.BringWindowToBack(5);
+			//GUI.BringWindowToBack(5);
+			//GUI.BringWindowToFront(windowID);
+			//GUI.FocusWindow(windowID);
+			
 			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
+			
 			GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), "I am a button");
 			foreach (string item in myList) {
 				numQn++;
@@ -92,11 +96,18 @@ public class InteractiveTrigger : MonoBehaviour {
 			questionToggle = true;
 		}
 		else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
-			GUI.BringWindowToBack(4);
+			//GUI.BringWindowToBack(4);
 			questionToggle = false;
 		}
+	}
+	
+	void logWindow(int windowID){
+		if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
+			//GUI.BringWindowToFront(windowID);
+			//GUI.FocusWindow(windowID);
+			questionToggle = false;
 			
-		
+		}
 	}
 
 	
