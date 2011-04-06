@@ -1,191 +1,129 @@
 using UnityEngine;
 using System.Collections;
+using MurderData;
+using System;
+using System.Collections.Generic;
 
 public class ToolBar : MonoBehaviour {
 	
 	public GUISkin mapSkin;
 	
 	public Texture2D timelineTex;
-	public Texture2D timelineBgTex;
 	public Texture2D mapTex;
-	public Texture2D mapBgTex;
 	public Texture2D solveTex;
-	public Texture2D solveBgTex;
 	
-	float MapWindowWidth, MapWindowHeight;
-	float mapButtonY = 0;
 	float mapButtonX = 0;
+	float timelineButtonX = 0;
+	float solveButtonX = 0;
+	bool showMap = false;
+	bool showTimeline = false;
+	bool showSolve = false;
 	
-	float timelineWindowX, timelineWindowY, timelineWindowWidth, timelineWindowHeight, timelineButtonX, timelineButtonY, timelineInsideWinWidth, timelinePos;
-	float solveWindowX, solveWindowY, solveWindowWidth, solveWindowHeight, solveButtonX, solveButtonY;
-	//float startX = 0;
-	
-	bool clicked = false;
-	
+	public GUIContent mapContentBg;
+	public GUIContent timelineContentBg;
+	public GUIContent solveContentBg;
+	public GUIStyle tabStyle;
+
+	// for map
+	public Texture2D floorplan;
+
 	// for timeline
 	public GenerateTimeline theTimeline;
 	private int startTime;
-	public GUIStyle timelineStyle;
-	public GUIContent timelineContent;
 	public GUIStyle timelineBoxStyle;
 	public GUIStyle timelineLabelStyle;
 	private Vector2 scrollPos = new Vector2(0.5F, 0.5F);
 	
+	// for solve
+	private string suspectSelection;
+	private List<string> suspectAnswers = new List<string>();
+	private string roomSelection;
+	private List<string> roomAnswers = new List<string>();
+	private string weaponSelection;
+	private List<string> weaponAnswers = new List<string>();
+	
+	private bool solved = false;
+	
 	// Use this for initialization
 	void Start () {
-		MapWindowWidth = 35;
-		MapWindowHeight = 256;
-		
-		timelineWindowWidth = 35;
-		timelineWindowHeight = 256;
-		timelineWindowX = 0;
-		timelineWindowY = 256;
-		timelineButtonX = 0;
-		timelineButtonY = 0;
-		
-		solveWindowWidth = 35;
-		solveWindowHeight = 256;
-		solveWindowX = 0;
-		solveWindowY = 512;
-		solveButtonX = 0;
-		solveButtonY = 0;
-		
 		// for timeline
 		theTimeline = gameObject.GetComponent<GenerateTimeline>();
 		startTime = (int) GenerateTimeline.deathTime;
+		
+		// for solve
+		for (int i=0; i< Globals.numSuspects; i++) {
+			suspectAnswers.Add(Enum.GetName(typeof(SuspectEnum), i));
+		}
+		/*for (int i=0; i<Globals.numRooms; i++) {
+			roomAnswers.Add(Enum.GetName(typeof(Rooms),i));
+		}*/
+		for (int i=0; i<Globals.numWeapons; i++) {
+			weaponAnswers.Add(Enum.GetName(typeof(WpnEnum),i));
+		}
+		//Debug.Log(answers[0] + " " +answers[1] + " " +answers[2] + " " +answers[3]);
+		/*answers.Add("Wife");
+		answers.Add("Son");
+		answers.Add("Daughter");
+		answers.Add("Maid");*/
 	}
 	
 	void OnGUI(){
 		GUI.skin = mapSkin;
 		
-		//map window
-		GUI.Window(0, new Rect(0, 0, MapWindowWidth, MapWindowHeight), DoMyWindow, "");
-		
-		//timeline window
-		GUI.Window(1, new Rect(timelineWindowX, timelineWindowY, timelineWindowWidth, timelineWindowHeight), DoMyWindow, "");
-		timelinePos = 0;
-		GUI.Window(32, new Rect(timelinePos, timelinePos, timelineInsideWinWidth, 768), TimelineFunction, timelineContent, timelineStyle);
-			
-		//solve window
-		GUI.Window(2, new Rect(solveWindowX, solveWindowY, solveWindowWidth, solveWindowHeight), DoMyWindow, "");
-	}
-	
-	
-	void DoMyWindow(int windowID) {
-		
-		// MAP
-		if (windowID == 0) {
-			//if (GUILayout.Button(mapTex, GUILayout.Width(32), GUILayout.Height(256))){
-			if (GUI.Button(new Rect(mapButtonX, mapButtonY, 32, 256), mapTex)){
-				if(clicked == false){
-					MapWindowWidth = 400;
-					MapWindowHeight = Screen.height;
-					mapButtonX = 360;
-					//GUI.BringWindowToBack(0);
-					clicked = true;
-					print("Got a click");
-				}
-				else{
-					MapWindowHeight = 256;
-					MapWindowWidth = 35;
-					mapButtonX = 0;
-					clicked = false;
-						
-				}
-			}
+		// 3 TAB Buttons
+		if (GUI.Button(new Rect(mapButtonX, 5, 38, 225), mapTex)){
+			showMap = !showMap;
+		}
+		if (GUI.Button(new Rect(timelineButtonX, 230, 38, 225), timelineTex)){
+			showTimeline = !showTimeline;
+		}
+		if (GUI.Button(new Rect(solveButtonX, 460, 38, 225), solveTex)){
+			showSolve = !showSolve;
 		}
 		
-		// TIMELINE
-		else if(windowID == 1){
-			//if (GUILayout.Button(timelineTex, GUILayout.Width(30), GUILayout.Height(150))){
-			if (GUI.Button(new Rect(timelineButtonX, timelineButtonY, 32, 256), timelineTex)){
-				if(clicked == false){
-					clicked = true;
-				} else {
-					clicked = false;
-				}
-			}
-			if(clicked == true){
-				//iTween.ValueTo(gameObject, iTween.Hash("from",(new Rect(0,256,35,256)), "to",(new Rect(0,0,400,768)),"onupdate","myButton","onupdateparams","Rect","time",1));
-				timelineWindowY = 0;
-				timelineWindowWidth = 400;
-				timelineWindowHeight = Screen.height;
-				timelineButtonX = 360;
-				timelineButtonY = 256;
-				timelineInsideWinWidth = 400;
-				timelinePos = 0;
-				GUI.BringWindowToFront(32);
-			}
-			else {
-				//iTween.ValueTo(gameObject, iTween.Hash("from",(new Rect(0,0,400,768)), "to",(new Rect(0,256,35,256)),"onupdate","myButton","onupdateparams","Rect","time",1));
-				timelineWindowY = 256;
-				timelineWindowHeight = 200;
-				timelineWindowWidth = 35;
-				timelineButtonX = 0;
-				timelineButtonY = 0;
-				timelineInsideWinWidth = 0;
-				timelinePos = -400;
-				//GUI.Window(32, new Rect(0, 0, 0, 0), TimelineFunction, timelineContent, timelineStyle);
-			}
-			//GUI.Window(32, new Rect(timelinePos, timelinePos, timelineInsideWinWidth, 768), TimelineFunction, timelineContent, timelineStyle);
-			/*
-				if(clicked == false){
-					timelineWindowY = 0;
-					timelineWindowWidth = 400;
-					timelineWindowHeight = Screen.height;
-					timelineButtonX = 360;
-					timelineButtonY = 256;
-					clicked = true;
-					print("Got a click1");
-				}
-				else{
-					timelineWindowY = 256;
-					timelineWindowHeight = 256;
-					timelineWindowWidth = 35;
-					timelineButtonX = 0;
-					timelineButtonY = 0;
-					clicked = false;
-				}
-			}
-			if (timelineWindowWidth	== 400) {
-				GUI.Window(32, new Rect(2, 2, 400, 768), TimelineFunction, timelineContent, timelineStyle);
-				GUI.BringWindowToFront(32);
-			}
-			*/
+		// MAP WINDOW 31
+		if(showMap == true){
+			GUI.Window(31, new Rect(0, 0, 500, Screen.height), mapWindow, mapContentBg, tabStyle);
+			mapButtonX = 475;
+			GUI.BringWindowToFront(31);
+		}
+		else {
+			mapButtonX = 0;	
+		}
+
+		// TIMELINE WINDOW 32
+		if(showTimeline == true){
+			GUI.Window(32, new Rect(0, 0, 500, Screen.height), timelineWindow, timelineContentBg, tabStyle);
+			timelineButtonX = 475;
+			GUI.BringWindowToFront(32);
+		}
+		else {
+			timelineButtonX = 0;	
 		}
 		
-		// SOLVE
-		else if(windowID == 2){
-			// if (GUILayout.Button(timelineTex, GUILayout.Width(30), GUILayout.Height(150))){
-			if (GUI.Button(new Rect(solveButtonX, solveButtonY, 32, 256), solveTex)){
-				if(clicked == false){
-					solveWindowY = 0;
-					solveWindowWidth = 400;
-					solveWindowHeight = Screen.height;
-					solveButtonX = 360;
-					solveButtonY = 512;
-					clicked = true;
-					print("Got a click1");
-				}
-				else{
-					solveWindowY = 512;
-					solveWindowHeight = 256;
-					solveWindowWidth = 35;
-					solveButtonX = 0;
-					solveButtonY = 0;
-					clicked = false;	
-				}
-			}
+		// SOLVE WINDOW 33
+		if(showSolve == true){
+			GUI.Window(33, new Rect(0, 0, 500, Screen.height), solveWindow, solveContentBg, tabStyle);
+			solveButtonX = 475;
+			GUI.BringWindowToFront(33);
 		}
+		else {
+			solveButtonX = 0;	
+		}
+
 	}
 		
 	// Update is called once per frame
 	void Update () {
 	
 	}
+	
+	void mapWindow(int windowID) {
+		GUI.Label(new Rect(0,0,450,768), floorplan);
+	}
 		
 	// imported from KnowledgeTimelineUI.cs
-	void TimelineFunction (int windowID) {
+	void timelineWindow (int windowID) {
 		theTimeline = gameObject.GetComponent<GenerateTimeline>();
 		
 	/*	Debug.Log("scrollview death time: " + GenerateTimeline.deathTime);
@@ -297,5 +235,71 @@ public class ToolBar : MonoBehaviour {
 		GUILayout.EndScrollView();
 		
 		//Debug.Log("In theTimeline Scrollview\n" + wifePreMurder + "\n"+ wifeMurder);
+	}
+	
+	// imported from SolveGUI.cs
+	public static string SelectList( IEnumerable<string> list, string selected, GUIStyle defaultStyle, GUIStyle selectedStyle ){         
+		foreach( string item in list ){
+            if( GUILayout.Button( item.ToString(), ( selected == item ) ? selectedStyle : defaultStyle ) )
+            {
+                if( selected == item )
+                // Clicked an already selected item. Deselect.
+                {
+                    selected = null;
+                }
+                else
+                {
+                    selected = item;
+                }
+            }
+        }
+        return selected;
+	}
+	
+    public delegate bool OnListItemGUI( string item, bool selected, IEnumerable<string> list );
+	
+	public static string SelectList( IEnumerable<string> list, string selected, OnListItemGUI itemHandler ){
+	    List<string> itemList;
+	   
+	    itemList = new List<string>( list );
+	   
+	    foreach( string item in itemList )
+	    {
+	        if( itemHandler( item, item == selected, list ) )
+	        {
+	            selected = item;
+	        }
+	        else if( selected == item )
+	        // If we *were* selected, but aren't any more then deselect
+	        {
+	            selected = null;
+	        }
+	    }
+	
+	    return selected;
+    }
+	
+	private bool OnCheckboxItemGUI( string item, bool selected, IEnumerable<string> list ){
+        return GUILayout.Toggle( selected, item.ToString() );
+    }
+	
+	void solveWindow(int windowID) {
+		GUILayout.Label("The murderer was ...");
+		suspectSelection = SelectList(suspectAnswers ,suspectSelection, OnCheckboxItemGUI);
+		GUILayout.Label("using ...");
+		weaponSelection = SelectList(weaponAnswers ,weaponSelection, OnCheckboxItemGUI);
+		//GUILayout.Label("in ...");
+		//roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
+		if (GUILayout.Button("Solve!") ) {
+			string place_answer = GenerateTimeline.murderer.getDuringMurderRoom().ToString(); //not used for answering, coz there's no questions about place of murder
+			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
+				Enum.GetName(typeof(SuspectEnum), GenerateTimeline.murderer) == suspectSelection) {
+				//check if game solved
+				Debug.Log("Solved");
+				solved = true;
+			} else {
+				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " +Enum.GetName(typeof(SuspectEnum), GenerateTimeline.murderer));
+			}
+		}
 	}
 }
