@@ -13,6 +13,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	public GUISkin customSkin;
 	//public AI AIlink;
 	
+	Texture2D windowTexture;
+	
 	Color mouseOverColor = Color.yellow;
 	Color[] originalColor; //array to store the original material color
 	
@@ -26,10 +28,12 @@ public class InteractiveTrigger : MonoBehaviour {
 	Vector3 screenPos;
 	Vector3 charOffset = new Vector3(0,2,0);
 	
+	Vector2 scrollPosition = Vector2.zero;
+	
 	string suspect, weapon, s, ans;
 	
 	int weaponEnum; 
-	int numQn = 0;
+	int numQn = 1;
 	
 	float qnButtonTop = 50;
 	// Use this for initialization
@@ -44,6 +48,8 @@ public class InteractiveTrigger : MonoBehaviour {
 		else{
 			suspect = targetObject.name;
 		}
+		
+		windowTexture = questionBoxTex;
 	}
 	
 	void OnGUI(){
@@ -53,15 +59,22 @@ public class InteractiveTrigger : MonoBehaviour {
 				GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
 			}
 			else{
-				if(questionToggle){
+				
+				if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
+					questionToggle = true;
+				}
+				else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
+					questionToggle = false;
+				}
+				
+				//if(questionToggle){
 					//question window
-					GUI.Window(4, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, questionBoxTex);
-					
-				}
-				else{
-					//log window
-					GUI.Window(4, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), dialogueWindow, logBoxTex);
-				}
+					GUI.Window(10, new Rect((Screen.width - 439), (Screen.height - 198), 439, 198), doWindow, windowTexture);
+				//}
+//				else{
+//					//log window
+//					GUI.Window(5, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), logWindow, logBoxTex);
+//				}
 			}
 		}
 
@@ -72,44 +85,69 @@ public class InteractiveTrigger : MonoBehaviour {
 		GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon"));
 	}
 	
-	void dialogueWindow(int windowID){
-		if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
-			//GUI.BringWindowToBack(5);
-			//GUI.BringWindowToFront(windowID);
-			//GUI.FocusWindow(windowID);
-			
+	void doWindow(int windowID){
+		//if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
+			//questionToggle = true;
+		if(questionToggle){
+			windowTexture = questionBoxTex;
 			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
-			
-			GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), "I am a button");
+
+			//scrollPosition = GUI.BeginScrollView(new Rect((Screen.width - 409), (Screen.height - 188), 379, 160), scrollPosition, new Rect(0,0, 409, 300));
 			foreach (string item in myList) {
-				numQn++;
 				if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
 					s = item;
 					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
 					ans = ans.Replace('_', ' ');
 					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 					ans = ans.Replace(" i ", " I ");
-					numQn--;
+					numQn++;
 					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150, 300, 100), ans);
 				}
 			}
+			//GUI.EndScrollView();
+		}
+		//}
+		//else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
+			//questionToggle = true;
+		else{
+			windowTexture = logBoxTex;
+		}
+		//}
+	}
+	
+	void dialogueWindow(int windowID){
+		ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
+		if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
+			print ("Got a click in window " + windowID);
+			//GUI.BringWindowToFront(5);
+			//ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
+			
+			if(GUI.Button(new Rect(30, 40, 450, 40), "I am a button")){}
+//			foreach (string item in myList) {
+//				numQn++;
+//				if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
+//					s = item;
+//					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
+//					ans = ans.Replace('_', ' ');
+//					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
+//					ans = ans.Replace(" i ", " I ");
+//					numQn--;
+//					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150, 300, 100), ans);
+//				}
+//			}
 			questionToggle = true;
 		}
 		else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
-			//GUI.BringWindowToBack(4);
+			print ("Got a click in window " + windowID);
 			questionToggle = false;
 		}
 	}
 	
 	void logWindow(int windowID){
 		if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
-			//GUI.BringWindowToFront(windowID);
-			//GUI.FocusWindow(windowID);
 			questionToggle = false;
-			
 		}
 	}
-
 	
 	void OnTriggerEnter(Collider other){
 		withinBoundary = true;
