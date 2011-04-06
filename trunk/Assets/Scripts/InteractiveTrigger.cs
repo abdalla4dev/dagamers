@@ -151,6 +151,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	void logWindow(int windowID){
 		if(!questionToggle){
 			GUILayout.Label("Sorry, still under construction!");
+			callAns = false;
 		}
 	}
 	
