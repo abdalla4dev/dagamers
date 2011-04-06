@@ -23,19 +23,20 @@ public class InteractiveTrigger : MonoBehaviour {
 	bool actionKey = false;
 	bool overObject = false;
 	bool questionToggle = true;
+	bool callAns = false;
 	
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
 	Vector3 charOffset = new Vector3(0,2,0);
 	
-	Vector2 scrollPosition = Vector2.zero;
+	Vector2 scrollPosition = new Vector2(0, -5);
 	
 	string suspect, weapon, s, ans;
 	
 	int weaponEnum; 
 	int numQn = 1;
 	
-	float qnButtonTop = 50;
+	float qnButtonTop = 20;
 	// Use this for initialization
 	void Start () {
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
@@ -60,21 +61,24 @@ public class InteractiveTrigger : MonoBehaviour {
 			}
 			else{
 				
-				if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
+				if(GUI.Button(new Rect((Screen.width - 405), (Screen.height - 225), 256, 32), questionTex)){
 					questionToggle = true;
 				}
-				else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
+				else if(GUI.Button(new Rect((Screen.width - 205), (Screen.height - 225), 256, 32), logTex)){
 					questionToggle = false;
 				}
 				
 				//if(questionToggle){
 					//question window
-					GUI.Window(10, new Rect((Screen.width - 439), (Screen.height - 198), 439, 198), doWindow, windowTexture);
+					GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 198), 439, 198), doWindow, windowTexture, GUILayout.Width(439), GUILayout.Height(198));
 				//}
-//				else{
-//					//log window
-//					GUI.Window(5, new Rect((Screen.width - 512), (Screen.height - 256), 512, 256), logWindow, logBoxTex);
-//				}
+				//else{
+					//log window
+					GUILayout.Window(11, new Rect((Screen.width - 439), (Screen.height - 198), 439, 198), logWindow, logBoxTex);
+				//}
+				if(callAns){
+					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
+				}
 			}
 		}
 
@@ -91,33 +95,34 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(questionToggle){
 			windowTexture = questionBoxTex;
 			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
-
+			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(120), GUILayout.Width(365));
 			//scrollPosition = GUI.BeginScrollView(new Rect((Screen.width - 409), (Screen.height - 188), 379, 160), scrollPosition, new Rect(0,0, 409, 300));
 			foreach (string item in myList) {
-				if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
+				//if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 20), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
+				if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
 					s = item;
 					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
 					ans = ans.Replace('_', ' ');
 					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 					ans = ans.Replace(" i ", " I ");
-					numQn++;
-					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150, 300, 100), ans);
+					callAns = true;
 				}
 			}
 			//GUI.EndScrollView();
+			GUILayout.EndScrollView();
 		}
 		//}
 		//else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
 			//questionToggle = true;
-		else{
-			windowTexture = logBoxTex;
-		}
+//		else{
+//			windowTexture = logBoxTex;
+//		}
 		//}
 	}
 	
 	void dialogueWindow(int windowID){
 		ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
-		if(GUI.Button(new Rect(30, 8, 256, 32), questionTex)){
+		if(GUI.Button(new Rect(30, 8, 256, 20), questionTex)){
 			print ("Got a click in window " + windowID);
 			//GUI.BringWindowToFront(5);
 			//ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
@@ -144,8 +149,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	}
 	
 	void logWindow(int windowID){
-		if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
-			questionToggle = false;
+		if(!questionToggle){
+			GUILayout.Label("Sorry, still under construction!");
 		}
 	}
 	
@@ -162,6 +167,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		if((Input.GetKeyDown(KeyCode.W)) || (Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.S)) || (Input.GetKeyDown(KeyCode.D))){
 			displayText = false;
 			actionKey = false;
+			callAns = false;
 //			called = true;
 		}
 	}
