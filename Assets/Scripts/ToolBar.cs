@@ -293,12 +293,12 @@ public class ToolBar : MonoBehaviour {
 		if (GUILayout.Button("Solve!") ) {
 			string place_answer = GenerateTimeline.murderer.getDuringMurderRoom().ToString(); //not used for answering, coz there's no questions about place of murder
 			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
-				Enum.GetName(typeof(SuspectEnum), GenerateTimeline.murderer) == suspectSelection) {
+				GenerateTimeline.murderer.name.ToString() == suspectSelection) {
 				//check if game solved
 				Debug.Log("Solved");
 				solved = true;
 			} else {
-				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " +Enum.GetName(typeof(SuspectEnum), GenerateTimeline.murderer));
+				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " + GenerateTimeline.murderer.name.ToString());
 			}
 		}
 	}
