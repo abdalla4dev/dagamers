@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class ToolBar : MonoBehaviour {
 	
-	public GUISkin mapSkin;
+	public GUISkin tabSkin;
 	
 	public Texture2D timelineTex;
 	public Texture2D mapTex;
@@ -22,7 +22,6 @@ public class ToolBar : MonoBehaviour {
 	public GUIContent mapContentBg;
 	public GUIContent timelineContentBg;
 	public GUIContent solveContentBg;
-	public GUIStyle tabStyle;
 
 	// for map
 	public Texture2D floorplan;
@@ -41,7 +40,7 @@ public class ToolBar : MonoBehaviour {
 	private List<string> roomAnswers = new List<string>();
 	private string weaponSelection;
 	private List<string> weaponAnswers = new List<string>();
-	
+	public GUIStyle solvedStyle;
 	private bool solved = false;
 	
 	// Use this for initialization
@@ -68,7 +67,7 @@ public class ToolBar : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		GUI.skin = mapSkin;
+		GUI.skin = tabSkin;
 		
 		// 3 TAB Buttons
 		if (GUI.Button(new Rect(mapButtonX, 5, 38, 225), mapTex)){
@@ -83,7 +82,7 @@ public class ToolBar : MonoBehaviour {
 		
 		// MAP WINDOW 31
 		if(showMap == true){
-			GUI.Window(31, new Rect(0, 0, 500, Screen.height), mapWindow, mapContentBg, tabStyle);
+			GUI.Window(31, new Rect(0, 0, 500, Screen.height), mapWindow, mapContentBg);
 			mapButtonX = 475;
 			GUI.BringWindowToFront(31);
 		}
@@ -93,7 +92,7 @@ public class ToolBar : MonoBehaviour {
 
 		// TIMELINE WINDOW 32
 		if(showTimeline == true){
-			GUI.Window(32, new Rect(0, 0, 500, Screen.height), timelineWindow, timelineContentBg, tabStyle);
+			GUI.Window(32, new Rect(0, 0, 500, Screen.height), timelineWindow, timelineContentBg);
 			timelineButtonX = 475;
 			GUI.BringWindowToFront(32);
 		}
@@ -103,14 +102,18 @@ public class ToolBar : MonoBehaviour {
 		
 		// SOLVE WINDOW 33
 		if(showSolve == true){
-			GUI.Window(33, new Rect(0, 0, 500, Screen.height), solveWindow, solveContentBg, tabStyle);
+			GUI.Window(33, new Rect(0, 0, 500, Screen.height), solveWindow, solveContentBg);
 			solveButtonX = 475;
 			GUI.BringWindowToFront(33);
 		}
 		else {
 			solveButtonX = 0;	
 		}
-
+		
+		if (solved) {
+			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won!", solvedStyle);
+			showSolve = false;
+		}
 	}
 		
 	// Update is called once per frame
