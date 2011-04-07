@@ -100,6 +100,10 @@ public class TreeNode {
 		}
 	}
 	
+	public List<string[]> getLogList(int suspect) {
+		return logList[suspect];
+	}
+	
     /*public string retreiveWeapon(string weapon)
     {
         for (int i = 0; i < weaponList.Count; i++)
