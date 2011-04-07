@@ -321,6 +321,10 @@ public class AI : MonoBehaviour{
 		return tree.retreiveAnswer(suspect, qn);
 	}
 	
+	public static List<string[]> logTriggered(int suspect) {
+		return tree.getLogList(suspect);
+	}
+	
 	/*public static string weaponTriggered(string weapon) {
 		return tree.retreiveWeapon(weapon);
 	}*/
