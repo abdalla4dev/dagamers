@@ -154,7 +154,7 @@ public class GenerateTimeline : MonoBehaviour
 		
 		//*********** Not working anymore, cause no more redherring
 		//placeWeaponsInWorld(redHerringIndex, murderer);		
-		//PrintMethod();
+		PrintMethod();
 		
 		AI.tree = AI.qnGenerator();
 	}
@@ -802,30 +802,30 @@ public class GenerateTimeline : MonoBehaviour
 		else return "invalid";
 	}
 	
-	/*void PrintMethod()
+	private void PrintMethod()
 	{
 		Debug.Log("PRINT");
 		
 		Debug.Log("BEFMURDER");
 		for(int i=0; i<Globals.numSuspects; i++)
 		{
-			Debug.Log(  Enum.GetName(typeof(Suspects), i) + " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer() + " " +timeline[i].getBefMurder(Person.place) + " " + timeline[i].getBefMurder(Person.activity) + " " + timeline[i].getBefMurder(Person.alibi));
+			Debug.Log(  Enum.GetName(typeof(SuspectEnum), i) + " murderer=" + timeline[i].isMurderer + " " +timeline[i].getBefMurder(Person.place) + " " + timeline[i].getBefMurder(Person.activity) + " " + timeline[i].getBefMurder(Person.alibi));
 		}
 		Debug.Log("MURDER");
 		for(int i=0; i<timeline.Count; i++)
 		{
-			Debug.Log(Enum.GetName(typeof(Suspects), i) +  " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer() + " " + timeline[i].getMurder(Person.place) + " " + timeline[i].getMurder(Person.activity) + " " + timeline[i].getMurder(Person.alibi));
+			Debug.Log(Enum.GetName(typeof(SuspectEnum), i)  + " murderer=" + timeline[i].isMurderer + " " + timeline[i].getMurder(Person.place) + " " + timeline[i].getMurder(Person.activity) + " " + timeline[i].getMurder(Person.alibi));
 		}
 		Debug.Log("AFTMURDER");
 		for(int i=0; i<timeline.Count; i++)
 		{
-			Debug.Log(Enum.GetName(typeof(Suspects), i) + " found body " + timeline[i].isFoundBody() + " red herring=" + timeline[i].isRedHerring() + " murderer=" + timeline[i].isMurderer()  + " " + timeline[i].getAftMurder(Person.place) + " " + timeline[i].getAftMurder(Person.activity) + " " + timeline[i].getAftMurder(Person.alibi));
+			Debug.Log(Enum.GetName(typeof(SuspectEnum), i) + " found body " + timeline[i].isFoundBody() + " murderer=" + timeline[i].isMurderer  + " " + timeline[i].getAftMurder(Person.place) + " " + timeline[i].getAftMurder(Person.activity) + " " + timeline[i].getAftMurder(Person.alibi));
 		}
 		
 		Debug.Log("MURDER TRUTH");
-		Debug.Log(  murderTruth.getBefMurder(Person.place) + " " + murderTruth.getBefMurder(Person.activity) + " " + murderTruth.getBefMurder(Person.alibi));
-		Debug.Log( murderTruth.getMurder(Person.place) + " " + murderTruth.getMurder(Person.activity) + " " + murderTruth.getMurder(Person.alibi));
-		Debug.Log( murderTruth.getAftMurder(Person.place) + " " + murderTruth.getAftMurder(Person.activity) + " " + murderTruth.getAftMurder(Person.alibi));
+		Debug.Log(  murderer.getBefMurder(Person.place) + " " + murderer.getBefMurder(Person.activity) + " " + murderer.getBefMurder(Person.alibi));
+		Debug.Log( murderer.getMurder(Person.place) + " " + murderer.getMurder(Person.activity) + " " + murderer.getMurder(Person.alibi));
+		Debug.Log( murderer.getAftMurder(Person.place) + " " + murderer.getAftMurder(Person.activity) + " " + murderer.getAftMurder(Person.alibi));
 
 		Debug.Log("WEAPON LOCS");
 		Debug.Log("knife" + knifeLoc.ToString());
@@ -840,7 +840,7 @@ public class GenerateTimeline : MonoBehaviour
 				Debug.Log(i + " " + timeline[i].getMurder(Person.place));
 			Debug.Log(timeline[i].isFoundBody() + " " + i);
 		}
-	}*/
+	}
 	
 	public static void checkBool(int qnNum, int sus) {
 		for (int i=0;i<timeline.Count;i++) {
