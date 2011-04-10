@@ -60,7 +60,7 @@ namespace MurderData
 		Living_Room,
 		Master_Bedroom,
 		Garden,
-		MBR_Toilet/*,
+		Toilet_in_Master_Bedroom/*,
 		Bedroom,
 		Toilet*/
 	}
