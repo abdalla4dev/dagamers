@@ -146,7 +146,7 @@ public class GenerateTimeline : MonoBehaviour
 		switch(difficulty) {
 			case GameDiffEnum.Easy: GenerateEasyGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
 			case GameDiffEnum.Medium: GenerateMediumGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
-			case GameDiffEnum.Hard: GenerateHardGame(); break;
+			case GameDiffEnum.Hard: GenerateMediumGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
 		}
 		
 		startPara = createStartPara(victim.getDuringMurderRoom().ToString());
@@ -179,6 +179,58 @@ public class GenerateTimeline : MonoBehaviour
 			case WpnEnum.Spanner: spannerLoc = r; break;
 			case WpnEnum.Towel: towelLoc = r; break;
 		}
+	}
+	
+	void Update()
+	{
+		Debug.Log(Time.time);
+		Debug.Log(ToolBar.solveAttempts);
+		/*counter++;
+		if(counter==5)
+			Time.timeScale = 0;
+		if(counter==10)
+			Time.timeScale = 1;*/
+		if(MenuButton.gamePause)
+			Time.timeScale = 0;
+		else Time.timeScale = 1;
+	}
+	
+	public static string scoreSystem()
+	{
+		String toReturn = "";
+		double endTime = Time.time;
+		endTime += ToolBar.solveAttempts*300; //every wrong attempt add 5 mins
+		int bestTime = 0;
+		switch(difficulty)
+		{
+		case GameDiffEnum.Easy:
+				bestTime = 300; //5mins
+			break;
+		case GameDiffEnum.Medium:
+				bestTime = 420; //7 mins
+			break;
+		case GameDiffEnum.Hard:
+				bestTime = 600; //10 mins
+			break;
+		default:
+				bestTime = 300;
+			break;
+		}
+		if(endTime <= bestTime) 
+		{
+			toReturn += "We knew hiring you would be worth it!";
+		}
+		else if(endTime <= bestTime+120) //add 2 mins
+		{
+			toReturn += "But I'm sure you could do better than this.";
+		}
+		else
+		{
+			toReturn += "However we need to rethink your contract as a detective with us.";
+		}
+		
+		return toReturn;
+		
 	}
 	
 	private static void GenerateEasyGame(SuspectEnum murdererEnum, int victimBefMurderRoom, int victimDurMurderRoom) {
@@ -554,7 +606,8 @@ public class GenerateTimeline : MonoBehaviour
 	}
 	private static void GenerateHardGame() {
 		//only has 3 contradictions
-		//need to uncover 2 facts in order to overcome a contradiction		
+		//need to uncover 2 facts in order to overcome a contradiction	
+		
 	}
 	
 	// Generate a murderer x from Suspects

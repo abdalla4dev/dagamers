@@ -6,6 +6,8 @@ public class MenuButton : MonoBehaviour {
 	public Texture2D menuTex;
 	public GUISkin menuSkin;
 	
+	public static bool gamePause;
+	
 	bool toggle = false;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,7 @@ public class MenuButton : MonoBehaviour {
 		}
 		
 		if(toggle){
+			gamePause = true;
 			GUILayout.Window(21, new Rect((Screen.width/2) - 100, (Screen.height/2) - 100, 200, 200), menuWindow, "PAUSE");
 		}
 	}
@@ -27,6 +30,7 @@ public class MenuButton : MonoBehaviour {
 	void menuWindow(int windowID){
 		if(GUILayout.Button("Resume")){
 			toggle = false;
+			gamePause = false;
 		}	
 	}
 	

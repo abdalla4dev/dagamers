@@ -42,6 +42,7 @@ public class ToolBar : MonoBehaviour {
 	private List<string> weaponAnswers = new List<string>();
 	public GUIStyle solvedStyle;
 	private bool solved = false;
+	public static int solveAttempts = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -111,7 +112,8 @@ public class ToolBar : MonoBehaviour {
 		}
 		
 		if (solved) {
-			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won!", solvedStyle);
+			String score = GenerateTimeline.scoreSystem();
+			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won! " + score, solvedStyle);
 			showSolve = false;
 		}
 	}
@@ -300,7 +302,9 @@ public class ToolBar : MonoBehaviour {
 				//check if game solved
 				Debug.Log("Solved");
 				solved = true;
+				
 			} else {
+				solveAttempts++;
 				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " + GenerateTimeline.murderer.name.ToString());
 			}
 		}
