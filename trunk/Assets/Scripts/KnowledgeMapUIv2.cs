@@ -42,7 +42,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 			case RmEnum.Garden:		gardenTexture=knifeTexture; break;
 			case RmEnum.Kitchen:		kitchenTexture=knifeTexture; break;
 			case RmEnum.Living_Room:	LRTexture=knifeTexture; break;
-			case RmEnum.MBR_Toilet:		toiletTexture=knifeTexture; break;
+			case RmEnum.Toilet_in_Master_Bedroom:		toiletTexture=knifeTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.screwdriverLoc) {
@@ -50,7 +50,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 			case RmEnum.Garden:		gardenTexture=screwdriverTexture; break;
 			case RmEnum.Kitchen:		kitchenTexture=screwdriverTexture; break;
 			case RmEnum.Living_Room:	LRTexture=screwdriverTexture; break;
-			case RmEnum.MBR_Toilet:		toiletTexture=screwdriverTexture; break;
+			case RmEnum.Toilet_in_Master_Bedroom:		toiletTexture=screwdriverTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.towelLoc) {
@@ -58,7 +58,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 			case RmEnum.Garden:		gardenTexture=towelTexture; break;
 			case RmEnum.Kitchen:		kitchenTexture=towelTexture; break;
 			case RmEnum.Living_Room:	LRTexture=towelTexture; break;
-			case RmEnum.MBR_Toilet:		toiletTexture=towelTexture; break;
+			case RmEnum.Toilet_in_Master_Bedroom:		toiletTexture=towelTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.scissorsLoc) {
@@ -66,7 +66,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 			case RmEnum.Garden:		gardenTexture=scissorsTexture; break;
 			case RmEnum.Kitchen:		kitchenTexture=scissorsTexture; break;
 			case RmEnum.Living_Room:	LRTexture=scissorsTexture; break;
-			case RmEnum.MBR_Toilet:		toiletTexture=scissorsTexture; break;
+			case RmEnum.Toilet_in_Master_Bedroom:		toiletTexture=scissorsTexture; break;
 			default: break;
 		}
 		switch(GenerateTimeline.spannerLoc) {
@@ -74,7 +74,7 @@ public class KnowledgeMapUIv2 : MonoBehaviour {
 			case RmEnum.Garden:		gardenTexture=spannerTexture; break;
 			case RmEnum.Kitchen:		kitchenTexture=spannerTexture; break;
 			case RmEnum.Living_Room:	LRTexture=spannerTexture; break;
-			case RmEnum.MBR_Toilet:		toiletTexture=spannerTexture; break;
+			case RmEnum.Toilet_in_Master_Bedroom:		toiletTexture=spannerTexture; break;
 			default: break;
 		}
 	}

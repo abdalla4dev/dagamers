@@ -167,7 +167,7 @@ public class GenerateTimeline : MonoBehaviour
 	private static void initializeWeaponLocations() {
 		knifeLoc = RmEnum.Kitchen;
 		screwdriverLoc = RmEnum.Living_Room;
-		towelLoc = RmEnum.MBR_Toilet;
+		towelLoc = RmEnum.Toilet_in_Master_Bedroom;
 		scissorsLoc = RmEnum.Master_Bedroom;
 		spannerLoc = RmEnum.Garden;
 	}
@@ -913,7 +913,7 @@ public class GenerateTimeline : MonoBehaviour
 			}
 		}
 	}
-	
+		
 	// Create window to tell the story
 	private Rect windowRect = new Rect(200, 100, 400, 200);
 	bool displayWindow = true;
