@@ -183,9 +183,9 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void Update()
 	{
-		Debug.Log(Time.time);
+		/*Debug.Log(Time.time);
 		Debug.Log(ToolBar.solveAttempts);
-		/*counter++;
+		counter++;
 		if(counter==5)
 			Time.timeScale = 0;
 		if(counter==10)
