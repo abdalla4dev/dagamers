@@ -982,6 +982,6 @@ public class GenerateTimeline : MonoBehaviour
     }
 	
 	void showTimer(int windowID) {
-		GUILayout.Label(String.Format("{0:00.00}", currentTime),labelStyle);
+		GUILayout.Label(String.Format("{0:00.00}", currentTime));
 	}
 }
