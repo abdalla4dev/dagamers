@@ -137,9 +137,9 @@ public class ToolBar : MonoBehaviour {
 		// Draw any Controls inside the window here
 		scrollPos = GUILayout.BeginScrollView(scrollPos);
 		
-		string preMurderTime = startTime +  "00 hrs";
-		string murderTime = (startTime+1)+  "00 hrs";
-		string postMurderTime = (startTime+2)+  "00 hrs";
+		string preMurderTime = GenerateTimeline.befMurderTime +  "00 hrs";
+		string murderTime = GenerateTimeline.deathTime+  "00 hrs";
+		string postMurderTime = GenerateTimeline.aftMurderTime+  "00 hrs";
 		
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Suspects", timelineLabelStyle, GUILayout.Height(50));
