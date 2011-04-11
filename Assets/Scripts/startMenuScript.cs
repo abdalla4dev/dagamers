@@ -3,7 +3,7 @@ using System.Collections;
 
 public class startMenuScript : MonoBehaviour {
 	
-	public int playOrQuit;
+	public int buttonNumber;
 	public GameObject gameObject;
 
 	// Use this for initialization
@@ -25,10 +25,10 @@ public class startMenuScript : MonoBehaviour {
 	}
 	
 	void OnMouseDown () {
-		if(playOrQuit == 1){
+		if(buttonNumber == 1){
 			Application.LoadLevel("LoadingScreen"); 
 		}
-		else if (playOrQuit == 555){
+		else if (buttonNumber == 555){
 			Application.LoadLevel("LoadingScreen"); 
 		}
 		else {

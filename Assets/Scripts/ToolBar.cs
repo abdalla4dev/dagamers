@@ -84,7 +84,7 @@ public class ToolBar : MonoBehaviour {
 		
 		// MAP WINDOW 31
 		if(showMap == true){
-			GUI.Window(31, new Rect(0, 0, 500, Screen.height), mapWindow, mapContentBg);
+			GUI.Window(31, new Rect(0, 0, 500, 768), mapWindow, mapContentBg);
 			mapButtonX = 475;
 			GUI.BringWindowToFront(31);
 		}
@@ -94,7 +94,7 @@ public class ToolBar : MonoBehaviour {
 
 		// TIMELINE WINDOW 32
 		if(showTimeline == true){
-			GUI.Window(32, new Rect(0, 0, 500, Screen.height), timelineWindow, timelineContentBg);
+			GUI.Window(32, new Rect(0, 0, 500, 768), timelineWindow, timelineContentBg);
 			timelineButtonX = 475;
 			GUI.BringWindowToFront(32);
 		}
@@ -104,7 +104,7 @@ public class ToolBar : MonoBehaviour {
 		
 		// SOLVE WINDOW 33
 		if(showSolve == true){
-			GUI.Window(33, new Rect(0, 0, 500, Screen.height), solveWindow, solveContentBg);
+			GUI.Window(33, new Rect(0, 0, 500, 768), solveWindow, solveContentBg);
 			solveButtonX = 475;
 			GUI.BringWindowToFront(33);
 		}
@@ -158,14 +158,14 @@ public class ToolBar : MonoBehaviour {
 		string postMurderTime = GenerateTimeline.aftMurderTime+  "00 hrs";
 		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Suspects", timelineLabelStyle, GUILayout.Height(50));
-			GUILayout.Label(preMurderTime, timelineLabelStyle, GUILayout.Width(120));
-			GUILayout.Label(murderTime, timelineLabelStyle);
-			GUILayout.Label(postMurderTime, timelineLabelStyle);
+			GUILayout.Label("Suspects", timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label(preMurderTime, timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label(murderTime, timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label(postMurderTime, timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
 			//GUILayout.Label("1500 hrs", timelineLabelStyle);
 			//GUILayout.Label("1600 hrs", timelineLabelStyle);
 		GUILayout.EndHorizontal();
-		
+		GUILayout.Space(10);
 		string wifePreMurder = "At " + GenerateTimeline.getPersonDetails(0,0,0) +", "+ GenerateTimeline.getPersonDetails(0,0,1) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(0,0, Person.alibi );
 		string wifeMurder = "At " + GenerateTimeline.getPersonDetails(1,0,Person.place) +", "+ GenerateTimeline.getPersonDetails(1,0,Person.activity) 
@@ -174,19 +174,20 @@ public class ToolBar : MonoBehaviour {
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,0, Person.alibi);
 		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Wife", timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label("Wife", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUI.backgroundColor = Color.magenta;
 			if (GenerateTimeline.timeline[0].getBefUnlocked()) {
-				GUILayout.Box(wifePreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(wifePreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[0].getDuringUnlocked()) {
-				GUILayout.Box(wifeMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(wifeMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[0].getAftUnlocked()) {
-				GUILayout.Box(wifePostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(wifePostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			//GUILayout.Space(480);	
 		GUILayout.EndHorizontal();
+		GUILayout.Space(10);
 		
 		string sonPreMurder = "At " + GenerateTimeline.getPersonDetails(0,1,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,1,Person.activity) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(0,1, Person.alibi);
@@ -196,20 +197,21 @@ public class ToolBar : MonoBehaviour {
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,1, Person.alibi);
 		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Son", timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label("Son", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUILayout.Space(240);
 			//GUI.backgroundColor = Color.yellow;
 			if (GenerateTimeline.timeline[1].getBefUnlocked()) {
-				GUILayout.Box(sonPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(sonPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[1].getDuringUnlocked()) {
-				GUILayout.Box(sonMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(sonMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[1].getAftUnlocked()) {
-				GUILayout.Box(sonPostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(sonPostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			//GUILayout.Space(240);
 		GUILayout.EndHorizontal();
+		GUILayout.Space(10);
 		
 		string daughterPreMurder = "At " + GenerateTimeline.getPersonDetails(0,2,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,2,Person.activity) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(0,2, Person.alibi);
@@ -219,18 +221,19 @@ public class ToolBar : MonoBehaviour {
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,2, Person.alibi);
 		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Daughter", timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label("Daughter", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUI.backgroundColor = Color.green;
 			if (GenerateTimeline.timeline[2].getBefUnlocked()) {
-				GUILayout.Box(daughterPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(daughterPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[2].getDuringUnlocked()) {
-				GUILayout.Box(daughterMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(daughterMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[2].getAftUnlocked()) {
-				GUILayout.Box(daughterPostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(daughterPostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120); 
 		GUILayout.EndHorizontal();
+		GUILayout.Space(10);
 		
 		string maidPreMurder = "At " + GenerateTimeline.getPersonDetails(0,3,Person.place) +", "+ GenerateTimeline.getPersonDetails(0,3,Person.activity) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(0,3, Person.alibi);
@@ -240,19 +243,19 @@ public class ToolBar : MonoBehaviour {
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,3, Person.alibi);
 		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Maid", timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
+			GUILayout.Label("Maid", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUI.backgroundColor = Color.cyan;
 			if (GenerateTimeline.timeline[3].getBefUnlocked()) {
-				GUILayout.Box(maidPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(maidPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[3].getDuringUnlocked()) {
-				GUILayout.Box(maidMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(maidMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 			if (GenerateTimeline.timeline[3].getAftUnlocked()) {
-				GUILayout.Box(maidPostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(50));
+				GUILayout.Box(maidPostMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
 			} else GUILayout.Space(120);
 		GUILayout.EndHorizontal();
-		
+		GUILayout.Space(10);
 		GUILayout.EndScrollView();
 		
 		//Debug.Log("In theTimeline Scrollview\n" + wifePreMurder + "\n"+ wifeMurder);
