@@ -176,25 +176,15 @@ public class AI : MonoBehaviour{
 					if (tempAli.Count != 0) { // if got alibi
 						question = "Can you vouch for " + Enum.GetName(typeof(SuspectEnum),j) + " for the time period from " + thirdTime + " to " + fourthTime + "?";
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
-							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								List<SuspectEnum> checkAli = new List<SuspectEnum>();
-								checkAli = GenerateTimeline.timeline[k].getAMAlibi();
-								if (checkAli[0] == (SuspectEnum)j) {
-									answer = "Yes, he was with me.";
-									temp.setQnNode(12,question,answer,k,false,false,'n',110+j);
-									break;
-								}
-								else {
-									answer = "No, he was not with me";
-									temp.setQnNode(12,question,answer,k,false,false,'n',110+j);
-								}
+							if (tempAli[0] == (SuspectEnum)k) { // if this suspect is the alibi
+								
 							}
 						}
 					}
 				}
 				temp.moveToCurrNode();
 			}
-			/*else if (i == 13) { // question 13
+			/*else if (i == 14) { // question 14
 				for (int j=0;j<Globals.numSuspects;j++) {
 					bool isAlibi = false;
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
@@ -226,7 +216,7 @@ public class AI : MonoBehaviour{
 					}
 				}
 			}
-			/*else if (i == 15) { // question 15
+			else if (i == 15) { // question 15
 				for (int j=0;j<Globals.numSuspects;j++) {
 					bool isAlibi = false;
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
