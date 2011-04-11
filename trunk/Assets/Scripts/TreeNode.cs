@@ -30,7 +30,13 @@ public class TreeNode {
 			temp = startNode[i];
 			if (temp.Sus == suspect) { // if got the correct person
 				while (temp.NextQn != null) { 
-					if (temp.Unlocked == true) { //check if question is unlocked
+					if (temp.QnNum == 6) {
+						if (temp.Unlocked && temp.UnlockedTwo) {
+							qnPrint.Add(temp.Qn);
+						}
+						temp = temp.NextQn;
+					}
+					else if (temp.Unlocked == true) { //check if question is unlocked
 						qnPrint.Add(temp.Qn); // add unlocked qn to a Arraylist
 						temp = temp.NextQn;
 					}
@@ -94,8 +100,8 @@ public class TreeNode {
 		for (int i=0;i<logList.Count;i++) {
 			for (int j=0;j<logList[i].Count;j++) {
 				string[] temp = logList[i][j];
-				Debug.Log(temp[0]);
-				Debug.Log(temp[1]);
+				//Debug.Log(temp[0]);
+				//Debug.Log(temp[1]);
 			}
 		}
 	}

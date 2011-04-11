@@ -8,7 +8,8 @@ public class QnNode {
 	protected string question; // the questions and sub questions
 	protected string answer; // answer to the questions
 	protected int suspect; // for which person
-	protected bool unlockedNode; // is this unlocked?
+	protected bool unlockedNode;// is this unlocked?
+	protected bool unlockedNodeTwo;
 	
 	protected List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
 	protected QnNode nextQuestion; //link to the next question
@@ -62,6 +63,15 @@ public class QnNode {
 		}
 	}
 	
+	public bool UnlockedTwo {
+		get {
+			return unlockedNodeTwo;
+		}
+		set {
+			unlockedNodeTwo = value;
+		}
+	}
+	
 	public QnNode NextQn {
 		get {
 			return nextQuestion;
@@ -89,9 +99,14 @@ public class QnNode {
 	public void changeBooleanValues() {
 		
 		QnNode temp = new QnNode(null);
-
+		
+		if (questionNumber == 3) {
+			temp = nextQuestion.NextQn.NextQn;
+			temp.unlockedNodeTwo = true;
+			nextQuestion.NextQn.NextQn = temp;
+			Debug.Log(temp.QnNum);
+		}
 		for (int i=0;i<nextNodesList.Count; i++) {
-			
 			temp = nextNodesList[i];
 			temp.Unlocked = true;
 			nextNodesList.RemoveAt(i);

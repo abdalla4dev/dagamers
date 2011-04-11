@@ -275,6 +275,33 @@ public class Person {
 		}
 	}
 	
+	public bool isTrueBMActivity() {
+		if (truthTimeline[0].activity == falseTimeline[0].activity) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public bool isTrueDMActivity() {
+		if (truthTimeline[1].activity == falseTimeline[1].activity) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public bool isTrueAMActivity() {
+		if (truthTimeline[2].activity == falseTimeline[2].activity) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	//accessor for befMurder
 	public String getBefMurder(int pos) //returns String at specified position
 	{
