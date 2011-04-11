@@ -100,7 +100,7 @@ namespace MurderData
 				Generic_Activities.Add("making tea");
 			} else if (name == "Living Room") {
 				Generic_Activities.Add("watching TV");
-				Generic_Activities.Add("doing my work");
+				Generic_Activities.Add("doing work");
 				Generic_Activities.Add("relaxing on the couch");
 			} else if (name == "Master Bedroom") {
 				Generic_Activities.Add("sleeping");

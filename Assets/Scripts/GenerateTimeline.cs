@@ -94,7 +94,7 @@ public class GenerateTimeline : MonoBehaviour
 		murderWeap = genWeap();
 	
 		deathTime = rand.Next(earliestDeath, latestDeath);
-		bodyFound = deathTime+1;//genBodyFoundTime();
+		bodyFound = deathTime+2;//genBodyFoundTime();
 		befMurderTime = deathTime-1;
 		aftMurderTime = deathTime+1;
 		
@@ -924,15 +924,21 @@ public class GenerateTimeline : MonoBehaviour
 				if (qnNum == 4) {
 					timeline[i].setBefUnlocked(0, true);
 				}
-				else if (qnNum == 6) {
+				else if (qnNum == 7) {
 					timeline[i].setBefUnlocked(1, true);
 				}
-				else if (qnNum == 5) {
+				else if (qnNum == 6) {
 					timeline[i].setDuringUnlocked(0, true);
 				}
-				else if (qnNum == 8) {
+				else if (qnNum == 9) {
 					timeline[i].setDuringUnlocked(1, true);
-				}				
+				}
+				else if (qnNum == 3) {
+					timeline[i].setAftUnlocked(0, true);
+				}
+				else if (qnNum == 5) {
+					timeline[i].setAftUnlocked(1, true);
+				}
 			}
 		}
 	}
