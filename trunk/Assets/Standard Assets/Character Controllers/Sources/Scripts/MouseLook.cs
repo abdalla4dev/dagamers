@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 /// MouseLook rotates the transform based on the mouse delta.
 /// Minimum and Maximum values can be used to constrain the possible rotation
@@ -32,26 +34,28 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-		if(Input.GetMouseButton(1)){
-			if (axes == RotationAxes.MouseXAndY)
-			{
-				float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-				
-				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-				rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-				
-				transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-			}
-			else if (axes == RotationAxes.MouseX)
-			{
-				transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
-			}
-			else
-			{
-				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-				rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-				
-				transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+		if(!MenuButton.gamePause) {
+			if(Input.GetMouseButton(1)){
+				if (axes == RotationAxes.MouseXAndY)
+				{
+					float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+					
+					rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+					rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+					
+					transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+				}
+				else if (axes == RotationAxes.MouseX)
+				{
+					transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+				}
+				else
+				{
+					rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+					rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+					
+					transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+				}
 			}
 		}
 	}

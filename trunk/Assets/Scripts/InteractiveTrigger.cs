@@ -206,7 +206,18 @@ public class InteractiveTrigger : MonoBehaviour {
 					targetObject.renderer.materials[i].color = mouseOverColor;
 				}
 			}
-		}	
+		}
+		if(withinBoundary){
+			Rect labelPos;
+			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+				labelPos = new Rect(screenPos.x, (Screen.height - screenPos.y),300,100);
+			}
+			else{
+				labelPos = new Rect(screenPos.x + 150, (Screen.height - screenPos.y),300,100);
+			}
+			GUI.Label(labelPos, targetObject.name);
+		}
+		
 	}
 	
 	void OnMouseExit(){

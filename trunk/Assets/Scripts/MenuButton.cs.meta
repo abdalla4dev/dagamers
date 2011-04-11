@@ -1,2 +1,7 @@
 fileFormatVersion: 1
 guid: 2765b1c30dcfd3e49a47d4bf5c97fadf
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    menuTex: {fileID: 2800000, guid: 0b6e326d59eb8fc4b94618ca62a41e50, type: 1}
+    menuSkin: {fileID: 11400000, guid: 1112933b8b1f3a847a75149fc9585971, type: 2}
