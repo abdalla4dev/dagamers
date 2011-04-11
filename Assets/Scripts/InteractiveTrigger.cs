@@ -28,7 +28,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
-	Vector3 charOffset = new Vector3(0,2,0);
+	Vector3 charOffset = new Vector3(0,1.2f,0); 
 	
 	Vector2 scrollPosition = new Vector2(0, -5);
 	
