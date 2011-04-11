@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class AI : MonoBehaviour{
 	
 	public static TreeNode tree = new TreeNode();
+	public static System.Random rand = new System.Random();
 	
 	// Use this for initialization
 	void  Start() {
@@ -32,7 +33,7 @@ public class AI : MonoBehaviour{
 		
 		// This runs a loop that covers all the questions 
 		// each question comes in the form of a 'if' loop
-		for (int i=1; i<=20;i++) {
+		for (int i=1; i<=50;i++) {
 			if (i == 1) { // question 1
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Did you find the body?";
@@ -164,16 +165,16 @@ public class AI : MonoBehaviour{
 								checkAli = GenerateTimeline.timeline[k].getAMAlibi();
 								if (checkAli[0] == (SuspectEnum)j) {
 									if (GenerateTimeline.timeline[j].isTrueAMActivity()) {
-										answer = "Yes, he was with me, and he was " + GenerateTimeline.timeline[k].getAMActivity() + ".";
+										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getAMActivity() + " and was with me.";
 										temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 									}
 									else {
-										answer = "Yes, he was with me but he was " + GenerateTimeline.timeline[k].getAMActivity() + ".";
+										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was with me but he was " + GenerateTimeline.timeline[k].getAMActivity() + ".";
 										temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 									}
 								}
 								else {
-									answer = "No, he was not with me.";
+									answer = "No, " + Enum.GetName(typeof(SuspectEnum),j) + " was not with me.";
 									temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 								}
 							}
@@ -210,16 +211,16 @@ public class AI : MonoBehaviour{
 								checkAli = GenerateTimeline.timeline[k].getDMAlibi();
 								if (checkAli[0] == (SuspectEnum)j) {
 									if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
-										answer = "Yes, he was with me, and he was " + GenerateTimeline.timeline[k].getDMActivity() + ".";
+										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + " and was with me.";
 										temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 									}
 									else {
-										answer = "Yes, he was with me but he was " + GenerateTimeline.timeline[k].getDMActivity() + ".";
+										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was with me but " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + ".";
 										temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 									}
 								}
 								else {
-									answer = "No, he was not with me.";
+									answer = "No, " + Enum.GetName(typeof(SuspectEnum),j) + " was not with me.";
 									temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 								}
 							}
@@ -239,16 +240,16 @@ public class AI : MonoBehaviour{
 								checkAli = GenerateTimeline.timeline[k].getBMAlibi();
 								if (checkAli[0] == (SuspectEnum)j) {
 									if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
-										answer = "Yes, he was with me, and he was " + GenerateTimeline.timeline[k].getBMActivity() + ".";
+										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + " and was with me.";
 										temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 									}
 									else {
-										answer = "Yes, he was with me but he was " + GenerateTimeline.timeline[k].getBMActivity() + ".";
+										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was with me but " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + ".";
 										temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 									}
 								}
 								else {
-									answer = "No, he was not with me.";
+									answer = "No, " + Enum.GetName(typeof(SuspectEnum),j) + " was not with me.";
 									temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 								}
 							}
@@ -256,7 +257,21 @@ public class AI : MonoBehaviour{
 					}
 				}
 			}
+			else if (i == 15) {
+			
+				question = "who in the family would do this thing to your Father?";
+				int num = rand.Next(4);
+				for (int j=0;j<Globals.numSuspects;j++) {
+					answer = "I think " + Enum.GetName(typeof(SuspectEnum),num) + "really hates him, " + GenerateTimeline.timeline[num].getHateFather();
+					temp.setQnNode(14,question,answer,j,true,false,'n',0);
+					num++;
+					if (num == 4) {
+						num = 0;
+					}
+				}
+			}
 		}
+		
 		
 		temp.BFS();
 		temp.DFS();
