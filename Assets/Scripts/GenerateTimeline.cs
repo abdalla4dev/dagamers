@@ -85,6 +85,8 @@ public class GenerateTimeline : MonoBehaviour
 	
 	public static String startPara;
 	
+	private static double delayTime; 
+	
 	void Start() {
 		initializeContradictionNum();
 		initializeWeaponLocations();
@@ -183,9 +185,10 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void Update()
 	{
-		/*Debug.Log(Time.time);
-		Debug.Log(ToolBar.solveAttempts);
-		counter++;
+		Debug.Log(Time.time);
+		//Debug.Log(ToolBar.solveAttempts);
+		Debug.Log(delayTime);
+		/*counter++;
 		if(counter==5)
 			Time.timeScale = 0;
 		if(counter==10)
@@ -200,6 +203,7 @@ public class GenerateTimeline : MonoBehaviour
 		String toReturn = "";
 		double endTime = Time.time;
 		endTime += ToolBar.solveAttempts*300; //every wrong attempt add 5 mins
+		endTime -= delayTime;
 		int bestTime = 0;
 		switch(difficulty)
 		{
@@ -949,6 +953,7 @@ public class GenerateTimeline : MonoBehaviour
 		GUILayout.Label(startPara,labelStyle);
         if (GUILayout.Button("Start Game!", buttonStyle)){
 			displayWindow = !(displayWindow);
+			delayTime = Time.time;
 		}
     }
 }
