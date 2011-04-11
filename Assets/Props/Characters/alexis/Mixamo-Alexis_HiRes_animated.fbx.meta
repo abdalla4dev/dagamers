@@ -21,6 +21,22 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+    clips:
+      stop:
+        firstFrame: 1
+        lastFrame: 1
+        loop: 0
+        wrapMode: 0
+      idle:
+        firstFrame: 2
+        lastFrame: 72
+        loop: 1
+        wrapMode: 2
+      walk:
+        firstFrame: 101
+        lastFrame: 141
+        loop: 1
+        wrapMode: 2
   nodeInfo:
     Alexis_Geo_High:
     - 100000
@@ -200,3 +216,6 @@ AssetImporter:
   fileIDToRecycleName:
     4300000: Alexis_Geo_High
     7400000: Take 001 //// Mixamo-Alexis_HiRes_animated
+    7400002: stop //// Mixamo-Alexis_HiRes_animated
+    7400004: idle //// Mixamo-Alexis_HiRes_animated
+    7400006: walk //// Mixamo-Alexis_HiRes_animated
