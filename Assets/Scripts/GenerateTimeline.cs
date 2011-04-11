@@ -86,6 +86,8 @@ public class GenerateTimeline : MonoBehaviour
 	public static String startPara;
 	
 	private static double delayTime; 
+	private static double currentTime;
+	public static double displayTime;
 	
 	void Start() {
 		initializeContradictionNum();
@@ -193,9 +195,14 @@ public class GenerateTimeline : MonoBehaviour
 			Time.timeScale = 0;
 		if(counter==10)
 			Time.timeScale = 1;*/
-		if(MenuButton.gamePause)
+		if(MenuButton.gamePause || ToolBar.solved)
 			Time.timeScale = 0;
 		else Time.timeScale = 1;
+		if(displayWindow)
+			currentTime = 0;
+		else
+			currentTime = Time.time + ToolBar.solveAttempts*300 - delayTime;
+		Debug.Log(currentTime);
 	}
 	
 	public static string scoreSystem()
@@ -222,15 +229,15 @@ public class GenerateTimeline : MonoBehaviour
 		}
 		if(endTime <= bestTime) 
 		{
-			toReturn += "We knew hiring you would be worth it!";
+			toReturn += "Your rank is... Master Detective! Well done!"; //"We knew hiring you would be worth it!";
 		}
 		else if(endTime <= bestTime+120) //add 2 mins
 		{
-			toReturn += "But I'm sure you could do better than this.";
+			toReturn += "Your rank is... Detective! Play again and try to get the best rank!"; //"But I'm sure you could do better than this.";
 		}
 		else
 		{
-			toReturn += "However we need to rethink your contract as a detective with us.";
+			toReturn += "Your rank is... Patrol Cop! Don't feel bad, play again and try to get a better rank!"; //"However we need to rethink your contract as a detective with us.";
 		}
 		
 		return toReturn;
@@ -945,14 +952,25 @@ public class GenerateTimeline : MonoBehaviour
 		
 	// Create window to tell the story
 	private Rect windowRect = new Rect(200, 100, 400, 200);
+	private Rect timerRect = new Rect(Screen.width/2, 0, 60, 15); //450 for x
 	bool displayWindow = true;
 	public GUIStyle windowStyle;
 	public GUISkin tabSkin;
+	
+	public static int minCount;
 	
 	void OnGUI() {
 		GUI.skin = tabSkin;
 		if (displayWindow == true)
 			windowRect = GUILayout.Window(5, windowRect, DoMyWindow, "Welcome to DaDetective", windowStyle);
+		//timerRect = GUILayout.Window(6, timerRect, showTimer, "test", windowStyle);
+		if(currentTime>60*(minCount+1))
+		{
+			currentTime-=60;
+			minCount++;
+			displayTime++;
+		}
+		GUI.Label(timerRect, "" + String.Format("{0:00}", minCount) + "." + String.Format("{0:00.00}", currentTime-(minCount*60)), windowStyle);
 	}
 	
 	void DoMyWindow(int windowID) {
@@ -962,4 +980,8 @@ public class GenerateTimeline : MonoBehaviour
 			delayTime = Time.time;
 		}
     }
+	
+	void showTimer(int windowID) {
+		GUILayout.Label(String.Format("{0:00.00}", currentTime),labelStyle);
+	}
 }
