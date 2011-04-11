@@ -184,7 +184,7 @@ namespace MurderData
 				} else if (room == "Garden") {
 					activity.Add("pruning the plants");
 				} else if (room == "Master Bedroom Toilet") {
-					activity.Add("cutting my hair");
+					activity.Add("cutting the hair");
 				}/* else if (room == "Bedroom") {
 					
 				} else if (room == "Toilet") {
