@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace MurderData
 {	
+	
 	/*
 	 * Rooms are defined here
 	 */ 
@@ -91,6 +92,9 @@ namespace MurderData
 		public readonly string name; // the room name
 		public readonly List<string> Generic_Activities = new List<string>();
 		public readonly List<Weapon> WeaponList = new List<Weapon>();
+		
+		System.Random r = new System.Random();
+	
 		public Room(string s) {
 			name = s;
 			if (name == "Kitchen") {
@@ -128,7 +132,8 @@ namespace MurderData
 			WeaponList.Add(new Weapon("Spanner", name));
 		}
 		public string randomGA() {
-			System.Random r = new System.Random();
+			if(r==null)
+				r = new System.Random();
 			return Generic_Activities[r.Next(0, Generic_Activities.Count)];
 		}
 	}
