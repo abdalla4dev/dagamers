@@ -46,6 +46,9 @@ public class Person {
 	public bool foundBody;
 	public bool lastSaw;
 	private bool[] shouldReturnLies = {false, false, false};
+	
+	private string reasonToHateFather = string.Empty;
+	private string personality = string.Empty;
 	//End new code, the rest can delete if not useful
 	
 	//for backward compatibility with GUI
@@ -406,4 +409,19 @@ public class Person {
 		aftUnlocked[i] = val;
 	}
 	// end here
+	
+	public void setHateFather(int i) {
+		if (name == SuspectEnum.Maid) reasonToHateFather = Globals.reasonMaidHateFather[i];
+		else reasonToHateFather = Globals.reasonHateFather[i];
+	}
+	public string getHateFather() {
+		return reasonToHateFather;
+	}
+	
+	public void setPersonality(string s) {
+		personality = s;
+	}
+	public string getPersonality() {
+		return personality;
+	}
 }
