@@ -12,7 +12,11 @@ namespace MurderData
 	{
 		public const int numWeapons = 5; //self explanatory, used it so only need to change once here.
 		public const int numRooms = 5;
-		public const int numSuspects = 4;	
+		public const int numSuspects = 4;
+		public const int numNegativePersonality = 4;
+		
+		public static readonly List<string> reasonHateFather = new List<string>();
+		public static readonly List<string> reasonMaidHateFather = new List<string>();
 		
 		public static readonly List<Room> room = new List<Room>(5);
 		static Globals() {
@@ -23,6 +27,14 @@ namespace MurderData
 			room.Add(new Room("Master Bedroom Toilet"));
 			/*room.Add(new Room("Bedroom"));
 			room.Add(new Room("Toilet"));*/
+			
+			reasonHateFather.Add("because he has been a spendthrift of late.");
+			reasonHateFather.Add("because he has been thinking of donating all his wealth away.");
+			reasonHateFather.Add("because he seems to have had a mistress lately.");
+			
+			reasonMaidHateFather.Add("because he has been giving me alot of ridiculous tasks lately.");
+			reasonMaidHateFather.Add("because he caught me stealing money recently.");
+			reasonMaidHateFather.Add("because he has been very critical of my work these days.");
 		}
 		
 		public static RmEnum randRoom(RmEnum rm) {
@@ -223,5 +235,12 @@ namespace MurderData
 		Easy,
 		Medium,
 		Hard
+	}
+	
+	public enum NegativePersonalityEnum {
+		shy,
+		unhappy,
+		antisocial,
+		angry
 	}
 }
