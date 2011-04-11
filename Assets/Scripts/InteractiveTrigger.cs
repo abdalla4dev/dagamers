@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using MurderData;
+using System.Collections.Generic;
 
 public class InteractiveTrigger : MonoBehaviour {
 	
@@ -37,6 +38,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	int numQn = 1;
 	
 	float qnButtonTop = 20;
+	
+	
 	// Use this for initialization
 	void Start () {
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
@@ -150,7 +153,27 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	void logWindow(int windowID){
 		if(!questionToggle){
-			GUILayout.Label("Sorry, still under construction!");
+			
+			List<string[]> logText = AI.logTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
+			String text;
+			
+			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(120), GUILayout.Width(365));
+			//GUILayout.Label("Sorry, still under construction!");
+			for(int i = 0; i < logText.Count; i++){
+				GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
+				String ansTemp = logText[i][0];
+				ansTemp = ansTemp.Replace('_', ' ');
+				ansTemp = ansTemp.Substring(0,1) + ansTemp.Substring(1).ToLower();
+				ansTemp = ansTemp.Replace(" i ", " I ");
+				GUILayout.Label("Q: " + ansTemp);
+				GUI.contentColor = Color.white;
+				String questionTemp = logText[i][1];
+				questionTemp = questionTemp.Replace('_', ' ');
+				questionTemp = questionTemp.Substring(0,1) + questionTemp.Substring(1).ToLower();
+				questionTemp = questionTemp.Replace(" i ", " I ");
+				GUILayout.Label("A: " + questionTemp);
+			}
+			GUILayout.EndScrollView();
 			callAns = false;
 		}
 	}
