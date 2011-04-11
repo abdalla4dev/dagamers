@@ -860,7 +860,7 @@ public class GenerateTimeline : MonoBehaviour
 	private String createStartPara(String murderRoom)
 	{
 		String mRoom = murderRoom.Replace('_', ' ');
-		String s = "Mr. XXX, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
+		String s = "Mr. Darcy, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
 		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he/she murder with and when did he commit the murder.";
 		return s;
 	}
@@ -947,17 +947,17 @@ public class GenerateTimeline : MonoBehaviour
 	private Rect windowRect = new Rect(200, 100, 400, 200);
 	bool displayWindow = true;
 	public GUIStyle windowStyle;
-	public GUIStyle labelStyle;
-	public GUIStyle buttonStyle;
+	public GUISkin tabSkin;
 	
 	void OnGUI() {
+		GUI.skin = tabSkin;
 		if (displayWindow == true)
 			windowRect = GUILayout.Window(5, windowRect, DoMyWindow, "Welcome to DaDetective", windowStyle);
 	}
 	
 	void DoMyWindow(int windowID) {
-		GUILayout.Label(startPara,labelStyle);
-        if (GUILayout.Button("Start Game!", buttonStyle)){
+		GUILayout.Label(startPara);
+        if (GUILayout.Button("Start Game!")){
 			displayWindow = !(displayWindow);
 			delayTime = Time.time;
 		}

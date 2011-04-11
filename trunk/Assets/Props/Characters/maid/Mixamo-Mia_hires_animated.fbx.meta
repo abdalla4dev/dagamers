@@ -18,9 +18,25 @@ ModelImporter:
   animations:
     generation: 3
     bakeAnimations: 0
-    animationCompression: 1
+    animationCompression: 0
     animationWrapMode: 0
     splitAnimations: 1
+    clips:
+      stop:
+        firstFrame: 1
+        lastFrame: 1
+        loop: 0
+        wrapMode: 0
+      idle:
+        firstFrame: 1
+        lastFrame: 30
+        loop: 1
+        wrapMode: 2
+      walk:
+        firstFrame: 40
+        lastFrame: 80
+        loop: 1
+        wrapMode: 2
   nodeInfo:
     Mia:LeftHandIndex1:
     - 100000
@@ -328,3 +344,6 @@ AssetImporter:
     4300006: HairGeo
     4300008: BodyGeo
     7400000: Take 001 //// Mixamo-Mia_hires_animated
+    7400002: stop //// Mixamo-Mia_hires_animated
+    7400004: idle //// Mixamo-Mia_hires_animated
+    7400006: walk //// Mixamo-Mia_hires_animated

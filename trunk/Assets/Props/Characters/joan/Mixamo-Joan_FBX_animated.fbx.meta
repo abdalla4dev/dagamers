@@ -18,9 +18,25 @@ ModelImporter:
   animations:
     generation: 3
     bakeAnimations: 0
-    animationCompression: 1
+    animationCompression: 0
     animationWrapMode: 0
     splitAnimations: 1
+    clips:
+      stop:
+        firstFrame: 1
+        lastFrame: 1
+        loop: 0
+        wrapMode: 0
+      idle:
+        firstFrame: 2
+        lastFrame: 72
+        loop: 1
+        wrapMode: 2
+      walk:
+        firstFrame: 101
+        lastFrame: 141
+        loop: 1
+        wrapMode: 2
   nodeInfo:
     Bip001 L Finger42:
     - 100000
@@ -205,3 +221,6 @@ AssetImporter:
     4300000: vincent
     4300002: Joan_Mesh
     7400000: Take 001 //// Mixamo-Joan_FBX_animated
+    7400002: stop //// Mixamo-Joan_FBX_animated
+    7400004: idle //// Mixamo-Joan_FBX_animated
+    7400006: walk //// Mixamo-Joan_FBX_animated
