@@ -60,12 +60,12 @@ public class AI : MonoBehaviour{
 					if (GenerateTimeline.timeline[j].getAMWpn() != WpnEnum.None) {
 						question = "What were you doing around the time " + fourthTime + ", when the body is found?";
 						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " using " + GenerateTimeline.timeline[j].getAMWpn() + " from " + 
-						thirdTime + " to " + fourthTime;
+						thirdTime + " to " + fourthTime + ".";
 						temp.setQnNode(3,question,answer,j,false,true,'n',10+unlocker);
 					}
 					else {
 						question = "What were you doing around the time " + fourthTime + ", when the body is found?";
-						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime;
+						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + ".";
 						temp.setQnNode(3,question,answer,j,false,true,'n',10+unlocker);
 					}
 				}
@@ -76,19 +76,19 @@ public class AI : MonoBehaviour{
 					if (GenerateTimeline.timeline[j].getBMWpn() != WpnEnum.None) {
 						question = "What were you doing around the time " + firstTime + ", when the victim is last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " using " + GenerateTimeline.timeline[j].getBMWpn() + " from " + 
-						firstTime + " to " + secondTime;
+						firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
 					else {
 						question = "What were you doing around the time " + firstTime + ", when the victim is last seen?";
-						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + firstTime + " to " + secondTime;
+						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
 				}
 			}
 			else if (i == 5) { // question 5
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "You are " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + "at...?";
+					question = "You are " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + " at...?";
 					answer = "I was at " + GenerateTimeline.timeline[j].getAMPlace() + ".";
 					temp.setQnNode(5,question,answer,j,false,true,'n',30+j);
 				}
@@ -97,12 +97,12 @@ public class AI : MonoBehaviour{
 			else if (i == 6) { // question 6
 				for (int j=0;j<Globals.numSuspects;j++) {
 					if (GenerateTimeline.timeline[j].getDMWpn() != WpnEnum.None) {
-						question = "Then what about your activity between the unaccounted time of" + secondTime + " and " + thirdTime + "?";
+						question = "Then what about your activity between the unaccounted time of " + secondTime + " and " + thirdTime + "?";
 						answer = "I was " + GenerateTimeline.timeline[j].getDMActivity() + " using " + GenerateTimeline.timeline[j].getDMWpn() + ".";
 						temp.setQnNode(6,question,answer,j,false,true,'n',40+j);
 					}
 					else {
-						question = "Then what about your activity between the unaccounted time of" + secondTime + " and " + thirdTime + "?";
+						question = "Then what about your activity between the unaccounted time of " + secondTime + " and " + thirdTime + "?";
 						answer = "I was " + GenerateTimeline.timeline[j].getDMActivity() + ".";
 						temp.setQnNode(6,question,answer,j,false,true,'n',40+j);
 					}
@@ -110,7 +110,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 7) { // question 7
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "You are " + GenerateTimeline.timeline[j].getBMActivity()+ " from " + firstTime + " to " + secondTime + "at...?";
+					question = "You are " + GenerateTimeline.timeline[j].getBMActivity()+ " from " + firstTime + " to " + secondTime + " at...?";
 					answer = "I was at " + GenerateTimeline.timeline[j].getBMPlace() + ".";
 					temp.setQnNode(7,question,answer,j,false,true,'n',40+j);
 				}
@@ -133,7 +133,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 9) { // question 9
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Where are you " + GenerateTimeline.timeline[j].getDMActivity() + " between " + secondTime + " and " + thirdTime;
+					question = "Where are you " + GenerateTimeline.timeline[j].getDMActivity() + " between " + secondTime + " and " + thirdTime + "?";
 					answer = "I was at " + GenerateTimeline.timeline[j].getDMPlace() + ".";
 					temp.setQnNode(9,question,answer,j,false,true,'n',60+j);
 				}
@@ -262,8 +262,8 @@ public class AI : MonoBehaviour{
 				question = "who in the family would do this thing to your Father?";
 				int num = rand.Next(4);
 				for (int j=0;j<Globals.numSuspects;j++) {
-					answer = "I think " + Enum.GetName(typeof(SuspectEnum),num) + "really hates him, " + GenerateTimeline.timeline[num].getHateFather();
-					temp.setQnNode(14,question,answer,j,true,false,'n',0);
+					answer = "I think " + Enum.GetName(typeof(SuspectEnum),num) + " really hates him, " + GenerateTimeline.timeline[num].getHateFather();
+					temp.setQnNode(15,question,answer,j,true,false,'n',0);
 					num++;
 					if (num == 4) {
 						num = 0;

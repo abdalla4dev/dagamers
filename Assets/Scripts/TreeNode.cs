@@ -44,7 +44,7 @@ public class TreeNode {
 						temp = temp.NextQn;
 					}
 				}
-				if (temp.QnNum == 13) {
+				if (temp.QnNum == 15) {
 					if (temp.Unlocked == true) {
 						qnPrint.Add(temp.Qn);
 					}
@@ -72,7 +72,7 @@ public class TreeNode {
 						temp = temp.NextQn;
 					}
 				}
-				if (temp.QnNum == 13) {
+				if (temp.QnNum == 15) {
 					return temp.Ans;
 				}
 			}
