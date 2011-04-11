@@ -41,8 +41,9 @@ public class ToolBar : MonoBehaviour {
 	private string weaponSelection;
 	private List<string> weaponAnswers = new List<string>();
 	public GUIStyle solvedStyle;
-	private bool solved = false;
+	public static bool solved = false;
 	public static int solveAttempts = 0;
+	private bool solvedAttempted = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -113,7 +114,22 @@ public class ToolBar : MonoBehaviour {
 		
 		if (solved) {
 			String score = GenerateTimeline.scoreSystem();
-			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won! " + score, solvedStyle);
+			//GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won! " + score, solvedStyle);
+			if(GUI.Button(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle! " + score, solvedStyle))
+				Debug.Log("button press");
+			showSolve = false;
+		}
+		
+		if (solvedAttempted) {
+			//GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won! " + score, solvedStyle);
+			if(GUI.Button(new Rect(Screen.width/2, Screen.height/2, 300,100), "Oops, that was a wrong guess! Time penalty of 5 minutes added.", solvedStyle))
+			{
+				Debug.Log(solvedAttempted);
+				Debug.Log("button press");
+				solvedAttempted = false;
+				showSolve = false;
+				Debug.Log(solvedAttempted);
+			}
 			showSolve = false;
 		}
 	}
@@ -305,6 +321,8 @@ public class ToolBar : MonoBehaviour {
 				
 			} else {
 				solveAttempts++;
+				solvedAttempted = true;
+				GenerateTimeline.minCount+=5;
 				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " + GenerateTimeline.murderer.name.ToString());
 			}
 		}
