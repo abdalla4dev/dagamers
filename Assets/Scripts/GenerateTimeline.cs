@@ -256,10 +256,10 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[relationshipPairing[2]].setHateFather(rand.Next(0,3));
 		timeline[relationshipPairing[3]].setHateFather(rand.Next(0,3));
 		
-		//timeline[relationshipPairing[0]].setPersonality("");
-		//timeline[relationshipPairing[1]].setPersonality("I am " + (NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality) + );
-		timeline[relationshipPairing[2]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[3] + " recently");
-		timeline[relationshipPairing[3]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[2] + " recently");
+		timeline[relationshipPairing[0]].setPersonality("I am " + (NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality) + " recently.");
+		timeline[relationshipPairing[1]].setPersonality("I am " + (NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality) + " recently.");
+		timeline[relationshipPairing[2]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[3] + " recently.");
+		timeline[relationshipPairing[3]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[2] + " recently.");
 		
 		
 		timeline[relationshipPairing[1]].setBeforeMurder(befMurderTime, 
@@ -625,7 +625,7 @@ public class GenerateTimeline : MonoBehaviour
 		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn||WpnEnum.Screwdriver==murderWeap));
 		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn||WpnEnum.Towel==murderWeap));
 		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn||WpnEnum.Scissors==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
+		wpnFacts.Insert((intrelationshipPairingew Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
 	}
 	private static void GenerateHardGame() {
 		//only has 3 contradictions
