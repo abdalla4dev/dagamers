@@ -898,18 +898,24 @@ public class GenerateTimeline : MonoBehaviour
 	public static void checkBool(int qnNum, int sus) {
 		for (int i=0;i<timeline.Count;i++) {
 			if (i == sus) {
-				if (qnNum == 4) {
+				if (qnNum == 3) {
 					timeline[i].setBefUnlocked(0, true);
 				}
 				else if (qnNum == 6) {
 					timeline[i].setBefUnlocked(1, true);
 				}
+				else if (qnNum == 4) {
+					timeline[i].setDuringUnlocked(0, true);
+				}
+				else if (qnNum == 7) {
+					timeline[i].setDuringUnlocked(1, true);
+				}	
 				else if (qnNum == 5) {
 					timeline[i].setDuringUnlocked(0, true);
 				}
 				else if (qnNum == 8) {
 					timeline[i].setDuringUnlocked(1, true);
-				}				
+				}		
 			}
 		}
 	}
