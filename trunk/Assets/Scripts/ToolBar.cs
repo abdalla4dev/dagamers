@@ -11,6 +11,9 @@ public class ToolBar : MonoBehaviour {
 	public Texture2D timelineTex;
 	public Texture2D mapTex;
 	public Texture2D solveTex;
+	public Texture2D rank1Tex;
+	public Texture2D rank2Tex;
+	public Texture2D rank3Tex;
 	
 	float mapButtonX = 0;
 	float timelineButtonX = 0;
@@ -44,6 +47,7 @@ public class ToolBar : MonoBehaviour {
 	public static bool solved = false;
 	public static int solveAttempts = 0;
 	private bool solvedAttempted = false;
+	private Rect solvePopup;
 	
 	// Use this for initialization
 	void Start () {
@@ -113,24 +117,43 @@ public class ToolBar : MonoBehaviour {
 		}
 		
 		if (solved) {
-			String score = GenerateTimeline.scoreSystem();
-			//GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won! " + score, solvedStyle);
-			if(GUI.Button(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle! " + score, solvedStyle))
-				Debug.Log("button press");
-			showSolve = false;
+			GUI.Window(99, new Rect(Screen.width/3, Screen.height/3, 300, 300), doSolvePopup, "", solvedStyle);
+			GUI.BringWindowToFront(99);
 		}
 		
 		if (solvedAttempted) {
-			//GUI.Label(new Rect(Screen.width/2, Screen.height/2, 300,100), "You have solved the puzzle and won! " + score, solvedStyle);
-			if(GUI.Button(new Rect(Screen.width/2, Screen.height/2, 300,100), "Oops, that was a wrong guess! Time penalty of 5 minutes added.", solvedStyle))
+			if(GUI.Button(new Rect(Screen.width/3, Screen.height/3, 300,100), "Oops, that was a wrong guess! Time penalty of 5 minutes added. \n Click here to resume game.", solvedStyle))
 			{
 				Debug.Log(solvedAttempted);
-				Debug.Log("button press");
 				solvedAttempted = false;
 				showSolve = false;
-				Debug.Log(solvedAttempted);
 			}
 			showSolve = false;
+		}
+	}
+	
+	void doSolvePopup(int Window) {
+		int score = GenerateTimeline.scoreSystem();
+		Texture showRank = rank1Tex;
+		switch(score){
+			case 1:
+				showRank = rank1Tex;
+				break;
+			case 2:
+				showRank = rank2Tex;
+				break;
+			case 3:
+				showRank = rank3Tex;
+				break;
+		}
+		
+		GUILayout.Label("You have solved the mystery! Your rank is ");
+		GUILayout.Box(showRank);
+		if(GUILayout.Button("Return to Main Menu")){
+			Application.LoadLevel("startmenu");
+		}
+		if(GUILayout.Button("Quit Game")){
+			Application.Quit();
 		}
 	}
 		
@@ -156,7 +179,7 @@ public class ToolBar : MonoBehaviour {
 		string preMurderTime = GenerateTimeline.befMurderTime +  "00 hrs";
 		string murderTime = GenerateTimeline.deathTime+  "00 hrs";
 		string postMurderTime = GenerateTimeline.aftMurderTime+  "00 hrs";
-		
+				
 		GUILayout.BeginHorizontal();
 			GUILayout.Label("Suspects", timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
 			GUILayout.Label(preMurderTime, timelineLabelStyle, GUILayout.Height(50), GUILayout.Width(120));
@@ -173,8 +196,12 @@ public class ToolBar : MonoBehaviour {
 		string wifePostMurder = "At " + GenerateTimeline.getPersonDetails(2,0,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,0,Person.activity)
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,0, Person.alibi);
 		
+		wifePreMurder = wifePreMurder.Replace('_', ' ');
+		wifeMurder = wifeMurder.Replace('_', ' ');
+		wifePostMurder = wifePostMurder.Replace('_', ' ');
+		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Wife", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
+			GUILayout.Label("Mrs. Darcy (Wife of victim)", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUI.backgroundColor = Color.magenta;
 			if (GenerateTimeline.timeline[0].getBefUnlocked()) {
 				GUILayout.Box(wifePreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
@@ -196,8 +223,12 @@ public class ToolBar : MonoBehaviour {
 		string sonPostMurder = "At " + GenerateTimeline.getPersonDetails(2,1,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,1,Person.activity) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,1, Person.alibi);
 		
+		sonPreMurder = sonPreMurder.Replace('_', ' ');
+		sonMurder = sonMurder.Replace('_', ' ');
+		sonPostMurder = sonPostMurder.Replace('_', ' ');
+				
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Son", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
+			GUILayout.Label("Wayne (Son of victim)", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUILayout.Space(240);
 			//GUI.backgroundColor = Color.yellow;
 			if (GenerateTimeline.timeline[1].getBefUnlocked()) {
@@ -220,8 +251,12 @@ public class ToolBar : MonoBehaviour {
 		string daughterPostMurder = "At " + GenerateTimeline.getPersonDetails(2,2,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,2,Person.activity) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,2, Person.alibi);
 		
+		daughterPreMurder = daughterPreMurder.Replace('_', ' ');
+		daughterMurder = daughterMurder.Replace('_', ' ');
+		daughterPostMurder = daughterPostMurder.Replace('_', ' ');
+		
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Daughter", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
+			GUILayout.Label("Jane (Daughter of victim)", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUI.backgroundColor = Color.green;
 			if (GenerateTimeline.timeline[2].getBefUnlocked()) {
 				GUILayout.Box(daughterPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
@@ -242,8 +277,12 @@ public class ToolBar : MonoBehaviour {
 		string maidPostMurder = "At " + GenerateTimeline.getPersonDetails(2,3,Person.place) +", "+ GenerateTimeline.getPersonDetails(2,3,Person.activity) 
 			+", seen by "+ GenerateTimeline.getPersonDetails(2,3, Person.alibi);
 		
+		maidPreMurder = maidPreMurder.Replace('_', ' ');
+		maidMurder = maidMurder.Replace('_', ' ');
+		maidPostMurder = maidPostMurder.Replace('_', ' ');
+				
 		GUILayout.BeginHorizontal();
-			GUILayout.Label("Maid", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
+			GUILayout.Label("Maria the Maid", timelineLabelStyle, GUILayout.Height(160), GUILayout.Width(120));
 			//GUI.backgroundColor = Color.cyan;
 			if (GenerateTimeline.timeline[3].getBefUnlocked()) {
 				GUILayout.Box(maidPreMurder, timelineBoxStyle, GUILayout.Width(120), GUILayout.Height(160));
@@ -319,7 +358,6 @@ public class ToolBar : MonoBehaviour {
 			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
 				GenerateTimeline.murderer.name.ToString() == suspectSelection) {
 				//check if game solved
-				Debug.Log("Solved");
 				solved = true;
 				
 			} else {
@@ -329,5 +367,6 @@ public class ToolBar : MonoBehaviour {
 				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " + GenerateTimeline.murderer.name.ToString());
 			}
 		}
+		GUILayout.Label("Note: a 5 minute penalty will be imposed if you make a wrong/wild guess.");
 	}
 }

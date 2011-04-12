@@ -24,7 +24,7 @@ public class VoiceSpeaker : MonoBehaviour
 	[DllImport ("Voice_speaker", EntryPoint="PauseVoice")]     private static extern void   PauseVoice();
 	[DllImport ("Voice_speaker", EntryPoint="ResumeVoice")]    private static extern void   ResumeVoice();
 
-	public int voice_nb = 3; 
+	public int voice_nb = 1; 
 
 	void Start ()
 	{
@@ -36,8 +36,12 @@ public class VoiceSpeaker : MonoBehaviour
 			SetVoice(voice_nb); // 0 to voiceCount - 1
 			
 			Debug.Log ("Voice name : "+GetVoiceName(voice_nb));
-			Say("Hello. I can speak now. My name is "+GetVoiceName(voice_nb)+". Welcome to Unity");
+			//Say("Hello. I can speak now. My name is "+GetVoiceName(voice_nb)+". Welcome to Unity");
         }
+	}
+	
+	void Talk(String talkStr){
+		Say(talkStr);	
 	}
 	
     void OnDisable()
