@@ -196,9 +196,9 @@ public class GenerateTimeline : MonoBehaviour
 			currentTime = Time.time + ToolBar.solveAttempts*300 - delayTime;
 	}
 	
-	public static string scoreSystem()
+	public static int scoreSystem()
 	{
-		String toReturn = "";
+		int toReturn = 0;
 		double endTime = Time.time;
 		endTime += ToolBar.solveAttempts*300; //every wrong attempt add 5 mins
 		endTime -= delayTime;
@@ -220,15 +220,15 @@ public class GenerateTimeline : MonoBehaviour
 		}
 		if(endTime <= bestTime) 
 		{
-			toReturn += "Your rank is... Master Detective! Well done!"; //"We knew hiring you would be worth it!";
+			toReturn = 1; //"We knew hiring you would be worth it!";
 		}
 		else if(endTime <= bestTime+120) //add 2 mins
 		{
-			toReturn += "Your rank is... Detective! Play again and try to get the best rank!"; //"But I'm sure you could do better than this.";
+			toReturn = 2; //"But I'm sure you could do better than this.";
 		}
 		else
 		{
-			toReturn += "Your rank is... Patrol Cop! Don't feel bad, play again and try to get a better rank!"; //"However we need to rethink your contract as a detective with us.";
+			toReturn = 3; //"However we need to rethink your contract as a detective with us.";
 		}
 		
 		return toReturn;

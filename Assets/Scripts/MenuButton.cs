@@ -45,6 +45,10 @@ public class MenuButton : MonoBehaviour {
 		//	mouseControl2.SendMessage("toggle");
 		}
 		
+		if(GUILayout.Button("Return to Main Menu")){
+			Application.LoadLevel("startmenu");	
+		}
+		
 		if(GUILayout.Button("Quit")){
 			Application.Quit();
 		}
