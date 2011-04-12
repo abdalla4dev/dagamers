@@ -977,7 +977,7 @@ public class GenerateTimeline : MonoBehaviour
 	void DoStoryWindow(int windowID){
 		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.MaxHeight(startHeight));
 		GUILayout.Label(startPara);
-		VoiceSpeaker.Talk(startPara);
+		//VoiceSpeaker.Talk(startPara);
 		GUILayout.EndScrollView();
         if (GUILayout.Button("Start Game!")){
 			displayWindow = !(displayWindow);
