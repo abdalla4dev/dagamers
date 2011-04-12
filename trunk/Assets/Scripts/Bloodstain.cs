@@ -4,21 +4,19 @@ using MurderData;
 
 public class Bloodstain : MonoBehaviour {
 	
-	public static GameObject stainKitchen;
-	public static GameObject stainLivingRoom;
-	public static GameObject stainMasterBedroom;
-	public static GameObject stainGarden;
-	public static GameObject stainMasterToilet;
+	public GameObject stainKitchen;
+	public GameObject stainLivingRoom;
+	public GameObject stainMasterBedroom;
+	public GameObject stainGarden;
+	public GameObject stainMasterToilet;
 	
-	public static GameObject handprintKitchen;
-	public static GameObject handprintLivingRoom;
-	public static GameObject handprintMasterBedroom;
-	public static GameObject handprintGarden;
-	public static GameObject handprintMasterToilet;
+	public GameObject handprintKitchen;
+	public GameObject handprintLivingRoom;
+	public GameObject handprintMasterBedroom;
+	public GameObject handprintGarden;
+	public GameObject handprintMasterToilet;
 
-	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -26,28 +24,32 @@ public class Bloodstain : MonoBehaviour {
 	
 	}
 	
-	static void showStain(RmEnum room)
+	public static putStains(RmEnum room){
+		showStain(RmEnum room);
+	}
+	
+	void showStain(RmEnum room)
 	{
 		switch(room)
 		{
 		case RmEnum.Kitchen:
-				stainKitchen.renderer.enabled = true;
+			stainKitchen.renderer.enabled = true;
 			handprintKitchen.renderer.enabled = true;
 			break;
 		case RmEnum.Living_Room:
-				stainLivingRoom.renderer.enabled = true;
+			stainLivingRoom.renderer.enabled = true;
 			handprintLivingRoom.renderer.enabled = true;
 			break;
 		case RmEnum.Master_Bedroom:
-				stainMasterBedroom.renderer.enabled = true;
+			stainMasterBedroom.renderer.enabled = true;
 			handprintMasterBedroom.renderer.enabled = true;
 			break;
 		case RmEnum.Garden:
-				stainGarden.renderer.enabled = true;
+			stainGarden.renderer.enabled = true;
 			handprintGarden.renderer.enabled = true;
 			break;
 		case RmEnum.Toilet_in_Master_Bedroom:
-				stainMasterToilet.renderer.enabled = true;
+			stainMasterToilet.renderer.enabled = true;
 			handprintMasterToilet.renderer.enabled = true;
 			break;
 		default:
