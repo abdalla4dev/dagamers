@@ -120,6 +120,7 @@ public class InteractiveTrigger : MonoBehaviour {
 						//ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 						ans = ans.Replace(" i ", " I ");
 						callAns = true;
+						Debug.Log("CALLING FOR ANS" + ans);
 					}
 				}
 			}
@@ -135,12 +136,16 @@ public class InteractiveTrigger : MonoBehaviour {
 			
 			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(120), GUILayout.Width(365));
 			for(int i = 0; i < logText.Count; i++){
+				
+				//the questions in log
 				GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
 				String ansTemp = logText[i][0];
 				ansTemp = ansTemp.Replace('_', ' ');
 				ansTemp = ansTemp.Substring(0,1) + ansTemp.Substring(1).ToLower();
 				ansTemp = ansTemp.Replace(" i ", " I ");
 				GUILayout.Label("Q: " + ansTemp);
+				
+				//the answers in log
 				GUI.contentColor = Color.white;
 				String questionTemp = logText[i][1];
 				questionTemp = questionTemp.Replace('_', ' ');
@@ -181,17 +186,6 @@ public class InteractiveTrigger : MonoBehaviour {
 				}
 			}
 		}
-//		if(withinBoundary){
-//			Rect labelPos;
-//			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-//				labelPos = new Rect(screenPos.x, (Screen.height - screenPos.y),300,100);
-//			}
-//			else{
-//				labelPos = new Rect(screenPos.x + 150, (Screen.height - screenPos.y),300,100);
-//			}
-//			GUI.Label(labelPos, targetObject.name);
-//		}
-		
 	}
 	
 	void OnMouseExit(){
