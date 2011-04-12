@@ -51,7 +51,7 @@ public class GenerateTimeline : MonoBehaviour
 	public const int latestDeath = 20; //latest possible time that murder is committed. (can change)
 	
 	//easy is 6 contradictions, medium is 1 real and at most 2 fake contradictions, hard is same as medium but harder to uncover fact
-	public static GameDiffEnum difficulty = GameDiffEnum.Easy;
+	public static GameDiffEnum difficulty;
 	private static int numContradiction = 0;
 	
 	public static Person victim;
@@ -103,6 +103,8 @@ public class GenerateTimeline : MonoBehaviour
 	public GameObject handprintMasterToilet;
 	
 	void Start() {
+		Debug.Log("WHY" + startMenuScript.diffLevel);
+		difficulty = startMenuScript.diffLevel;
 		initializeContradictionNum();
 		initializeWeaponLocations();
 		SuspectEnum murdererEnum = genMurderer();
@@ -159,6 +161,8 @@ public class GenerateTimeline : MonoBehaviour
 		//last seen
 		int lastSaw = rand.Next(0, Globals.numSuspects);
 		timeline[lastSaw].setLastSaw(true);
+		
+		Debug.Log("DIFF" + difficulty);
 		
 		switch(difficulty) {
 			case GameDiffEnum.Easy: GenerateEasyGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
