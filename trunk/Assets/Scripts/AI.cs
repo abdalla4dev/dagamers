@@ -333,11 +333,7 @@ public class AI : MonoBehaviour{
 		else if (sus == 3) {
 			return "Maria";
 		}
-<<<<<<< .mine
 		return null;
-=======
-		return "";
->>>>>>> .r282
 	}
 	
 	public static ArrayList HumanTriggered(int suspect) {
