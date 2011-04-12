@@ -31,30 +31,38 @@ public class MouseLook : MonoBehaviour {
 	public float maximumY = 60F;
 
 	float rotationY = 0F;
-
+	
+	bool mouseControl;
+	
+	void ControlToggle(){
+		mouseControl = !mouseControl;
+		print("controlToggled!");
+	}
 	void Update ()
 	{
 
-			if(Input.GetMouseButton(1)){
-				if (axes == RotationAxes.MouseXAndY)
-				{
-					float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-					
-					rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-					rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-					
-					transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-				}
-				else if (axes == RotationAxes.MouseX)
-				{
-					transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
-				}
-				else
-				{
-					rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-					rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-					
-					transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+			if (mouseControl) {
+				if(Input.GetMouseButton(1)){
+					if (axes == RotationAxes.MouseXAndY)
+					{
+						float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+						
+						rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+						rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+						
+						transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+					}
+					else if (axes == RotationAxes.MouseX)
+					{
+						transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+					}
+					else
+					{
+						rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+						rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+						
+						transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+					}
 				}
 			}
 
@@ -62,6 +70,7 @@ public class MouseLook : MonoBehaviour {
 	
 	void Start ()
 	{
+		mouseControl = true;
 		// Make the rigid body not change rotation
 		if (rigidbody)
 			rigidbody.freezeRotation = true;
