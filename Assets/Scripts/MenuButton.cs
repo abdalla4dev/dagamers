@@ -4,12 +4,13 @@ using System.Collections;
 public class MenuButton : MonoBehaviour {
 	
 	public Texture2D menuTex;
+	public Texture2D helpTex;
 	public GUISkin menuSkin;
 	
 	public GUIStyle MenuButtonStyle;
 	
 	public static bool gamePause;
-	
+	public bool showHelp = false;
 	//public MouseLook mouseControl;
 	//public Controller mouseControl2;
 	
@@ -31,9 +32,13 @@ public class MenuButton : MonoBehaviour {
 		
 		if(toggle){
 			gamePause = true;
-			GUILayout.Window(21, new Rect((Screen.width/2) - 75, (Screen.height/2) - 100, 150, 200), menuWindow, "");
-		//	mouseControl2.SendMessage("toggle");
+			GUI.Window(21, new Rect((Screen.width/2) - 75, (Screen.height/2) - 100, 150, 200), menuWindow, "");
+			//	mouseControl2.SendMessage("toggle");
 			//mouseControl.SendMessage("ControlToggle", false);
+		}
+		
+		if(showHelp){
+			GUI.Box(new Rect(0,0,Screen.width, Screen.height),"");
 		}
 	}
 	
@@ -41,11 +46,14 @@ public class MenuButton : MonoBehaviour {
 		if(GUILayout.Button("Resume")){
 			toggle = false;
 			gamePause = false;
+			showHelp = false;
 		//	mouseControl.SendMessage("ControlToggle", true);
 		//	mouseControl2.SendMessage("toggle");
 		}
-		
-		if(GUILayout.Button("Return to Main Menu")){
+		if(GUILayout.Button("Help")){
+			showHelp = true;
+		}
+		if(GUILayout.Button("Main Menu")){
 			Application.LoadLevel("startmenu");	
 		}
 		
@@ -57,5 +65,11 @@ public class MenuButton : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	void showHelpWin(int windowID){
+		if(GUILayout.Button("Close")){
+			showHelp = false;
+		}
 	}
 }

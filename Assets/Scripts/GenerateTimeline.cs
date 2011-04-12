@@ -908,7 +908,7 @@ public class GenerateTimeline : MonoBehaviour
 	private String createStartPara()
 	{
 		String s = "Welcome to DaDetective. \nMr. Darcy, a rich and obnoxious businessman, was found murdered in a certain room at a certain time with a certain weapon by one of his family members. ";
-		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he murder with and when did he commit the murder. Hint: Characters may lie, explore the house to find factual clues. ";
+		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he murder with and when did he commit the murder. Hint: Characters may lie, explore the house to find factual clues. Hurry, the clock is ticking.";
 		return s;
 	}
 	
@@ -1005,12 +1005,16 @@ public class GenerateTimeline : MonoBehaviour
 	private float startHeight = (0.39f*Screen.height);
 	private Rect anotherWindowRect;
 	public static int minCount;
+	bool showHelp = false;
+	bool spoken = false;
 	
 	void OnGUI() {
 		GUI.skin = tabSkin;
-		anotherWindowRect =  new Rect(startX, startX, startWidth, startHeight);
+		anotherWindowRect =  new Rect(startX, startY, startWidth, startHeight);
 		if (displayWindow == true){
-			GUI.Box(windowRect,"",windowStyle);
+			if (showHelp == true){ // to show help
+				GUI.Box(windowRect,"",windowStyle);
+			}
 			anotherWindowRect = GUILayout.Window(55, anotherWindowRect, DoStoryWindow, "", boxStyle);
 		}
 		//timerRect = GUILayout.Window(6, timerRect, showTimer, "test", windowStyle);
@@ -1026,11 +1030,19 @@ public class GenerateTimeline : MonoBehaviour
 	void DoStoryWindow(int windowID){
 		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.MaxHeight(startHeight));
 		GUILayout.Label(startPara);
-		//VoiceSpeaker.Talk(startPara);
 		GUILayout.EndScrollView();
+		if (GUILayout.Button("View Tutorial")){
+			showHelp = true;		
+		}
         if (GUILayout.Button("Start Game!")){
 			displayWindow = !(displayWindow);
 			delayTime = Time.time;
+		}
+		
+		// VoiceSpeaker
+		if(!spoken){
+			VoiceSpeaker.Talk(startPara);
+			spoken = true;	
 		}
 	}
 	
