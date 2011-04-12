@@ -34,9 +34,9 @@ public class MouseLook : MonoBehaviour {
 	
 	bool mouseControl;
 	
-	void ControlToggle(){
-		mouseControl = !mouseControl;
-		print("controlToggled!");
+	void ControlToggle(bool control){
+		mouseControl = control;
+		print("controlToggled! = " + mouseControl);
 	}
 	void Update ()
 	{
