@@ -44,7 +44,7 @@ public class TreeNode {
 						temp = temp.NextQn;
 					}
 				}
-				if (temp.QnNum == 15) {
+				if (temp.QnNum == 16) {
 					if (temp.Unlocked == true) {
 						qnPrint.Add(temp.Qn);
 					}
@@ -66,13 +66,14 @@ public class TreeNode {
 						temp.setGUIBool();
 						sendToLog(temp.Qn,temp.Ans,suspect); // send the qn and answer to log and lock the qn
 						temp.Unlocked = false;
+						temp.isLogged = true;
 						return temp.Ans; // return the answer
 					}
 					else {
 						temp = temp.NextQn;
 					}
 				}
-				if (temp.QnNum == 15) {
+				if (temp.QnNum == 16) {
 					return temp.Ans;
 				}
 			}
