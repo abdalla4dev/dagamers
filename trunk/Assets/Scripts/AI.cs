@@ -83,7 +83,7 @@ public class AI : MonoBehaviour{
 					}
 					else {
 						question = "What were you doing around the time " + firstTime + ", when the Mr.Darcy is last seen?";
-						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + firstTime + " to " + secondTime + ".";
+						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " from " + firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
 				}
@@ -162,22 +162,24 @@ public class AI : MonoBehaviour{
 					if (tempAli.Count != 0) { // if got alibi
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
 							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[k].getAMActivity() + " from " + thirdTime + " to " + fourthTime + "?";
+								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + "?";
 								List<SuspectEnum> checkAli = new List<SuspectEnum>();
 								checkAli = GenerateTimeline.timeline[k].getAMAlibi();
-								if (checkAli[0] == (SuspectEnum)j) {
-									if (GenerateTimeline.timeline[j].isTrueAMActivity()) {
-										answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getAMActivity() + " and was with me.";
-										temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
+								if (checkAli.Count > 0) {
+									if (checkAli[0] == (SuspectEnum)j) {
+										if (GenerateTimeline.timeline[j].isTrueAMActivity()) {
+											answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getAMActivity() + " and was with me.";
+											temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
+										}
+										else {
+											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getTrueAMActivity() + ".";
+											temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
+										}
 									}
 									else {
-										answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getAMActivity() + ".";
+										answer = "No, " + AI.returnName(j) + " was not with me.";
 										temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 									}
-								}
-								else {
-									answer = "No, " + AI.returnName(j) + " was not with me.";
-									temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 								}
 							}
 						}
@@ -204,26 +206,28 @@ public class AI : MonoBehaviour{
 			else if (i == 13) { // question 13
 				for (int j=0;j<Globals.numSuspects;j++) {
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
-					tempAli = GenerateTimeline.timeline[j].getDMAlibi();
+					tempAli = GenerateTimeline.timeline[j].getBMAlibi();
 					if (tempAli.Count != 0) { // if got alibi
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
 							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[k].getDMActivity() + " from " + firstTime + " to " + secondTime + "?";
+								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[j].getBMActivity() + " from " + firstTime + " to " + secondTime + "?";
 								List<SuspectEnum> checkAli = new List<SuspectEnum>();
-								checkAli = GenerateTimeline.timeline[k].getDMAlibi();
-								if (checkAli[0] == (SuspectEnum)j) {
-									if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
-										answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + " and was with me.";
-										temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
+								checkAli = GenerateTimeline.timeline[k].getBMAlibi();
+								if (checkAli.Count > 0) {
+									if (checkAli[0] == (SuspectEnum)j) {
+										if (GenerateTimeline.timeline[j].isTrueBMActivity()) {
+											answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getBMActivity() + " and was with me.";
+											temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
+										}
+										else {
+											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getTrueBMActivity() + ".";
+											temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
+										}
 									}
 									else {
-										answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + ".";
+										answer = "No, " + AI.returnName(j) + " was not with me.";
 										temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 									}
-								}
-								else {
-									answer = "No, " + AI.returnName(j) + " was not with me.";
-									temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 								}
 							}
 						}
@@ -237,22 +241,24 @@ public class AI : MonoBehaviour{
 					if (tempAli.Count != 0) { // if got alibi
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
 							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[k].getBMActivity() + " from " + secondTime + " to " + thirdTime + "?";
+								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[j].getDMActivity() + " from " + secondTime + " to " + thirdTime + "?";
 								List<SuspectEnum> checkAli = new List<SuspectEnum>();
-								checkAli = GenerateTimeline.timeline[k].getBMAlibi();
-								if (checkAli[0] == (SuspectEnum)j) {
-									if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
-										answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + " and was with me.";
-										temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
+								checkAli = GenerateTimeline.timeline[k].getDMAlibi();
+								if (checkAli.Count > 0) {
+									if (checkAli[0] == (SuspectEnum)j) {
+										if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
+											answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getDMActivity() + " and was with me.";
+											temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
+										}
+										else {
+											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getTrueDMActivity() + ".";
+											temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
+										}
 									}
 									else {
-										answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + ".";
+										answer = "No, " + AI.returnName(j) + " was not with me.";
 										temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 									}
-								}
-								else {
-									answer = "No, " + AI.returnName(j) + " was not with me.";
-									temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 								}
 							}
 						}

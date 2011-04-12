@@ -239,6 +239,18 @@ public class Person {
 		}
 	}
 	
+	public string getTrueAMActivity() {
+		return truthTimeline[2].activity;
+	}
+	
+	public string getTrueBMActivity() {
+		return truthTimeline[0].activity;
+	}
+	
+	public string getTrueDMActivity() {
+		return truthTimeline[1].activity;
+	}
+	
 	public string getAMActivity() {
 		if (shouldReturnLies[2]) {	
 			return falseTimeline[2].activity;
@@ -276,7 +288,7 @@ public class Person {
 	}
 	
 	public bool isTrueBMActivity() {
-		if (truthTimeline[0].activity == falseTimeline[0].activity) {
+		if (!shouldReturnLies[0]) {
 			return true;
 		}
 		else {
@@ -285,7 +297,7 @@ public class Person {
 	}
 	
 	public bool isTrueDMActivity() {
-		if (truthTimeline[1].activity == falseTimeline[1].activity) {
+		if (!shouldReturnLies[1]) {
 			return true;
 		}
 		else {
@@ -294,7 +306,7 @@ public class Person {
 	}
 	
 	public bool isTrueAMActivity() {
-		if (truthTimeline[2].activity == falseTimeline[2].activity) {
+		if (!shouldReturnLies[2]) {
 			return true;
 		}
 		else {
