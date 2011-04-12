@@ -89,6 +89,19 @@ public class GenerateTimeline : MonoBehaviour
 	private static double currentTime;
 	public static double displayTime;
 	
+	
+	// for bloodstain
+	public GameObject stainKitchen;
+	public GameObject handprintKitchen;
+	public GameObject stainLivingRoom;
+	public GameObject handprintLivingRoom;
+	public GameObject stainMasterBedroom;
+	public GameObject handprintMasterBedroom;
+	public GameObject stainGarden;
+	public GameObject handprintGarden;
+	public GameObject stainMasterToilet;
+	public GameObject handprintMasterToilet;
+	
 	void Start() {
 		initializeContradictionNum();
 		initializeWeaponLocations();
@@ -153,8 +166,8 @@ public class GenerateTimeline : MonoBehaviour
 			case GameDiffEnum.Hard: GenerateMediumGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
 		}
 		
-		Bloodstain.putStains(victim.getDuringMurderRoom());
-		startPara = createStartPara(victim.getDuringMurderRoom().ToString());
+		showStain(victim.getDuringMurderRoom());
+		startPara = createStartPara();
 		
 		
 		//*********** Not working anymore, cause no more redherring
@@ -991,5 +1004,34 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void showTimer(int windowID) {
 		GUILayout.Label(String.Format("{00:00}", currentTime));
+	}
+	
+	void showStain(RmEnum room)
+	{
+		switch(room)
+		{
+		case RmEnum.Kitchen:
+			stainKitchen.renderer.enabled = true;
+			handprintKitchen.renderer.enabled = true;
+			break;
+		case RmEnum.Living_Room:
+			stainLivingRoom.renderer.enabled = true;
+			handprintLivingRoom.renderer.enabled = true;
+			break;
+		case RmEnum.Master_Bedroom:
+			stainMasterBedroom.renderer.enabled = true;
+			handprintMasterBedroom.renderer.enabled = true;
+			break;
+		case RmEnum.Garden:
+			stainGarden.renderer.enabled = true;
+			handprintGarden.renderer.enabled = true;
+			break;
+		case RmEnum.Toilet_in_Master_Bedroom:
+			stainMasterToilet.renderer.enabled = true;
+			handprintMasterToilet.renderer.enabled = true;
+			break;
+		default:
+				break;
+		}
 	}
 }

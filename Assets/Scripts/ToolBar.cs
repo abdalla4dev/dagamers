@@ -59,9 +59,9 @@ public class ToolBar : MonoBehaviour {
 		for (int i=0; i< Globals.numSuspects; i++) {
 			suspectAnswers.Add(Enum.GetName(typeof(SuspectEnum), i));
 		}
-		/*for (int i=0; i<Globals.numRooms; i++) {
-			roomAnswers.Add(Enum.GetName(typeof(Rooms),i));
-		}*/
+		for (int i=0; i<Globals.numRooms; i++) {
+			roomAnswers.Add(Enum.GetName(typeof(RmEnum),i));
+		}
 		for (int i=0; i<Globals.numWeapons; i++) {
 			weaponAnswers.Add(Enum.GetName(typeof(WpnEnum),i));
 		}
@@ -351,12 +351,12 @@ public class ToolBar : MonoBehaviour {
 		suspectSelection = SelectList(suspectAnswers ,suspectSelection, OnCheckboxItemGUI);
 		GUILayout.Label("using ...");
 		weaponSelection = SelectList(weaponAnswers ,weaponSelection, OnCheckboxItemGUI);
-		//GUILayout.Label("in ...");
-		//roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
+		GUILayout.Label("in ...");
+		roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
 		if (GUILayout.Button("Solve!") ) {
-			string place_answer = GenerateTimeline.murderer.getDuringMurderRoom().ToString(); //not used for answering, coz there's no questions about place of murder
 			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
-				GenerateTimeline.murderer.name.ToString() == suspectSelection) {
+				GenerateTimeline.murderer.name.ToString() == suspectSelection &&
+				GenerateTimeline.murderer.getDuringMurderRoom().ToString() == roomSelection) {
 				//check if game solved
 				solved = true;
 				
@@ -364,7 +364,7 @@ public class ToolBar : MonoBehaviour {
 				solveAttempts++;
 				solvedAttempted = true;
 				GenerateTimeline.minCount+=5;
-				Debug.Log("Answer is " + place_answer + " " + GenerateTimeline.murderWeap.ToString() + " " + GenerateTimeline.murderer.name.ToString());
+				Debug.Log("Answer is " + GenerateTimeline.murderer.getDuringMurderRoom().ToString() + " " + GenerateTimeline.murderWeap.ToString() + " " + GenerateTimeline.murderer.name.ToString());
 			}
 		}
 		GUILayout.Label("Note: a 5 minute penalty will be imposed if you make a wrong/wild guess.");
