@@ -25,10 +25,10 @@ function LateUpdate () {
 		{
 	    	theParticles[i].color = Color.yellow;
     		// We have so much energy, we must go boom
-	    	if (explosionObject)
-		    	Transform.Instantiate(explosionObject, 
-		    		theParticles[i].position,  
-		    		Quaternion.identity );
+	    	//if (explosionObject)
+		    //	Transform.Instantiate(explosionObject, 
+		    //		theParticles[i].position,  
+		    //		Quaternion.identity );
 		
 		} else {
 			liveParticles[particlesToKeep++] = i;

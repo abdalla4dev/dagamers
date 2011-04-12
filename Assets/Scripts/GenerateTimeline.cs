@@ -867,8 +867,8 @@ public class GenerateTimeline : MonoBehaviour
 	private String createStartPara(String murderRoom)
 	{
 		String mRoom = murderRoom.Replace('_', ' ');
-		String s = "Mr. Darcy, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
-		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he/she murder with and when did he commit the murder.";
+		String s = "Welcome to DaDetective. \nMr. Darcy, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
+		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he/she murder with and when did he commit the murder. Hint: Characters may lie, explore the house to find factual clues. ";
 		return s;
 	}
 	
@@ -951,18 +951,28 @@ public class GenerateTimeline : MonoBehaviour
 	}
 		
 	// Create window to tell the story
-	private Rect windowRect = new Rect(200, 100, 400, 200);
-	private Rect timerRect = new Rect(Screen.width/2, 0, 60, 15); //450 for x
+	private Rect windowRect = new Rect(0, 0, Screen.width, Screen.height);
+	private Rect timerRect = new Rect(Screen.width/2, 0, 60, 30); //450 for x
 	bool displayWindow = true;
 	public GUIStyle windowStyle;
+	public GUIStyle boxStyle;
+	public GUIStyle timerStyle;
 	public GUISkin tabSkin;
-	
+	public Vector2 scrollPosition = Vector2.zero;
+	private float startX = (0.28f*Screen.width);
+	private float startY = (0.22f*Screen.height);
+	private float startWidth = (0.37f*Screen.width);
+	private float startHeight = (0.39f*Screen.height);
+	private Rect anotherWindowRect;
 	public static int minCount;
 	
 	void OnGUI() {
 		GUI.skin = tabSkin;
-		if (displayWindow == true)
-			windowRect = GUILayout.Window(5, windowRect, DoMyWindow, "Welcome to DaDetective", windowStyle);
+		anotherWindowRect =  new Rect(startX, startX, startWidth, startHeight);
+		if (displayWindow == true){
+			GUI.Box(windowRect,"",windowStyle);
+			anotherWindowRect = GUILayout.Window(55, anotherWindowRect, DoStoryWindow, "", boxStyle);
+		}
 		//timerRect = GUILayout.Window(6, timerRect, showTimer, "test", windowStyle);
 		if(currentTime>60*(minCount+1))
 		{
@@ -970,18 +980,20 @@ public class GenerateTimeline : MonoBehaviour
 			minCount++;
 			displayTime++;
 		}
-		GUI.Label(timerRect, "" + String.Format("{0:00}", minCount) + "." + String.Format("{0:00.00}", currentTime-(minCount*60)), windowStyle);
+		GUI.Label(timerRect, "" + String.Format("{00:00}", minCount) + "." + String.Format("{00:00}", currentTime-(minCount*60)), timerStyle);
 	}
 	
-	void DoMyWindow(int windowID) {
+	void DoStoryWindow(int windowID){
+		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.MaxHeight(startHeight));
 		GUILayout.Label(startPara);
+		GUILayout.EndScrollView();
         if (GUILayout.Button("Start Game!")){
 			displayWindow = !(displayWindow);
 			delayTime = Time.time;
 		}
-    }
+	}
 	
 	void showTimer(int windowID) {
-		GUILayout.Label(String.Format("{0:00.00}", currentTime));
+		GUILayout.Label(String.Format("{00:00}", currentTime));
 	}
 }
