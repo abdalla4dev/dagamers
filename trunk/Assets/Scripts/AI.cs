@@ -273,28 +273,28 @@ public class AI : MonoBehaviour{
 				}
 			}
 		}
-		
+		/*
 		for (int i=0;i<Globals.numSuspects;i++) {
 			string start;
 			string conse;
-			if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.angry) {
+			if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.angry) {
 				start = "I'm " + AI.returnName(i) + ". This better not be long.";
 				conse = "What? Why are you bothering me again?";
 			}
-			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.shy) {
+			else if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.shy) {
 				start = "...H...Hi... I'm " + AI.returnName(i) + "... What can I help you... with...?";
 				conse = "... Oh... it's you again....";
 			}
-			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.antisocial) {
+			else if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.antisocial) {
 				start = "... I'm " + AI.returnName(i) + "...";
 				conse = "...";
 			}
-			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.unhappy) {
+			else if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.unhappy) {
 				start = "(sob).... Yes? I'm" + AI.returnName(i) + ".";
 				conse = "Please, leave me alone! I have nothing more to say! (sob)";
 			}
 		}
-		
+		*/
 		temp.BFS();
 		temp.DFS();
 		return temp;
@@ -331,6 +331,7 @@ public class AI : MonoBehaviour{
 		else if (sus == 3) {
 			return "Maria";
 		}
+		return "";
 	}
 	
 	public static ArrayList HumanTriggered(int suspect) {
