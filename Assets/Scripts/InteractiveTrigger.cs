@@ -12,6 +12,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	public Texture2D logTex;
 	public Texture2D logBoxTex;
 	public GUISkin customSkin;
+	
+	public GUIStyle questionStyle;
 	//public AI AIlink;
 	
 	Texture2D windowTexture;
@@ -68,20 +70,21 @@ public class InteractiveTrigger : MonoBehaviour {
 			}
 			else{
 				
-				if(GUI.Button(new Rect((Screen.width - 405), (Screen.height - 225), 256, 32), questionTex)){
+				if(GUI.Button(new Rect((Screen.width - 435), (Screen.height - 198), 210, 35), questionTex)){
 					questionToggle = true;
 				}
-				else if(GUI.Button(new Rect((Screen.width - 205), (Screen.height - 225), 256, 32), logTex)){
+				else if(GUI.Button(new Rect((Screen.width - 190), (Screen.height - 198), 210, 35), logTex)){
 					questionToggle = false;
 				}
 				
 				//if(questionToggle){
 					//question window
-					GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 198), 439, 198), doWindow, windowTexture, GUILayout.Width(439), GUILayout.Height(198));
+					GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 148), 439, 168), doWindow, windowTexture, GUILayout.Width(439), GUILayout.Height(168));
+					//GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 167), 439, 167), doWindow, windowTexture, questionStyle, GUILayout(439), GUILayout(167));
 				//}
 				//else{
 					//log window
-					GUILayout.Window(11, new Rect((Screen.width - 439), (Screen.height - 198), 439, 198), logWindow, logBoxTex);
+					GUILayout.Window(11, new Rect((Screen.width - 439), (Screen.height - 148), 439, 168), logWindow, logBoxTex, GUILayout.Width(439), GUILayout.Height(168));
 				//}
 				if(callAns){
 					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
@@ -108,7 +111,8 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(questionToggle){
 			windowTexture = questionBoxTex;
 			ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
-			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(120), GUILayout.Width(365));
+			
+			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(125), GUILayout.Width(380));
 			//scrollPosition = GUI.BeginScrollView(new Rect((Screen.width - 409), (Screen.height - 188), 379, 160), scrollPosition, new Rect(0,0, 409, 300));
 			foreach (string item in myList) {
 				//if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 20), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
@@ -120,7 +124,6 @@ public class InteractiveTrigger : MonoBehaviour {
 						//ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
 						ans = ans.Replace(" i ", " I ");
 						callAns = true;
-						Debug.Log("CALLING FOR ANS" + ans);
 					}
 				}
 			}
@@ -134,7 +137,7 @@ public class InteractiveTrigger : MonoBehaviour {
 			List<string[]> logText = AI.logTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
 			String text;
 			
-			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(120), GUILayout.Width(365));
+			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(125), GUILayout.Width(380));
 			for(int i = 0; i < logText.Count; i++){
 				
 				//the questions in log
