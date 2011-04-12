@@ -38,8 +38,10 @@ public class MenuButton : MonoBehaviour {
 			gamePause = false;
 			//mouseControl = true;
 		}
-		
-		if(GUILayout.Button("Quit")){
+		if(GUILayout.Button("Return to Main Menu")){
+			Application.LoadLevel("startmenu");
+		}	
+		if(GUILayout.Button("Quit Game")){
 			Application.Quit();
 		}
 	}
