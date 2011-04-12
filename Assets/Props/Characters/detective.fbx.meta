@@ -42,6 +42,11 @@ ModelImporter:
         lastFrame: 168
         loop: 0
         wrapMode: 0
+      stop:
+        firstFrame: 1
+        lastFrame: 1
+        loop: 0
+        wrapMode: 0
   nodeInfo:
     Bip001 R Thigh:
     - 100000
@@ -229,3 +234,4 @@ AssetImporter:
     7400012: walk //// detective
     7400014: jump_pose //// detective
     7400016: jump //// detective
+    7400018: stop //// detective

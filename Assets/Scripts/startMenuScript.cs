@@ -25,13 +25,13 @@ public class startMenuScript : MonoBehaviour {
 	}
 	
 	void OnMouseDown () {
-		if(buttonNumber == 1){
+		if(buttonNumber == 1){ // Start
 			Application.LoadLevel("LoadingScreen"); 
 		}
-		else if (buttonNumber == 555){
+		else if (buttonNumber == 2){ // Difficulty
 			Application.LoadLevel("LoadingScreen"); 
 		}
-		else {
+		else { // 3 = quit
 			var isWebPlayer = (Application.platform == RuntimePlatform.OSXWebPlayer || Application.platform == RuntimePlatform.WindowsWebPlayer);
 			if (!isWebPlayer)
 			{

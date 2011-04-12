@@ -30,7 +30,12 @@ public class characterPaths : MonoBehaviour {
 			// for animation walking
 			iTween.Pause(gameObject,"MoveTo");
 			iTween.LookTo(gameObject, iTween.Hash("looktarget", player.transform, "time", 1));
-			character.animation.Stop();
+			if (characterName == "theDaughter"){
+				character.animation.CrossFade("idle");
+			}
+			else {
+				character.animation.Stop();
+			}
 			isStopped = true;
 		}
 	}

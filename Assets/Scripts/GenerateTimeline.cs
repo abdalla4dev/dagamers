@@ -187,14 +187,6 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void Update()
 	{
-		//Debug.Log(Time.time);
-		//Debug.Log(ToolBar.solveAttempts);
-		//Debug.Log(delayTime);
-		/*counter++;
-		if(counter==5)
-			Time.timeScale = 0;
-		if(counter==10)
-			Time.timeScale = 1;*/
 		if(MenuButton.gamePause || ToolBar.solved)
 			Time.timeScale = 0;
 		else Time.timeScale = 1;
@@ -202,7 +194,6 @@ public class GenerateTimeline : MonoBehaviour
 			currentTime = 0;
 		else
 			currentTime = Time.time + ToolBar.solveAttempts*300 - delayTime;
-		Debug.Log(currentTime);
 	}
 	
 	public static string scoreSystem()
