@@ -104,7 +104,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void Start() {
 		Debug.Log("WHY" + startMenuScript.diffLevel);
-		difficulty = startMenuScript.diffLevel;
+		difficulty = GameDiffEnum.Medium; //startMenuScript.diffLevel;
 		initializeContradictionNum();
 		initializeWeaponLocations();
 		SuspectEnum murdererEnum = genMurderer();
@@ -409,6 +409,9 @@ public class GenerateTimeline : MonoBehaviour
 					WpnEnum.None); //saw the murderer "acquiring murder weapon"
 			
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[1]].getBeforeMurderFact(), timeline[relationshipPairing[1]].name));
+			
+				timeline[relationshipPairing[0]].setBMFakeAlibi(timeline[relationshipPairing[1]].name);
+				timeline[relationshipPairing[1]].setBMAlibi(timeline[relationshipPairing[0]].name);
 		
 				//normal, can be doing anything.
 				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
@@ -431,6 +434,10 @@ public class GenerateTimeline : MonoBehaviour
 					WpnEnum.None); //did not see the murderer in where he claimed to be, and doing what he claimed to be doing
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[1]].getDuringMurderFact(), timeline[relationshipPairing[1]].name));
 			
+				timeline[relationshipPairing[0]].setDMFakeAlibi(timeline[relationshipPairing[1]].name);
+				timeline[relationshipPairing[1]].setDMAlibi(timeline[relationshipPairing[0]].name);
+				
+				//non contradictions
 				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 				timeline[relationshipPairing[1]].setBeforeMurder(deathTime, 
 					randomRoom, 
@@ -451,6 +458,10 @@ public class GenerateTimeline : MonoBehaviour
 					WpnEnum.None); // saw the murderer "disposing murder weapon"
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[1]].getAfterMurderFact(), timeline[relationshipPairing[1]].name));
 			
+				timeline[relationshipPairing[0]].setAMFakeAlibi(timeline[relationshipPairing[1]].name);
+				timeline[relationshipPairing[1]].setAMAlibi(timeline[relationshipPairing[0]].name);
+				
+				//non contradictions
 				randomRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
 				timeline[relationshipPairing[1]].setDuringMurder(deathTime, 
 					randomRoom, 
@@ -510,6 +521,12 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[relationshipPairing[2]].setReturnLieDM();
 				timeline[relationshipPairing[2]].setReturnLieAM();
 			
+				
+				timeline[relationshipPairing[2]].setDMFakeAlibi(timeline[relationshipPairing[3]].name);
+				timeline[relationshipPairing[3]].setDMAlibi(timeline[relationshipPairing[2]].name);
+				timeline[relationshipPairing[2]].setAMFakeAlibi(timeline[relationshipPairing[3]].name);
+				timeline[relationshipPairing[3]].setAMAlibi(timeline[relationshipPairing[2]].name);
+			
 				//add fact
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[2]].getDuringMurderFact(), timeline[relationshipPairing[2]].name));
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name));
@@ -562,7 +579,12 @@ public class GenerateTimeline : MonoBehaviour
 					WpnEnum.None);
 				timeline[relationshipPairing[2]].setReturnLieBM();
 				timeline[relationshipPairing[2]].setReturnLieAM();
-			
+				
+				timeline[relationshipPairing[2]].setBMFakeAlibi(timeline[relationshipPairing[3]].name);
+				timeline[relationshipPairing[3]].setBMAlibi(timeline[relationshipPairing[2]].name);
+				timeline[relationshipPairing[2]].setAMFakeAlibi(timeline[relationshipPairing[3]].name);
+				timeline[relationshipPairing[3]].setAMAlibi(timeline[relationshipPairing[2]].name);
+				
 				//add fact
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[2]].getBeforeMurderFact(), timeline[relationshipPairing[2]].name));
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name));
@@ -615,6 +637,12 @@ public class GenerateTimeline : MonoBehaviour
 					WpnEnum.None);
 				timeline[relationshipPairing[2]].setReturnLieBM();
 				timeline[relationshipPairing[2]].setReturnLieDM();
+			
+				timeline[relationshipPairing[2]].setBMFakeAlibi(timeline[relationshipPairing[3]].name);
+				timeline[relationshipPairing[3]].setBMAlibi(timeline[relationshipPairing[2]].name);
+				timeline[relationshipPairing[2]].setDMFakeAlibi(timeline[relationshipPairing[3]].name);
+				timeline[relationshipPairing[3]].setDMAlibi(timeline[relationshipPairing[2]].name);
+			
 				//facts
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[2]].getBeforeMurderFact(), timeline[relationshipPairing[2]].name));
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[2]].getDuringMurderFact(), timeline[relationshipPairing[2]].name));
