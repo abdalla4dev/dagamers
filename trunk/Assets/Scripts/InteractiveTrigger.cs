@@ -42,6 +42,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	float qnButtonTop = 20;
 	
+	bool spoken = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -64,7 +65,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = customSkin;
 		if (displayText) {
-			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
 				//GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
 				GUILayout.Window(3, new Rect(Screen.width - 270, 100, 262, 145), weaponWindow, "" + weapon, GUILayout.Width(262), GUILayout.Height(145));
 			}
@@ -91,17 +92,33 @@ public class InteractiveTrigger : MonoBehaviour {
 				}
 			}
 		}
-
+		
+		if(Input.GetMouseButtonDown(0)){
+			if(withinBoundary == true && actionKey == false && overObject == true){ // Colin commented out overObject == true to test
+				actionKey = true;
+				displayText = true;
+				spoken = false;
+			}	
+		}
 	}
 	
 	void weaponWindow(int windowID){
+		string weaponStr; // to store the string
 		if(isWeapon){
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
-			GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon"), GUILayout.Width(260), GUILayout.Height(160));
+			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
+			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(160));
 		}
 		else{
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
-			GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("CCTV"));
+			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("CCTV");
+			GUILayout.Box(weaponStr);
+		}
+		
+		// VoiceSpeaker
+		if(!spoken){
+			VoiceSpeaker.Talk(weaponStr);
+			spoken = true;	
 		}
 	}
 	
@@ -181,7 +198,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	void OnMouseEnter(){
 		overObject = true;
 		//changing all the material to be yellow upon mouse hover, once the player is close to the object
-		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
 			//changing all the material to be yellow upon mouse hover, once the player is close to the object
 			if(withinBoundary){
 				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
@@ -194,13 +211,17 @@ public class InteractiveTrigger : MonoBehaviour {
 	void OnMouseExit(){
 		overObject = false;
 		//if user did not select the object
-		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
 			//if user did not select the object
 				//changes back to the original material upon mouse exit
 				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
 					targetObject.renderer.materials[i].color = originalColor[i];
 				}
 		}
+	}
+	
+	void OnMouseDown(){
+
 	}
 	
 	// Update is called once per frame
@@ -214,13 +235,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		}
 	
 		TriggerToggle();
-		
-		if(Input.GetMouseButtonDown(0)){
-			if(withinBoundary == true && actionKey == false && overObject == true){
-				actionKey = true;
-				displayText = true;
-			}
-		}
+	
 		
 		if(!(withinBoundary)){
 			actionKey = false;
