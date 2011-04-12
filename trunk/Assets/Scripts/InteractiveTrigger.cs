@@ -25,6 +25,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	bool overObject = false;
 	bool questionToggle = true;
 	bool callAns = false;
+	bool isWeapon;
 	
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
@@ -45,12 +46,14 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
 			originalColor = new Color[targetObject.renderer.materials.Length];
 			weapon = targetObject.name;
+			isWeapon = true;
 			for(int i = 0; i < targetObject.renderer.materials.Length; i++){
 				originalColor[i] = targetObject.renderer.materials[i].color;
 			}
 		}
 		else{
 			suspect = targetObject.name;
+			isWeapon = false;
 		}
 		
 		windowTexture = questionBoxTex;
@@ -60,7 +63,8 @@ public class InteractiveTrigger : MonoBehaviour {
 		GUI.skin = customSkin;
 		if (displayText) {
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-				GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
+				//GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
+				GUILayout.Window(3, new Rect(Screen.width - 270, 100, 262, 145), weaponWindow, "" + weapon, GUILayout.Width(262), GUILayout.Height(145));
 			}
 			else{
 				
@@ -88,8 +92,14 @@ public class InteractiveTrigger : MonoBehaviour {
 	}
 	
 	void weaponWindow(int windowID){
-		weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
-		GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon"));
+		if(isWeapon){
+			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
+			GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon"), GUILayout.Width(260), GUILayout.Height(160));
+		}
+		else{
+			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
+			GUILayout.Box(GenerateTimeline.wpnFacts[weaponEnum].revealInfo("CCTV"));
+		}
 	}
 	
 	void doWindow(int windowID){
@@ -111,46 +121,10 @@ public class InteractiveTrigger : MonoBehaviour {
 					callAns = true;
 				}
 			}
-			//GUI.EndScrollView();
 			GUILayout.EndScrollView();
 		}
-		//}
-		//else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
-			//questionToggle = true;
-//		else{
-//			windowTexture = logBoxTex;
-//		}
-		//}
 	}
-	
-	void dialogueWindow(int windowID){
-		ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
-		if(GUI.Button(new Rect(30, 8, 256, 20), questionTex)){
-			print ("Got a click in window " + windowID);
-			//GUI.BringWindowToFront(5);
-			//ArrayList myList = AI.HumanTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect));
-			
-			if(GUI.Button(new Rect(30, 40, 450, 40), "I am a button")){}
-//			foreach (string item in myList) {
-//				numQn++;
-//				if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 40), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
-//					s = item;
-//					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
-//					ans = ans.Replace('_', ' ');
-//					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
-//					ans = ans.Replace(" i ", " I ");
-//					numQn--;
-//					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150, 300, 100), ans);
-//				}
-//			}
-			questionToggle = true;
-		}
-		else if(GUI.Button(new Rect(265, 8, 256, 32), logTex)){
-			print ("Got a click in window " + windowID);
-			questionToggle = false;
-		}
-	}
-	
+
 	void logWindow(int windowID){
 		if(!questionToggle){
 			
@@ -158,7 +132,6 @@ public class InteractiveTrigger : MonoBehaviour {
 			String text;
 			
 			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(120), GUILayout.Width(365));
-			//GUILayout.Label("Sorry, still under construction!");
 			for(int i = 0; i < logText.Count; i++){
 				GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
 				String ansTemp = logText[i][0];
@@ -192,7 +165,6 @@ public class InteractiveTrigger : MonoBehaviour {
 			displayText = false;
 			actionKey = false;
 			callAns = false;
-//			called = true;
 		}
 	}
 	
@@ -207,16 +179,16 @@ public class InteractiveTrigger : MonoBehaviour {
 				}
 			}
 		}
-		if(withinBoundary){
-			Rect labelPos;
-			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
-				labelPos = new Rect(screenPos.x, (Screen.height - screenPos.y),300,100);
-			}
-			else{
-				labelPos = new Rect(screenPos.x + 150, (Screen.height - screenPos.y),300,100);
-			}
-			GUI.Label(labelPos, targetObject.name);
-		}
+//		if(withinBoundary){
+//			Rect labelPos;
+//			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
+//				labelPos = new Rect(screenPos.x, (Screen.height - screenPos.y),300,100);
+//			}
+//			else{
+//				labelPos = new Rect(screenPos.x + 150, (Screen.height - screenPos.y),300,100);
+//			}
+//			GUI.Label(labelPos, targetObject.name);
+//		}
 		
 	}
 	

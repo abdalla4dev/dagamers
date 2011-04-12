@@ -10,7 +10,7 @@ public class MenuButton : MonoBehaviour {
 	
 	public static bool gamePause;
 	
-	public MouseLook mouseControl;
+	//public MouseLook mouseControl;
 	//public Controller mouseControl2;
 	
 	//public static bool mouseControl;
@@ -18,7 +18,7 @@ public class MenuButton : MonoBehaviour {
 	bool toggle = false;
 	// Use this for initialization
 	void Start () {
-		mouseControl = gameObject.GetComponent<MouseLook>();
+		//mouseControl = gameObject.GetComponent<MouseLook>();
 		//mouseControl2 = gameObject.GetComponent<Controller>();
 	}
 	
@@ -33,7 +33,7 @@ public class MenuButton : MonoBehaviour {
 			gamePause = true;
 			GUILayout.Window(21, new Rect((Screen.width/2) - 75, (Screen.height/2) - 100, 150, 200), menuWindow, "");
 		//	mouseControl2.SendMessage("toggle");
-			mouseControl.SendMessage("ControlToggle");
+			//mouseControl.SendMessage("ControlToggle", false);
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class MenuButton : MonoBehaviour {
 		if(GUILayout.Button("Resume")){
 			toggle = false;
 			gamePause = false;
-			mouseControl.SendMessage("ControlToggle");
+		//	mouseControl.SendMessage("ControlToggle", true);
 		//	mouseControl2.SendMessage("toggle");
 		}
 		
