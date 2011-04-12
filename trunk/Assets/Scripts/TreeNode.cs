@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TreeNode {
+public class TreeNode : MonoBehaviour {
 	
 	//num of suspects
 	int numOfSus;
@@ -26,18 +26,24 @@ public class TreeNode {
 		QnNode temp = new QnNode(null);
 		ArrayList qnPrint = new ArrayList();
 		
-		for (int i=0;i<4;i++) { // search for the person first
+		for (int i=0;i<16;i++) {
+			qnPrint.Add("temp");
+		}
+		
+		for (int i=0;i<4;i++) {// search for the person first
+			Debug.Log(i);
+			Debug.Log(startNode[i].QnNum);
 			temp = startNode[i];
 			if (temp.Sus == suspect) { // if got the correct person
 				while (temp.NextQn != null) { 
 					if (temp.QnNum == 6) {
 						if (temp.Unlocked && temp.UnlockedTwo) {
-							qnPrint.Add(temp.Qn);
+							qnPrint = addAndArrange(qnPrint,temp);
 						}
 						temp = temp.NextQn;
 					}
 					else if (temp.Unlocked == true) { //check if question is unlocked
-						qnPrint.Add(temp.Qn); // add unlocked qn to a Arraylist
+						qnPrint = addAndArrange(qnPrint,temp); // add unlocked qn to a Arraylist
 						temp = temp.NextQn;
 					}
 					else {
@@ -46,7 +52,7 @@ public class TreeNode {
 				}
 				if (temp.QnNum == 16) {
 					if (temp.Unlocked == true) {
-						qnPrint.Add(temp.Qn);
+						qnPrint = addAndArrange(qnPrint,temp);
 					}
 				}
 			}
@@ -74,12 +80,83 @@ public class TreeNode {
 					}
 				}
 				if (temp.QnNum == 16) {
+					sendToLog(temp.Qn,temp.Ans,suspect); // send the qn and answer to log and lock the qn
+					temp.Unlocked = false;
+					temp.isLogged = true;
 					return temp.Ans;
 				}
 			}
 		}
 		
 		return "0";
+	}
+	
+	public ArrayList addAndArrange(ArrayList printQn, QnNode temp) {
+		if (temp.QnNum == 1) {
+			printQn.RemoveAt(0);
+			printQn.Insert(0,temp.Qn);
+		}
+		else if (temp.QnNum == 2) {
+			printQn.RemoveAt(1);
+			printQn.Insert(1,temp.Qn);
+		}
+		else if (temp.QnNum == 3) {
+			printQn.RemoveAt(2);
+			printQn.Insert(2,temp.Qn);
+		}
+		else if (temp.QnNum == 5) {
+			printQn.RemoveAt(3);
+			printQn.Insert(3,temp.Qn);
+		}
+		else if (temp.QnNum == 8) {
+			printQn.RemoveAt(4);
+			printQn.Insert(4,temp.Qn);
+		}
+		else if (temp.QnNum == 4) {
+			printQn.RemoveAt(5);
+			printQn.Insert(5,temp.Qn);
+		}
+		else if (temp.QnNum == 7) {
+			printQn.RemoveAt(6);
+			printQn.Insert(6,temp.Qn);
+		}
+		else if (temp.QnNum == 10) {
+			printQn.RemoveAt(7);
+			printQn.Insert(7,temp.Qn);
+		}
+		else if (temp.QnNum == 6) {
+			printQn.RemoveAt(8);
+			printQn.Insert(8,temp.Qn);
+		}
+		else if (temp.QnNum == 9) {
+			printQn.RemoveAt(9);
+			printQn.Insert(9,temp.Qn);
+		}
+		else if (temp.QnNum == 12) {
+			printQn.RemoveAt(10);
+			printQn.Insert(10,temp.Qn);
+		}
+		else if (temp.QnNum == 11) {
+			printQn.RemoveAt(11);
+			printQn.Insert(11,temp.Qn);
+		}
+		else if (temp.QnNum == 13) {
+			printQn.RemoveAt(12);
+			printQn.Insert(12,temp.Qn);
+		}
+		else if (temp.QnNum == 14) {
+			printQn.RemoveAt(13);
+			printQn.Insert(13,temp.Qn);
+		}
+		else if (temp.QnNum == 15) {
+			printQn.RemoveAt(14);
+			printQn.Insert(14,temp.Qn);
+		}
+		else if (temp.QnNum == 16) {
+			printQn.RemoveAt(15);
+			printQn.Insert(15,temp.Qn);
+		}
+		return printQn;
 	}
 	
 	public void setUpLogList() {
