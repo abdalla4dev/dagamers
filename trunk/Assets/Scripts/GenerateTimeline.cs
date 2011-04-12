@@ -57,7 +57,7 @@ public class GenerateTimeline : MonoBehaviour
 	public static Person victim;
 	public static Person murderer;	
 	public static WpnEnum murderWeap;
-	public static RmEnum murderLoc;
+	//public static RmEnum murderLoc;
 	public static int deathTime; //24 hr clock. when murder was committed
 	public static int bodyFound; //24 hr clock. when body was found.
 	public static int befMurderTime;
