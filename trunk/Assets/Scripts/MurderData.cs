@@ -33,9 +33,9 @@ namespace MurderData
 			reasonHateFather.Add("because he has been thinking of donating all his wealth away.");
 			reasonHateFather.Add("because he seems to have had a mistress lately.");
 			
-			reasonMaidHateFather.Add("because he has been giving me alot of ridiculous tasks lately.");
-			reasonMaidHateFather.Add("because he caught me stealing money recently.");
-			reasonMaidHateFather.Add("because he has been very critical of my work these days.");
+			reasonMaidHateFather.Add("because he has been giving her alot of ridiculous tasks lately.");
+			reasonMaidHateFather.Add("because he caught her stealing money recently.");
+			reasonMaidHateFather.Add("because he has been very critical of her work these days.");
 		}
 		
 		public static RmEnum randRoom(RmEnum rm) {

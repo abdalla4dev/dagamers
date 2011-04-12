@@ -53,8 +53,14 @@ public class AI : MonoBehaviour{
 			else if (i == 2) { // question 2
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "When and where did you last see Mr. Darcy?";
-					answer = "I last saw him at " + firstTime + " in the " + GenerateTimeline.victim.getBMPlace() + ".";
-					temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
+					if (GenerateTimeline.timeline[j].isLastSaw()) {
+						answer = "I last saw him at " + firstTime + " in the " + GenerateTimeline.victim.getBMPlace() + ".";
+						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
+					}
+					else {
+						answer = "I last saw him way before the murder timing, so I do not think it will be of help.";
+						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
+					}
 				}
 			}
 			else if (i == 3) { // question 3
@@ -90,7 +96,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 5) { // question 5
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "You are " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + " at...?";
+					question = "You were " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + " at...?";
 					answer = "I was at " + GenerateTimeline.timeline[j].getAMPlace() + ".";
 					temp.setQnNode(5,question,answer,j,false,true,'n',30+j);
 				}
@@ -112,14 +118,14 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 7) { // question 7
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "You are " + GenerateTimeline.timeline[j].getBMActivity()+ " from " + firstTime + " to " + secondTime + " at...?";
+					question = "You were " + GenerateTimeline.timeline[j].getBMActivity()+ " from " + firstTime + " to " + secondTime + " at...?";
 					answer = "I was at " + GenerateTimeline.timeline[j].getBMPlace() + ".";
 					temp.setQnNode(7,question,answer,j,false,true,'n',40+j);
 				}
 			}
 			else if (i == 8) { // question 8
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can anybody be your alibi for the time period from " + thirdTime + " to " + fourthTime + "?";
+					question = "Could anybody be your alibi for the time period from " + thirdTime + " to " + fourthTime + "?";
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
 					tempAli = GenerateTimeline.timeline[j].getAMAlibi();
 					if (tempAli.Count == 0) {
@@ -135,14 +141,14 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 9) { // question 9
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Where are you " + GenerateTimeline.timeline[j].getDMActivity() + " between " + secondTime + " and " + thirdTime + "?";
+					question = "Where were you " + GenerateTimeline.timeline[j].getDMActivity() + " between " + secondTime + " and " + thirdTime + "?";
 					answer = "I was at " + GenerateTimeline.timeline[j].getDMPlace() + ".";
 					temp.setQnNode(9,question,answer,j,false,true,'n',60+j);
 				}
 			}
 			else if (i == 10) { // question 10
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can anybody be your alibi for the time period from " + firstTime + " to " + secondTime + "?";
+					question = "Could anybody be your alibi for the time period from " + firstTime + " to " + secondTime + "?";
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
 					tempAli = GenerateTimeline.timeline[j].getBMAlibi();
 					if (tempAli.Count == 0) {
@@ -172,7 +178,7 @@ public class AI : MonoBehaviour{
 											temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 										}
 										else {
-											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getTrueAMActivity() + ".";
+											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was  not " + GenerateTimeline.timeline[j].getAMActivity() + ".";
 											temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 										}
 									}
@@ -189,7 +195,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 12) { // question 12
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "Can anybody be your alibi for the time period from " + secondTime + " to " + thirdTime + "?";
+					question = "Could anybody be your alibi for the time period from " + secondTime + " to " + thirdTime + "?";
 					List<SuspectEnum> tempAli = new List<SuspectEnum>();
 					tempAli = GenerateTimeline.timeline[j].getDMAlibi();
 					if (tempAli.Count == 0) {
@@ -220,7 +226,7 @@ public class AI : MonoBehaviour{
 											temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 										}
 										else {
-											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getTrueBMActivity() + ".";
+											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was not " + GenerateTimeline.timeline[j].getBMActivity() + ".";
 											temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 										}
 									}
@@ -233,6 +239,7 @@ public class AI : MonoBehaviour{
 						}
 					}
 				}
+				temp.moveToCurrNode();
 			}
 			else if (i == 14) { // question 14
 				for (int j=0;j<Globals.numSuspects;j++) {
@@ -251,7 +258,7 @@ public class AI : MonoBehaviour{
 											temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 										}
 										else {
-											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[j].getTrueDMActivity() + ".";
+											answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was not " + GenerateTimeline.timeline[j].getDMActivity() + ".";
 											temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 										}
 									}
@@ -273,7 +280,7 @@ public class AI : MonoBehaviour{
 					if (j == num) {
 						num++;
 					}
-					answer = "I think " + AI.returnName(num) + " really hates him, " + GenerateTimeline.timeline[num].getHateFather();
+					answer = "I think " + AI.returnName(num) + " really hated him, " + GenerateTimeline.timeline[num].getHateFather();
 					temp.setQnNode(15,question,answer,j,true,false,'n',0);
 					num++;
 					if (num == 4) {
@@ -281,28 +288,47 @@ public class AI : MonoBehaviour{
 					}
 				}
 			}
+			else if (i == 16) {
+				question = "who are you close to?";
+				for (int j=0;j<Globals.numSuspects;j++) {
+					if (GenerateTimeline.timeline[j].getLikeWho() == SuspectEnum.None) {
+						answer = "Nobody, really.";
+						temp.setQnNode(16,question,answer,j,true,false,'n',0);
+					}
+					else {
+						answer = "I like to hang out with " + AI.returnName((int)GenerateTimeline.timeline[j].getLikeWho()) + " recently.";
+						temp.setQnNode(16,question,answer,j,true,false,'n',0);
+					}
+				}
+			}
 		}
 		
-		/*for (int i=0;i<Globals.numSuspects;i++) {
-			string start;
-			string conse;
-			if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.angry) {
+		for (int i=0;i<Globals.numSuspects;i++) {
+			string start = "";
+			string conse = "";
+			if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.angry) {
 				start = "I'm " + AI.returnName(i) + ". This better not be long.";
 				conse = "What? Why are you bothering me again?";
 			}
-			else if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.shy) {
+			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.shy) {
 				start = "...H...Hi... I'm " + AI.returnName(i) + "... What can I help you... with...?";
 				conse = "... Oh... it's you again....";
 			}
-			else if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.antisocial) {
+			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.antisocial) {
 				start = "... I'm " + AI.returnName(i) + "...";
 				conse = "...";
 			}
-			else if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.unhappy) {
+			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.unhappy) {
 				start = "(sob).... Yes? I'm" + AI.returnName(i) + ".";
 				conse = "Please, leave me alone! I have nothing more to say! (sob)";
 			}
-		}*/
+			else {
+				start = "Hello I'm " + AI.returnName(i) + ". Please to meet you.";
+				conse = "Is there anything else you need to ask me?";
+			}
+			startingConvo.Add(start);
+			conseConvo.Add(conse);
+		}
 		temp.BFS();
 		temp.DFS();
 		return temp;
