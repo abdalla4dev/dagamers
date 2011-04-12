@@ -4,16 +4,15 @@ using MurderData;
 
 public class Bloodstain : MonoBehaviour {
 	
-	public GameObject stainKitchen;
-	public GameObject stainLivingRoom;
-	public GameObject stainMasterBedroom;
-	public GameObject stainGarden;
-	public GameObject stainMasterToilet;
-	
+		public GameObject stainKitchen;
 	public GameObject handprintKitchen;
+	public GameObject stainLivingRoom;
 	public GameObject handprintLivingRoom;
+	public GameObject stainMasterBedroom;
 	public GameObject handprintMasterBedroom;
+	public GameObject stainGarden;
 	public GameObject handprintGarden;
+	public GameObject stainMasterToilet;
 	public GameObject handprintMasterToilet;
 
 	void Start () {
@@ -24,36 +23,5 @@ public class Bloodstain : MonoBehaviour {
 	
 	}
 	
-	public static putStains(RmEnum room){
-		showStain(RmEnum room);
-	}
-	
-	void showStain(RmEnum room)
-	{
-		switch(room)
-		{
-		case RmEnum.Kitchen:
-			stainKitchen.renderer.enabled = true;
-			handprintKitchen.renderer.enabled = true;
-			break;
-		case RmEnum.Living_Room:
-			stainLivingRoom.renderer.enabled = true;
-			handprintLivingRoom.renderer.enabled = true;
-			break;
-		case RmEnum.Master_Bedroom:
-			stainMasterBedroom.renderer.enabled = true;
-			handprintMasterBedroom.renderer.enabled = true;
-			break;
-		case RmEnum.Garden:
-			stainGarden.renderer.enabled = true;
-			handprintGarden.renderer.enabled = true;
-			break;
-		case RmEnum.Toilet_in_Master_Bedroom:
-			stainMasterToilet.renderer.enabled = true;
-			handprintMasterToilet.renderer.enabled = true;
-			break;
-		default:
-				break;
-		}
-	}
+
 }
