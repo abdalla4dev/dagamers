@@ -21,9 +21,9 @@ var inputJump : boolean = false;
 
 class CharacterMotorMovement {
 	// The maximum horizontal speed when moving
-	var maxForwardSpeed : float = 10.0;
-	var maxSidewaysSpeed : float = 10.0;
-	var maxBackwardsSpeed : float = 10.0;
+	var maxForwardSpeed : float = 8.0;
+	var maxSidewaysSpeed : float = 8.0;
+	var maxBackwardsSpeed : float = 8.0;
 	
 	// Curve for multiplying speed based on slope (negative = downwards)
 	var slopeSpeedMultiplier : AnimationCurve = AnimationCurve(Keyframe(-90, 1), Keyframe(0, 1), Keyframe(90, 0));
@@ -154,7 +154,7 @@ class CharacterMotorSliding {
 	
 	// How much can the player control the sliding direction?
 	// If the value is 0.5 the player can slide sideways with half the speed of the downwards sliding speed.
-	var sidewaysControl : float = 1.0;
+	var sidewaysControl : float = 0.5;
 	
 	// How much can the player influence the sliding speed?
 	// If the value is 0.5 the player can speed the sliding up to 150% or slow it down to 50%.
