@@ -10,6 +10,7 @@ public class QnNode {
 	protected int suspect; // for which person
 	protected bool unlockedNode;// is this unlocked?
 	protected bool unlockedNodeTwo;
+	protected bool sentToLog = false;
 	
 	protected List<QnNode> nextNodesList = new List<QnNode>(); // link to the next nodes that this qn can unlock
 	protected QnNode nextQuestion; //link to the next question
@@ -72,6 +73,15 @@ public class QnNode {
 		}
 	}
 	
+	public bool isLogged {
+		get {
+			return sentToLog;
+		}
+		set {
+			sentToLog = value;
+		}
+	}
+	
 	public QnNode NextQn {
 		get {
 			return nextQuestion;
@@ -108,7 +118,9 @@ public class QnNode {
 		}
 		for (int i=0;i<nextNodesList.Count; i++) {
 			temp = nextNodesList[i];
-			temp.Unlocked = true;
+			if (!temp.isLogged) {
+				temp.Unlocked = true;
+			}
 			nextNodesList.RemoveAt(i);
 			nextNodesList.Insert(i,temp);
 		}
