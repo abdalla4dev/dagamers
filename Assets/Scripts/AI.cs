@@ -8,6 +8,8 @@ public class AI : MonoBehaviour{
 	
 	public static TreeNode tree = new TreeNode();
 	public static System.Random rand = new System.Random();
+	public static List<string> startingConvo = new List<string>();
+	public static List<string> conseConvo = new List<string>();
 	
 	// Use this for initialization
 	void  Start() {
@@ -50,7 +52,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 2) { // question 2
 				for (int j=0;j<Globals.numSuspects;j++) {
-					question = "When and where did you last see the victim?";
+					question = "When and where did you last see Mr. Darcy?";
 					answer = "I last saw him at " + firstTime + " in the " + GenerateTimeline.victim.getBMPlace() + ".";
 					temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
 				}
@@ -74,13 +76,13 @@ public class AI : MonoBehaviour{
 			else if (i == 4) { // question 4
 				for (int j=0;j<Globals.numSuspects;j++) {
 					if (GenerateTimeline.timeline[j].getBMWpn() != WpnEnum.None) {
-						question = "What were you doing around the time " + firstTime + ", when the victim is last seen?";
+						question = "What were you doing around the time " + firstTime + ", when the Mr.Darcy is last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " using " + GenerateTimeline.timeline[j].getBMWpn() + " from " + 
 						firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
 					else {
-						question = "What were you doing around the time " + firstTime + ", when the victim is last seen?";
+						question = "What were you doing around the time " + firstTime + ", when the Mr.Darcy is last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
@@ -125,7 +127,7 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(8,question,answer,j,false,false,'n',50+j);
 					}
 					else {
-						answer = "Yes, I was with " + tempAli[0] + ".";
+						answer = "Yes, I was with " + AI.returnName((int)tempAli[0]) + ".";
 						temp.setQnNode(8,question,answer,j,false,true,'n',50+j);
 					}
 				}
@@ -148,7 +150,7 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(10,question,answer,j,false,false,'n',70+j);
 					}
 					else {
-						answer = "Yes, I was with " + tempAli[0] + ".";
+						answer = "Yes, I was with " + AI.returnName((int)tempAli[0]) + ".";
 						temp.setQnNode(10,question,answer,j,false,true,'n',70+j);
 					}
 				}
@@ -160,21 +162,21 @@ public class AI : MonoBehaviour{
 					if (tempAli.Count != 0) { // if got alibi
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
 							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								question = "Did you see " + Enum.GetName(typeof(SuspectEnum),j) + " " + GenerateTimeline.timeline[k].getAMActivity() + " from " + thirdTime + " to " + fourthTime + "?";
+								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[k].getAMActivity() + " from " + thirdTime + " to " + fourthTime + "?";
 								List<SuspectEnum> checkAli = new List<SuspectEnum>();
 								checkAli = GenerateTimeline.timeline[k].getAMAlibi();
 								if (checkAli[0] == (SuspectEnum)j) {
 									if (GenerateTimeline.timeline[j].isTrueAMActivity()) {
-										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getAMActivity() + " and was with me.";
+										answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getAMActivity() + " and was with me.";
 										temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 									}
 									else {
-										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was with me but he was " + GenerateTimeline.timeline[k].getAMActivity() + ".";
+										answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getAMActivity() + ".";
 										temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 									}
 								}
 								else {
-									answer = "No, " + Enum.GetName(typeof(SuspectEnum),j) + " was not with me.";
+									answer = "No, " + AI.returnName(j) + " was not with me.";
 									temp.setQnNode(11,question,answer,k,false,false,'n',80+j);
 								}
 							}
@@ -193,7 +195,7 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(12,question,answer,j,false,false,'n',90+j);
 					}
 					else {
-						answer = "Yes, I was with " + tempAli[0] + ".";
+						answer = "Yes, I was with " + AI.returnName((int)tempAli[0]) + ".";
 
 						temp.setQnNode(12,question,answer,j,false,true,'n',90+j);
 					}
@@ -206,21 +208,21 @@ public class AI : MonoBehaviour{
 					if (tempAli.Count != 0) { // if got alibi
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
 							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								question = "Did you see " + Enum.GetName(typeof(SuspectEnum),j) + " " + GenerateTimeline.timeline[k].getDMActivity() + " from " + firstTime + " to " + secondTime + "?";
+								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[k].getDMActivity() + " from " + firstTime + " to " + secondTime + "?";
 								List<SuspectEnum> checkAli = new List<SuspectEnum>();
 								checkAli = GenerateTimeline.timeline[k].getDMAlibi();
 								if (checkAli[0] == (SuspectEnum)j) {
 									if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
-										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + " and was with me.";
+										answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + " and was with me.";
 										temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 									}
 									else {
-										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was with me but " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + ".";
+										answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getDMActivity() + ".";
 										temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 									}
 								}
 								else {
-									answer = "No, " + Enum.GetName(typeof(SuspectEnum),j) + " was not with me.";
+									answer = "No, " + AI.returnName(j) + " was not with me.";
 									temp.setQnNode(13,question,answer,k,false,false,'n',100+j);
 								}
 							}
@@ -235,21 +237,21 @@ public class AI : MonoBehaviour{
 					if (tempAli.Count != 0) { // if got alibi
 						for (int k=0;k<Globals.numSuspects;k++) { // check with everybody
 							if (tempAli[0] == (SuspectEnum)k) {// if this suspect is the alibi
-								question = "Did you see " + Enum.GetName(typeof(SuspectEnum),j) + " " + GenerateTimeline.timeline[k].getBMActivity() + " from " + secondTime + " to " + thirdTime + "?";
+								question = "Did you see " + AI.returnName(j) + " " + GenerateTimeline.timeline[k].getBMActivity() + " from " + secondTime + " to " + thirdTime + "?";
 								List<SuspectEnum> checkAli = new List<SuspectEnum>();
 								checkAli = GenerateTimeline.timeline[k].getBMAlibi();
 								if (checkAli[0] == (SuspectEnum)j) {
 									if (GenerateTimeline.timeline[j].isTrueDMActivity()) {
-										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + " and was with me.";
+										answer = "Yes, " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + " and was with me.";
 										temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 									}
 									else {
-										answer = "Yes, " + Enum.GetName(typeof(SuspectEnum),j) + " was with me but " + Enum.GetName(typeof(SuspectEnum),j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + ".";
+										answer = "Yes, " + AI.returnName(j) + " was with me but " + AI.returnName(j) + " was " + GenerateTimeline.timeline[k].getBMActivity() + ".";
 										temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 									}
 								}
 								else {
-									answer = "No, " + Enum.GetName(typeof(SuspectEnum),j) + " was not with me.";
+									answer = "No, " + AI.returnName(j) + " was not with me.";
 									temp.setQnNode(14,question,answer,k,false,false,'n',120+j);
 								}
 							}
@@ -262,7 +264,7 @@ public class AI : MonoBehaviour{
 				question = "who in the family would do this thing to your Father?";
 				int num = rand.Next(4);
 				for (int j=0;j<Globals.numSuspects;j++) {
-					answer = "I think " + Enum.GetName(typeof(SuspectEnum),num) + " really hates him, " + GenerateTimeline.timeline[num].getHateFather();
+					answer = "I think " + AI.returnName(j) + " really hates him, " + GenerateTimeline.timeline[num].getHateFather();
 					temp.setQnNode(15,question,answer,j,true,false,'n',0);
 					num++;
 					if (num == 4) {
@@ -272,6 +274,26 @@ public class AI : MonoBehaviour{
 			}
 		}
 		
+		for (int i=0;i<Globals.numSuspects;i++) {
+			string start;
+			string conse;
+			if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.angry) {
+				start = "I'm " + AI.returnName(i) + ". This better not be long.";
+				conse = "What? Why are you bothering me again?";
+			}
+			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.shy) {
+				start = "...H...Hi... I'm " + AI.returnName(i) + "... What can I help you... with...?";
+				conse = "... Oh... it's you again....";
+			}
+			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.antisocial) {
+				start = "... I'm " + AI.returnName(i) + "...";
+				conse = "...";
+			}
+			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.unhappy) {
+				start = "(sob).... Yes? I'm" + AI.returnName(i) + ".";
+				conse = "Please, leave me alone! I have nothing more to say! (sob)";
+			}
+		}
 		
 		temp.BFS();
 		temp.DFS();
@@ -291,6 +313,24 @@ public class AI : MonoBehaviour{
 		}
 		
 		return convertedTime;
+	}
+	
+	public static string returnName(int sus) {
+		if (sus == -1) {
+			return "Mr. Darcy";
+		}
+		else if (sus == 0) {
+			return "Mrs. Darcy";
+		}
+		else if (sus == 1) {
+			return "Wayne";
+		}
+		else if (sus == 2) {
+			return "Jane";
+		}
+		else if (sus == 3) {
+			return "Maria";
+		}
 	}
 	
 	public static ArrayList HumanTriggered(int suspect) {
