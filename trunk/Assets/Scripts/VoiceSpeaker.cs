@@ -40,8 +40,8 @@ public class VoiceSpeaker : MonoBehaviour
         }
 	}
 	
-	void Talk(String talkStr){
-		Say(talkStr);	
+	public static void Talk(String talkStr){
+		SayAndWait(talkStr);	
 	}
 	
     void OnDisable()

@@ -858,8 +858,8 @@ public class GenerateTimeline : MonoBehaviour
 	private String createStartPara(String murderRoom)
 	{
 		String mRoom = murderRoom.Replace('_', ' ');
-		String s = "Welcome to DaDetective. \nMr. Darcy, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members.";
-		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he/she murder with and when did he commit the murder. Hint: Characters may lie, explore the house to find factual clues. ";
+		String s = "Welcome to DaDetective. \nMr. Darcy, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members. ";
+		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he murder with and when did he commit the murder. Hint: Characters may lie, explore the house to find factual clues. ";
 		return s;
 	}
 	
@@ -977,6 +977,7 @@ public class GenerateTimeline : MonoBehaviour
 	void DoStoryWindow(int windowID){
 		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.MaxHeight(startHeight));
 		GUILayout.Label(startPara);
+		VoiceSpeaker.Talk(startPara);
 		GUILayout.EndScrollView();
         if (GUILayout.Button("Start Game!")){
 			displayWindow = !(displayWindow);
