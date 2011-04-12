@@ -48,7 +48,7 @@ public class ToolBar : MonoBehaviour {
 	public static int solveAttempts = 0;
 	private bool solvedAttempted = false;
 	private Rect solvePopup;
-	
+	public GUIStyle solveButtonStyle;
 	// Use this for initialization
 	void Start () {
 		// for timeline
@@ -303,7 +303,7 @@ public class ToolBar : MonoBehaviour {
 	// imported from SolveGUI.cs
 	public static string SelectList( IEnumerable<string> list, string selected, GUIStyle defaultStyle, GUIStyle selectedStyle ){         
 		foreach( string item in list ){
-            if( GUILayout.Button( item.ToString(), ( selected == item ) ? selectedStyle : defaultStyle ) )
+            if( GUILayout.Button( item.ToString().Replace('_', ' '), ( selected == item ) ? selectedStyle : defaultStyle ) )
             {
                 if( selected == item )
                 // Clicked an already selected item. Deselect.
@@ -343,7 +343,7 @@ public class ToolBar : MonoBehaviour {
     }
 	
 	private bool OnCheckboxItemGUI( string item, bool selected, IEnumerable<string> list ){
-        return GUILayout.Toggle( selected, item.ToString() );
+        return GUILayout.Toggle( selected, item.ToString().Replace('_', ' ') );
     }
 	
 	void solveWindow(int windowID) {
@@ -353,7 +353,8 @@ public class ToolBar : MonoBehaviour {
 		weaponSelection = SelectList(weaponAnswers ,weaponSelection, OnCheckboxItemGUI);
 		GUILayout.Label("in ...");
 		roomSelection = SelectList(roomAnswers ,roomSelection, OnCheckboxItemGUI);
-		if (GUILayout.Button("Solve!") ) {
+
+		if (GUILayout.Button("Solve!",solveButtonStyle) ) {
 			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
 				GenerateTimeline.murderer.name.ToString() == suspectSelection &&
 				GenerateTimeline.murderer.getDuringMurderRoom().ToString() == roomSelection) {
