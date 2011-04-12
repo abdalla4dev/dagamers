@@ -264,7 +264,10 @@ public class AI : MonoBehaviour{
 				question = "who in the family would do this thing to your Father?";
 				int num = rand.Next(4);
 				for (int j=0;j<Globals.numSuspects;j++) {
-					answer = "I think " + AI.returnName(j) + " really hates him, " + GenerateTimeline.timeline[num].getHateFather();
+					if (j == num) {
+						num++;
+					}
+					answer = "I think " + AI.returnName(num) + " really hates him, " + GenerateTimeline.timeline[num].getHateFather();
 					temp.setQnNode(15,question,answer,j,true,false,'n',0);
 					num++;
 					if (num == 4) {
@@ -273,8 +276,8 @@ public class AI : MonoBehaviour{
 				}
 			}
 		}
-		/*
-		for (int i=0;i<Globals.numSuspects;i++) {
+		
+		/*for (int i=0;i<Globals.numSuspects;i++) {
 			string start;
 			string conse;
 			if (GenerateTimeline.timeline[i].getPersonality().ToString() == NegativePersonalityEnum.angry) {
@@ -293,8 +296,7 @@ public class AI : MonoBehaviour{
 				start = "(sob).... Yes? I'm" + AI.returnName(i) + ".";
 				conse = "Please, leave me alone! I have nothing more to say! (sob)";
 			}
-		}
-		*/
+		}*/
 		temp.BFS();
 		temp.DFS();
 		return temp;
@@ -331,7 +333,11 @@ public class AI : MonoBehaviour{
 		else if (sus == 3) {
 			return "Maria";
 		}
+<<<<<<< .mine
+		return null;
+=======
 		return "";
+>>>>>>> .r282
 	}
 	
 	public static ArrayList HumanTriggered(int suspect) {
