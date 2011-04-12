@@ -48,7 +48,8 @@ public class Person {
 	private bool[] shouldReturnLies = {false, false, false};
 	
 	private string reasonToHateFather = string.Empty;
-	private string personality = string.Empty;
+	private NegativePersonalityEnum personality = NegativePersonalityEnum.none;
+	private SuspectEnum likes = SuspectEnum.None;
 	//End new code, the rest can delete if not useful
 	
 	//for backward compatibility with GUI
@@ -457,10 +458,16 @@ public class Person {
 		return reasonToHateFather;
 	}
 	
-	public void setPersonality(string s) {
+	public void setPersonality(NegativePersonalityEnum s) {
 		personality = s;
 	}
-	public string getPersonality() {
+	public NegativePersonalityEnum getPersonality() {
 		return personality;
+	}
+	public void setLikeWho(SuspectEnum n) {
+		likes = n;
+	}
+	public SuspectEnum getLikeWho() {
+		return likes;
 	}
 }

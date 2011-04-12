@@ -233,7 +233,8 @@ namespace MurderData
 		Son,
 		Daughter,
 		Maid,
-		Father
+		Father,
+		None
 	}
 	
 	public enum GameDiffEnum {
@@ -246,6 +247,7 @@ namespace MurderData
 		shy,
 		unhappy,
 		antisocial,
-		angry
+		angry,
+		none
 	}
 }
