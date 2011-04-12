@@ -112,13 +112,15 @@ public class InteractiveTrigger : MonoBehaviour {
 			//scrollPosition = GUI.BeginScrollView(new Rect((Screen.width - 409), (Screen.height - 188), 379, 160), scrollPosition, new Rect(0,0, 409, 300));
 			foreach (string item in myList) {
 				//if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 20), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
-				if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
-					s = item;
-					ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
-					ans = ans.Replace('_', ' ');
-					ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
-					ans = ans.Replace(" i ", " I ");
-					callAns = true;
+				if (item != "temp") {
+					if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
+						s = item;
+						ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
+						ans = ans.Replace('_', ' ');
+						//ans = ans.Substring(0,1) + ans.Substring(1).ToLower();
+						ans = ans.Replace(" i ", " I ");
+						callAns = true;
+					}
 				}
 			}
 			GUILayout.EndScrollView();

@@ -35,7 +35,7 @@ public class AI : MonoBehaviour{
 		
 		// This runs a loop that covers all the questions 
 		// each question comes in the form of a 'if' loop
-		for (int i=1; i<=50;i++) {
+		for (int i=1; i<=20;i++) {
 			if (i == 1) { // question 1
 				for (int j=0;j<Globals.numSuspects;j++) {
 					question = "Did you find the body?";
@@ -329,6 +329,7 @@ public class AI : MonoBehaviour{
 			startingConvo.Add(start);
 			conseConvo.Add(conse);
 		}
+		
 		temp.BFS();
 		temp.DFS();
 		return temp;
