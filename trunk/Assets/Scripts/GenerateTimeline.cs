@@ -153,6 +153,7 @@ public class GenerateTimeline : MonoBehaviour
 			case GameDiffEnum.Hard: GenerateMediumGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
 		}
 		
+		Bloodstain.putStains(victim.getDuringMurderRoom());
 		startPara = createStartPara(victim.getDuringMurderRoom().ToString());
 		
 		
@@ -859,10 +860,9 @@ public class GenerateTimeline : MonoBehaviour
 		
 	}*/
 	
-	private String createStartPara(String murderRoom)
+	private String createStartPara()
 	{
-		String mRoom = murderRoom.Replace('_', ' ');
-		String s = "Welcome to DaDetective. \nMr. Darcy, a rich and obnoxious businessman, was found murdered in " + mRoom + " at a certain time with a certain weapon by one of his family members. ";
+		String s = "Welcome to DaDetective. \nMr. Darcy, a rich and obnoxious businessman, was found murdered in a certain room at a certain time with a certain weapon by one of his family members. ";
 		s += "Your goal is to interview all the family members and find out who is the murderer, what weapon did he murder with and when did he commit the murder. Hint: Characters may lie, explore the house to find factual clues. ";
 		return s;
 	}
