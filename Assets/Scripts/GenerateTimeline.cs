@@ -254,11 +254,15 @@ public class GenerateTimeline : MonoBehaviour
 		timeline[relationshipPairing[2]].setHateFather(rand.Next(0,3));
 		timeline[relationshipPairing[3]].setHateFather(rand.Next(0,3));
 		
-		timeline[relationshipPairing[0]].setPersonality("I am " + (NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality) + " recently.");
+		/*timeline[relationshipPairing[0]].setPersonality("I am " + (NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality) + " recently.");
 		timeline[relationshipPairing[1]].setPersonality("I am " + (NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality) + " recently.");
 		timeline[relationshipPairing[2]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[3] + " recently.");
-		timeline[relationshipPairing[3]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[2] + " recently.");
+		timeline[relationshipPairing[3]].setPersonality("I like to be with " + (SuspectEnum)relationshipPairing[2] + " recently.");*/
 		
+		timeline[relationshipPairing[0]].setPersonality((NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality));
+		timeline[relationshipPairing[1]].setPersonality((NegativePersonalityEnum)rand.Next(0,Globals.numNegativePersonality));
+		timeline[relationshipPairing[2]].setLikeWho(timeline[relationshipPairing[3]].name);
+		timeline[relationshipPairing[3]].setLikeWho(timeline[relationshipPairing[2]].name);
 		
 		timeline[relationshipPairing[1]].setBeforeMurder(befMurderTime, 
 			timeline[relationshipPairing[0]].getFakeBeforeMurderRoom(), 
