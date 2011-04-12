@@ -85,7 +85,7 @@ public class ToolBar : MonoBehaviour {
 		// MAP WINDOW 31
 		if(showMap == true){
 			GUI.Window(31, new Rect(0, 0, 500, 768), mapWindow, mapContentBg);
-			mapButtonX = 475;
+			mapButtonX = 500;
 			GUI.BringWindowToFront(31);
 		}
 		else {
@@ -95,7 +95,7 @@ public class ToolBar : MonoBehaviour {
 		// TIMELINE WINDOW 32
 		if(showTimeline == true){
 			GUI.Window(32, new Rect(0, 0, 500, 768), timelineWindow, timelineContentBg);
-			timelineButtonX = 475;
+			timelineButtonX = 500;
 			GUI.BringWindowToFront(32);
 		}
 		else {
@@ -105,7 +105,7 @@ public class ToolBar : MonoBehaviour {
 		// SOLVE WINDOW 33
 		if(showSolve == true){
 			GUI.Window(33, new Rect(0, 0, 500, 768), solveWindow, solveContentBg);
-			solveButtonX = 475;
+			solveButtonX = 500;
 			GUI.BringWindowToFront(33);
 		}
 		else {

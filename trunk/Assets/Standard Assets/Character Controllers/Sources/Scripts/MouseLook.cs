@@ -34,7 +34,7 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-		if(!MenuButton.gamePause) {
+
 			if(Input.GetMouseButton(1)){
 				if (axes == RotationAxes.MouseXAndY)
 				{
@@ -57,7 +57,7 @@ public class MouseLook : MonoBehaviour {
 					transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 				}
 			}
-		}
+
 	}
 	
 	void Start ()
