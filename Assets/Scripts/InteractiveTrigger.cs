@@ -13,7 +13,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	public Texture2D logBoxTex;
 	public GUISkin customSkin;
 	
-	public GUIStyle questionStyle;
+	public GUIStyle answerStyle;
+	public GUIStyle askingStyle;
 	//public AI AIlink;
 	
 	Texture2D windowTexture;
@@ -28,6 +29,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	bool questionToggle = true;
 	bool callAns = false;
 	bool isWeapon;
+	bool spoken = false;
 	
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
@@ -42,7 +44,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	float qnButtonTop = 20;
 	
-	bool spoken = false;
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -67,7 +69,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		if (displayText) {
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
 				//GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
-				GUILayout.Window(3, new Rect(Screen.width - 270, 100, 262, 145), weaponWindow, "" + weapon, GUILayout.Width(262), GUILayout.Height(145));
+				GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 100), weaponWindow, "" + weapon, GUILayout.Width(262));
 			}
 			else{
 				
@@ -78,17 +80,16 @@ public class InteractiveTrigger : MonoBehaviour {
 					questionToggle = false;
 				}
 				
-				//if(questionToggle){
-					//question window
-					GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 148), 439, 168), doWindow, windowTexture, GUILayout.Width(439), GUILayout.Height(168));
-					//GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 167), 439, 167), doWindow, windowTexture, questionStyle, GUILayout(439), GUILayout(167));
-				//}
-				//else{
-					//log window
-					GUILayout.Window(11, new Rect((Screen.width - 439), (Screen.height - 148), 439, 168), logWindow, logBoxTex, GUILayout.Width(439), GUILayout.Height(168));
-				//}
+				//question window
+				GUILayout.Window(10, new Rect((Screen.width - 439), (Screen.height - 148), 439, 168), doWindow, windowTexture, GUILayout.Width(439), GUILayout.Height(168));
+				
+				//log window
+				GUILayout.Window(11, new Rect((Screen.width - 439), (Screen.height - 148), 439, 168), logWindow, logBoxTex, GUILayout.Width(439), GUILayout.Height(168));
+				
 				if(callAns){
-					GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
+					//GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
+					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), ans, answerStyle);
+					GUI.Box(new Rect(Screen.width - 512, 450, 512, 64), s, askingStyle);
 				}
 			}
 		}
@@ -107,7 +108,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(isWeapon){
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
 			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
-			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(160));
+			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(100));
 		}
 		else{
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
