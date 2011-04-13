@@ -78,16 +78,19 @@ public class startMenuScript : MonoBehaviour {
 			}
 		}
 		else if(buttonNumber == 4){
+			isClicked = !isClicked;
 			diffLevel = MurderData.GameDiffEnum.Easy;
-			Application.LoadLevel("LoadingScreen");
+			//Application.LoadLevel("LoadingScreen");
 		}
 		else if(buttonNumber == 5){
+			isClicked = !isClicked;
 			diffLevel = MurderData.GameDiffEnum.Medium;
-			Application.LoadLevel("LoadingScreen");
+			//Application.LoadLevel("LoadingScreen");
 		}
 		else if(buttonNumber == 6){
+			isClicked = !isClicked;
 			diffLevel = MurderData.GameDiffEnum.Hard;
-			Application.LoadLevel("LoadingScreen");
+			//Application.LoadLevel("LoadingScreen");
 		}
 		else { // 3 = quit
 			var isWebPlayer = (Application.platform == RuntimePlatform.OSXWebPlayer || Application.platform == RuntimePlatform.WindowsWebPlayer);
