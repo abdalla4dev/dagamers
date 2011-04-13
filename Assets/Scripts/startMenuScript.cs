@@ -11,17 +11,20 @@ public class startMenuScript : MonoBehaviour {
 	public GameObject mediumButton;
 	public GameObject hardButton;
 	
-	Color originalColor;
-	Color mouseOverColor = Color.magenta;
+	Material originalColor;
+	public Material mouseOverMat;
 	
 	public static GameDiffEnum diffLevel;
 	bool diffToggle;
+	bool isClicked;
 	// Use this for initialization
 	void Start () {
 		diffToggle = false;
+		isClicked = false;
 		//if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
 			//originalColor = gameObj.renderer.material.color;
 		//}
+		originalColor = gameObj.renderer.material;
 	}
 	
 	// Update is called once per frame
@@ -31,39 +34,44 @@ public class startMenuScript : MonoBehaviour {
 	
 	void OnMouseOver () {
 		
-		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
-			iTween.RotateTo(gameObj,iTween.Hash("z", 378, "time", 0.5));
-		}
-		else{
-			iTween.RotateTo(gameObj,iTween.Hash("z", 388, "time", 0.5));
-		}
-		//gameObj.renderer.material.color = mouseOverColor;
+//		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
+//			iTween.RotateTo(gameObj,iTween.Hash("z", 378, "time", 0.5));
+//		}
+//		else{
+//			iTween.RotateTo(gameObj,iTween.Hash("z", 388, "time", 0.5));
+//		}
+		gameObj.renderer.material = mouseOverMat;
 	}
 	
 	void OnMouseExit () {
 		
-		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
-			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
+//		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
+//			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
+//		}
+//		else{
+//			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
+//		}
+		if(!isClicked){
+			gameObj.renderer.material = originalColor;
 		}
-		else{
-			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
-		}
-		
-		//gameObj.renderer.material.color = originalColor;
 	}
 	
 	void OnMouseDown () {
 		if(buttonNumber == 1){ // Start
 			Application.LoadLevel("LoadingScreen"); 
+			//isClicked = !isClicked;
 		}
 		else if (buttonNumber == 2){ // Difficulty
 			diffToggle = !diffToggle;
+			isClicked = !isClicked;
 			if(diffToggle){
+				gameObj.renderer.material = mouseOverMat;
 				iTween.MoveBy(easyButton, iTween.Hash("x", -5.3, "time", 0.5));
 				iTween.MoveBy(mediumButton, iTween.Hash("x", -5.3, "time", 0.5));
 				iTween.MoveBy(hardButton, iTween.Hash("x", -5.3, "time", 0.5));
 			}
 			else{
+				gameObj.renderer.material = originalColor;
 				iTween.MoveBy(easyButton, iTween.Hash("x", 5.3, "time", 0.5));
 				iTween.MoveBy(mediumButton, iTween.Hash("x", 5.3, "time", 0.5));
 				iTween.MoveBy(hardButton, iTween.Hash("x", 5.3, "time", 0.5));
