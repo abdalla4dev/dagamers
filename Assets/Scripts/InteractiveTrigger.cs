@@ -15,6 +15,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	public GUIStyle answerStyle;
 	public GUIStyle askingStyle;
+	public GUIStyle MouseLabelStyle;
 	//public AI AIlink;
 	
 	Texture2D windowTexture;
@@ -28,18 +29,20 @@ public class InteractiveTrigger : MonoBehaviour {
 	bool overObject = false;
 	bool questionToggle = true;
 	bool callAns = false;
-	bool isWeapon;
+	bool isFact;
 	bool spoken = false;
 	
+	
+	Vector3 mousePos;
 	Vector3 offset = Vector3.up;
 	Vector3 screenPos;
 	Vector3 charOffset = new Vector3(0,1.2f,0); 
 	
 	Vector2 scrollPosition = new Vector2(0, -5);
 	
-	string suspect, weapon, s, ans;
+	string suspect, weapon, s, ans, fact;
 	
-	int weaponEnum; 
+	int weaponEnum, factEnum; 
 	int numQn = 1;
 	
 	float qnButtonTop = 20;
@@ -51,14 +54,16 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
 			originalColor = new Color[targetObject.renderer.materials.Length];
 			weapon = targetObject.name;
-			isWeapon = true;
 			for(int i = 0; i < targetObject.renderer.materials.Length; i++){
 				originalColor[i] = targetObject.renderer.materials[i].color;
 			}
 		}
+		else if(targetObject.name == "CCTV"){
+			isFact = true;
+			fact = targetObject.name;
+		}
 		else{
 			suspect = targetObject.name;
-			isWeapon = false;
 		}
 		
 		windowTexture = questionBoxTex;
@@ -105,16 +110,22 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	void weaponWindow(int windowID){
 		string weaponStr; // to store the string
-		if(isWeapon){
+		System.Random rand = new System.Random();
+		
+		if(isFact){
+			//factEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
+			weaponStr = GenerateTimeline.facts[rand.Next(0, GenerateTimeline.facts.Count)].revealInfo("CCTV");
+			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(100));
+			
+		}
+		else{
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
 			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
 			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(100));
 		}
-		else{
-			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
-			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("CCTV");
-			GUILayout.Box(weaponStr);
-		}
+		
+
+		
 		
 		// VoiceSpeaker
 		if(!spoken){
@@ -198,6 +209,13 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	void OnMouseEnter(){
 		overObject = true;
+		
+		mousePos = Input.mousePosition;
+		float mouseX = Math.Abs(mousePos.x - Screen.width);
+		float mouseY = Math.Abs(mousePos.y - Screen.height);
+		
+		GUI.Label(new Rect(mouseX, mouseY, 50, 30), targetObject.name, MouseLabelStyle);  
+		
 		//changing all the material to be yellow upon mouse hover, once the player is close to the object
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
 			//changing all the material to be yellow upon mouse hover, once the player is close to the object
