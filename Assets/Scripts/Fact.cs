@@ -53,7 +53,7 @@ public class Fact {
 			if(used)
 				toReturn = "Forensics has verified that the " + weapon.ToString() +
 					" was used recently. It could be the murder weapon.";
-			ifse
+			if(!used)
 				toReturn = "Forensics has verified that this item was not used recently.";
 		
 		}
