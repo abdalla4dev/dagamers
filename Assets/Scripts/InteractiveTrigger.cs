@@ -110,7 +110,8 @@ public class InteractiveTrigger : MonoBehaviour {
 			// for weapons only and CCTV
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "CCTV"){
 				//GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
-				GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 120), weaponWindow, "" + weapon, GUILayout.Width(262));
+				//GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 120), weaponWindow, "" + weapon, GUILayout.Width(262));
+				weaponWindow();
 			}
 			else{
 				
@@ -149,7 +150,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		}
 	}
 	
-	void weaponWindow(int windowID){
+	void weaponWindow(){
 		System.Random rand = new System.Random();
 		
 		if(isFact){
@@ -160,13 +161,15 @@ public class InteractiveTrigger : MonoBehaviour {
 				weaponStr += " (Click again for another fact)";
 			}
 			isCCTVcalled = true;
-			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(130));
+			//GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(150));
+			GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), weaponStr, answerStyle);
 			
 		}
 		else{
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
 			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
-			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(130));
+			//GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(150));
+			GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), weaponStr, answerStyle);
 		}
 		
 		// VoiceSpeaker
@@ -217,7 +220,7 @@ public class InteractiveTrigger : MonoBehaviour {
 					GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
 					String ansTemp = logText[i][0];
 					ansTemp = ansTemp.Replace('_', ' ');
-					ansTemp = ansTemp.Substring(0,1) + ansTemp.Substring(1).ToLower();
+					//ansTemp = ansTemp.Substring(0,1) + ansTemp.Substring(1).ToLower();
 					ansTemp = ansTemp.Replace(" i ", " I ");
 					GUILayout.Label("Q: " + ansTemp);
 					
@@ -225,7 +228,7 @@ public class InteractiveTrigger : MonoBehaviour {
 					GUI.contentColor = Color.white;
 					String questionTemp = logText[i][1];
 					questionTemp = questionTemp.Replace('_', ' ');
-					questionTemp = questionTemp.Substring(0,1) + questionTemp.Substring(1).ToLower();
+					//questionTemp = questionTemp.Substring(0,1) + questionTemp.Substring(1).ToLower();
 					questionTemp = questionTemp.Replace(" i ", " I ");
 					GUILayout.Label("A: " + questionTemp);
 				}
