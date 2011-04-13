@@ -104,7 +104,7 @@ public class GenerateTimeline : MonoBehaviour
 	
 	void Start() {
 		Debug.Log("WHY" + startMenuScript.diffLevel);
-		difficulty = GameDiffEnum.Medium; //startMenuScript.diffLevel;
+		difficulty = startMenuScript.diffLevel;
 		initializeContradictionNum();
 		initializeWeaponLocations();
 		SuspectEnum murdererEnum = genMurderer();
@@ -1035,10 +1035,12 @@ public class GenerateTimeline : MonoBehaviour
         if (GUILayout.Button("Start Game!")){
 			displayWindow = !(displayWindow);
 			delayTime = Time.time;
+			VoiceSpeaker.stopTalk();
 		}
 		
 		// VoiceSpeaker
 		if(!spoken){
+			VoiceSpeaker.startTalk();
 			VoiceSpeaker.Talk(startPara);
 			spoken = true;	
 		}

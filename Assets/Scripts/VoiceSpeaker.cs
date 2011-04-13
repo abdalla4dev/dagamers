@@ -47,6 +47,9 @@ public class VoiceSpeaker : MonoBehaviour
 	public static void stopTalk(){
 		PauseVoice();	
 	}
+	public static void startTalk(){
+		ResumeVoice();
+	}
     void OnDisable()
 	{ 
         if( VoiceAvailable()>0 )

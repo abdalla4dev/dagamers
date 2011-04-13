@@ -95,7 +95,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(overObject){
 			//GUI.Label(new Rect(mousePos.x, mouseY, 50, 30), targetObject.name, MouseLabelStyle); 
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "CCTV"){
-				GUI.Label(new Rect(screenPos.x - 50, (Screen.height - screenPos.y) + 100,150,30), targetObject.name, MouseLabelStyle);
+				GUI.Label(new Rect(screenPos.x - 50, (Screen.height - screenPos.y) + 170,150,30), targetObject.name, MouseLabelStyle);
 			}
 			else if(targetObject.name == "Towel"){
 				GUI.Label(new Rect(screenPos.x - 50, (Screen.height - screenPos.y + 300),150,30), targetObject.name, MouseLabelStyle);
@@ -110,7 +110,7 @@ public class InteractiveTrigger : MonoBehaviour {
 			// for weapons only and CCTV
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "CCTV"){
 				//GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
-				GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 120), weaponWindow, "asd " + weapon, GUILayout.Width(262));
+				GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 120), weaponWindow, "" + weapon, GUILayout.Width(262));
 			}
 			else{
 				
@@ -130,9 +130,9 @@ public class InteractiveTrigger : MonoBehaviour {
 				if(callAns){
 					//GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
 					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), ans, answerStyle);
-					GUI.Box(new Rect(Screen.width - 512, 450, 512, 64), s, askingStyle);
+					GUI.Box(new Rect(Screen.width - 512, Screen.height - 270, 512, 64), s, askingStyle);
 				}
-				if(isSuspect && firstClick){
+				if(isSuspect && firstClick && callAns == false){
 					string talk = AI.startingConvo[(int)Enum.Parse(typeof(SuspectEnum), suspect)];
 					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), talk, answerStyle);
 				}
@@ -171,6 +171,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		
 		// VoiceSpeaker
 		if(!spoken){
+			VoiceSpeaker.startTalk();
 			VoiceSpeaker.Talk(weaponStr);
 			spoken = true;	
 		}
