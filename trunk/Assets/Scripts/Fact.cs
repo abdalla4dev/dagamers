@@ -30,7 +30,7 @@ public class Fact {
 		if(type.Equals("CCTV"))
 		{
 			if(GenerateTimeline.difficulty!=GameDiffEnum.Hard)
-			{	toReturn = "The CCTV recorded that " + person + 
+			{	toReturn = "The CCTV recorded that " + returnName((int)person) + 
 					" was doing " + info.activity + 
 						" in " + info.place;
 				if(info.weapon!=WpnEnum.None)
@@ -40,7 +40,7 @@ public class Fact {
 					".";
 			}
 			else
-				toReturn = "The CCTV recorded that " + person +
+				toReturn = "The CCTV recorded that " + returnName((int)person) +
 				" was in " + info.place + 
 				" from " + info.getStartTime() + 
 				" for " + info.getDuration() + 
@@ -59,5 +59,24 @@ public class Fact {
 		
 		}
 		return toReturn;
+	}
+	
+	public string returnName(int sus) {
+		if (sus == -1) {
+			return "Mr. Darcy";
+		}
+		else if (sus == 0) {
+			return "Mrs. Darcy";
+		}
+		else if (sus == 1) {
+			return "Wayne";
+		}
+		else if (sus == 2) {
+			return "Jane";
+		}
+		else if (sus == 3) {
+			return "Maria";
+		}
+		return null;
 	}
 }
