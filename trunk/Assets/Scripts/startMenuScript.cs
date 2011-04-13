@@ -17,13 +17,17 @@ public class startMenuScript : MonoBehaviour {
 	public static GameDiffEnum diffLevel;
 	bool diffToggle;
 	bool isClicked;
+	public static bool lvlToggleEasy, lvlToggleMed, lvlToggleHard, easyClick, medClick, hardClick;
+	
 	// Use this for initialization
 	void Start () {
 		diffToggle = false;
 		isClicked = false;
-		//if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
-			//originalColor = gameObj.renderer.material.color;
-		//}
+		easyClick = false;
+		medClick = false;
+		hardClick = false;
+		
+		//to store the original material
 		originalColor = gameObj.renderer.material;
 	}
 	
@@ -32,65 +36,111 @@ public class startMenuScript : MonoBehaviour {
 	
 	}
 	
-	void OnMouseOver () {
-		
-//		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
-//			iTween.RotateTo(gameObj,iTween.Hash("z", 378, "time", 0.5));
-//		}
-//		else{
-//			iTween.RotateTo(gameObj,iTween.Hash("z", 388, "time", 0.5));
-//		}
+	void OnMouseOver () {	
 		gameObj.renderer.material = mouseOverMat;
 	}
 	
 	void OnMouseExit () {
-		
-//		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
-//			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
-//		}
-//		else{
-//			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
-//		}
-		if(!isClicked){
+		//if the button is not selected, upon mouse exit, the material should change back to normal
+		if(!isClicked && gameObj.name == "diffButton"){
 			gameObj.renderer.material = originalColor;
 		}
+		
+		if(!easyClick && gameObj.name == "EasyButton"){
+			gameObj.renderer.material = originalColor;
+		}
+		
+		if(!medClick && gameObj.name == "mediumButton"){
+			gameObj.renderer.material = originalColor;
+		}
+		
+		if(!hardClick && gameObj.name == "HardButton"){
+			gameObj.renderer.material = originalColor;
+		}
+		
+		if(gameObj.name == "startButton" || gameObj.name == "quitButton"){
+			gameObj.renderer.material = originalColor;
+		}
+		
 	}
 	
 	void OnMouseDown () {
 		if(buttonNumber == 1){ // Start
 			Application.LoadLevel("LoadingScreen"); 
-			//isClicked = !isClicked;
 		}
 		else if (buttonNumber == 2){ // Difficulty
-			diffToggle = !diffToggle;
 			isClicked = !isClicked;
-			if(diffToggle){
+			//reveals the buttons for difficulty level
+			if(isClicked){
 				gameObj.renderer.material = mouseOverMat;
 				iTween.MoveBy(easyButton, iTween.Hash("x", -5.3, "time", 0.5));
 				iTween.MoveBy(mediumButton, iTween.Hash("x", -5.3, "time", 0.5));
 				iTween.MoveBy(hardButton, iTween.Hash("x", -5.3, "time", 0.5));
 			}
+			//moves the level buttons away from the screen space
 			else{
 				gameObj.renderer.material = originalColor;
 				iTween.MoveBy(easyButton, iTween.Hash("x", 5.3, "time", 0.5));
 				iTween.MoveBy(mediumButton, iTween.Hash("x", 5.3, "time", 0.5));
 				iTween.MoveBy(hardButton, iTween.Hash("x", 5.3, "time", 0.5));
+				easyClick = false;
+				medClick = false;
+				hardClick = false;
 			}
 		}
+		//Easy Button
 		else if(buttonNumber == 4){
-			isClicked = !isClicked;
+			easyClick = !easyClick;
+			
+			if(easyClick){
+				gameObj.renderer.material = mouseOverMat;
+				mediumButton.renderer.material = originalColor;
+				hardButton.renderer.material = originalColor;
+				medClick = false;
+				hardClick = false;
+			}
+			else{
+				gameObj.renderer.material = originalColor;
+			}
+			
 			diffLevel = MurderData.GameDiffEnum.Easy;
-			//Application.LoadLevel("LoadingScreen");
+
 		}
+		//Medium Button
 		else if(buttonNumber == 5){
-			isClicked = !isClicked;
+			medClick = !medClick;
+			
+			if(medClick){
+				gameObj.renderer.material = mouseOverMat;
+				easyButton.renderer.material = originalColor;
+				hardButton.renderer.material = originalColor;
+				easyClick = false;
+				hardClick = false;
+			}
+			else{
+				gameObj.renderer.material = originalColor;
+			}
+			
 			diffLevel = MurderData.GameDiffEnum.Medium;
-			//Application.LoadLevel("LoadingScreen");
+
 		}
+		//Hard Button
 		else if(buttonNumber == 6){
-			isClicked = !isClicked;
+			hardClick = !hardClick;
+			
+			if(hardClick){
+				gameObj.renderer.material = mouseOverMat;
+				mediumButton.renderer.material = originalColor;
+				easyButton.renderer.material = originalColor;
+				easyClick = false;
+				medClick = false;
+			}
+			else{
+				gameObj.renderer.material = originalColor;
+			}
+			
 			diffLevel = MurderData.GameDiffEnum.Hard;
-			//Application.LoadLevel("LoadingScreen");
+
 		}
 		else { // 3 = quit
 			var isWebPlayer = (Application.platform == RuntimePlatform.OSXWebPlayer || Application.platform == RuntimePlatform.WindowsWebPlayer);
