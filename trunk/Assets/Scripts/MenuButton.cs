@@ -26,8 +26,8 @@ public class MenuButton : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = menuSkin;
 		
-		if(GUI.Button(new Rect((Screen.width - 137),0, 157, 50), menuTex, MenuButtonStyle)){
-			toggle = true;
+		if(GUI.Button(new Rect((Screen.width - 137),0, 157, 50), menuTex, MenuButtonStyle)){ 
+			toggle = !toggle;
 		}
 		
 		if(toggle){
@@ -35,6 +35,10 @@ public class MenuButton : MonoBehaviour {
 			GUI.Window(21, new Rect((Screen.width/2) - 75, (Screen.height/2) - 100, 150, 200), menuWindow, "");
 			//	mouseControl2.SendMessage("toggle");
 			//mouseControl.SendMessage("ControlToggle", false);
+		}
+		else{
+			gamePause = false;
+			showHelp = false;
 		}
 		
 		if(showHelp){
@@ -53,10 +57,10 @@ public class MenuButton : MonoBehaviour {
 		if(GUILayout.Button("Help")){
 			showHelp = true;
 		}
-		if(GUILayout.Button("Main Menu")){
-			Application.LoadLevel("startmenu");	
-		}
-		
+//		if(GUILayout.Button("Main Menu")){
+//			Application.LoadLevel("startmenu");	
+//		}
+//		
 		if(GUILayout.Button("Quit")){
 			Application.Quit();
 		}
