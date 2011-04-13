@@ -27,7 +27,8 @@ public class AI : MonoBehaviour{
 		TreeNode temp = new TreeNode();
 		string question;
 		string answer;
-		int unlocker = 0;
+		int unlockerOne = 0;
+		int unlockerTwo = 0;
 		
 		string firstTime = AI.convertTime(GenerateTimeline.befMurderTime);
 		string secondTime = AI.convertTime(GenerateTimeline.deathTime);
@@ -43,7 +44,7 @@ public class AI : MonoBehaviour{
 					answer = "Yes, I found it at " + fourthTime + ".";
 					if (GenerateTimeline.timeline[j].isFoundBody()) {
 						temp.setQnNode(1,question,answer,j,true,true,'s',0);
-						unlocker = j;
+						unlockerOne = j;
 					}
 					else {
 						temp.setQnNode(1,question,"No, I did not.",j,true,false,'s',0);
@@ -56,11 +57,12 @@ public class AI : MonoBehaviour{
 					question = "When and where did you last see Mr. Darcy?";
 					if (GenerateTimeline.timeline[j].isLastSaw()) {
 						answer = "I last saw him at " + firstTime + " in the " + GenerateTimeline.victim.getBMPlace() + ".";
-						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
+						unlockerTwo = j;
+						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlockerOne);
 					}
 					else {
 						answer = "I last saw him a long time before the murder timing, so I don't think I can help you.";
-						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
+						temp.setQnNode(2,question,answer,j,false,false,'n',10+unlockerOne);
 					}
 				}
 			}
@@ -70,12 +72,12 @@ public class AI : MonoBehaviour{
 						question = "What were you doing around the time " + fourthTime + ", when the body is found?";
 						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " using " + GenerateTimeline.timeline[j].getAMWpn() + " from " + 
 						thirdTime + " to " + fourthTime + ".";
-						temp.setQnNode(3,question,answer,j,false,true,'n',10+unlocker);
+						temp.setQnNode(3,question,answer,j,false,true,'n',10+unlockerOne);
 					}
 					else {
 						question = "What were you doing around the time " + fourthTime + ", when the body is found?";
 						answer = "I was " + GenerateTimeline.timeline[j].getAMActivity() + " from " + thirdTime + " to " + fourthTime + ".";
-						temp.setQnNode(3,question,answer,j,false,true,'n',10+unlocker);
+						temp.setQnNode(3,question,answer,j,false,true,'n',10+unlockerOne);
 					}
 				}
 				temp.moveToCurrNode();
@@ -86,12 +88,12 @@ public class AI : MonoBehaviour{
 						question = "What were you doing around the time " + firstTime + ", when Mr. Darcy was last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " using " + GenerateTimeline.timeline[j].getBMWpn() + " from " + 
 						firstTime + " to " + secondTime + ".";
-						temp.setQnNode(4,question,answer,j,false,true,'n',24);
+						temp.setQnNode(4,question,answer,j,false,true,'n',20+unlockerTwo);
 					}
 					else {
 						question = "What were you doing around the time " + firstTime + ", when Mr. Darcy was last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " from " + firstTime + " to " + secondTime + ".";
-						temp.setQnNode(4,question,answer,j,false,true,'n',24);
+						temp.setQnNode(4,question,answer,j,false,true,'n',20+unlockerTwo);
 					}
 				}
 			}
