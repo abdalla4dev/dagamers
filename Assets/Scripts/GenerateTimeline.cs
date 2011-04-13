@@ -521,14 +521,14 @@ public class GenerateTimeline : MonoBehaviour
 				facts.Add(new Fact(RmEnum.Kitchen, timeline[relationshipPairing[3]].getBeforeMurderFact(), timeline[relationshipPairing[3]].name));	
 			
 				//truth
-				RHDurMurRoom = Globals.randRoom((RmEnum)victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				RHDurMurRoom = Globals.randRoom((RmEnum)victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom(), timeline[relationshipPairing[1]].getDuringMurderRoom());
 			Debug.Log("ROOM " + RHDurMurRoom);
 				timeline[relationshipPairing[2]].setDuringMurder(deathTime,
 					RHDurMurRoom,
 					Globals.room[(int)RHDurMurRoom].WeaponList[(int)RHWpn].activity[0],
 					RHWpn);
 			Debug.Log(timeline[relationshipPairing[2]].getDMTruthPlaceDebug());
-				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom(), timeline[relationshipPairing[1]].getAfterMurderRoom(), timeline[relationshipPairing[1]].getAfterMurderRoom());
 			Debug.Log("ROOM " + RHAftMurRoom);
 				timeline[relationshipPairing[2]].setAfterMurder(aftMurderTime, 
 					RHAftMurRoom,
@@ -569,7 +569,7 @@ public class GenerateTimeline : MonoBehaviour
 				break;
 		case 1:
 				//truth 1
-				RHBefMurRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				RHBefMurRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom(), timeline[relationshipPairing[1]].getBeforeMurderRoom());
 			Debug.Log("ROOM " + RHBefMurRoom);
 				timeline[relationshipPairing[2]].setBeforeMurder(befMurderTime, 
 				RHBefMurRoom, 
@@ -589,7 +589,7 @@ public class GenerateTimeline : MonoBehaviour
 				timeline[relationshipPairing[3]].setDMAlibi(timeline[relationshipPairing[2]].name);
 				
 				//truth 2
-				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom());
+				RHAftMurRoom = Globals.randRoom(timeline[(int)murdererEnum].getAfterMurderRoom(), timeline[relationshipPairing[1]].getAfterMurderRoom());
 			Debug.Log("ROOM " + RHAftMurRoom);
 				timeline[relationshipPairing[2]].setAfterMurder(aftMurderTime, 
 					RHAftMurRoom,
@@ -637,13 +637,13 @@ public class GenerateTimeline : MonoBehaviour
 				break;
 		case 2:
 				//truth
-				RHBefMurRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom());
+				RHBefMurRoom = Globals.randRoom((RmEnum)victimBefMurderRoom, timeline[(int)murdererEnum].getBeforeMurderRoom(), timeline[relationshipPairing[1]].getBeforeMurderRoom());
 				Debug.Log("ROOM " + RHBefMurRoom);
 				timeline[relationshipPairing[2]].setBeforeMurder(befMurderTime, 
 					RHBefMurRoom, 
 					Globals.room[(int)RHBefMurRoom].WeaponList[(int)RHWpn].activity[0],
 					RHWpn);
-				RHDurMurRoom = Globals.randRoom((RmEnum)victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom());
+				RHDurMurRoom = Globals.randRoom((RmEnum)victimDurMurderRoom, timeline[(int)murdererEnum].getDuringMurderRoom(), timeline[relationshipPairing[1]].getDuringMurderRoom());
 				Debug.Log("ROOM " + RHDurMurRoom);
 				timeline[relationshipPairing[2]].setDuringMurder(deathTime,
 					RHDurMurRoom,
