@@ -23,6 +23,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	Color mouseOverColor = Color.yellow;
 	Color[] originalColor; //array to store the original material color
 	
+	bool isSuspect = false;
+	bool firstClick = true;
 	bool displayText = false;
 	bool withinBoundary = false;
 	bool actionKey = false;
@@ -67,6 +69,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		}
 		else{
 			suspect = targetObject.name;
+			isSuspect = true;
 		}
 		
 		windowTexture = questionBoxTex;
@@ -128,6 +131,10 @@ public class InteractiveTrigger : MonoBehaviour {
 					//GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
 					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), ans, answerStyle);
 					GUI.Box(new Rect(Screen.width - 512, 450, 512, 64), s, askingStyle);
+				}
+				if(isSuspect && firstClick){
+					string talk = AI.startingConvo[(int)Enum.Parse(typeof(SuspectEnum), suspect)];
+					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), talk, answerStyle);
 				}
 			}
 		}
@@ -191,6 +198,7 @@ public class InteractiveTrigger : MonoBehaviour {
 					}
 				}
 			}
+
 			GUILayout.EndScrollView();
 		}
 	}
