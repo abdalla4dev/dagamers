@@ -5,17 +5,23 @@ using MurderData;
 public class startMenuScript : MonoBehaviour {
 	
 	public int buttonNumber;
-	public GameObject gameObject;
+	public GameObject gameObj;
 	
 	public GameObject easyButton;
 	public GameObject mediumButton;
 	public GameObject hardButton;
+	
+	Color originalColor;
+	Color mouseOverColor = Color.magenta;
 	
 	public static GameDiffEnum diffLevel;
 	bool diffToggle;
 	// Use this for initialization
 	void Start () {
 		diffToggle = false;
+		//if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
+			//originalColor = gameObj.renderer.material.color;
+		//}
 	}
 	
 	// Update is called once per frame
@@ -24,21 +30,26 @@ public class startMenuScript : MonoBehaviour {
 	}
 	
 	void OnMouseOver () {
-		if(gameObject.name == "easyButton" || gameObject.name == "mediumButton" || gameObject.name == "hardButton"){
-			iTween.RotateTo(gameObject,iTween.Hash("z", 378, "time", 0.5));
+		
+		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
+			iTween.RotateTo(gameObj,iTween.Hash("z", 378, "time", 0.5));
 		}
 		else{
-			iTween.RotateTo(gameObject,iTween.Hash("z", 388, "time", 0.5));
+			iTween.RotateTo(gameObj,iTween.Hash("z", 388, "time", 0.5));
 		}
+		//gameObj.renderer.material.color = mouseOverColor;
 	}
 	
 	void OnMouseExit () {
-		if(gameObject.name == "easyButton" || gameObject.name == "mediumButton" || gameObject.name == "hardButton"){
-			iTween.RotateTo(gameObject,iTween.Hash("z", 348, "time", 0.5));
+		
+		if(gameObj.name == "easyButton" || gameObj.name == "mediumButton" || gameObj.name == "hardButton"){
+			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
 		}
 		else{
-			iTween.RotateTo(gameObject,iTween.Hash("z", 348, "time", 0.5));
+			iTween.RotateTo(gameObj,iTween.Hash("z", 348, "time", 0.5));
 		}
+		
+		//gameObj.renderer.material.color = originalColor;
 	}
 	
 	void OnMouseDown () {
