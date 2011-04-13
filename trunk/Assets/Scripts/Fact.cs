@@ -31,7 +31,7 @@ public class Fact {
 		{
 			if(GenerateTimeline.difficulty!=GameDiffEnum.Hard)
 			{	toReturn = "The CCTV recorded that " + returnName((int)person) + 
-					" was doing " + info.activity + 
+					" was " + info.activity + 
 						" in " + info.place;
 				if(info.weapon!=WpnEnum.None)
 					toReturn += " with " + info.weapon;
