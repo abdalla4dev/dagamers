@@ -470,4 +470,41 @@ public class Person {
 	public SuspectEnum getLikeWho() {
 		return likes;
 	}
+	
+	public String returnTrue()
+	{
+		string r = "BM TRUTH " + truthTimeline[0].place + " " + truthTimeline[0].activity + " "; 
+			if(truthTimeline[0].alibi.Count > 0)
+				r += truthTimeline[0].alibi[0];
+		r += "\n";
+		r += "DM TRUTH " + truthTimeline[1].place + " " + truthTimeline[1].activity + " ";
+		if(truthTimeline[1].alibi.Count > 0)
+			r += truthTimeline[1].alibi[0];
+		r += "\n";
+		r += "AM TRUTH " + truthTimeline[2].place + " " + truthTimeline[2].activity + " ";
+		if(truthTimeline[2].alibi.Count > 0)
+			r += truthTimeline[2].alibi[0];
+		return r;
+	}
+	
+	public String returnFalse()
+	{
+		
+		string r = shouldReturnLies[0] + " BM FALSE " + falseTimeline[0].place + " " + falseTimeline[0].activity + " ";
+		if(falseTimeline[0].alibi.Count > 0)
+			r += falseTimeline[0].alibi[0];
+		r += "\n";
+		r += shouldReturnLies[1] + " DM FALSE " + falseTimeline[1].place + " " + falseTimeline[1].activity + " ";
+		if(falseTimeline[1].alibi.Count > 0)
+			r += falseTimeline[1].alibi[0];
+		r += "\n";
+		r += shouldReturnLies[2] +" AM FALSE " + falseTimeline[2].place + " " + falseTimeline[2].activity + " ";
+		if(falseTimeline[2].alibi.Count > 0)
+			r += falseTimeline[2].alibi[0];
+		return r;
+	}
+	
+	public RmEnum getDMTruthPlaceDebug() {
+		return truthTimeline[1].place;
+	}
 }
