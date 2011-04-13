@@ -9,10 +9,7 @@ public class Fact {
 	public readonly TimelineSlot info;
 	public readonly SuspectEnum person;
 	public readonly WpnEnum weapon;
-	public readonly bool rhWeap;
-	public readonly bool mWeap;
-	
-	public readonly SuspectEnum murderer;
+	public readonly bool used;
 	
 	public Fact(RmEnum rm, TimelineSlot ts, SuspectEnum personn) {
 		placeRevealed = rm;
@@ -20,13 +17,12 @@ public class Fact {
 		person = personn;
 	}
 	
-	public Fact(SuspectEnum m, SuspectEnum p, WpnEnum w, bool rhUse, bool mUse)
+	public Fact(TimelineSlot ts, SuspectEnum p, WpnEnum w, bool use)
 	{
-		murderer = m;
+		info = ts;
 		person = p;
 		weapon = w;
-		rhWeap = rhUse;
-		mWeap = mUse;
+		used = use;
 	}
 	
 	public string revealInfo(string type) {
@@ -54,13 +50,10 @@ public class Fact {
 		else if(type.Contains("weapon"))
 		{
 			
-			if(rhWeap)
-				toReturn = "Forensics has verified that " + returnName((int)person) + " has used the " + weapon.ToString() +
-					" recently. It could be the murder weapon.";
-			if(mWeap)
-				toReturn = "Forensics has verified that " + returnName((int)murderer) + " has used the " + weapon.ToString() +
-					" recently. It could be the murder weapon.";
-			else
+			if(used)
+				toReturn = "Forensics has verified that the " + weapon.ToString() +
+					" was used recently. It could be the murder weapon.";
+			ifse
 				toReturn = "Forensics has verified that this item was not used recently.";
 		
 		}
