@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TreeNode : MonoBehaviour {
+public class TreeNode {
 	
 	//num of suspects
 	int numOfSus;
@@ -70,7 +70,7 @@ public class TreeNode : MonoBehaviour {
 					if (temp.Qn == qn) { // check for the correct qn
 						temp.changeBooleanValues(); // unlocked the values
 						temp.setGUIBool();
-						sendToLog(temp.Qn,temp.Ans,suspect); // send the qn and answer to log and lock the qn
+						sendToLog(temp,suspect); // send the qn and answer to log and lock the qn
 						temp.Unlocked = false;
 						temp.isLogged = true;
 						return temp.Ans; // return the answer
@@ -80,7 +80,7 @@ public class TreeNode : MonoBehaviour {
 					}
 				}
 				if (temp.QnNum == 16) {
-					sendToLog(temp.Qn,temp.Ans,suspect); // send the qn and answer to log and lock the qn
+					sendToLog(temp,suspect); // send the qn and answer to log and lock the qn
 					temp.Unlocked = false;
 					temp.isLogged = true;
 					return temp.Ans;
@@ -168,18 +168,93 @@ public class TreeNode : MonoBehaviour {
 		logList.Add(one);
 		logList.Add(two);
 		logList.Add(three);
+		
+		string[] tempo = new string[2];
+		tempo[0] = "temp";
+		tempo[1] = "temp";	
+		for (int i=0;i<4;i++) {
+			for (int j=0;j<16;j++) {
+				logList[i].Add(tempo);
+			}
+		}
 	}
 	
-	public void sendToLog(string qn, string ans, int sus) {
+	public void sendToLog(QnNode temp, int sus) {
+		
 		string[] logNode = new string[2];
-		logNode[0] = qn;
-		logNode[1] = ans;
-		logList[sus].Add(logNode);
+		logNode[0] = temp.Qn;
+		logNode[1] = temp.Ans;
+		
+		if (temp.QnNum == 1) {
+			logList[sus].RemoveAt(0);
+			logList[sus].Insert(0,logNode);
+		}
+		else if (temp.QnNum == 2) {
+			logList[sus].RemoveAt(1);
+			logList[sus].Insert(1,logNode);
+		}
+		else if (temp.QnNum == 3) {
+			logList[sus].RemoveAt(2);
+			logList[sus].Insert(2,logNode);
+		}
+		else if (temp.QnNum == 5) {
+			logList[sus].RemoveAt(3);
+			logList[sus].Insert(3,logNode);
+		}
+		else if (temp.QnNum == 8) {
+			logList[sus].RemoveAt(4);
+			logList[sus].Insert(4,logNode);
+		}
+		else if (temp.QnNum == 4) {
+			logList[sus].RemoveAt(5);
+			logList[sus].Insert(5,logNode);
+		}
+		else if (temp.QnNum == 7) {
+			logList[sus].RemoveAt(6);
+			logList[sus].Insert(6,logNode);
+		}
+		else if (temp.QnNum == 10) {
+			logList[sus].RemoveAt(7);
+			logList[sus].Insert(7,logNode);
+		}
+		else if (temp.QnNum == 6) {
+			logList[sus].RemoveAt(8);
+			logList[sus].Insert(8,logNode);
+		}
+		else if (temp.QnNum == 9) {
+			logList[sus].RemoveAt(9);
+			logList[sus].Insert(9,logNode);
+		}
+		else if (temp.QnNum == 12) {
+			logList[sus].RemoveAt(10);
+			logList[sus].Insert(10,logNode);
+		}
+		else if (temp.QnNum == 11) {
+			logList[sus].RemoveAt(11);
+			logList[sus].Insert(11,logNode);
+		}
+		else if (temp.QnNum == 13) {
+			logList[sus].RemoveAt(12);
+			logList[sus].Insert(12,logNode);
+		}
+		else if (temp.QnNum == 14) {
+			logList[sus].RemoveAt(13);
+			logList[sus].Insert(13,logNode);
+		}
+		else if (temp.QnNum == 15) {
+			logList[sus].RemoveAt(14);
+			logList[sus].Insert(14,logNode);
+		}
+		else if (temp.QnNum == 16) {
+			logList[sus].RemoveAt(15);
+			logList[sus].Insert(15,logNode);
+		}
+
 		for (int i=0;i<logList.Count;i++) {
 			for (int j=0;j<logList[i].Count;j++) {
-				string[] temp = logList[i][j];
-				//Debug.Log(temp[0]);
-				//Debug.Log(temp[1]);
+				string[] temppo = logList[i][j];
+				Debug.Log(temppo[0]);
+				Debug.Log(temppo[1]);
 			}
 		}
 	}
