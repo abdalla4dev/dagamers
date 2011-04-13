@@ -45,10 +45,16 @@ public class VoiceSpeaker : MonoBehaviour
 	}
 	
 	public static void stopTalk(){
-		PauseVoice();	
+        if( VoiceAvailable()>0 )
+        {
+            FreeVoice();
+        }
 	}
 	public static void startTalk(){
-		ResumeVoice();
+        if( VoiceAvailable()>0 )
+        {
+            InitVoice();
+		}
 	}
     void OnDisable()
 	{ 
