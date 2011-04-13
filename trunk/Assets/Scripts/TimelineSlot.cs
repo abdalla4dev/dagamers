@@ -31,8 +31,8 @@ public class TimelineSlot  {
 		int minutes = (int) ((startTime - hour)*60);
 		if (hour>12) {
 			hour-=12;
-			return ""+hour+":"+minutes+"pm";
-		} else return ""+hour+":"+minutes+"am";
+			return ""+hour+":"+"00 pm";
+		} else return ""+hour+":"+"00 am";
 	}
 	
 	public string getDuration() {
