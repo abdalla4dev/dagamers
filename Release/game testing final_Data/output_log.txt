@@ -1,0 +1,2369 @@
+Mono path[0] = 'C:/Users/Alicia/Desktop/CS4343/Phase 2 SVN/Release/game testing final_Data/Managed'
+Mono path[1] = 'C:/Users/Alicia/Desktop/CS4343/Phase 2 SVN/Release/game testing final_Data/Mono'
+Direct3D:
+    Version:  Direct3D 9.0c [igdumdx32.dll 8.15.10.2202]
+    Renderer: Mobile Intel(R) 4 Series Express Chipset Family
+    Vendor:   Intel
+    VRAM:     1288 MB
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 DF24=0 INTZ=1 RAWZ=0 NULL=0 RESZ=1 SlowINTZ=0
+desktop: 1280x800 59Hz; virtual: 1280x800 at 0,0
+<I> Initializing (RawInput).
+<RI> Input initialized.
+Non platform assembly: data-024C7F08 (this message is harmless)
+Non platform assembly: data-0252A778 (this message is harmless)
+Non platform assembly: data-08820048 (this message is harmless)
+Non platform assembly: data-0252DA50 (this message is harmless)
+Non platform assembly: data-02533058 (this message is harmless)
+Platform assembly: C:\Users\Alicia\Desktop\CS4343\Phase 2 SVN\Release\game testing final_Data\Managed\UnityScript.Lang.dll (this message is harmless)
+
+Unloading 108 unused Assets to reduce memory usage. Loaded Objects now: 133.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1661.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Number of voice : 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+VoiceSpeaker:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Voice name : Microsoft Anna - English (United States)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+VoiceSpeaker:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+WHYEasy
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+DIFFEasy
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Rand seq 3 0 1 2 end
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:genNumSequence(SuspectEnum)
+GenerateTimeline:GenerateEasyGame(SuspectEnum, Int32, Int32)
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+PRINT
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+BEFMURDER
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Wife murderer=False Kitchen making tea Maid
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Son murderer=False Master_Bedroom reading a book Daughter
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Daughter murderer=False Master_Bedroom sleeping Son
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Maid murderer=True Kitchen fixing the light Wife
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+MURDER
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Wife murderer=False Kitchen washing the dishes None
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Son murderer=False Kitchen cooking Daughter
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Daughter murderer=False Kitchen making tea Son
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Maid murderer=True Kitchen fixing the light None
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+AFTMURDER
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Wife found body False murderer=False Kitchen chatting on the phone Maid
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Son found body False murderer=False Toilet_in_Master_Bedroom cleaning Daughter
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Daughter found body False murderer=False Toilet_in_Master_Bedroom doing business Son
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Maid found body True murderer=True Kitchen fixing the light Wife
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+MURDER TRUTH
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Kitchen fixing the light Wife
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Kitchen fixing the light None
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Kitchen fixing the light Wife
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+WEAPON LOCS
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+knifeKitchen
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+screwdriver Kitchen
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+spanner Garden
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+towel Toilet_in_Master_Bedroom
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+scissors Toilet_in_Master_Bedroom
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+False 0
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+False 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+False 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+3 Kitchen
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+True 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateTimeline:PrintMethod()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? No, I did not. 0 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? No, I did not. 1 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? No, I did not. 2 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? Yes, I found it at 3.00 pm. 3 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him way before the murder timing, so I do not think it will be of help. 0 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him way before the murder timing, so I do not think it will be of help. 1 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him way before the murder timing, so I do not think it will be of help. 2 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him at 12.00 pm in the Toilet_in_Master_Bedroom. 3 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was chatting on the phone from 2.00 pm to 3.00 pm. 0 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was cleaning from 2.00 pm to 3.00 pm. 1 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was doing business from 2.00 pm to 3.00 pm. 2 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was fixing the light using Screwdriver from 2.00 pm to 3.00 pm. 3 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was making tea from 12.00 pm to 1.00 pm. 0 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was reading a book from 12.00 pm to 1.00 pm. 1 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was sleeping from 12.00 pm to 1.00 pm. 2 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was fixing the light using Screwdriver from 12.00 pm to 1.00 pm. 3 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was making tea from 12.00 pm to 1.00 pm. 0 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was reading a book from 12.00 pm to 1.00 pm. 1 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was sleeping from 12.00 pm to 1.00 pm. 2 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was fixing the light using Screwdriver from 12.00 pm to 1.00 pm. 3 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was making tea from 12.00 pm to 1.00 pm. 0 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was reading a book from 12.00 pm to 1.00 pm. 1 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was sleeping from 12.00 pm to 1.00 pm. 2 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was fixing the light using Screwdriver from 12.00 pm to 1.00 pm. 3 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was making tea from 12.00 pm to 1.00 pm. 0 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was reading a book from 12.00 pm to 1.00 pm. 1 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was sleeping from 12.00 pm to 1.00 pm. 2 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was fixing the light using Screwdriver from 12.00 pm to 1.00 pm. 3 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were chatting on the phone from 2.00 pm to 3.00 pm at...? I was at Kitchen. 0 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were cleaning from 2.00 pm to 3.00 pm at...? I was at Toilet_in_Master_Bedroom. 1 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were doing business from 2.00 pm to 3.00 pm at...? I was at Toilet_in_Master_Bedroom. 2 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 2.00 pm to 3.00 pm at...? I was at Kitchen. 3 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was washing the dishes. 0 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were making tea from 12.00 pm to 1.00 pm at...? I was at Kitchen. 0 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was cooking. 1 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were reading a book from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 1 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was making tea. 2 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were sleeping from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 2 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was fixing the light using Screwdriver. 3 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 12.00 pm to 1.00 pm at...? I was at Kitchen. 3 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was washing the dishes. 0 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were making tea from 12.00 pm to 1.00 pm at...? I was at Kitchen. 0 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was cooking. 1 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were reading a book from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 1 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was making tea. 2 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were sleeping from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 2 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was fixing the light using Screwdriver. 3 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 12.00 pm to 1.00 pm at...? I was at Kitchen. 3 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was washing the dishes. 0 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were making tea from 12.00 pm to 1.00 pm at...? I was at Kitchen. 0 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was cooking. 1 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were reading a book from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 1 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was making tea. 2 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were sleeping from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 2 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was fixing the light using Screwdriver. 3 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 12.00 pm to 1.00 pm at...? I was at Kitchen. 3 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was washing the dishes. 0 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were making tea from 12.00 pm to 1.00 pm at...? I was at Kitchen. 0 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was cooking. 1 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were reading a book from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 1 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was making tea. 2 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were sleeping from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 2 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was fixing the light using Screwdriver. 3 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 12.00 pm to 1.00 pm at...? I was at Kitchen. 3 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Maria. 0 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Jane. 1 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Wayne. 2 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Mrs. Darcy. 3 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you washing the dishes between 1.00 pm and 2.00 pm? I was at Kitchen. 0 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Maria. 0 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you cooking between 1.00 pm and 2.00 pm? I was at Kitchen. 1 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Jane. 1 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you making tea between 1.00 pm and 2.00 pm? I was at Kitchen. 2 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Wayne. 2 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you fixing the light between 1.00 pm and 2.00 pm? I was at Kitchen. 3 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Mrs. Darcy. 3 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you washing the dishes between 1.00 pm and 2.00 pm? I was at Kitchen. 0 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Maria. 0 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you cooking between 1.00 pm and 2.00 pm? I was at Kitchen. 1 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Jane. 1 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you making tea between 1.00 pm and 2.00 pm? I was at Kitchen. 2 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Wayne. 2 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you fixing the light between 1.00 pm and 2.00 pm? I was at Kitchen. 3 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Mrs. Darcy. 3 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you washing the dishes between 1.00 pm and 2.00 pm? I was at Kitchen. 0 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Maria. 0 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you cooking between 1.00 pm and 2.00 pm? I was at Kitchen. 1 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Jane. 1 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you making tea between 1.00 pm and 2.00 pm? I was at Kitchen. 2 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Wayne. 2 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you fixing the light between 1.00 pm and 2.00 pm? I was at Kitchen. 3 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Mrs. Darcy. 3 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you washing the dishes between 1.00 pm and 2.00 pm? I was at Kitchen. 0 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Maria. 0 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you cooking between 1.00 pm and 2.00 pm? I was at Kitchen. 1 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Jane. 1 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you making tea between 1.00 pm and 2.00 pm? I was at Kitchen. 2 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Wayne. 2 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you fixing the light between 1.00 pm and 2.00 pm? I was at Kitchen. 3 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Mrs. Darcy. 3 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy chatting on the phone from 2.00 pm to 3.00 pm? Yes, Mrs. Darcy was chatting on the phone and was with me. 3 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cleaning from 2.00 pm to 3.00 pm? Yes, Wayne was with me but Wayne was  not cleaning. 2 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane doing business from 2.00 pm to 3.00 pm? Yes, Jane was doing business and was with me. 1 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 2.00 pm to 3.00 pm? Yes, Maria was with me but Maria was  not fixing the light. 0 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 0 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy making tea from 12.00 pm to 1.00 pm? Yes, Mrs. Darcy was making tea and was with me. 3 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Jane. 1 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne reading a book from 12.00 pm to 1.00 pm? Yes, Wayne was with me but Wayne was not reading a book. 2 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Wayne. 2 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane sleeping from 12.00 pm to 1.00 pm? Yes, Jane was sleeping and was with me. 1 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 3 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 12.00 pm to 1.00 pm? Yes, Maria was with me but Maria was not fixing the light. 0 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 0 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy making tea from 12.00 pm to 1.00 pm? Yes, Mrs. Darcy was making tea and was with me. 3 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Jane. 1 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne reading a book from 12.00 pm to 1.00 pm? Yes, Wayne was with me but Wayne was not reading a book. 2 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Wayne. 2 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane sleeping from 12.00 pm to 1.00 pm? Yes, Jane was sleeping and was with me. 1 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 3 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 12.00 pm to 1.00 pm? Yes, Maria was with me but Maria was not fixing the light. 0 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 0 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy making tea from 12.00 pm to 1.00 pm? Yes, Mrs. Darcy was making tea and was with me. 3 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Jane. 1 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne reading a book from 12.00 pm to 1.00 pm? Yes, Wayne was with me but Wayne was not reading a book. 2 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Wayne. 2 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane sleeping from 12.00 pm to 1.00 pm? Yes, Jane was sleeping and was with me. 1 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 3 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 12.00 pm to 1.00 pm? Yes, Maria was with me but Maria was not fixing the light. 0 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 0 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy making tea from 12.00 pm to 1.00 pm? Yes, Mrs. Darcy was making tea and was with me. 3 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Jane. 1 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne reading a book from 12.00 pm to 1.00 pm? Yes, Wayne was with me but Wayne was not reading a book. 2 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Wayne. 2 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane sleeping from 12.00 pm to 1.00 pm? Yes, Jane was sleeping and was with me. 1 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 3 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 12.00 pm to 1.00 pm? Yes, Maria was with me but Maria was not fixing the light. 0 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cooking from 1.00 pm to 2.00 pm? Yes, Wayne was with me but Wayne was not cooking. 2 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane making tea from 1.00 pm to 2.00 pm? Yes, Jane was making tea and was with me. 1 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cooking from 1.00 pm to 2.00 pm? Yes, Wayne was with me but Wayne was not cooking. 2 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane making tea from 1.00 pm to 2.00 pm? Yes, Jane was making tea and was with me. 1 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cooking from 1.00 pm to 2.00 pm? Yes, Wayne was with me but Wayne was not cooking. 2 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane making tea from 1.00 pm to 2.00 pm? Yes, Jane was making tea and was with me. 1 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cooking from 1.00 pm to 2.00 pm? Yes, Wayne was with me but Wayne was not cooking. 2 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane making tea from 1.00 pm to 2.00 pm? Yes, Jane was making tea and was with me. 1 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:BFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? No, I did not. 0 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him way before the murder timing, so I do not think it will be of help. 0 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was chatting on the phone from 2.00 pm to 3.00 pm. 0 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was making tea from 12.00 pm to 1.00 pm. 0 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were chatting on the phone from 2.00 pm to 3.00 pm at...? I was at Kitchen. 0 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was washing the dishes. 0 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were making tea from 12.00 pm to 1.00 pm at...? I was at Kitchen. 0 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Maria. 0 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you washing the dishes between 1.00 pm and 2.00 pm? I was at Kitchen. 0 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Maria. 0 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 2.00 pm to 3.00 pm? Yes, Maria was with me but Maria was  not fixing the light. 0 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 0 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Maria fixing the light from 12.00 pm to 1.00 pm? Yes, Maria was with me but Maria was not fixing the light. 0 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who in the family would do this thing to your Father? I think Wayne really hated him, because he seems to have had a mistress lately. 0 15
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who are you close to? Nobody, really. 0 16
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? No, I did not. 1 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him way before the murder timing, so I do not think it will be of help. 1 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was cleaning from 2.00 pm to 3.00 pm. 1 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was reading a book from 12.00 pm to 1.00 pm. 1 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were cleaning from 2.00 pm to 3.00 pm at...? I was at Toilet_in_Master_Bedroom. 1 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was cooking. 1 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were reading a book from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 1 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Jane. 1 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you cooking between 1.00 pm and 2.00 pm? I was at Kitchen. 1 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Jane. 1 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane doing business from 2.00 pm to 3.00 pm? Yes, Jane was doing business and was with me. 1 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Jane. 1 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane sleeping from 12.00 pm to 1.00 pm? Yes, Jane was sleeping and was with me. 1 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Jane making tea from 1.00 pm to 2.00 pm? Yes, Jane was making tea and was with me. 1 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who in the family would do this thing to your Father? I think Jane really hated him, because he seems to have had a mistress lately. 1 15
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who are you close to? I like to hang out with Jane recently. 1 16
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? No, I did not. 2 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him way before the murder timing, so I do not think it will be of help. 2 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was doing business from 2.00 pm to 3.00 pm. 2 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was sleeping from 12.00 pm to 1.00 pm. 2 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were doing business from 2.00 pm to 3.00 pm at...? I was at Toilet_in_Master_Bedroom. 2 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was making tea. 2 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were sleeping from 12.00 pm to 1.00 pm at...? I was at Master_Bedroom. 2 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Wayne. 2 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you making tea between 1.00 pm and 2.00 pm? I was at Kitchen. 2 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Wayne. 2 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cleaning from 2.00 pm to 3.00 pm? Yes, Wayne was with me but Wayne was  not cleaning. 2 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? Yes, I was with Wayne. 2 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne reading a book from 12.00 pm to 1.00 pm? Yes, Wayne was with me but Wayne was not reading a book. 2 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Wayne cooking from 1.00 pm to 2.00 pm? Yes, Wayne was with me but Wayne was not cooking. 2 14
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who in the family would do this thing to your Father? I think Maria really hated him, because he has been giving her alot of ridiculous tasks lately. 2 15
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who are you close to? I like to hang out with Wayne recently. 2 16
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you find the body? Yes, I found it at 3.00 pm. 3 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+When and where did you last see Mr. Darcy? I last saw him at 12.00 pm in the Toilet_in_Master_Bedroom. 3 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 3.00 pm, when the body is found? I was fixing the light using Screwdriver from 2.00 pm to 3.00 pm. 3 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+What were you doing around the time 12.00 pm, when the Mr.Darcy is last seen? I was fixing the light using Screwdriver from 12.00 pm to 1.00 pm. 3 4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 2.00 pm to 3.00 pm at...? I was at Kitchen. 3 5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Then what about your activity between the unaccounted time of 1.00 pm and 2.00 pm? I was fixing the light using Screwdriver. 3 6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+You were fixing the light from 12.00 pm to 1.00 pm at...? I was at Kitchen. 3 7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 2.00 pm to 3.00 pm? Yes, I was with Mrs. Darcy. 3 8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Where were you fixing the light between 1.00 pm and 2.00 pm? I was at Kitchen. 3 9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 12.00 pm to 1.00 pm? Yes, I was with Mrs. Darcy. 3 10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy chatting on the phone from 2.00 pm to 3.00 pm? Yes, Mrs. Darcy was chatting on the phone and was with me. 3 11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Could anybody be your alibi for the time period from 1.00 pm to 2.00 pm? No, I was alone. 3 12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Did you see Mrs. Darcy making tea from 12.00 pm to 1.00 pm? Yes, Mrs. Darcy was making tea and was with me. 3 13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who in the family would do this thing to your Father? I think Mrs. Darcy really hated him, because he has been a spendthrift of late. 3 15
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+who are you close to? Nobody, really. 3 16
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TreeNode:printNode(QnNode)
+TreeNode:DFS()
+AI:qnGenerator()
+GenerateTimeline:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+Platform assembly: C:\Users\Alicia\Desktop\CS4343\Phase 2 SVN\Release\game testing final_Data\Managed\Boo.Lang.dll (this message is harmless)
