@@ -196,7 +196,7 @@ public class InteractiveTrigger : MonoBehaviour {
 			foreach (string item in myList) {
 				//if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 20), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
 				if (item != "temp") {
-					if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')))) {
+					if (GUILayout.Button((item.Replace('_', ' ')))) {
 						s = item;
 						ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
 						ans = ans.Replace('_', ' ');
