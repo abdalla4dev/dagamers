@@ -59,7 +59,7 @@ public class AI : MonoBehaviour{
 						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
 					}
 					else {
-						answer = "I last saw him way before the murder timing, so I do not think it will be of help.";
+						answer = "I last saw him a long time before the murder timing, so I don't think I can help you.";
 						temp.setQnNode(2,question,answer,j,false,true,'n',10+unlocker);
 					}
 				}
@@ -83,13 +83,13 @@ public class AI : MonoBehaviour{
 			else if (i == 4) { // question 4
 				for (int j=0;j<Globals.numSuspects;j++) {
 					if (GenerateTimeline.timeline[j].getBMWpn() != WpnEnum.None) {
-						question = "What were you doing around the time " + firstTime + ", when the Mr.Darcy is last seen?";
+						question = "What were you doing around the time " + firstTime + ", when Mr. Darcy was last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " using " + GenerateTimeline.timeline[j].getBMWpn() + " from " + 
 						firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
 					else {
-						question = "What were you doing around the time " + firstTime + ", when the Mr.Darcy is last seen?";
+						question = "What were you doing around the time " + firstTime + ", when Mr. Darcy was last seen?";
 						answer = "I was " + GenerateTimeline.timeline[j].getBMActivity() + " from " + firstTime + " to " + secondTime + ".";
 						temp.setQnNode(4,question,answer,j,false,true,'n',24);
 					}
@@ -275,7 +275,7 @@ public class AI : MonoBehaviour{
 			}
 			else if (i == 15) {
 			
-				question = "who in the family would do this thing to your Father?";
+				question = "Who in the family would do this thing to your Father?";
 				int num = rand.Next(4);
 				for (int j=0;j<Globals.numSuspects;j++) {
 					if (j == num) {
@@ -320,11 +320,11 @@ public class AI : MonoBehaviour{
 				conse = "...";
 			}
 			else if (GenerateTimeline.timeline[i].getPersonality() == NegativePersonalityEnum.unhappy) {
-				start = "(sob).... Yes? I'm" + AI.returnName(i) + ".";
+				start = "(sob).... Yes? I'm " + AI.returnName(i) + ".";
 				conse = "Please, leave me alone! I have nothing more to say! (sob)";
 			}
 			else {
-				start = "Hello I'm " + AI.returnName(i) + ". Please to meet you.";
+				start = "Hello I'm " + AI.returnName(i) + ". Pleased to meet you.";
 				conse = "Is there anything else you need to ask me?";
 			}
 			startingConvo.Add(start);
