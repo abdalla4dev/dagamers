@@ -88,6 +88,8 @@ public class InteractiveTrigger : MonoBehaviour {
 		else if(targetObject.name == "Maid"){
 			suspectName = "Maria";
 		}
+		
+		
 	}
 	
 	void OnGUI(){
@@ -130,12 +132,12 @@ public class InteractiveTrigger : MonoBehaviour {
 				
 				if(callAns){
 					//GUI.Box(new Rect(screenPos.x, (Screen.height - screenPos.y)+150,300,100), ans);
-					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), ans, answerStyle);
+					GUI.Box(new Rect(Screen.width - 420, 0, 262, 150), ans, answerStyle);
 					GUI.Box(new Rect(Screen.width - 512, Screen.height - 270, 512, 64), s, askingStyle);
 				}
 				if(isSuspect && firstClick && callAns == false){
 					string talk = AI.startingConvo[(int)Enum.Parse(typeof(SuspectEnum), suspect)];
-					GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), talk, answerStyle);
+					GUI.Box(new Rect(Screen.width - 420, 0, 262, 150), talk, answerStyle);
 				}
 			}
 		}
@@ -156,20 +158,22 @@ public class InteractiveTrigger : MonoBehaviour {
 		if(isFact){
 			//factEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
 			if(!isCCTVcalled){
+				//weaponStr = "" + targetObject.name + "\n\n";
 				weaponStr = GenerateTimeline.facts[rand.Next(0, GenerateTimeline.facts.Count)].revealInfo("CCTV");
 				weaponStr = weaponStr.Replace('_', ' ');
 				weaponStr += " (Click again for another fact)";
 			}
 			isCCTVcalled = true;
 			//GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(150));
-			GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), weaponStr, answerStyle);
+			GUI.Box(new Rect(Screen.width - 420, 0, 262, 150), weaponStr, answerStyle);
 			
 		}
 		else{
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
+			//weaponStr = "" + targetObject.name + "\n\n";
 			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
 			//GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(150));
-			GUI.Box(new Rect(Screen.width - 420, 0, 262, 100), weaponStr, answerStyle);
+			GUI.Box(new Rect(Screen.width - 420, 0, 262, 150), weaponStr, answerStyle);
 		}
 		
 		// VoiceSpeaker
@@ -192,7 +196,7 @@ public class InteractiveTrigger : MonoBehaviour {
 			foreach (string item in myList) {
 				//if (GUI.Button(new Rect(30, (qnButtonTop * numQn), 450, 20), (item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower()))) {
 				if (item != "temp") {
-					if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')).Substring(1).ToLower())) {
+					if (GUILayout.Button(item.Substring(0,1) + (item.Replace('_', ' ')))) {
 						s = item;
 						ans = AI.ClickingTriggered((int)Enum.Parse(typeof(SuspectEnum), suspect), s);
 						ans = ans.Replace('_', ' ');
