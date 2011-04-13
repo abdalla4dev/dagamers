@@ -150,9 +150,7 @@ public class ToolBar : MonoBehaviour {
 		
 		GUILayout.Label("You have solved the mystery! Your rank is ");
 		GUILayout.Box(showRank);
-		if(GUILayout.Button("Return to Main Menu")){
-			Application.LoadLevel("startmenu");
-		}
+		GUILayout.Label("Thank you for playing!");
 		if(GUILayout.Button("Quit Game")){
 			Application.Quit();
 		}
