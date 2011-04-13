@@ -163,10 +163,10 @@ public class InteractiveTrigger : MonoBehaviour {
 				weaponStr = weaponStr.Replace('_', ' ');
 				weaponStr += " (Click again for another fact)";
 			}
+			
 			isCCTVcalled = true;
 			//GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(150));
 			GUI.Box(new Rect(Screen.width - 420, 0, 262, 150), weaponStr, answerStyle);
-			
 		}
 		else{
 			weaponEnum = ((int)Enum.Parse(typeof(WpnEnum), weapon));
@@ -174,13 +174,13 @@ public class InteractiveTrigger : MonoBehaviour {
 			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
 			//GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(150));
 			GUI.Box(new Rect(Screen.width - 420, 0, 262, 150), weaponStr, answerStyle);
-		}
-		
-		// VoiceSpeaker
-		if(!spoken){
-			VoiceSpeaker.startTalk();
-			VoiceSpeaker.Talk(weaponStr);
-			spoken = true;	
+			
+			// VoiceSpeaker
+			if(!spoken){
+				VoiceSpeaker.startTalk();
+				VoiceSpeaker.Talk(weaponStr);
+				spoken = true;	
+			}
 		}
 	}
 	
