@@ -57,7 +57,8 @@ public class ToolBar : MonoBehaviour {
 		
 		// for solve
 		for (int i=0; i< Globals.numSuspects; i++) {
-			suspectAnswers.Add(Enum.GetName(typeof(SuspectEnum), i));
+			//suspectAnswers.Add(Enum.GetName(typeof(SuspectEnum), i));
+			suspectAnswers.Add(AI.returnName(i));
 		}
 		for (int i=0; i<Globals.numRooms; i++) {
 			roomAnswers.Add(Enum.GetName(typeof(RmEnum),i));
@@ -356,7 +357,7 @@ public class ToolBar : MonoBehaviour {
 
 		if (GUILayout.Button("Solve!",solveButtonStyle) ) {
 			if (GenerateTimeline.murderWeap.ToString() == weaponSelection && 
-				GenerateTimeline.murderer.name.ToString() == suspectSelection &&
+				AI.returnName((int)GenerateTimeline.murderer.name) == suspectSelection &&
 				GenerateTimeline.murderer.getDuringMurderRoom().ToString() == roomSelection) {
 				//check if game solved
 				solved = true;
