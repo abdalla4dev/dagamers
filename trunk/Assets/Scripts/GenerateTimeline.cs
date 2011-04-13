@@ -161,9 +161,7 @@ public class GenerateTimeline : MonoBehaviour
 		//last seen
 		int lastSaw = rand.Next(0, Globals.numSuspects);
 		timeline[lastSaw].setLastSaw(true);
-		
-		Debug.Log("DIFF" + difficulty);
-		
+			
 		switch(difficulty) {
 			case GameDiffEnum.Easy: GenerateEasyGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;
 			case GameDiffEnum.Medium: GenerateMediumGame(murdererEnum, victimBefMurderRoom, victimDurMurderRoom); break;

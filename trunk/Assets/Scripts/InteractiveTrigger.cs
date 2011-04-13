@@ -41,12 +41,13 @@ public class InteractiveTrigger : MonoBehaviour {
 	
 	Vector2 scrollPosition = new Vector2(0, -5);
 	
-	string suspect, weapon, s, ans, fact;
+	string suspect, weapon, s, ans, fact, suspectName;
 	
 	int weaponEnum, factEnum; 
 	int numQn = 1;
 	
 	float qnButtonTop = 20;
+	float mouseX, mouseY;
 	
 	
 	
@@ -71,8 +72,37 @@ public class InteractiveTrigger : MonoBehaviour {
 		windowTexture = questionBoxTex;
 	}
 	
+	void nameGenerator(){
+		if(targetObject.name == "Daughter"){
+			suspectName = "Jane";
+		}
+		else if(targetObject.name == "Wife"){
+			suspectName = "Mrs Darcy";
+		}
+		else if(targetObject.name == "Son"){
+			suspectName = "Wayne";
+		}
+		else if(targetObject.name == "Maid"){
+			suspectName = "Maria";
+		}
+	}
+	
 	void OnGUI(){
 		GUI.skin = customSkin;
+		if(overObject){
+			//GUI.Label(new Rect(mousePos.x, mouseY, 50, 30), targetObject.name, MouseLabelStyle); 
+			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "CCTV"){
+				GUI.Label(new Rect(screenPos.x - 50, (Screen.height - screenPos.y) + 100,150,30), targetObject.name, MouseLabelStyle);
+			}
+			else if(targetObject.name == "Towel"){
+				GUI.Label(new Rect(screenPos.x - 50, (Screen.height - screenPos.y + 300),150,30), targetObject.name, MouseLabelStyle);
+			}
+			else{
+				nameGenerator();
+				GUI.Label(new Rect((screenPos.x - 50), (Screen.height - screenPos.y)+ 100,150,30), suspectName, MouseLabelStyle);
+			}
+		}
+		
 		if (displayText) {
 			// for weapons only and CCTV
 			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "CCTV"){
@@ -218,10 +248,10 @@ public class InteractiveTrigger : MonoBehaviour {
 		overObject = true;
 		
 		mousePos = Input.mousePosition;
-		float mouseX = Math.Abs(mousePos.x - Screen.width);
-		float mouseY = Math.Abs(mousePos.y - Screen.height);
+		//mouseX = Math.Abs(mousePos.x - Screen.width);
+		mouseY = Math.Abs(mousePos.y - Screen.height);
 		
-		//GUI.Label(new Rect(mouseX, mouseY, 50, 30), targetObject.name, MouseLabelStyle);  
+		 
 		
 		//changing all the material to be yellow upon mouse hover, once the player is close to the object
 		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
