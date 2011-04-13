@@ -373,11 +373,11 @@ public class GenerateTimeline : MonoBehaviour
 		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
 		placeWeapon(RHWpn, timeline[relationshipPairing[2]].getAfterMurderRoom());
 		
-		wpnFacts.Insert((int)WpnEnum.Knife, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Knife, WpnEnum.Knife==RHWpn||WpnEnum.Knife==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn||WpnEnum.Screwdriver==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn||WpnEnum.Towel==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn||WpnEnum.Scissors==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Knife, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Knife, WpnEnum.Knife==RHWpn,WpnEnum.Knife==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn,WpnEnum.Screwdriver==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn,WpnEnum.Towel==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn,WpnEnum.Scissors==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn,WpnEnum.Spanner==murderWeap));
 	}
 	
 	private static void GenerateMediumGame(SuspectEnum murdererEnum, int victimBefMurderRoom, int victimDurMurderRoom) {
@@ -701,11 +701,11 @@ public class GenerateTimeline : MonoBehaviour
 		placeWeapon(murderWeap, timeline[(int)murdererEnum].getAfterMurderRoom());
 		placeWeapon(RHWpn, timeline[relationshipPairing[2]].getAfterMurderRoom());
 		
-		wpnFacts.Insert((int)WpnEnum.Knife, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Knife, WpnEnum.Knife==RHWpn||WpnEnum.Knife==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn||WpnEnum.Screwdriver==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn||WpnEnum.Towel==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn||WpnEnum.Scissors==murderWeap));
-		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[relationshipPairing[2]].getAfterMurderFact(), timeline[relationshipPairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn||WpnEnum.Spanner==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Knife, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Knife, WpnEnum.Knife==RHWpn,WpnEnum.Knife==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Screwdriver, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Screwdriver, WpnEnum.Screwdriver==RHWpn,WpnEnum.Screwdriver==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Towel, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Towel, WpnEnum.Towel==RHWpn,WpnEnum.Towel==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Scissors, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Scissors, WpnEnum.Scissors==RHWpn,WpnEnum.Scissors==murderWeap));
+		wpnFacts.Insert((int)WpnEnum.Spanner, new Fact(timeline[relationshipPairing[0]].name, timeline[relationshipPairing[2]].name, WpnEnum.Spanner, WpnEnum.Spanner==RHWpn,WpnEnum.Spanner==murderWeap));
 	}
 	private static void GenerateHardGame() {
 		//only has 3 contradictions
