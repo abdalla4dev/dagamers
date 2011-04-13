@@ -31,8 +31,6 @@ public class TreeNode {
 		}
 		
 		for (int i=0;i<4;i++) {// search for the person first
-			Debug.Log(i);
-			Debug.Log(startNode[i].QnNum);
 			temp = startNode[i];
 			if (temp.Sus == suspect) { // if got the correct person
 				while (temp.NextQn != null) { 

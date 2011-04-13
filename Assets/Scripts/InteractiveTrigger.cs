@@ -203,7 +203,7 @@ public class InteractiveTrigger : MonoBehaviour {
 			
 			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(125), GUILayout.Width(380));
 			for(int i = 0; i < logText.Count; i++){
-				/*if (logText[i][0] != "temp") {*/
+				if (logText[i][0] != "temp") {
 					//the questions in log
 					GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
 					String ansTemp = logText[i][0];
@@ -219,7 +219,7 @@ public class InteractiveTrigger : MonoBehaviour {
 					questionTemp = questionTemp.Substring(0,1) + questionTemp.Substring(1).ToLower();
 					questionTemp = questionTemp.Replace(" i ", " I ");
 					GUILayout.Label("A: " + questionTemp);
-				//}
+				}
 			}
 			GUILayout.EndScrollView();
 			callAns = false;
