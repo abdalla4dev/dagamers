@@ -31,7 +31,8 @@ public class InteractiveTrigger : MonoBehaviour {
 	bool callAns = false;
 	bool isFact;
 	bool spoken = false;
-	
+	bool isCCTVcalled = false;
+	static string weaponStr; // to store the string
 	
 	Vector3 mousePos;
 	Vector3 offset = Vector3.up;
@@ -60,6 +61,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		}
 		else if(targetObject.name == "CCTV"){
 			isFact = true;
+			weapon = targetObject.name;
 			fact = targetObject.name;
 		}
 		else{
@@ -72,9 +74,10 @@ public class InteractiveTrigger : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = customSkin;
 		if (displayText) {
-			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
+			// for weapons only and CCTV
+			if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "CCTV"){
 				//GUILayout.Window(3, new Rect(screenPos.x, (Screen.height - screenPos.y),300,100), weaponWindow, "" + weapon);
-				GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 100), weaponWindow, "" + weapon, GUILayout.Width(262));
+				GUILayout.Window(3, new Rect(Screen.width - 420, 0, 262, 120), weaponWindow, "asd " + weapon, GUILayout.Width(262));
 			}
 			else{
 				
@@ -100,6 +103,7 @@ public class InteractiveTrigger : MonoBehaviour {
 		}
 		
 		if(Input.GetMouseButtonDown(0)){
+			isCCTVcalled = false;
 			if(withinBoundary == true && actionKey == false && overObject == true){ // Colin commented out overObject == true to test
 				actionKey = true;
 				displayText = true;
@@ -109,12 +113,16 @@ public class InteractiveTrigger : MonoBehaviour {
 	}
 	
 	void weaponWindow(int windowID){
-		string weaponStr; // to store the string
 		System.Random rand = new System.Random();
 		
 		if(isFact){
 			//factEnum = ((int)Enum.Parse(typeof(WpnEnum), suspect));
-			weaponStr = GenerateTimeline.facts[rand.Next(0, GenerateTimeline.facts.Count)].revealInfo("CCTV");
+			if(!isCCTVcalled){
+				weaponStr = GenerateTimeline.facts[rand.Next(0, GenerateTimeline.facts.Count)].revealInfo("CCTV");
+				weaponStr = weaponStr.Replace('_', ' ');
+				weaponStr += " (Click again for another fact)";
+			}
+			isCCTVcalled = true;
 			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(100));
 			
 		}
@@ -123,9 +131,6 @@ public class InteractiveTrigger : MonoBehaviour {
 			weaponStr = GenerateTimeline.wpnFacts[weaponEnum].revealInfo("weapon");
 			GUILayout.Box(weaponStr, GUILayout.Width(260), GUILayout.Height(100));
 		}
-		
-
-		
 		
 		// VoiceSpeaker
 		if(!spoken){
@@ -168,22 +173,23 @@ public class InteractiveTrigger : MonoBehaviour {
 			
 			scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(125), GUILayout.Width(380));
 			for(int i = 0; i < logText.Count; i++){
-				
-				//the questions in log
-				GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
-				String ansTemp = logText[i][0];
-				ansTemp = ansTemp.Replace('_', ' ');
-				ansTemp = ansTemp.Substring(0,1) + ansTemp.Substring(1).ToLower();
-				ansTemp = ansTemp.Replace(" i ", " I ");
-				GUILayout.Label("Q: " + ansTemp);
-				
-				//the answers in log
-				GUI.contentColor = Color.white;
-				String questionTemp = logText[i][1];
-				questionTemp = questionTemp.Replace('_', ' ');
-				questionTemp = questionTemp.Substring(0,1) + questionTemp.Substring(1).ToLower();
-				questionTemp = questionTemp.Replace(" i ", " I ");
-				GUILayout.Label("A: " + questionTemp);
+				if (logText[i][0] != "temp") {
+					//the questions in log
+					GUI.contentColor = new Color(1.0F, 0.6F, 0.0F);	
+					String ansTemp = logText[i][0];
+					ansTemp = ansTemp.Replace('_', ' ');
+					ansTemp = ansTemp.Substring(0,1) + ansTemp.Substring(1).ToLower();
+					ansTemp = ansTemp.Replace(" i ", " I ");
+					GUILayout.Label("Q: " + ansTemp);
+					
+					//the answers in log
+					GUI.contentColor = Color.white;
+					String questionTemp = logText[i][1];
+					questionTemp = questionTemp.Replace('_', ' ');
+					questionTemp = questionTemp.Substring(0,1) + questionTemp.Substring(1).ToLower();
+					questionTemp = questionTemp.Replace(" i ", " I ");
+					GUILayout.Label("A: " + questionTemp);
+				}
 			}
 			GUILayout.EndScrollView();
 			callAns = false;
@@ -204,6 +210,7 @@ public class InteractiveTrigger : MonoBehaviour {
 			displayText = false;
 			actionKey = false;
 			callAns = false;
+			VoiceSpeaker.stopTalk();
 		}
 	}
 	
@@ -214,10 +221,10 @@ public class InteractiveTrigger : MonoBehaviour {
 		float mouseX = Math.Abs(mousePos.x - Screen.width);
 		float mouseY = Math.Abs(mousePos.y - Screen.height);
 		
-		GUI.Label(new Rect(mouseX, mouseY, 50, 30), targetObject.name, MouseLabelStyle);  
+		//GUI.Label(new Rect(mouseX, mouseY, 50, 30), targetObject.name, MouseLabelStyle);  
 		
 		//changing all the material to be yellow upon mouse hover, once the player is close to the object
-		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
+		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
 			//changing all the material to be yellow upon mouse hover, once the player is close to the object
 			if(withinBoundary){
 				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
@@ -230,7 +237,7 @@ public class InteractiveTrigger : MonoBehaviour {
 	void OnMouseExit(){
 		overObject = false;
 		//if user did not select the object
-		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel" || targetObject.name == "SecurityTV"){
+		if(targetObject.name == "Knife" || targetObject.name == "Scissors" || targetObject.name == "Spanner" || targetObject.name == "Screwdriver" || targetObject.name == "Towel"){
 			//if user did not select the object
 				//changes back to the original material upon mouse exit
 				for(int i = 0; i < targetObject.renderer.materials.Length; i++){
